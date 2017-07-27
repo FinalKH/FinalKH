@@ -17,9 +17,40 @@
 				<a class="item" href="${path}/travel/reviewList.do"><i class="book icon"></i> 여행후기</a>
 			<div class="right menu">
 				<a class="item" href="${path}/sample/sample.do"><i class="cube orange icon"></i>예제</a>
-				<a class="item" href="${path}/travel/myPage.do"><i class="user circle blue icon"></i> 마이페이지</a>
-				<a class="item" ><i class="sign in red icon"></i> 로그인</a>
+				
+				<c:choose>
+			    	<c:when test="${sessionScope.userid == null}">
+			    		<a class="item" href="javascript:loginForm()"><i class="sign in red icon"></i> 로그인</a>
+			    	</c:when>
+			    	<c:otherwise>
+			    		<a class="item" href="#"><i class="user circle blue icon"></i>${sessionScope.userid }님!</a>
+			    		<a class="item" href="${path}/member/logout_test.do"><i class="sign out red icon"></i> 로그아웃</a>
+			    	</c:otherwise>
+			    </c:choose>
+				
+				
+				
+				
 			</div>
 		</div>
 	</div>
 </div>
+<!-- DIMMER 처리된 회원가입 페이지  -->
+<div class="ui container">
+	<div class="ui smaill basic loginForm modal">
+		<div class="content">
+			<%@ include file="../include/include-loginForm.jsp"%>
+		</div>
+	</div>
+</div>
+<script>
+function loginForm() {
+	$('.ui.loginForm.modal').modal('show');
+}
+</script>
+<c:if test="${msg =='failure' }">
+	<script>$('.ui.loginForm.modal').modal('show');
+	alert("It is wrong about your E-mail or Password");
+	</script>
+	
+</c:if>

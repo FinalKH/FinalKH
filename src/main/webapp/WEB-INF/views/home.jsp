@@ -11,7 +11,9 @@
 	<c:if test="${msg == 'success'}">
 	<h2>${sessionScope.userName}(${sessionScope.userId})님 환영합니다.</h2>
 	</c:if>
-	
+	<c:if test="${msg == 'success'}">
+    <h2>${sessionScope.userid}(${sessionScope.email})님 환영합니다.</h2>
+    </c:if>
 	${result}
 </body>
 </html>
