@@ -23,8 +23,12 @@ public class TravelController {
 	@RequestMapping("practice.do")
 	public String practice(){
 		logger.info("");
-
 		return "travel/practice";	// views/travel/makePlan.jsp로 포워드
+	}
+	@RequestMapping("practice2.do")
+	public String practice2(){
+		logger.info("");
+		return "travel/practice2";	// views/travel/makePlan.jsp로 포워드
 	}
 	
 	// 01. 여행 계획 만들기 화면
