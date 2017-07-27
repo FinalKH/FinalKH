@@ -1,0 +1,95 @@
+package com.kh.web.controller.member;
+
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.kh.web.model.member.dto.MemberVo_Test_JG;
+import com.kh.web.service.member.MemberService2;
+
+@Controller // 현재 클래스를 스프링에서 관리하는 컨트롤러 bean으로 생성
+@RequestMapping("/member/*") // 모든맵핑은 /member/를 상속
+public class MemberController2 {
+	// 로깅을 위한 변수
+	private static final Logger logger = LoggerFactory.getLogger(MemberController2.class);
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
+	
+	@Inject
+	MemberService2 memberService2;
+	
+	// 01 회원 목록
+    // url pattern mapping
+    @RequestMapping("list.do")
+    public String memberList(Model model){
+    // controller => service => dao 요청
+        List<MemberVo_Test_JG> list = memberService2.memberList();
+        model.addAttribute("list", list);
+        return "member/member_list";
+    }
+ // 02_01 회원 등록 페이지로 이동
+    @RequestMapping("member/write.do")
+    public String memberWrite(){
+        
+        return "member/member_write";
+    }
+    
+    // 02_02 회원 등록 처리 후 ==> 회원목록으로 리다이렉트
+    // @ModelAttribute에 폼에서 입력한 데이터가 저장된다.
+    @RequestMapping("member/insert.do")
+    // * 폼에서 입력한 데이터를 받아오는 법 3가지 
+    //public String memberInsert(HttpServlet request){
+    //public String memberInsert(String userId, String userPw, String userName, String userEmail){
+    public String memberInsert(@ModelAttribute MemberVo_Test_JG vot){
+        // 테이블에 레코드 입력
+    	String encryptPassword = passwordEncoder.encode(vot.getPassword());
+    	logger.info(encryptPassword);
+    	vot.setPassword(encryptPassword);
+    	
+        memberService2.insertMember_test(vot);
+        // * (/)의 유무에 차이
+        // /member/list.do : 루트 디렉토리를 기준
+        // member/list.do : 현재 디렉토리를 기준
+        // member_list.jsp로 리다이렉트
+        return "redirect:/member/list.do";
+    }
+    
+    // 02. 로그인 처리
+    @RequestMapping("loginCheck_test.do")
+    public ModelAndView loginCheck_test(@ModelAttribute MemberVo_Test_JG vot, HttpSession session){
+        boolean result = memberService2.loginCheck_test(vot, session);
+        ModelAndView mav = new ModelAndView();
+        if (result == true) { // 로그인 성공
+            // main.jsp로 이동
+            mav.setViewName("main");
+            mav.addObject("msg", "success");
+        } else {    // 로그인 실패
+            // login.jsp로 이동
+            mav.setViewName("main");
+            mav.addObject("msg", "failure");
+        }
+        return mav;
+    }
+    
+    // 03. 로그아웃 처리
+    @RequestMapping("logout_test.do")
+    public ModelAndView logout_test(HttpSession session){
+        memberService2.logout_test(session);
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("main");
+        mav.addObject("msg", "logout");
+        return mav;
+    }
+}
