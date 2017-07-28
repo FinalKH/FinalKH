@@ -52,6 +52,7 @@
             </div> 
             </div> 
             <div class="twelve wide cloumn"> 
+<<<<<<< HEAD
             <div class="ui inverted segment"> 
 	            <form action="#">	            
 	            <input type="text" name="rsubject" class="ui input" placeholder="제목을 입력하세요." />	            
@@ -61,6 +62,21 @@
 	            <input type="reset" value="취소" class="ui button" />
 	            </div>
 	            </form>
+=======
+            <div class="ui segment"> 
+            <div id="summernote" style="height:500" ><p>Hello Summernote</p></div>             
+                <script> 
+                   $(document).ready(function() { 
+                       $('#summernote').summernote(); 
+                   }); 
+                </script> 
+                <button class="mini ui secondary button"> 
+                  Okay 
+                </button> 
+                <button class="mini ui button"> 
+                  Cancel 
+                </button> 
+>>>>>>> 2513d6a35489c198aa75e2cc3ffbce1af3f435cb
             </div> 
             </div> 
         </div><!-- grid --> 

@@ -37,10 +37,7 @@
 		        "I2": [MARKER_SPRITE_X_OFFSET*8, MARKER_SPRITE_Y_OFFSET*2]
 		    };
 
-		var map = new naver.maps.Map('map', {
-		    center: new naver.maps.LatLng(37.3595704, 127.105399),
-		    zoom: 10
-		});
+
 
 		var bounds = map.getBounds(),
 		    southWest = bounds.getSW(),
