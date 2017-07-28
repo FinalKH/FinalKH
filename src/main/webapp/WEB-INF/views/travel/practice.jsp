@@ -10,116 +10,59 @@
 </head>
 
 <body>
+
+<div id="map" style="width: 100%; height: 900px;"></div>
 <script>
-		$(document).ready(function() {
-		     jQuery.ajax({
-		           type:"GET",
-		           url:"http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=ZhnHJ1fzbYGAO2Xl%2FSg5MHWhMO0GkoIguiXKwi3%2BlAB8OTO1xYkmp0228On6RJ6lgh6Z4%2BLCWnAsnPm0wysTgA%3D%3D&contentTypeId=&areaCode=&sigunguCode=&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=10&pageNo=1&_type=json",	   
-		           dataType:"json", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
-		           success : function(data) {
-		                alert("자바스크립트 객체 불러오기 성공");
-		                var jsondata = JSON.stringify(data);
-		                alert(jsondata);
-		                alert("자바스크립트 객체를 json으로 변환 성공");
-		                var rejson = JSON.parse(jsondata);
-		                alert(rejson);
-		                alert(rejson.response.header.resultCode);
-		                alert(rejson.response.body.items.item[5].title);
-		                $("#api").append(data.response.body.items.item[5].title);
-
-
-		           },
-		           complete : function(data) {
-		        	   alert(data);
-		        	   var jsondata = JSON.stringify(data);
-		                alert(jsondata);
-		                alert("자바스크립트 객체를 json으로 변환 성공");
-		                var rejson = JSON.parse(jsondata);
-		        	   alert("완료");
-		           },
-		           error : function(xhr, status, error) {
-		                 alert("에러발생");
-		           }
-		     });
-		});
-		alert(data.mapy);
-		</script>
-		<div id="map" style="width:100%;height:400px;"></div>
-		<div id="api"></div>
-		<script>
-		var mapDiv = document.getElementById('map');
-		var map = new naver.maps.Map(mapDiv);
-		function showDisplayLayerFunc() {
-			var jsonObj = [];
-			$("table > tbody > tr").each( function( index ) {
-				jsonObj.push({
-					grade: $(this).children().eq(0).text(),
-					name: $(this).children().eq(1).text(),
-					number: $(this).children().eq(2).text()
-				});
-			});
-
-			for(i = 0; i < jsonObj.length; i++) {
-				$("#displayLayer").append("<input tepe='text' name='gradeName' value='"+ jsonObj[i].grade +" "+ jsonObj[i].name +" "+ jsonObj[i].number +"' /><br/>");
-			}
-		}
-		$.ajax({
-		    url: './geojson/naver.json',
-		    dataType: 'json',
-		    success: startDataLayer
-		});
-
-		var map;
-		function startDataLayer(geojson) {
-		    map = new naver.map.Map('map', {
-		        zoom: 13,
-		        center: new naver.maps.LatLng(37.3586524, 127.1060678)
-		    });
-
-		    map.data.addGeoJson(geojson);
-		}
-		var drawingManager = new naver.maps.drawing.DrawingManager({map: map});
-	</script>
+var latitude=0;
+var longitude=0;
+navigator.geolocation.getCurrentPosition(function(position) {
+    latitude=position.coords.latitude;
+    longitude=position.coords.longitude;
+	alert(position.coords.latitude + ' ' + position.coords.longitude);
+});
 	
-</head>
-<body>
+var map = new naver.maps.Map('map', {
+    center: new naver.maps.LatLng(latitude, longitude),
+    zoom: 5,
+    mapTypeId: naver.maps.MapTypeId.NORMAL
+});
 
-	<table border="1">
-		<thead>
-			<tr>
-				<th>학년</th>
-				<th>이름</th>
-				<th>번호</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>1학년</td>
-				<td>김철수</td>
-				<td>1번</td>
-			</tr>
-			<tr>
-				<td>1학년</td>
-				<td>이영희</td>
-				<td>2번</td>
-			</tr>
-			<tr>
-				<td>2학년</td>
-				<td>박승철</td>
-				<td>1번</td>
-			</tr>
-			<tr>
-				<td>2학년</td>
-				<td>최보람</td>
-				<td>2번</td>
-			</tr>
-		</tbody>
-	</table>
+var infowindow = new naver.maps.InfoWindow();
 
-	<p>
-		<button onclick="showDisplayLayerFunc()">입력</button>
-	</p>
+function onSuccessGeolocation(position) {
+    var location = new naver.maps.LatLng(position.coords.latitude,
+                                         position.coords.longitude);
 
-	<div id="displayLayer"></div>
+    map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
+    map.setZoom(10); // 지도의 줌 레벨을 변경합니다.
+
+    infowindow.setContent('<div style="padding:20px;">' +
+        'latitude: '+ location.lat() +'<br />' +
+        'longitude: '+ location.lng() +'</div>');
+
+    infowindow.open(map, location);
+}
+
+function onErrorGeolocation() {
+    var center = map.getCenter();
+
+    infowindow.setContent('<div style="padding:20px;">' +
+        '<h5 style="margin-bottom:5px;color:#f00;">Geolocation failed!</h5>'+ "latitude: "+ center.lat() +"<br />longitude: "+ center.lng() +'</div>');
+
+    infowindow.open(map, center);
+}
+
+$(window).on("load", function() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(onSuccessGeolocation, onErrorGeolocation);
+    } else {
+        var center = map.getCenter();
+
+        infowindow.setContent('<div style="padding:20px;"><h5 style="margin-bottom:5px;color:#f00;">Geolocation not supported</h5>'+ "latitude: "+ center.lat() +"<br />longitude: "+ center.lng() +'</div>');
+        infowindow.open(map, center);
+    }
+});
+</script>
+
 </body>
 </html>

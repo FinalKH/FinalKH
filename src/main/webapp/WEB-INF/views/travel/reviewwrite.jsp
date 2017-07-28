@@ -35,7 +35,7 @@
             </div> 
             <div class="twelve wide cloumn"> 
             <div class="ui segment"> 
-            <div id="summernote" height="500" ><p>Hello Summernote</p></div>             
+            <div id="summernote" style="height:500" ><p>Hello Summernote</p></div>             
                 <script> 
                    $(document).ready(function() { 
                        $('#summernote').summernote(); 
