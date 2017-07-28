@@ -47,7 +47,13 @@ public class TravelController {
 	public String reviewList(){
 		logger.info("");
 
-		return "travel/reviewList";	// views/travel/makePlan.jsp로 포워드
+		return "travel/reviewlist";	
+	}
+	@RequestMapping("reviewWrite.do")
+	public String reviewWrite(){
+		logger.info("");
+
+		return "travel/reviewwrite";	
 	}
 	// 03. 마이 페이지
 	@RequestMapping("myPage.do")
