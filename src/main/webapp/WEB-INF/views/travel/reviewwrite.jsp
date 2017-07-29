@@ -26,6 +26,7 @@
 	$(document).ready(function() {
 		$('#rcontent').summernote({
 			height: 600,
+			width: 400,
 			fontNames : [ '맑은고딕', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', ],
 			fontNamesIgnoreCheck : [ '맑은고딕' ],
 			focus: true
@@ -33,50 +34,38 @@
 	});
 </script>
 </head>  
-<body>  
-<%@ include file="../include/headerTravel.jsp"%>
-<header><%@ include file="../include/menuTravel.jsp"%>
+<body>
+<div>
+<%--@ include file="../include/headerTravel.jsp"--%>
+<%--@ include file="../include/menuTravel.jsp"--%>
+</div>
+<header>
 	<div class="ui fluid container">
 		<div class="ui purple inverted segment">
 			<p>헤더 정보 공간</p>
-
 		</div>
 	</div>
 </header>  
 <section>  
-    <div class="ui container" >          
+    <div class="ui fluid container" >          
         <div class="ui grid container"> 
             <div class="four wide column"> 
-            <div class="ui inverted segment">
+            <div class="ui left segment">
           	일정 만들기 
             </div> 
             </div> 
             <div class="twelve wide cloumn"> 
-<<<<<<< HEAD
-            <div class="ui inverted segment"> 
-	            <form action="#">	            
-	            <input type="text" name="rsubject" class="ui input" placeholder="제목을 입력하세요." />	            
-	            <textarea id="rcontent">Hello Summernote</textarea>
+            <div class="ui segment"> 
+	            <form action="#">
+	            <div class="ui fluid input">            
+	            <input type="text" name="rsubject" placeholder="제목을 입력하세요." />
+	            </div>            
+	            <textarea id="rcontent" ></textarea>
 	            <div align="center">
 	            <input type="submit" value="확인" class="ui button" />
 	            <input type="reset" value="취소" class="ui button" />
 	            </div>
 	            </form>
-=======
-            <div class="ui segment"> 
-            <div id="summernote" style="height:500" ><p>Hello Summernote</p></div>             
-                <script> 
-                   $(document).ready(function() { 
-                       $('#summernote').summernote(); 
-                   }); 
-                </script> 
-                <button class="mini ui secondary button"> 
-                  Okay 
-                </button> 
-                <button class="mini ui button"> 
-                  Cancel 
-                </button> 
->>>>>>> 2513d6a35489c198aa75e2cc3ffbce1af3f435cb
             </div> 
             </div> 
         </div><!-- grid --> 

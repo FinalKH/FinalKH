@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: JJongsDesk
-=======
-Built-By: user2
->>>>>>> 2513d6a35489c198aa75e2cc3ffbce1af3f435cb
 Build-Jdk: 1.8.0_121
 Created-By: Maven Integration for Eclipse
 
