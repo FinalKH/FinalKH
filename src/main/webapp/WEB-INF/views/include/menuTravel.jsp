@@ -46,9 +46,12 @@
 	</div>
 </div>
 <script>
+$('.ui.loginForm.modal').modal('refresh');
 function loginForm() {
 	$('.ui.loginForm.modal').modal('show');
 }
+
+
 </script>
 <c:if test="${msg =='failure' }">
 	<script>$('.ui.loginForm.modal').modal('show');

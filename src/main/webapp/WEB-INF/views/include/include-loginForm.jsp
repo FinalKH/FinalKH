@@ -64,17 +64,17 @@ body>.grid {
 				class="image">
 			<div class="content">Log-in to your account</div>
 		</h2>
-		<form class="ui large login form" action="/web/member/loginCheck_test.do" method="post">
+		<form class="ui large login form" action="/web/member/loginCheck_test.do" method="post" name="login">
 			<div class="ui stacked segment">
 				<div class="field">
 					<div class="ui left icon input">
-						<i class="user icon"></i> <input type="text" name="email"
+						<i class="user icon"></i> <input type="text" name="email" 
 							placeholder="E-mail address">
 					</div>
 				</div>
 				<div class="field">
 					<div class="ui login left icon input">
-						<i class="lock icon"></i> <input type="password" name="password"
+						<i class="lock icon"></i> <input type="password" name="password" 
 							placeholder="Password">
 					</div>
 				</div>
@@ -101,6 +101,9 @@ body>.grid {
 	</div>
 </div>
 <script>
+$('.ui.modal').on('hidden.bs.modal', function (e) { 
+    $(this).find('email')[0].reset() 
+});
 function signupForm() {
 	$('.ui.signupForm.modal').modal('show');
 }
