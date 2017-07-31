@@ -1,0 +1,422 @@
+--------------------------------------
+
+
+	-- DB 정보 인덱스
+		-- DB 테이블 구성
+		-- DB 시퀀스 구성
+		-- 테이블 세부 구조
+		-- DB 기본 사용 설정 세팅
+		-- DB 생성 정보
+			-- 테이블 생성
+			-- 시퀀스 생성
+			-- 외래키 설정
+			-- 기본 데이터 생성
+			-- 최종 COMMIT;
+
+
+--------------------------------------
+
+
+
+	-- DB정보
+		-- DB 테이블 구성
+			-- KH_AREA
+
+						
+			
+		-- DB 시퀀스 구성	
+			-- 
+
+				
+		
+		-- 테이블 세부 구조
+			-- KH_AREA
+				--USER_ID				NOT NULL VARCHAR2(50)	--PRIMARY KEY
+				--USER_PW				NOT NULL VARCHAR2(50)
+				--USER_NAME				NOT NULL VARCHAR2(50)
+				--USER_EMAIL			NOT NULL VARCHAR2(100)
+				--USER_REGDATE			DATE
+				--USER_UPDATEDATE		DATE
+			
+
+
+		--DB세팅 관련 정보
+			----------주의 주의 주의 주의 주의 주의 주의 주의 주의 주의 -------------
+			-- 아래 코드는 해당 스키마의 모든 테이블, 시퀀스, 휴지통까지 지워버리는 명령 --
+			-- 데이터 베이스 생성 전 전체 테이블 구조와 데이터를 쉽게 삭제하고자 할 때 사용 --  
+			
+			-- sql>ed dropall.sql
+			
+			
+			
+			-- Begin
+			-- 		for c in (select table_name from user_tables)
+			-- 			loop
+			-- 				execute immediate ('drop table '||c.table_name||' cascade constraints');
+			-- 			end loop;
+			-- 		for c in (SELECT * FROM all_sequences WHERE SEQUENCE_OWNER='FINALKH')
+			-- 			loop
+			-- 				execute immediate 'drop SEQUENCE '||c.sequence_name;
+			-- 			end loop;
+			-- End;
+			-- /
+			-- purge recyclebin;
+			-- SELECT * FROM tab;
+			-- SELECT * FROM all_sequences WHERE SEQUENCE_OWNER='FINALKH';
+			
+			
+			
+			-- sql>@dropall.sql
+
+			
+			--- 위 코드는 해당 스키마의 모든 테이블, 시퀀스, 휴지통까지 지워버리는 명령 ---
+			----------주의 주의 주의 주의 주의 주의 주의 주의 주의 주의 -------------
+		
+		
+			-- 전체 테이블, 시퀀스 생성 쿼리를 이렇게 명령어로 저장해놓고 사용할 수도 있다
+			-- sql>ed createall.sql
+			-- 메모장에 아래의 쿼리 전체를 입력
+			-- sql>@createall.sql
+
+			
+			
+			
+----------------------------------------------------------------------------------------------			
+------------------------------------   아래의 내용을 붙여넣기 한다   ------------------------------------
+----------------------------------------------------------------------------------------------
+
+
+	-- DB 기본 사용 설정 세팅
+	SET LINESIZE 120;
+	SET SERVEROUTPUT ON;
+
+
+	-- 1. 시도지역 관련 DB 정보
+		-- 시도지역 테이블 생성
+		create table T_SiDoInfo(
+		SiDoCode varchar2(10) not null,		-- 시도코드
+		SiDoName varchar2(50) not null,		-- 시도이름
+		SiDoMapX varchar2(10) not null,		-- 시도경도
+		SiDoMapY varchar2(10) not null,		-- 시도위도
+		primary key(SiDoCode)				-- 기본키 설정
+		);
+	
+		-- 시도지역 시퀀스 생성
+		-- 시퀀스 생성 필요 없음
+		
+		-- 시도지역 외래키 설정
+		-- 외래키 설정 필요 없음
+	
+		-- 시도지역 기본 데이터 생성
+		insert into T_SiDoInfo values ('1', '서울', '126.984028', '37.544085');
+		insert into T_SiDoInfo values ('2', '인천', '126.607680', '37.591575');
+		insert into T_SiDoInfo values ('3', '대전', '127.399092', '36.342052');
+		insert into T_SiDoInfo values ('4', '대구', '128.568285', '35.845876');
+		insert into T_SiDoInfo values ('5', '광주', '126.835549', '35.154133');
+		insert into T_SiDoInfo values ('6', '부산', '129.077638', '35.202122');
+		insert into T_SiDoInfo values ('7', '울산', '129.228810', '35.572096');
+		insert into T_SiDoInfo values ('8', '세종특별자치시', '127.267336', '36.553425');
+		insert into T_SiDoInfo values ('31', '경기도', '127.342078', '37.484153');
+		insert into T_SiDoInfo values ('32', '강원도', '128.268018', '37.836673');
+		insert into T_SiDoInfo values ('33', '충청북도', '127.719236', '36.737902');
+		insert into T_SiDoInfo values ('34', '충청남도', '126.891799', '36.546952');
+		insert into T_SiDoInfo values ('35', '경상북도', '128.686032', '36.477738'); 
+		insert into T_SiDoInfo values ('36', '경상남도', '128.291687', '35.314592');
+		insert into T_SiDoInfo values ('37', '전라북도', '127.152512', '35.717951');
+		insert into T_SiDoInfo values ('38', '전라남도', '126.923376', '34.900833');
+		insert into T_SiDoInfo values ('39', '제주도', '126.541411', '33.387009');
+		
+		
+	-- 2. 시군지역 관련 DB 정보
+		-- 시군지역 테이블 생성
+		create table T_SiGunInfo(
+		SiDoNum varchar2(10) not null,		-- 시도고유번호
+		SiGunCode varchar2(10) not null,	-- 시군코드
+		SiGunName varchar2(50) not null,	-- 시군이름
+		SiGunMapX varchar2(10) not null,	-- 시군경도
+		SiGunMapY varchar2(10) not null,	-- 시군위도
+		SiDoCode varchar2(10) not null,		-- 시도코드
+		primary key(SiDoNum)				-- 기본키 설정
+		);
+	
+		-- 시군지역 시퀀스 생성
+		-- 시퀀스 생성 필요 없음
+		
+		-- 시군지역 외래키 설정
+		-- 
+	
+		-- 시군지역 기본 데이터 생성
+		insert into T_SiGunInfo values ('1', '1', '강남구', '', '');
+		insert into T_SiGunInfo values ('1', '2', '강동구', '', '');
+		insert into T_SiGunInfo values ('1', '3', '강북구', '', '');
+		insert into T_SiGunInfo values ('1', '4', '강서구', '', '');
+		insert into T_SiGunInfo values ('1', '5', '관악구', '', '');
+		insert into T_SiGunInfo values ('1', '6', '광진구', '', '');
+		insert into T_SiGunInfo values ('1', '7', '구로구', '', '');
+		insert into T_SiGunInfo values ('1', '8', '금천구', '', '');
+		insert into T_SiGunInfo values ('1', '9', '노원구', '', '');
+		insert into T_SiGunInfo values ('1', '10', '도봉구', '', '');
+		insert into T_SiGunInfo values ('1', '11', '동대문구', '', '');
+		insert into T_SiGunInfo values ('1', '12', '동작구', '', '');
+		insert into T_SiGunInfo values ('1', '13', '마포구', '', '');
+		insert into T_SiGunInfo values ('1', '14', '서대문구', '', '');
+		insert into T_SiGunInfo values ('1', '15', '서초구', '', '');
+		insert into T_SiGunInfo values ('1', '16', '성동구', '', '');
+		insert into T_SiGunInfo values ('1', '17', '성북구', '', '');
+		insert into T_SiGunInfo values ('1', '18', '송파구', '', '');
+		insert into T_SiGunInfo values ('1', '19', '양천구', '', '');
+		insert into T_SiGunInfo values ('1', '20', '영등포구', '', '');
+		insert into T_SiGunInfo values ('1', '21', '용산구', '', '');
+		insert into T_SiGunInfo values ('1', '22', '은평구', '', '');
+		insert into T_SiGunInfo values ('1', '23', '종로구', '', '');
+		insert into T_SiGunInfo values ('1', '24', '중구', '', '');
+		insert into T_SiGunInfo values ('1', '25', '중랑구', '', '');
+		
+		insert into T_SiGunInfo values ('2', '', '', '', '');
+		insert into T_SiGunInfo values ('2', '', '', '', '');
+		insert into T_SiGunInfo values ('2', '', '', '', '');
+		insert into T_SiGunInfo values ('2', '', '', '', '');
+		insert into T_SiGunInfo values ('2', '', '', '', '');
+		insert into T_SiGunInfo values ('2', '', '', '', '');
+		insert into T_SiGunInfo values ('2', '', '', '', '');
+		insert into T_SiGunInfo values ('2', '', '', '', '');
+		insert into T_SiGunInfo values ('2', '', '', '', '');
+		insert into T_SiGunInfo values ('2', '', '', '', '');
+		
+		insert into T_SiGunInfo values ('3', '', '', '', '');
+		insert into T_SiGunInfo values ('3', '', '', '', '');
+		insert into T_SiGunInfo values ('3', '', '', '', '');
+		insert into T_SiGunInfo values ('3', '', '', '', '');
+		insert into T_SiGunInfo values ('3', '', '', '', '');
+
+		insert into T_SiGunInfo values ('4', '', '', '', '');
+		insert into T_SiGunInfo values ('4', '', '', '', '');
+		insert into T_SiGunInfo values ('4', '', '', '', '');
+		insert into T_SiGunInfo values ('4', '', '', '', '');
+		insert into T_SiGunInfo values ('4', '', '', '', '');
+		insert into T_SiGunInfo values ('4', '', '', '', '');
+		insert into T_SiGunInfo values ('4', '', '', '', '');
+		insert into T_SiGunInfo values ('4', '', '', '', '');
+
+		insert into T_SiGunInfo values ('5', '', '', '', '');
+		insert into T_SiGunInfo values ('5', '', '', '', '');
+		insert into T_SiGunInfo values ('5', '', '', '', '');
+		insert into T_SiGunInfo values ('5', '', '', '', '');
+		insert into T_SiGunInfo values ('5', '', '', '', '');
+
+		insert into T_SiGunInfo values ('6', '', '', '', '');
+		insert into T_SiGunInfo values ('6', '', '', '', '');
+		insert into T_SiGunInfo values ('6', '', '', '', '');
+		insert into T_SiGunInfo values ('6', '', '', '', '');
+		insert into T_SiGunInfo values ('6', '', '', '', '');
+		insert into T_SiGunInfo values ('6', '', '', '', '');
+		insert into T_SiGunInfo values ('6', '', '', '', '');
+		insert into T_SiGunInfo values ('6', '', '', '', '');
+		insert into T_SiGunInfo values ('6', '', '', '', '');
+		insert into T_SiGunInfo values ('6', '', '', '', '');
+		insert into T_SiGunInfo values ('6', '', '', '', '');
+		insert into T_SiGunInfo values ('6', '', '', '', '');
+		insert into T_SiGunInfo values ('6', '', '', '', '');
+		insert into T_SiGunInfo values ('6', '', '', '', '');
+		insert into T_SiGunInfo values ('6', '', '', '', '');
+		insert into T_SiGunInfo values ('6', '', '', '', '');
+
+		insert into T_SiGunInfo values ('7', '', '', '', '');
+		insert into T_SiGunInfo values ('7', '', '', '', '');
+		insert into T_SiGunInfo values ('7', '', '', '', '');
+		insert into T_SiGunInfo values ('7', '', '', '', '');
+		insert into T_SiGunInfo values ('7', '', '', '', '');
+
+		insert into T_SiGunInfo values ('8', '', '', '', '');
+
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+		insert into T_SiGunInfo values ('31', '', '', '', '');
+
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+		insert into T_SiGunInfo values ('32', '', '', '', '');
+
+		insert into T_SiGunInfo values ('33', '', '', '', '');
+		insert into T_SiGunInfo values ('33', '', '', '', '');
+		insert into T_SiGunInfo values ('33', '', '', '', '');
+		insert into T_SiGunInfo values ('33', '', '', '', '');
+		insert into T_SiGunInfo values ('33', '', '', '', '');
+		insert into T_SiGunInfo values ('33', '', '', '', '');
+		insert into T_SiGunInfo values ('33', '', '', '', '');
+		insert into T_SiGunInfo values ('33', '', '', '', '');
+		insert into T_SiGunInfo values ('33', '', '', '', '');
+		insert into T_SiGunInfo values ('33', '', '', '', '');
+		insert into T_SiGunInfo values ('33', '', '', '', '');
+		insert into T_SiGunInfo values ('33', '', '', '', '');
+
+		insert into T_SiGunInfo values ('34', '', '', '', '');
+		insert into T_SiGunInfo values ('34', '', '', '', '');
+		insert into T_SiGunInfo values ('34', '', '', '', '');
+		insert into T_SiGunInfo values ('34', '', '', '', '');
+		insert into T_SiGunInfo values ('34', '', '', '', '');
+		insert into T_SiGunInfo values ('34', '', '', '', '');
+		insert into T_SiGunInfo values ('34', '', '', '', '');
+		insert into T_SiGunInfo values ('34', '', '', '', '');
+		insert into T_SiGunInfo values ('34', '', '', '', '');
+		insert into T_SiGunInfo values ('34', '', '', '', '');
+		insert into T_SiGunInfo values ('34', '', '', '', '');
+		insert into T_SiGunInfo values ('34', '', '', '', '');
+		insert into T_SiGunInfo values ('34', '', '', '', '');
+		insert into T_SiGunInfo values ('34', '', '', '', '');
+		insert into T_SiGunInfo values ('34', '', '', '', '');
+
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+		insert into T_SiGunInfo values ('35', '', '', '', '');
+
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+		insert into T_SiGunInfo values ('36', '', '', '', '');
+
+		insert into T_SiGunInfo values ('37', '', '', '', '');
+		insert into T_SiGunInfo values ('37', '', '', '', '');
+		insert into T_SiGunInfo values ('37', '', '', '', '');
+		insert into T_SiGunInfo values ('37', '', '', '', '');
+		insert into T_SiGunInfo values ('37', '', '', '', '');
+		insert into T_SiGunInfo values ('37', '', '', '', '');
+		insert into T_SiGunInfo values ('37', '', '', '', '');
+		insert into T_SiGunInfo values ('37', '', '', '', '');
+		insert into T_SiGunInfo values ('37', '', '', '', '');
+		insert into T_SiGunInfo values ('37', '', '', '', '');
+		insert into T_SiGunInfo values ('37', '', '', '', '');
+		insert into T_SiGunInfo values ('37', '', '', '', '');
+		insert into T_SiGunInfo values ('37', '', '', '', '');
+		insert into T_SiGunInfo values ('37', '', '', '', '');
+
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+		insert into T_SiGunInfo values ('38', '', '', '', '');
+
+		insert into T_SiGunInfo values ('39', '1', '남제주군', '', '');
+		insert into T_SiGunInfo values ('39', '2', '북제주군', '', '');
+		insert into T_SiGunInfo values ('39', '3', '서귀포시', '', '');
+		insert into T_SiGunInfo values ('39', '4', '제주시', '', '');
+
+
+
+	-- 테스트 모음 --	
+	-- 1. 멤버 테스트 쿼리
+	SELECT COUNT(*) FROM tbl_member;		
+	-- 총 데이터가 100개라면 성공적으로 입력 된 것
+
+	
+	-- @ 최종 테이블, 시퀀스 구조 확인
+	SELECT * FROM tab;
+	SELECT * FROM all_sequences WHERE SEQUENCE_OWNER='FINALKH';
+	
+	
+	-- ****최종 커밋****
+	-- commit; -- 커밋 명령은 수동으로 입력하세요
+
+
+
+
+---------------------------------------------------------------------------------------------	
+	
+	
