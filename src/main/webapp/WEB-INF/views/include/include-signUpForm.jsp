@@ -77,7 +77,7 @@ body>.grid {
 			<div class="ui stacked segment">
 				<div class="field">
 					<div class="ui left icon input">
-						<i class="mail icon"></i> <input type="text" name="email"
+						<i class="mail icon"></i> <input type="text" name="email" id="semail"
 							placeholder="E-mail address">
 					</div>
 				</div>
@@ -89,13 +89,13 @@ body>.grid {
 				</div>
 				<div class="field">
 					<div class="ui left icon input">
-						<i class="lock icon"></i> <input type="password" name="sign_up_password_check"
+						<i class="lock icon"></i> <input type="password" name="sign_up_password_check" id="pwdchk"
 							placeholder="Password check">
 					</div>
 				</div>
 				<div class="field">
 					<div class="ui left icon input">
-						<i class="user icon"></i> <input type="text" name="userid"
+						<i class="user icon"></i> <input type="text" name="userid" id="userid"
 							placeholder="User ID">
 					</div>
 				</div>

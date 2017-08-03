@@ -68,13 +68,13 @@ body>.grid {
 			<div class="ui stacked segment">
 				<div class="field">
 					<div class="ui left icon input">
-						<i class="user icon"></i> <input type="text" name="email" 
+						<i class="user icon"></i> <input type="text" name="email" id="email"
 							placeholder="E-mail address">
 					</div>
 				</div>
 				<div class="field">
 					<div class="ui login left icon input">
-						<i class="lock icon"></i> <input type="password" name="password" 
+						<i class="lock icon"></i> <input type="password" name="password" id="password"
 							placeholder="Password">
 					</div>
 				</div>
@@ -101,10 +101,16 @@ body>.grid {
 	</div>
 </div>
 <script>
-$('.ui.modal').on('hidden.bs.modal', function (e) { 
-    $(this).find('email')[0].reset() 
-});
 function signupForm() {
-	$('.ui.signupForm.modal').modal('show');
+	$('.ui.signupForm.modal')
+	.modal({
+		  onHide : function(){
+			  document.getElementById("semail").value = "";
+			  document.getElementById("pwd").value = "";
+			  document.getElementById("pwdchk").value = "";
+			  document.getElementById("userid").value = "";
+		  }
+	  })
+	.modal('show');
 }
 </script>
