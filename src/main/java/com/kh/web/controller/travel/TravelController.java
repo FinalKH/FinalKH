@@ -31,6 +31,7 @@ public class TravelController {
 		logger.info("practice.do");
 		return "travel/practice";	// views/travel/makePlan.jsp로 포워드
 	}
+	
 	@RequestMapping("practice2.do")
 	public String practice2(){
 		logger.info("practice2.do");
@@ -53,13 +54,14 @@ public class TravelController {
 	public String reviewList(){
 
 		logger.info("reviewList.do");
-		
-		return "travel/reviewList";	// views/travel/makePlan.jsp로 포워드
+		System.out.println("111");
+		return "travel/reviewList";	// views/travel/reviewList.jsp로 포워드
 	}
+	
 	@RequestMapping(value="reviewWrite.do", method=RequestMethod.GET)
 	public String reviewWrite(){
 		logger.info("");
-		return "travel/reviewwrite";
+		return "travel/reviewWrite";
 	}
 	
 	@RequestMapping(value="reviewInsert.do", method=RequestMethod.GET)
@@ -69,7 +71,7 @@ public class TravelController {
 		//String writer = (String) session.getAttribute("userId");
 		// 
 		reviewService.create(vo);
-		return "travel/reviewList.do";
+		return "travel/reviewList";
 	}
 	
 	// 03. 마이 페이지
