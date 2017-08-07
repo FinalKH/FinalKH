@@ -9,9 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.web.model.travel.dto.reviewVO;
+import com.kh.web.model.travel.dto.ReviewVO;
+import com.kh.web.service.travel.ReviewService;
 import com.kh.web.service.travel.TravelService;
 
 
@@ -23,6 +23,8 @@ public class TravelController {
 	
 	@Inject
 	TravelService travelService;
+	@Inject
+	ReviewService reviewService;
 	
 	@RequestMapping("practice.do")
 	public String practice(){
@@ -49,27 +51,19 @@ public class TravelController {
 	// 02. 여행 후기 관련
 	@RequestMapping("reviewList.do")
 	public String reviewList(){
-<<<<<<< HEAD
+
 		logger.info("reviewList.do");
-=======
-		logger.info("");
-<<<<<<< HEAD
-		ModelAndView mav = new ModelAndView();
->>>>>>> develop
-
+		
 		return "travel/reviewList";	// views/travel/makePlan.jsp로 포워드
-=======
-
-		return "travel/reviewlist";	
 	}
 	@RequestMapping(value="reviewWrite.do", method=RequestMethod.GET)
 	public String reviewWrite(){
 		logger.info("");
-		return "travel/reviewwrite";	
->>>>>>> origin/JJong
+		return "travel/reviewwrite";
 	}
+	
 	@RequestMapping(value="reviewInsert.do", method=RequestMethod.GET)
-	public String reviewInsert(@ModelAttribute reviewVO vo) throws Exception{
+	public String reviewInsert(@ModelAttribute ReviewVO vo) throws Exception{
 		logger.info("");
 		// session에 저장된 userId를 writer에 저장
 		//String writer = (String) session.getAttribute("userId");

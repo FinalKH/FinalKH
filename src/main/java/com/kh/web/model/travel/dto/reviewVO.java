@@ -2,7 +2,7 @@ package com.kh.web.model.travel.dto;
   
 import java.util.Date; 
   
-public class reviewVO { 
+public class ReviewVO { 
     private int bno; 
     private String rsubject; 
     private String rcontent; 

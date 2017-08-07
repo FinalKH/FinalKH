@@ -1,19 +1,19 @@
 package com.kh.web.model.travel.dao; 
   
-import javax.inject.Inject; 
-  
-import org.apache.ibatis.session.SqlSession; 
-import org.springframework.stereotype.Repository; 
-  
-import com.kh.web.model.travel.dto.reviewVO; 
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
+
+import com.kh.web.model.travel.dto.ReviewVO; 
   
 @Repository 
-public class reviewDAOImpl implements reviewDAO{ 
+public class ReviewDAOImpl implements ReviewDAO{ 
     @Inject 
     SqlSession sqlSession; 
      
     @Override 
-    public void create(reviewVO vo) throws Exception { 
+    public void create(ReviewVO vo) throws Exception { 
         sqlSession.insert("review.insert", vo); 
          
     } 

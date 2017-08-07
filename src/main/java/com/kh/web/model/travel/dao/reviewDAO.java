@@ -1,7 +1,7 @@
 package com.kh.web.model.travel.dao; 
   
-import com.kh.web.model.travel.dto.reviewVO; 
+import com.kh.web.model.travel.dto.ReviewVO; 
   
-public interface reviewDAO { 
-    public void create(reviewVO vo) throws Exception ; 
+public interface ReviewDAO { 
+    public void create(ReviewVO vo) throws Exception ; 
 }

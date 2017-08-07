@@ -1,7 +1,7 @@
 package com.kh.web.service.travel; 
   
-import com.kh.web.model.travel.dto.reviewVO; 
+import com.kh.web.model.travel.dto.ReviewVO; 
   
-public interface reviewService { 
-    public void create(reviewVO vo) throws Exception ; 
+public interface ReviewService { 
+    public void create(ReviewVO vo) throws Exception ; 
 }
