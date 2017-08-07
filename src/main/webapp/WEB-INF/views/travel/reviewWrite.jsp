@@ -57,7 +57,7 @@
 			</div>
 			<div class="twelve wide red column">
 				<div class="ui segment">
-					<form action="/travel/reviewInsert.do">
+					<form action="${path }/reviewInsert.do">
 						<div class="ui fluid input">
 							<input type="text" name="rsubject" placeholder="제목을 입력하세요." />
 						</div>

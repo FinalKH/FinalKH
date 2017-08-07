@@ -52,7 +52,7 @@ table th {
 	<section>
 	<div class="ui fluid container">
 		<div class="ui grid sixteen red wide column">
-			<form name="form1" method="post" action="${path}/travel/reviewList.do">
+			<form name="form1" method="post" action="${path}/reviewList.do">
 				<select name="searchOption">
 					<!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
 					<option value="all"
@@ -138,7 +138,7 @@ table th {
 				</colgroup>
 					<tr>
 						<th width="25" id="writebt" colspan="2">
-						<a class="item"	href="${path}/travel/reviewWrite.do">글쓰기</a>
+						<a class="item"	href="${path}/reviewWrite.do">글쓰기</a>
 						</th>						
 						<th colspan="3">
 							<div class="ui right floated pagination menu">
