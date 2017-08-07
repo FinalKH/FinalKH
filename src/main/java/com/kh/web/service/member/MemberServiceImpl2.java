@@ -41,7 +41,9 @@ public class MemberServiceImpl2 implements MemberService2{
             // 세션 변수 등록
             session.setAttribute("email", vot2.getEmail());
             session.setAttribute("userid", vot2.getUserid());
-        } 
+        }else{
+        	return result;
+        }
         return result;
     }
     

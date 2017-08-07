@@ -47,7 +47,14 @@
 </div>
 <script>
 function loginForm() {
-	$('.ui.loginForm.modal').modal('show');
+	$('.ui.loginForm.modal')
+	  .modal({
+		  onHide : function(){
+			  document.getElementById("email").value = "";
+			  document.getElementById("password").value = "";
+		  }
+	  })
+	  .modal('show');
 }
 </script>
 <c:if test="${msg =='failure' }">

@@ -51,14 +51,19 @@ public class MemberController2 {
     @RequestMapping("member/insert.do")
     // * 폼에서 입력한 데이터를 받아오는 법 3가지 
     //public String memberInsert(HttpServlet request){
-    //public String memberInsert(String userId, String userPw, String userName, String userEmail){
-    public String memberInsert(@ModelAttribute MemberVo_Test_JG vot){
+    //public String memberInsert(String Email, String Password, String userId){
+    public String memberInsert(@ModelAttribute MemberVo_Test_JG vot, HttpSession session){
         // 테이블에 레코드 입력
+    	String Password = vot.getPassword();
     	String encryptPassword = passwordEncoder.encode(vot.getPassword());
     	logger.info(encryptPassword);
     	vot.setPassword(encryptPassword);
     	
         memberService2.insertMember_test(vot);
+        
+        vot.setPassword(Password);
+        
+        memberService2.loginCheck_test(vot, session);
         // * (/)의 유무에 차이
         // /member/list.do : 루트 디렉토리를 기준
         // member/list.do : 현재 디렉토리를 기준

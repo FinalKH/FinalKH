@@ -14,7 +14,7 @@
 <script type='text/javascript' src='http://arshaw.com/js/fullcalendar-1.6.3/jquery/jquery-1.10.2.min.js'></script> 
 <script type='text/javascript' src='http://arshaw.com/js/fullcalendar-1.6.3/jquery/jquery-ui-1.10.3.custom.min.js'></script> 
 <script type='text/javascript' src='http://arshaw.com/js/fullcalendar-1.6.3/fullcalendar/fullcalendar.min.js'></script> 
-<style> 
+<style>
 #tno{width:15px;} 
 #tw,#tlast{width:60px;} 
 #tr{width:25px;} 
@@ -23,10 +23,17 @@ table th{font-size:12px;}
 </head> 
 <body> 
 <%@ include file="../include/headerTravel.jsp"%>
-<header><%@ include file="../include/menuTravel.jsp"%></header> 
+<%@ include file="../include/menuTravel.jsp"%>
+<header>
+	<div class="ui fluid container">
+		<div class="ui purple segment">
+			<p>헤더 정보 공간</p>
+		</div>
+	</div>
+</header>  
 <section> 
-    <div class="ui container"> 
-        <div class="ui segment"> 
+    <div class="ui fluid container"> 
+        <div class="ui grid sixteen red wide column"> 
             <table class="ui celled table"> 
                 <thead> 
                     <tr> 
@@ -39,7 +46,7 @@ table th{font-size:12px;}
                 </thead> 
                 <tbody> 
                     <tr> 
-                        <td>    First</td> 
+                        <td>First</td> 
                         <td>Cell</td> 
                         <td>Cell</td> 
                         <td>Cell</td> 
@@ -82,6 +89,11 @@ table th{font-size:12px;}
         </div><!-- segment --> 
     </div><!-- ui container --> 
 </section> 
-<footer>Footer</footer> 
+<footer><div class="ui fluid container">
+		<div class="ui purple segment">
+			<p>footer</p>
+		</div>
+	</div>
+</footer>  
 </body> 
 </html>

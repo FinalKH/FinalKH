@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.web.service.travel.TravelService;
 
@@ -45,7 +46,12 @@ public class TravelController {
 	// 02. 여행 후기 관련
 	@RequestMapping("reviewList.do")
 	public String reviewList(){
+<<<<<<< HEAD
 		logger.info("reviewList.do");
+=======
+		logger.info("");
+		ModelAndView mav = new ModelAndView();
+>>>>>>> develop
 
 		return "travel/reviewList";	// views/travel/makePlan.jsp로 포워드
 	}
