@@ -54,7 +54,7 @@ public class TravelController {
 	public String reviewList(){
 
 		logger.info("reviewList.do");
-		System.out.println("111");
+
 		return "travel/reviewList";	// views/travel/reviewList.jsp로 포워드
 	}
 	
@@ -75,6 +75,7 @@ public class TravelController {
 	}
 	
 	// 03. 마이 페이지
+	
 	@RequestMapping("myPage.do")
 	public String myPage(){
 		logger.info("myPage.do");
