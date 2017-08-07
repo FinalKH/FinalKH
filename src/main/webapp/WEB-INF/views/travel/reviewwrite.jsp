@@ -68,21 +68,19 @@
     <div class="ui fluid container" >          
         <div class="ui grid"> 
         <div class="sixteen wide purple column">
-         </div>
-        <div class="sixteen wide purple column">
-         </div>        
+         </div>               
             <div class="four wide blue column"> 
-            <div class="ui left segment">
+            <div class="ui left inverted segment">
           	일정 만들기 
             </div> 
             </div> 
             <div class="twelve wide red column"> 
             <div class="ui segment"> 
-	            <form action="#">
+	            <form action="/travel/reviewInsert.do">
 	            <div class="ui fluid input">            
 	            <input type="text" name="rsubject" placeholder="제목을 입력하세요." />
 	            </div>            
-	            <textarea id="rcontent"></textarea>
+	            <textarea id="rcontent" width="100"></textarea>
 	            <script type="text/javascript">
 			<%-- form의 textarea에 summernote 적용 --%>
 			$(document).ready(function() {
@@ -114,7 +112,8 @@
         </div><!-- grid --> 
     </div><!-- ui container -->  
 </section>  
-<footer><div class="ui fluid container">
+<footer>
+	<div class="ui fluid container">
 		<div class="ui purple segment">
 			<p>footer</p>
 		</div>
