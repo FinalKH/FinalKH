@@ -6,9 +6,12 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.web.model.travel.dto.reviewVO;
 import com.kh.web.service.travel.TravelService;
 
 
@@ -47,16 +50,24 @@ public class TravelController {
 	@RequestMapping("reviewList.do")
 	public String reviewList(){
 		logger.info("");
-		ModelAndView mav = new ModelAndView();
 
 		return "travel/reviewlist";	
 	}
-	@RequestMapping("reviewWrite.do")
+	@RequestMapping(value="reviewWrite.do", method=RequestMethod.GET)
 	public String reviewWrite(){
 		logger.info("");
-
 		return "travel/reviewwrite";	
 	}
+	@RequestMapping(value="reviewInsert.do", method=RequestMethod.GET)
+	public String reviewInsert(@ModelAttribute reviewVO vo) throws Exception{
+		logger.info("");
+		// session에 저장된 userId를 writer에 저장
+		//String writer = (String) session.getAttribute("userId");
+		// 
+		reviewService.create(vo);
+		return "travel/reviewList.do";
+	}
+	
 	// 03. 마이 페이지
 	@RequestMapping("myPage.do")
 	public String myPage(){
