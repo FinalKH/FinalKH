@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kh.web.model.travel.dto.ReviewVO;
-import com.kh.web.service.travel.ReviewService;
 import com.kh.web.service.travel.TravelService;
 
 
@@ -23,14 +21,13 @@ public class TravelController {
 	
 	@Inject
 	TravelService travelService;
-	@Inject
-	ReviewService reviewService;
-	
+		
 	@RequestMapping("practice.do")
 	public String practice(){
 		logger.info("practice.do");
 		return "travel/practice";	// views/travel/makePlan.jsp로 포워드
 	}
+	
 	@RequestMapping("practice2.do")
 	public String practice2(){
 		logger.info("practice2.do");
@@ -48,31 +45,9 @@ public class TravelController {
 		
 		return "travel/makePlan";	// views/travel/makePlan.jsp로 포워드
 	}
-	// 02. 여행 후기 관련
-	@RequestMapping("reviewList.do")
-	public String reviewList(){
-
-		logger.info("reviewList.do");
 		
-		return "travel/reviewList";	// views/travel/makePlan.jsp로 포워드
-	}
-	@RequestMapping(value="reviewWrite.do", method=RequestMethod.GET)
-	public String reviewWrite(){
-		logger.info("");
-		return "travel/reviewwrite";
-	}
-	
-	@RequestMapping(value="reviewInsert.do", method=RequestMethod.GET)
-	public String reviewInsert(@ModelAttribute ReviewVO vo) throws Exception{
-		logger.info("");
-		// session에 저장된 userId를 writer에 저장
-		//String writer = (String) session.getAttribute("userId");
-		// 
-		reviewService.create(vo);
-		return "travel/reviewList.do";
-	}
-	
 	// 03. 마이 페이지
+	
 	@RequestMapping("myPage.do")
 	public String myPage(){
 		logger.info("myPage.do");
