@@ -6,8 +6,9 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kh.web.service.travel.TravelService;
 
@@ -20,22 +21,23 @@ public class TravelController {
 	
 	@Inject
 	TravelService travelService;
-	
+		
 	@RequestMapping("practice.do")
 	public String practice(){
-		logger.info("");
+		logger.info("practice.do");
 		return "travel/practice";	// views/travel/makePlan.jsp로 포워드
 	}
+	
 	@RequestMapping("practice2.do")
 	public String practice2(){
-		logger.info("");
+		logger.info("practice2.do");
 		return "travel/practice2";	// views/travel/makePlan.jsp로 포워드
 	}
 	
 	// 01. 여행 계획 만들기 화면
 	@RequestMapping("makePlan.do")
 	public String makePlan(){
-		logger.info("");
+		logger.info("makePlan.do");
 /*		String tourApi = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList"
 		+ "?ServiceKey=ZhnHJ1fzbYGAO2Xl%2FSg5MHWhMO0GkoIguiXKwi3%2BlAB8OTO1xYkmp0228On6RJ6lgh6Z4%2BLCWnAsnPm0wysTgA%3D%3D"
 		+ "&contentTypeId=&areaCode=&sigunguCode=&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC"
@@ -43,26 +45,21 @@ public class TravelController {
 		
 		return "travel/makePlan";	// views/travel/makePlan.jsp로 포워드
 	}
-	// 02. 여행 후기 관련
-	@RequestMapping("reviewList.do")
-	public String reviewList(){
-		logger.info("");
-		ModelAndView mav = new ModelAndView();
-
-		return "travel/reviewlist";	
-	}
-	@RequestMapping("reviewWrite.do")
-	public String reviewWrite(){
-		logger.info("");
-
-		return "travel/reviewwrite";	
-	}
+		
 	// 03. 마이 페이지
+	
 	@RequestMapping("myPage.do")
 	public String myPage(){
-		logger.info("");
+		logger.info("myPage.do");
 		
 		return "travel/myPage";	// views/travel/makePlan.jsp로 포워드
+	}
+	// 03. 마이 페이지
+	@RequestMapping("createPlan.do")
+	public String createPlan(){
+		logger.info("createPlan.do");
+		
+		return "travel/createPlan";	// views/travel/makePlan.jsp로 포워드
 	}
 	
 }

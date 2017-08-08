@@ -14,7 +14,7 @@
 				<a class="item"><i class="book icon"></i> 여행팁</a>
 				<a class="item"><i class="map signs icon"></i> 여행일정</a>
 				<a class="item"><i class="camera retro icon"></i> 관광지</a>
-				<a class="item" href="${path}/travel/reviewList.do"><i class="book icon"></i> 여행후기</a>
+				<a class="item" href="${path}/reviewList.do"><i class="book icon"></i> 여행후기</a>
 				<a class="item" href="${path}/member/list.do"><i class="book icon"></i>회원관리</a>
 				
 			<div class="right menu">
@@ -47,7 +47,14 @@
 </div>
 <script>
 function loginForm() {
-	$('.ui.loginForm.modal').modal('show');
+	$('.ui.loginForm.modal')
+	  .modal({
+		  onHide : function(){
+			  document.getElementById("email").value = "";
+			  document.getElementById("password").value = "";
+		  }
+	  })
+	  .modal('show');
 }
 </script>
 <c:if test="${msg =='failure' }">

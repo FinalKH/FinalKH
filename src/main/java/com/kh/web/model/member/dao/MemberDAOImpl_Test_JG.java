@@ -26,7 +26,10 @@ public class MemberDAOImpl_Test_JG implements MemberDAO_Test_JG{
     @Override
     public List<MemberVo_Test_JG> memberList() {
         return sqlSession.selectList("member.memberList2");
+        
     }
+    
+    
  
     @Override
     public void insertMember_test(MemberVo_Test_JG vot) {
