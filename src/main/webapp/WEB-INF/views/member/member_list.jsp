@@ -12,11 +12,13 @@
         <tr>
             <th>이메일</th>
             <th>아이디</th>
+            <th>회원 등급</th>
         </tr>
         <c:forEach var="row" items="${list}">
         <tr>
             <td>${row.email}</td>
             <td>${row.userid}</td>
+            <td>${row.gradename}</td>
         </tr>
         </c:forEach>
     </table>

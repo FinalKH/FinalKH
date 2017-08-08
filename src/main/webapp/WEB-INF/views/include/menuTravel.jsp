@@ -24,13 +24,15 @@
 			    	<c:when test="${sessionScope.userid == null}">
 			    		<a class="item" href="javascript:loginForm()"><i class="sign in red icon"></i> 로그인</a>
 			    	</c:when>
-			    	<c:otherwise>
+			    	<c:when test="${sessionScope.userid != null and sessionScope.gradename == '관리자' }">
+			    		<a class="item" href="#"><i class="spy black icon"></i>관리자님!</a>
+			    		<a class="item" href="${path}/member/logout_test.do"><i class="sign out red icon"></i> 로그아웃</a>
+			    	</c:when>
+			    	<c:when test="${sessionScope.userid != null and sessionScope.gradename == '일반' }">
 			    		<a class="item" href="#"><i class="user circle blue icon"></i>${sessionScope.userid }님!</a>
 			    		<a class="item" href="${path}/member/logout_test.do"><i class="sign out red icon"></i> 로그아웃</a>
-			    	</c:otherwise>
+			    	</c:when>
 			    </c:choose>
-				
-				
 				
 				
 			</div>
@@ -39,10 +41,8 @@
 </div>
 <!-- DIMMER 처리된 회원가입 페이지  -->
 <div class="ui container">
-	<div class="ui smaill basic loginForm modal">
-		<div class="content">
+	<div class="ui small basic loginForm modal" style="width:450px; text-align:center; margin-left:-250px;">
 			<%@ include file="../include/include-loginForm.jsp"%>
-		</div>
 	</div>
 </div>
 <script>

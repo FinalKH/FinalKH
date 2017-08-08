@@ -57,7 +57,7 @@ body>.grid {
    ;
   </script>
 
-<div class="ui middle aligned center aligned grid">
+
 	<div class="login column">
 		<h2 class="ui teal image header">
 			<img src="https://semantic-ui.com/examples/assets/images/logo.png"
@@ -89,7 +89,7 @@ body>.grid {
 			처음이신가요? <a href="javascript:signupForm()">가입</a>
 		</div>
 	</div>
-</div>
+
 
 <!-- DIMMER 처리된 회원가입 페이지  -->
 <div class="ui container">

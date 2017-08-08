@@ -97,7 +97,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="viewMember3" resultType="com.kh.web.model.member.dto.MemberVo_Test_JG">
         SELECT 
             email,
-            userid
+            userid,
+            gradename
         FROM test_member
         WHERE email = #{email}
     </select>
@@ -106,16 +107,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="memberList2" resultType="com.kh.web.model.member.dto.MemberVo_Test_JG">
         SELECT 
           email,
-          userid
+          userid,
+          gradename
         FROM test_member
     </select>
     
     <!-- 02. 회원 등록 -->
     <insert id="insertMember2">
         INSERT INTO test_member
-            (email, password, userid)
+            (email, password, userid, gradename)
         VALUES 
-            (#{email}, #{password}, #{userid})    
+            (#{email}, #{password}, #{userid}, '일반')    
     </insert>
     
 	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
