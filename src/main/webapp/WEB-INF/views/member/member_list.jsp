@@ -4,7 +4,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원 목록</title>
-<%@ include file="../main.jsp" %>
+<%@ include file="../include/headerTravel.jsp" %>
+<%@ include file="../include/header.jsp" %>
+<%@ include file="../include/menuTravel.jsp" %>
 </head>
 <body>
     <h2>회원 목록</h2>

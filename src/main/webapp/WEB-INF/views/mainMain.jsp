@@ -61,7 +61,6 @@ hr{display:none;}
 
 </head>
 <body >
-	<%@ include file="include/menuTravel.jsp"%>
 	<div id="wrap">
 	
 	
