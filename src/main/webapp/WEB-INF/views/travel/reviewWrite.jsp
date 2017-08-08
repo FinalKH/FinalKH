@@ -44,7 +44,7 @@
 	<header>
 	<div class="ui fluid container">
 		<div class="ui purple segment">
-			<p>헤더 정보 공간</p>
+			<p><%@ include file="../include/headerMain.jsp"%></p>
 		</div>
 	</div>
 	</header>
@@ -95,7 +95,7 @@
 	<footer>
 	<div class="ui fluid container">
 		<div class="ui purple segment">
-			<p>footer</p>
+			<p><%@ include file="../include/footerMain.jsp"%></p>
 		</div>
 	</div>
 	</footer>
