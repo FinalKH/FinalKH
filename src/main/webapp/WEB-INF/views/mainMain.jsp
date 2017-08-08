@@ -25,7 +25,7 @@ q:after,q:before{content:"";}/* 인용표시 없애기 */
 abbr,acronym{border:none;}
 img,li,input{vertical-align:middle;}/*버티컬 얼라인 기본값은 바톰.*/
 hr{display:none;}
-#skipNavi,.hidden{position:absolute;left:0;top:0;width:0;height:0;font-size:0;line-height:0;text-indent:-9999px;overflow:hidden;visibility:hidden;}
+
 
 
 
@@ -61,6 +61,7 @@ hr{display:none;}
 
 </head>
 <body >
+	<%@ include file="include/menuTravel.jsp"%>
 	<div id="wrap">
 	
 	
