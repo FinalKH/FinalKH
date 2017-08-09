@@ -35,6 +35,16 @@
 	rel="stylesheet">
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#ibt").click(function(){
+        	var subject = $("#subject").val();
+        	var content = $("#rcontent").val();        	
+        	//데이터전송
+        	document.rform.submit();
+        });
+    });
+</script>
 </head>
 <body>
 	<div>
@@ -54,12 +64,12 @@
 			<div class="sixteen wide purple column"></div>
 			<div class="four wide blue column">
 				<div class="ui left inverted segment">일정 만들기</div>
-			</div>
+			</div><!-- 일정 -->
 			<div class="twelve wide red column">
 				<div class="ui segment">
-					<form action="${path }/reviewInsert.do">
+					<form name="rform" method="post" action="${path }/reviewInsert.do">
 						<div class="ui fluid input">
-							<input type="text" name="rsubject" placeholder="제목을 입력하세요." />
+							<input type="text" name="subject" placeholder="제목을 입력하세요." />
 						</div>
 						<textarea id="rcontent" width="100"></textarea>
 						<script type="text/javascript">
@@ -70,28 +80,20 @@
 					width:400,
 					fontNames : [ '맑은고딕', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', ],
 					fontNamesIgnoreCheck : [ '맑은고딕' ],
-					focus: true,
-					 callbacks: {
-				          onImageUpload: function(files, editor, welEditable) {
-				            for (var i = files.length - 1; i >= 0; i--) {
-				              sendFile(files[i], this);
-				            }
-				          }
-				        }
+					focus: true
 				});
 			});
 			</script>
-						<div align="center">
-							<input type="submit" value="확인" class="ui button" /> <input
-								type="reset" value="취소" class="ui button" />
-						</div>
+					<div align="center">
+						<input type="button" id="ibt" value="확인" class="ui button" />
+						<input type="reset" value="취소" class="ui button" />
+					</div>
 					</form>
-				</div>
-			</div>
-		</div>
-		<!-- grid -->
-	</div>
-	<!-- ui container --> </section>
+				</div><!-- segment -->
+			</div><!-- 후기작성 -->
+		</div><!-- grid -->
+	</div><!-- ui container --> 
+	</section>
 	<footer>
 	<div class="ui fluid container">
 		<div class="ui purple segment">

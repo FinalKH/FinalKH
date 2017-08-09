@@ -23,9 +23,9 @@
 	src='http://arshaw.com/js/fullcalendar-1.6.3/fullcalendar/fullcalendar.min.js'></script>
 <script>
 	$(document).ready(function(){
-		$("#btnWrite").click(function(){
+		$("#wbt").click(function(){
 			// 페이지 주소 변경(이동)
-			location.href = "${path}/board/write.do";
+			location.href = "${path}/reviewWrite.do";
 		});
 	});
 	// 원하는 페이지로 이동시 검색조건, 키워드 값을 유지하기 위해 
@@ -143,7 +143,7 @@ table th {
 				<tfoot>
 					<tr>
 						<th width="25" id="writebt" colspan="2">
-						<a class="item"	href="${path}/reviewWrite.do">글쓰기</a>
+						<a class="item"	id="wbt" href="${path}/reviewWrite.do">글쓰기</a>
 						</th>						
 						<th colspan="3">
 							<div class="ui right floated pagination menu">
