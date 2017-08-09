@@ -41,7 +41,7 @@
 </div>
 <!-- DIMMER 처리된 회원가입 페이지  -->
 <div class="ui container">
-	<div class="ui small basic loginForm modal" style="width:450px; text-align:center; margin-left:-250px;">
+	<div class="ui basic loginForm modal" style="width:450px; text-align:center; margin-left:-250px;">
 			<%@ include file="../include/include-loginForm.jsp"%>
 	</div>
 </div>
