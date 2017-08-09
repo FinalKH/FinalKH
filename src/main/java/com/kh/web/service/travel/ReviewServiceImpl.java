@@ -23,6 +23,7 @@ public class ReviewServiceImpl implements ReviewService{
     @Transactional
     @Override
 	public void create(ReviewVO vo) throws Exception {
+    	
     	String subject = vo.getSubject();
 		String content = vo.getContent();
 		// *태그문자 처리 (< ==> &lt; > ==> &gt;)
@@ -33,6 +34,7 @@ public class ReviewServiceImpl implements ReviewService{
 		subject = subject.replace("  ",	"&nbsp;&nbsp;");
 		// *줄바꿈 문자처리
 		content = content.replace("\n", "<br>");
+		System.out.print("여기"+content);
 		vo.setSubject(subject);
 		vo.setContent(content);
 		

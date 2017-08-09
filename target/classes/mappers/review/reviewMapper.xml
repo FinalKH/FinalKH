@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO review (
 		  bno, subject, content, show
 		) VALUES (
-		  seq_board.NEXTVAL, #{title}, #{content}, #{writer}, 'y'
+		  seq_review.NEXTVAL, #{subject}, #{content}, 'y'
 		)
 	</insert>
     

@@ -65,6 +65,7 @@ table th {
 	<div class="ui fluid container">
 		<div class="ui grid sixteen red wide column">
 			<form name="form1" method="post" action="${path}/reviewList.do">
+			<div class="ui segment">
 				<select name="searchOption">
 					<!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
 					<option value="all"
@@ -81,6 +82,7 @@ table th {
 				<c:if test="${sessionScope.userId != null}">
 					<button type="button" id="btnWrite">글쓰기</button>
 				</c:if>-->
+			</div>
 			</form>
 			<table class="ui celled table">
 			<colgroup>
@@ -142,10 +144,10 @@ table th {
 				</tbody>
 				<tfoot>
 					<tr>
-						<th width="25" id="writebt" colspan="2">
-						<a class="item"	id="wbt" href="${path}/reviewWrite.do">글쓰기</a>
+						<th width="25" id="writebt" colspan="1">
+						<a class="ui button"	id="wbt" href="${path}/reviewWrite.do">글쓰기</a>
 						</th>						
-						<th colspan="3">
+						<th colspan="4">
 							<div class="ui right floated pagination menu">
 							<!-- 처음페이지로 이동 : 현재 페이지가 1보다 크면  [처음]하이퍼링크를 화면에 출력-->
 							<c:if test="${map.boardPager.curBlock > 1}">
@@ -183,10 +185,9 @@ table th {
 					</tr>
 				</tfoot>
 			</table>
-		</div>
-		<!-- segment -->
-	</div>
-	<!-- ui container --> </section>
+		</div><!-- grid -->
+	</div><!-- ui container --> 
+	</section>
 	<footer>
 	<div class="ui fluid container">
 		<div class="ui purple segment">
