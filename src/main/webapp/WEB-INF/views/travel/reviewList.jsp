@@ -21,6 +21,18 @@
 	src='http://arshaw.com/js/fullcalendar-1.6.3/jquery/jquery-ui-1.10.3.custom.min.js'></script>
 <script type='text/javascript'
 	src='http://arshaw.com/js/fullcalendar-1.6.3/fullcalendar/fullcalendar.min.js'></script>
+<script>
+	$(document).ready(function(){
+		$("#btnWrite").click(function(){
+			// 페이지 주소 변경(이동)
+			location.href = "${path}/board/write.do";
+		});
+	});
+	// 원하는 페이지로 이동시 검색조건, 키워드 값을 유지하기 위해 
+	function list(page){
+		location.href="${path}/reviewList.do?curPage="+page+"&searchOption-${map.searchOption}"+"&keyword=${map.keyword}";
+	}
+</script>
 <style>
 #tno {
 	width: 15px;
@@ -45,7 +57,7 @@ table th {
 	<header>
 	<div class="ui fluid container">
 		<div class="ui purple segment">
-			<p>헤더 정보 공간</p>
+			<p><%@ include file="../include/headerMain.jsp"%></p>
 		</div>
 	</div>
 	</header>
@@ -56,7 +68,7 @@ table th {
 				<select name="searchOption">
 					<!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
 					<option value="all"
-						<c:out value="${map.searchOption == 'all'?'selected':''}"/>>이름+내용+제목</option>
+						<c:out value="${map.searchOption == 'all'?'selected':''}"/>>전체</option>
 					<option value="user_name"
 						<c:out value="${map.searchOption == 'user_name'?'selected':''}"/>>이름</option>
 					<option value="content"
@@ -129,13 +141,6 @@ table th {
 				</c:forEach>
 				</tbody>
 				<tfoot>
-				<colgroup>
-				<col style="width:30px">
-				<col style="width:50%">
-				<col style="width:60px">
-				<col style="width:25px">
-				<col style="width:60px">
-				</colgroup>
 					<tr>
 						<th width="25" id="writebt" colspan="2">
 						<a class="item"	href="${path}/reviewWrite.do">글쓰기</a>
@@ -156,10 +161,10 @@ table th {
 					<!-- 현재페이지이면 하이퍼링크 제거 -->
 					<c:choose>
 						<c:when test="${num == map.boardPager.curPage}">
-							<span style="color: red">${num}</span>&nbsp;
+							<span class="item" style="color: red">${num}</span>&nbsp;
 						</c:when>
 						<c:otherwise>
-							<a href="javascript:list('${num}')">${num}</a>&nbsp;
+							<a class="item" href="javascript:list('${num}')">${num}</a>&nbsp;
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -185,7 +190,7 @@ table th {
 	<footer>
 	<div class="ui fluid container">
 		<div class="ui purple segment">
-			<p>footer</p>
+			<p><%@ include file="../include/footerMain.jsp"%></p>
 		</div>
 	</div>
 	</footer>
