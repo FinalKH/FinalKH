@@ -31,7 +31,7 @@ public class ReviewController {
 	BoardService boardService;
 
 	// 02. 여행 후기 관련
-	@RequestMapping("reviewList.do")
+	@RequestMapping("/reviewList.do")
 	public ModelAndView reviewList(@RequestParam(defaultValue = "title") String searchOption,
 			@RequestParam(defaultValue = "") String keyword, @RequestParam(defaultValue = "1") int curPage)
 			throws Exception {
@@ -63,13 +63,13 @@ public class ReviewController {
 		return mav; // // list.jsp로 List가 전달된다.
 	}
 
-	@RequestMapping(value = "reviewWrite.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/reviewWrite.do", method = RequestMethod.GET)
 	public String reviewWrite() {
 		logger.info("");
 		return "travel/reviewWrite";
 	}
 
-	@RequestMapping(value = "reviewInsert.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/reviewInsert.do", method = RequestMethod.POST)
 	public String reviewInsert(@ModelAttribute ReviewVO vo) throws Exception {
 		logger.info("123");
 
