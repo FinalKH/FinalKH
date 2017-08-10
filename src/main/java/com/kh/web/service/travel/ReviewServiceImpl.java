@@ -18,7 +18,7 @@ public class ReviewServiceImpl implements ReviewService{
     ReviewDAO reviewDao;
     @Inject
 	BoardDAO boardDao;
-    
+        
     //후기 작성
     @Transactional
     @Override

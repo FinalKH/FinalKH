@@ -7,12 +7,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="review">
 
     <!-- 02_01. 게시글 작성 -->
-	<insert id="rinsert">
+	<insert id="insert">
 		<!-- 게시글 번호를 시퀀스로 생성 -->
 		INSERT INTO review (
 		  bno, subject, content, show
 		) VALUES (
-		  seq_review.NEXTVAL, #{subject}, #{content}, 'y'
+		   seq_review.NEXTVAL, #{subject}, #{content} , 'y'
 		)
 	</insert>
     

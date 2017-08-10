@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,10 +71,11 @@ public class ReviewController {
 	}
 
 	@RequestMapping(value = "/reviewInsert.do", method = RequestMethod.POST)
-	public String reviewInsert(@ModelAttribute ReviewVO vo) throws Exception {
+	public String reviewInsert(@ModelAttribute ReviewVO vo,HttpSession session) throws Exception {
 		logger.info("123");
 
-		reviewService.create(vo);
+		reviewService.create(vo);		
 		return "redirect:reviewWrite.do";
 	}
+	
 }

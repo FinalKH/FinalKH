@@ -6,9 +6,9 @@ public class ReviewVO {
 	private int bno;			// 게시글 번호
 	private String subject;		// 게시글 제목
 	private String content;		// 게시글 내용	
-	private Date regdate;		// 게시글 작성일자 util.Date
+	/*private Date regdate;		// 게시글 작성일자 util.Date
 	private int viewcnt;		// 게시글 조회수
-	private int recnt;			// 게시글 댓글의 수 
+	private int recnt;			// 게시글 댓글의 수 */
 	private String show;		// 게시글 삭제 상태 유무(y, n)
 	
 	public int getBno() {
@@ -29,7 +29,7 @@ public class ReviewVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getRegdate() {
+	/*public Date getRegdate() {
 		return regdate;
 	}
 	public void setRegdate(Date regdate) {
@@ -46,7 +46,7 @@ public class ReviewVO {
 	}
 	public void setRecnt(int recnt) {
 		this.recnt = recnt;
-	}
+	}*/
 	public String getShow() {
 		return show;
 	}

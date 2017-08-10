@@ -20,7 +20,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	//후기 작성
 	@Override
 	public void create(ReviewVO vo) throws Exception {
-		sqlSession.insert("review.rinsert", vo);
+		sqlSession.insert("review.insert", vo);
 	}
 
 	//리스트

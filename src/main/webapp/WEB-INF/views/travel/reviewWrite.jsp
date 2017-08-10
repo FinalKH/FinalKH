@@ -36,15 +36,14 @@
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
 <script>
-    $(document).ready(function(){
+    /* $(document).ready(function(){
         $("#ibt").click(function(){
-        	alert("${path}/reviewInsert.do");
         	var subject = $("#subject").val();
-        	var content = $("#rcontent").val();        	
+        	var content = $("#content").val(); 
         	//데이터전송
-        	document.rform.submit();
+        	document.form.submit();
         });
-    });
+    }); */
 </script>
 </head>
 <body>
@@ -68,28 +67,39 @@
 			</div><!-- 일정 -->
 			<div class="twelve wide red column">
 				<div class="ui segment">
-					<form name="rform" method="post" action="${path}reviewInsert.do">
+					<form name="form" method="post" action="${path}reviewInsert.do">
 						<div class="ui fluid input">
-							<input type="text" name="subject" placeholder="제목을 입력하세요." />
+							<input type="text" name="subject" id="subject" placeholder="제목을 입력하세요." />
 						</div>
-						<textarea id="rcontent" width="100"></textarea>
-						<script type="text/javascript">
-			//form의 textarea에 summernote 적용 
-			$(document).ready(function() {
-				$('#rcontent').summernote({
-					height:600,
-					width:400,
-					fontNames : [ '맑은고딕', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New' ],
-					fontNamesIgnoreCheck : [ '맑은고딕' ],
-					focus: true
-				});
-			});
-			</script>
+						<div class="field">
+						<textarea name="content" id="content" ></textarea>
+				
+						</div>
 					<div  align="center">
-						<input type="button" id="ibt" value="확인" class="ui button" />
-						<input type="reset" value="취소" class="ui button" />
+						<button type="submit" id="ibt" class="ui button" >확인</button>
+						<button type="reset" class="ui button" >취소</button>
 					</div>
 					</form>
+			<script type="text/javascript">
+			//form의 textarea에 summernote 적용 
+			$(document).ready(function() {
+				$('#content').summernote({
+					height:600,
+					width:400,
+					//fontNames : [ '맑은고딕', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New' ],
+					//fontNamesIgnoreCheck : [ '맑은고딕' ],
+					focus: true,
+					callbacks: {
+				          onImageUpload: function(files, editor, welEditable) {
+				            for (var i = files.length - 1; i >= 0; i--) {
+				              sendFile(files[i], this);
+				            }
+				          }
+				        }
+				});
+			});
+			
+			</script>
 				</div><!-- segment -->
 			</div><!-- 후기작성 -->
 		</div><!-- grid -->
