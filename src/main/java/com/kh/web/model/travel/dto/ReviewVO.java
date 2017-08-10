@@ -3,39 +3,55 @@ package com.kh.web.model.travel.dto;
 import java.util.Date; 
   
 public class ReviewVO { 
-    private int bno; 
-    private String rsubject; 
-    private String rcontent; 
-    private Date indate; //작성일 
-    public int getBno() { 
-        return bno; 
-    } 
-    public void setBno(int bno) { 
-        this.bno = bno; 
-    } 
-    public String getRsubject() { 
-        return rsubject; 
-    } 
-    public void setRsubject(String rsubject) { 
-        this.rsubject = rsubject; 
-    } 
-    public String getRcontent() { 
-        return rcontent; 
-    } 
-    public void setRcontent(String rcontent) { 
-        this.rcontent = rcontent; 
-    } 
-    public Date getIndate() { 
-        return indate; 
-    } 
-    public void setIndate(Date indate) { 
-        this.indate = indate; 
-    } 
-     
-    //to String() 
-    @Override 
-    public String toString(){ 
-        return "reviewVO [bno= " + bno + ", subject= "+rsubject+", content= "+rcontent 
-                + ", indate= "+indate+" ]"; 
-    } 
+	private int bno;			// 게시글 번호
+	private String subject;		// 게시글 제목
+	private String content;		// 게시글 내용	
+	private Date regdate;		// 게시글 작성일자 util.Date
+	private int viewcnt;		// 게시글 조회수
+	private int recnt;			// 게시글 댓글의 수 
+	private String show;		// 게시글 삭제 상태 유무(y, n)
+	
+	public int getBno() {
+		return bno;
+	}
+	public void setBno(int bno) {
+		this.bno = bno;
+	}
+	public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public Date getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
+	public int getViewcnt() {
+		return viewcnt;
+	}
+	public void setViewcnt(int viewcnt) {
+		this.viewcnt = viewcnt;
+	}
+	public int getRecnt() {
+		return recnt;
+	}
+	public void setRecnt(int recnt) {
+		this.recnt = recnt;
+	}
+	public String getShow() {
+		return show;
+	}
+	public void setShow(String show) {
+		this.show = show;
+	}
+		
 } 

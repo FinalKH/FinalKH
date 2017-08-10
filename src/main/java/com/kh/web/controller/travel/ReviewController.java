@@ -69,10 +69,11 @@ public class ReviewController {
 		return "travel/reviewWrite";
 	}
 
-	@RequestMapping(value = "reviewInsert.do", method = RequestMethod.GET)
+	@RequestMapping(value = "reviewInsert.do", method = RequestMethod.POST)
 	public String reviewInsert(@ModelAttribute ReviewVO vo) throws Exception {
-		logger.info("");
+		logger.info("123");
 
-		return "travel/reviewList";
+		reviewService.create(vo);
+		return "redirect:reviewWrite.do";
 	}
 }
