@@ -102,11 +102,11 @@ table th {
 				<c:choose>
 			<c:when test="${row.show == 'y'}">
 		<!-- show 컬럼이 y일때(삭제X 글) -->
-		<tr>
+		<tr>		
 			<td>${row.bno}</td>
 			<!-- 게시글 상세보기 페이지로 이동시 게시글 목록페이지에 있는 검색조건, 키워드, 현재페이지 값을 유지하기 위해 -->
 			<td>
-				<a href="${path}/board/view.do?bno=${row.bno}&curPage=${map.boardPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">${row.title} 
+				<a href="${path}/travel/view.do?bno=${row.bno}&curPage=${map.reviewPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">${row.title} 
 					<!-- ** 댓글이 있으면 게시글 이름 옆에 출력하기 -->
 					<c:if test="${row.recnt > 0}">
 						<span style="color: red;">(${row.recnt})

@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.web.model.board.dto.BoardVO;
 import com.kh.web.model.travel.dto.ReviewVO;
-import com.kh.web.service.board.BoardPager;
-import com.kh.web.service.board.BoardService;
 import com.kh.web.service.travel.ReviewService;
+import com.kh.web.service.travel.reviewPager;
 
 @Controller
 public class ReviewController {
@@ -28,8 +26,6 @@ public class ReviewController {
 
 	@Inject
 	ReviewService reviewService;
-	@Inject
-	BoardService boardService;
 
 	// 여행 후기 관련	
 	// 작성
@@ -44,30 +40,27 @@ public class ReviewController {
 		logger.info("123");
 
 		reviewService.create(vo);		
-		return "redirect:reviewWrite.do";
+		return "redirect:reviewList.do";
 	}
 	
 	//리스트
 	@RequestMapping("/reviewList.do")
-	public ModelAndView reviewList(@RequestParam(defaultValue = "title") String searchOption,
+	public ModelAndView reviewList(@RequestParam(defaultValue = "subject") String searchOption,
 			@RequestParam(defaultValue = "") String keyword, @RequestParam(defaultValue = "1") int curPage)
 			throws Exception {
-		// 레코드의 갯수 계산
-		int count = boardService.countArticle(searchOption, keyword);
 		// 페이지 나누기 관련 처리
-		BoardPager boardPager = new BoardPager(count, curPage);
-		int start = boardPager.getPageBegin();
-		int end = boardPager.getPageEnd();
+		reviewPager reviewPager = new reviewPager(curPage);
+		int start = reviewPager.getPageBegin();
+		int end = reviewPager.getPageEnd();
 
-		List<BoardVO> list = boardService.listAll(start, end, searchOption, keyword);
+		List<ReviewVO> list =reviewService.listAll(start, end, searchOption, keyword);
 
 		// 데이터를 맵에 저장
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list); // list
-		map.put("count", count); // 레코드의 갯수
 		map.put("searchOption", searchOption); // 검색옵션
 		map.put("keyword", keyword); // 검색키워드
-		map.put("boardPager", boardPager);
+		map.put("reviewPager", reviewPager);
 		// ModelAndView - 모델과 뷰
 		ModelAndView mav = new ModelAndView();
 		/*
