@@ -31,7 +31,23 @@ public class ReviewController {
 	@Inject
 	BoardService boardService;
 
-	// 02. 여행 후기 관련
+	// 여행 후기 관련	
+	// 작성
+	@RequestMapping(value = "/reviewWrite.do", method = RequestMethod.GET)
+	public String reviewWrite() {
+		logger.info("");
+		return "travel/reviewWrite";
+	}
+
+	@RequestMapping(value = "/reviewInsert.do", method = RequestMethod.POST)
+	public String reviewInsert(@ModelAttribute ReviewVO vo,HttpSession session) throws Exception {
+		logger.info("123");
+
+		reviewService.create(vo);		
+		return "redirect:reviewWrite.do";
+	}
+	
+	//리스트
 	@RequestMapping("/reviewList.do")
 	public ModelAndView reviewList(@RequestParam(defaultValue = "title") String searchOption,
 			@RequestParam(defaultValue = "") String keyword, @RequestParam(defaultValue = "1") int curPage)
@@ -60,22 +76,17 @@ public class ReviewController {
 		 * mav.addObject("keyword", keyword);
 		 */
 		mav.addObject("map", map); // 맵에 저장된 데이터를 mav에 저장
-		mav.setViewName("travel/reviewList"); // 뷰를 list.jsp로 설정
-		return mav; // // list.jsp로 List가 전달된다.
-	}
-
-	@RequestMapping(value = "/reviewWrite.do", method = RequestMethod.GET)
-	public String reviewWrite() {
-		logger.info("");
-		return "travel/reviewWrite";
-	}
-
-	@RequestMapping(value = "/reviewInsert.do", method = RequestMethod.POST)
-	public String reviewInsert(@ModelAttribute ReviewVO vo,HttpSession session) throws Exception {
-		logger.info("123");
-
-		reviewService.create(vo);		
-		return "redirect:reviewWrite.do";
+		mav.setViewName("travel/reviewList"); // 뷰를 List.jsp로 설정
+		return mav; // // jsp로 List가 전달된다.
 	}
 	
+	// 보기
+	@RequestMapping(value="/review.do", method = RequestMethod.GET)
+	public ModelAndView review(@RequestParam int bno, HttpSession session) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("travel/review");
+		mav.addObject("dto", reviewService.read(bno));
+		return mav;
+	}
+		
 }

@@ -22,6 +22,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public void create(ReviewVO vo) throws Exception {
 		sqlSession.insert("review.insert", vo);
 	}
+	
+	//후기 보기
+	@Override
+	public ReviewVO read(int bno) throws Exception{
+		return sqlSession.selectOne("review.view", bno);
+	}
 
 	//리스트
 	@Override

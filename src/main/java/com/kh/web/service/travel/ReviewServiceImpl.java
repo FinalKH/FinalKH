@@ -41,6 +41,11 @@ public class ReviewServiceImpl implements ReviewService{
 		reviewDao.create(vo);
 		
 	}
+    
+  //후기보기
+    public ReviewVO read(int bno) throws Exception{
+    	return reviewDao.read(bno);
+    }
 
  //  게시글 전체 목록
  	@Override

@@ -8,6 +8,8 @@ import com.kh.web.model.travel.dto.ReviewVO;
 public interface ReviewDAO {
 	//후기 작성
 	public void create(ReviewVO vo) throws Exception;
+	//후기 보기
+	public ReviewVO read(int bno ) throws Exception; 
 	//게시글 전체 목록 ==> 검색옵션, 키워드 매개변수 추가
 	public List<BoardVO> listAll(int start, int end, String searchOption, String keyword) throws Exception;
 
