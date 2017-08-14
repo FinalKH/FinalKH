@@ -54,7 +54,7 @@
 			-- 			loop
 			-- 				execute immediate ('drop table '||c.table_name||' cascade constraints');
 			-- 			end loop;
-			-- 		for c in (SELECT * FROM all_sequences WHERE SEQUENCE_OWNER='FINALKH')
+			-- 		for c in (SELECT * FROM all_sequences WHERE SEQUENCE_OWNER='SCOTT')
 			-- 			loop
 			-- 				execute immediate 'drop SEQUENCE '||c.sequence_name;
 			-- 			end loop;
@@ -62,7 +62,7 @@
 			-- /
 			-- purge recyclebin;
 			-- SELECT * FROM tab;
-			-- SELECT * FROM all_sequences WHERE SEQUENCE_OWNER='FINALKH';
+			-- SELECT * FROM all_sequences WHERE SEQUENCE_OWNER='SCOTT';
 			
 			
 			
@@ -127,6 +127,7 @@
 		insert into T_Area values ('39', '제주도', '126.541411', '33.387009');
 		
 		
+		
 	-- 2. 시군구지역 관련 DB 정보
 		-- 시군구지역 테이블 생성
 		create table T_SiGunGu(
@@ -136,7 +137,7 @@
 		SiGunGuName varchar2(50) not null,	-- 시군구이름
 		SiGunGuMapX varchar2(10),			-- 시군구경도
 		SiGunGuMapY varchar2(10),			-- 시군구위도
-		primary key(SiGUnGuSerialNum)			-- 기본키 설정
+		primary key(SiGUnGuSerialNum)		-- 기본키 설정
 		);
 	
 		-- 시군구지역 시퀀스 생성
@@ -399,7 +400,386 @@
 
 
 
-	-- 3. 카테고리 관련 DB 정보
+	-- 3. 컨텐츠타입 관련 DB 정보
+		-- 컨텐츠타입 테이블 생성
+		create table T_ContentType(
+		ContentTypeId varchar2(10) not null,	 	-- 컨텐츠타입 ID
+		ContentTypeName varchar2(50) not null,		-- 컨텐츠타입 이름
+		primary key(ContentTypeId)					-- 기본키 설정
+		);
+	
+		-- 컨텐츠타입 시퀀스 생성
+		-- 시퀀스 생성 필요 없음
+		
+		-- 컨텐츠타입 외래키 설정
+		-- 외래키 설정 필요 없음
+		
+		-- 컨텐츠타입 기본 데이터 생성
+		insert into T_ContentType values ('12', '관광지');
+		insert into T_ContentType values ('14', '문화시설');
+		insert into T_ContentType values ('15', '축제/공연/행사');
+		insert into T_ContentType values ('25', '여행코스');
+		insert into T_ContentType values ('28', '레포츠');
+		insert into T_ContentType values ('32', '숙박');
+		insert into T_ContentType values ('38', '쇼핑');
+		insert into T_ContentType values ('39', '음식');
+
+
+		
+	-- 4. 카테코리1 관련 DB 정보
+		-- 카테코리1 테이블 생성
+		create table T_Cat1(
+		Cat1Code varchar2(10) not null,	 		-- 카테코리1 코드
+		Cat1Name varchar2(50) not null,			-- 카테코리1 이름
+		primary key(Cat1Code)					-- 기본키 설정
+		);
+	
+		-- 카테코리1 시퀀스 생성
+		-- 시퀀스 생성 필요 없음
+		
+		-- 카테코리1 외래키 설정
+		-- 외래키 생성 필요 없음
+		
+		-- 카테고리1 기본데이터 설정
+		insert into T_Cat1 values ('A01', '자연');
+		insert into T_Cat1 values ('A02', '인문(문화/예술/역사)');
+		insert into T_Cat1 values ('C01', '추천코스');
+		insert into T_Cat1 values ('A03', '레포츠');
+		insert into T_Cat1 values ('B02', '숙박');
+		insert into T_Cat1 values ('A04', '쇼핑');
+		insert into T_Cat1 values ('A05', '음식');
+				
+
+		
+	-- 5. 카테코리2 관련 DB 정보
+		-- 카테코리2 테이블 생성
+		create table T_Cat2(
+		Cat2Code varchar2(10) not null,	 		-- 카테코리2 코드
+		Cat2Name varchar2(50) not null,			-- 카테코리2 이름
+		Cat1Code varchar2(10) not null,	 		-- 카테코리1 코드 참조칼럼
+		ContentTypeId varchar2(10) not null,	-- 컨텐트타입ID 참조칼럼
+		primary key(Cat2Code)					-- 기본키 설정
+		);
+	
+		-- 카테코리2 시퀀스 생성
+		-- 시퀀스 생성 필요 없음
+		
+		-- 카테코리2 외래키 설정
+		ALTER TABLE T_Cat2 ADD CONSTRAINT Fk_Cat2Cat1Code FOREIGN KEY(Cat1Code) REFERENCES T_Cat1(Cat1Code);
+		ALTER TABLE T_Cat2 ADD CONSTRAINT Fk_Cat2ContentTypeId FOREIGN KEY(ContentTypeId) REFERENCES T_ContentType(ContentTypeId);
+		
+		-- 카테고리2 기본데이터 설정
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('12', 'A01', 'A0101', '자연관광지');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('12', 'A01', 'A0102', '관광자원');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('12', 'A02', 'A0201', '역사관광지');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('12', 'A02', 'A0202', '휴양관광지');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('12', 'A02', 'A0203', '체험관광지');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('12', 'A02', 'A0204', '산업관광지');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('12', 'A02', 'A0205', '건축/조형물');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('14', 'A02', 'A0206', '문화시설');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('15', 'A02', 'A0207', '축제');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('15', 'A02', 'A0208', '공연/행사');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('25', 'C01', 'C0112', '가족코스');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('25', 'C01', 'C0113', '나홀로코스');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('25', 'C01', 'C0114', '힐링코스,');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('25', 'C01', 'C0115', '도보코스');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('25', 'C01', 'C0116', '캠핑코스');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('25', 'C01', 'C0117', '맛코스');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('28', 'A03', 'A0301', '레포츠소개');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('28', 'A03', 'A0302', '육상 레포츠');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('28', 'A03', 'A0303', '수상 레포츠');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('28', 'A03', 'A0304', '항공 레포츠');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('28', 'A03', 'A0305', '복합 레포츠');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('32', 'B02', 'B0201', '숙박시설');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('38', 'A04', 'A0401', '쇼핑');
+		insert into T_Cat2 (ContentTypeId, Cat1Code, Cat2Code, Cat2Name) values ('39', 'A05', 'A0502', '음식점');
+
+		
+	-- 6. 카테고리3 관련 DB 정보
+		-- 카테코리3 테이블 생성
+		create table T_Cat3 (
+		Cat3Code varchar2(10) not null,	 		-- 카테코리3 코드
+		Cat3Name varchar2(50) not null,			-- 카테코리3 이름
+		Cat2Code varchar2(10) not null,	 		-- 카테코리2 코드 참조칼럼
+		primary key(Cat3Code)					-- 기본키 설정
+		);
+	
+		-- 카테코리3 시퀀스 생성
+		-- 시퀀스 생성 필요 없음
+		
+		-- 카테코리3 외래키 설정
+		ALTER TABLE T_Cat3 ADD CONSTRAINT Fk_Cat3 FOREIGN KEY(Cat2Code) REFERENCES T_Cat2(Cat2Code);
+	
+		-- 카테고리3 기본데이터 설정
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01010100', '국립공원');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01010200', '도립공원');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01010300', '군립공원');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01010400', '산');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01010500', '자연생태관광지');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01010600', '자연휴양림');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01010700', '수목원');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01010800', '폭포');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01010900', '계곡');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01011000', '약수터');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01011100', '해안절경');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01011200', '해수욕장');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01011300', '섬');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01011400', '항구/포구');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01011500', '어촌');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01011600', '등대');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01011700', '호수');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01011800', '강');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0101', 'A01011900', '동굴');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0102', 'A01020100', '희귀동.식물');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0102', 'A01020200', '기암괴석');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0201', 'A02010100', '고궁');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0201', 'A02010200', '성');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0201', 'A02010300', '문');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0201', 'A02010400', '고택');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0201', 'A02010500', '생가');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0201', 'A02010600', '민속마을');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0201', 'A02010700', '유적지/사적지');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0201', 'A02010800', '사찰');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0201', 'A02010900', '종교성지');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0201', 'A02011000', '안보관광');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0202', 'A02020100', '유원지');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0202', 'A02020200', '관광단지');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0202', 'A02020300', '온천/욕장/스파');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0202', 'A02020400', '이색찜질방');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0202', 'A02020500', '헬스투어');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0202', 'A02020600', '테마공원');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0202', 'A02020700', '공원');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0202', 'A02020800', '유람선/잠수함관광');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0203', 'A02030100', '농.산.어촌 체험');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0203', 'A02030200', '전통체험');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0203', 'A02030300', '산사체험');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0203', 'A02030400', '이색체험');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0203', 'A02030500', '관광농원');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0203', 'A02030600', '이색거리');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0204', 'A02040100', '제철소');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0204', 'A02040200', '조선소');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0204', 'A02040300', '공단');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0204', 'A02040400', '발전소');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0204', 'A02040500', '광산');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0204', 'A02040600', '식음료');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0204', 'A02040700', '화학/금속');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0204', 'A02040800', '기타');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0204', 'A02040900', '전자/반도체');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0204', 'A02041000', '자동차');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0205', 'A02050100', '다리/대교');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0205', 'A02050200', '기념탑/기념비/전망대');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0205', 'A02050300', '분수');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0205', 'A02050400', '동상');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0205', 'A02050500', '터널');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0205', 'A02050600', '유명건물');
+		
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0206', 'A02060100', '박물관');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0206', 'A02060200', '기념관');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0206', 'A02060300', '전시관');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0206', 'A02060400', '컨벤션센터');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0206', 'A02060500', '미술관/화랑');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0206', 'A02060600', '공연장');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0206', 'A02060700', '문화원');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0206', 'A02060800', '외국문화원');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0206', 'A02060900', '도서관');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0206', 'A02061000', '대형서점');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0206', 'A02061100', '문화전수시설');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0206', 'A02061200', '영화관');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0206', 'A02061300', '어학당');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0206', 'A02061400', '학교');
+		
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0207', 'A02070100', '문화관광축제');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0207', 'A02070200', '일반축제');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0208', 'A02080100', '전통공연');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0208', 'A02080200', '연극');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0208', 'A02080300', '뮤지컬');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0208', 'A02080400', '오페라');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0208', 'A02080500', '전시회');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0208', 'A02080600', '박람회');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0208', 'A02080700', '컨벤션');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0208', 'A02080800', '무용');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0208', 'A02080900', '클래식음악회');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0208', 'A02081000', '대중콘서트');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0208', 'A02081100', '영화');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0208', 'A02081200', '스포츠경기');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0208', 'A02081300', '기타행사');
+		
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('C0112', 'C01120001', '가족코스');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('C0113', 'C01130001', '나홀로코스');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('C0114', 'C01140001', '힐링코스');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('C0115', 'C01150001', '도보코스');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('C0116', 'C01160001', '캠핑코스');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('C0117', 'C01170001', '맛코스');
+		
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0301', 'A03010100', '육상레포츠');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0301', 'A03010200', '수상레포츠');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0301', 'A03010300', '항공레포츠');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03020100', '스포츠센터');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03020200', '수련시설');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03020300', '경기장');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03020400', '인라인(실내 인라인 포함)');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03020500', '자전거하이킹');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03020600', '카트');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03020700', '골프');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03020800', '경마');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03020900', '경륜');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03021000', '카지노');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03021100', '승마');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03021200', '스키/스노보드');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03021300', '스케이트');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03021400', '썰매장');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03021500', '수렵장');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03021600', '사격장');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03021700', '야영장,오토캠핑장');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03021800', '암벽등반');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03021900', '빙벽등반');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03022000', '서바이벌게임');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03022100', 'ATV');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03022200', 'MTV');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03022300', '오프로드');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03022400', '번지점프');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03022500', '자동차경주');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03022600', '스키(보드) 렌탈샵');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0302', 'A03022700', '트래킹');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0303', 'A03030100', '윈드서핑/제트스키');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0303', 'A03030200', '카약/카누');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0303', 'A03030300', '요트');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0303', 'A03030400', '스노쿨링/스킨스쿠버다이빙');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0303', 'A03030500', '민물낚시');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0303', 'A03030600', '바다낚시');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0303', 'A03030700', '수영');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0303', 'A03030800', '래프팅');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0304', 'A03040100', '스카이다이빙');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0304', 'A03040200', '초경량비행');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0304', 'A03040300', '행글라이딩/패러글라이딩');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0304', 'A03040400', '열기구');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0305', 'A03050100', '복합 레포츠');
+		
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('B0201', 'B02010100', '관광호텔');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('B0201', 'B02010200', '수상관광호텔');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('B0201', 'B02010300', '전통호텔');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('B0201', 'B02010400', '가족호텔');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('B0201', 'B02010500', '콘도미니엄');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('B0201', 'B02010600', '유스호스텔');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('B0201', 'B02010700', '펜션');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('B0201', 'B02010800', '여관');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('B0201', 'B02010900', '모텔');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('B0201', 'B02011000', '민박');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('B0201', 'B02011100', '게스트하우스');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('B0201', 'B02011200', '홈스테이');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('B0201', 'B02011300', '서비스드레지던스');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('B0201', 'B02011400', '의료관광호텔');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('B0201', 'B02011500', '소형호텔');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('B0201', 'B02011600', '한옥스테이');
+		
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0401', 'A04010100', '5일장');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0401', 'A04010200', '상설시장');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0401', 'A04010300', '백화점');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0401', 'A04010400', '면세점');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0401', 'A04010500', '할인매장');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0401', 'A04010600', '전문상가');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0401', 'A04010700', '공예,공방');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0401', 'A04010800', '관광기념품점');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0401', 'A04010900', '특산물판매점');
+		
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0502', 'A05020100', '한식');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0502', 'A05020200', '서양식');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0502', 'A05020300', '일식');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0502', 'A05020400', '중식');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0502', 'A05020500', '아시아식');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0502', 'A05020600', '패밀리레스토랑');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0502', 'A05020700', '이색음식점');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0502', 'A05020800', '채식전문점');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0502', 'A05020900', '바/까페');
+		insert into T_Cat3 (Cat2Code, Cat3Code, Cat3Name) values ('A0502', 'A05021000', '클럽');
+		
+
+		
+		
+	-- 7. 컨텐츠공통 관련 DB 정보
+		-- 컨텐츠공통 테이블 생성
+		create table T_ContentCommon(
+		ContentId varchar2(20) not null, 		-- 컨텐츠 ID
+		Addr1 varchar2(200),					-- 
+		Addr2 varchar2(200),					-- 
+		BookTour varchar2(10),					-- 
+		CreatedTime varchar2(20),				-- 
+		FirstImage varchar2(100),				-- 
+		FirstImage2 varchar2(100),				-- 
+		MapX varchar2(20),						-- 
+		MapY varchar2(20),						-- 
+		MLevel varchar2(10),					-- 
+		ModifiedTime varchar2(20),				-- 
+		ReadCount varchar2(10),					-- 
+		AreaCode varchar2(10),					--
+		Cat1Code varchar2(10),					--
+		Cat2Code varchar2(10),					--
+		Cat3Code varchar2(10),					--
+		ContentTypeId varchar2(10) not null,	--
+		Tel varchar2(200),						-- 
+		Title varchar2(200),					-- 
+		ZipCode varchar2(20),					-- 
+		SiGunGuCode varchar2(10),				-- 시군구 코드
+		HomePage varchar2(100),					-- 
+		TelName varchar2(50),					-- 
+		OverView varchar2(1000), 				-- 
+		primary key(ContentId)					-- 기본키 설정
+		);
+		
+		-- 컨텐츠공통 시퀀스 생성
+		-- 시퀀스 생성 필요없음
+		
+		-- 컨텐츠공통 외래키 설정
+		ALTER TABLE T_ContentCommon ADD CONSTRAINT Fk_ContentCommonAreaCode FOREIGN KEY(AreaCode) REFERENCES T_Area(AreaCode);
+		-- ALTER TABLE T_ContentCommon ADD CONSTRAINT Fk_ContentCommonCat1Code FOREIGN KEY(Cat1Code) REFERENCES T_Cat1(Cat1Code);
+		-- ALTER TABLE T_ContentCommon ADD CONSTRAINT Fk_ContentCommonCat2Code FOREIGN KEY(Cat2Code) REFERENCES T_Cat2(Cat2Code);
+		-- ALTER TABLE T_ContentCommon ADD CONSTRAINT Fk_ContentCommonCat3Code FOREIGN KEY(Cat3Code) REFERENCES T_Cat3(Cat3Code);
+
+	-- 테스트 모음 --	
+	-- 1. 멤버 테스트 쿼리
+	SELECT COUNT(*) FROM tbl_member;		
+	-- 총 데이터가 100개라면 성공적으로 입력 된 것
+
+	
+	-- @ 최종 테이블, 시퀀스 구조 확인
+	SELECT * FROM tab;
+	SELECT * FROM all_sequences WHERE SEQUENCE_OWNER='FINALKH';
+	
+	
+	-- ****최종 커밋****
+	-- commit; -- 커밋 명령은 수동으로 입력하세요
+
+
+
+
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------	
+
+	
+	
+		-- 5. 카테코리1&컨텐츠타입 조인 관련 DB 정보
+		-- 카테코리1&컨텐츠타입 조인 테이블 생성
+		create table T_JoinCat1ContentType(
+		Cat1Code varchar2(10) not null,	 		 -- 
+		ContentTypeId varchar2(10) not null		 --
+		);
+	
+		-- 카테코리1 시퀀스 생성
+		-- 시퀀스 생성 필요 없음
+		
+		-- 카테코리1 외래키 설정
+		ALTER TABLE T_JoinCat1ContentType ADD CONSTRAINT Fk_JoinCat1 FOREIGN KEY(Cat1Code) REFERENCES T_Cat1(Cat1Code);
+		ALTER TABLE T_JoinCat1ContentType ADD CONSTRAINT Fk_JoinContentType FOREIGN KEY(ContentTypeId) REFERENCES T_ContentType(ContentTypeId);
+			
+		-- 카테고리1 기본데이터 설정
+		
+		
+			-- 3. 카테고리 관련 DB 정보
 		-- 카테고리 테이블 생성
 		create table T_Category(
 		CategorySerialNum varchar2(10) not null, 	-- 카테고리 일련번호
@@ -407,10 +787,10 @@
 		ContentTypeName varchar2(50) not null,		-- 컨텐츠 타입 이름
 		Cat1Code varchar2(10) not null,				-- 카테고리1 코드
 		Cat2Code varchar2(10) not null,				-- 카테고리2 코드
-		Cat3Code varchar2(10) not null unique,				-- 카테고리3 코드
+		Cat3Code varchar2(10) not null unique,		-- 카테고리3 코드
 		Cat1Name varchar2(50) not null,				-- 카테고리1 이름
 		Cat2Name varchar2(50) not null,				-- 카테고리2 이름
-		Cat3Name varchar2(50) not null unique,				-- 카테고리3 이름
+		Cat3Name varchar2(50) not null unique,		-- 카테고리3 이름
 		primary key(CategorySerialNum)				-- 기본키 설정
 		);
 	
@@ -419,8 +799,8 @@
 		
 		-- 카테고리 외래키 설정
 		-- 외래키 설정 필요 없음
-	
-		-- 카테고리 기본 데이터 생성
+		
+				-- 카테고리 기본 데이터 생성
 		insert into T_Category values (Seq_Category.nextval, '12', '관광지', 'A01', 'A0101', 'A01010100', '자연', '자연관광지', '국립공원');
 		insert into T_Category values (Seq_Category.nextval, '12', '관광지', 'A01', 'A0101', 'A01010200', '자연', '자연관광지', '도립공원');
 		insert into T_Category values (Seq_Category.nextval, '12', '관광지', 'A01', 'A0101', 'A01010300', '자연', '자연관광지', '군립공원');
@@ -603,56 +983,7 @@
 		insert into T_Category values (Seq_Category.nextval, '39', '음식', 'A05', 'A0502', 'A05020900', '음식', '음식점', '바/까페');
 		insert into T_Category values (Seq_Category.nextval, '39', '음식', 'A05', 'A0502', 'A05021000', '음식', '음식점', '클럽');
 		
-	-- 4. 컨텐츠공통 관련 DB 정보
-		-- 컨텐츠공통 테이블 생성
-		create table T_ContentCommon(
-		ContentId varchar2(20) not null, 	-- 컨텐츠 ID
-		Addr1 varchar2(200),				-- 
-		Addr2 varchar2(200),				-- 
-		BookTour varchar2(10),				-- 
-		CreatedTime varchar2(20),			-- 
-		FirstImage varchar2(100),			-- 
-		FirstImage2 varchar2(100),			-- 
-		MapX varchar2(20),					-- 
-		MapY varchar2(20),					-- 
-		MLevel varchar2(10),				-- 
-		ModifiedTime varchar2(20),			-- 
-		ReadCount varchar2(10),				-- 
-		Tel varchar2(200),					-- 
-		Title varchar2(200),				-- 
-		HomePage varchar2(100),				-- 
-		TelName varchar2(50),				-- 
-		ZipCode varchar2(20),				-- 
-		OverView varchar2(1000), 			-- 
-		SiGunGuSerialNum varchar2(10),		-- 시군구 일련번호
-		CategorySerialNum varchar2(10),		-- 카테고리 일련번호
-		primary key(ContentId)				-- 기본키 설정
-		);
+
 		
-		-- 컨텐츠공통 시퀀스 생성
-		-- 시퀀스 생성 필요없음
 		
-		-- 컨텐츠공통 외래키 설정
-		--ALTER TABLE T_ContentCommon ADD CONSTRAINT Fk_ContentCommonSiGunGu FOREIGN KEY(SiGunGuSerialNum) REFERENCES T_SiGunGu(SiGunGuSerialNum);
-		--ALTER TABLE T_ContentCommon ADD CONSTRAINT Fk_ContentCommonCategory FOREIGN KEY(CategorySerialNum) REFERENCES T_Category(CategorySerialNum);
-
-	-- 테스트 모음 --	
-	-- 1. 멤버 테스트 쿼리
-	SELECT COUNT(*) FROM tbl_member;		
-	-- 총 데이터가 100개라면 성공적으로 입력 된 것
-
-	
-	-- @ 최종 테이블, 시퀀스 구조 확인
-	SELECT * FROM tab;
-	SELECT * FROM all_sequences WHERE SEQUENCE_OWNER='FINALKH';
-	
-	
-	-- ****최종 커밋****
-	-- commit; -- 커밋 명령은 수동으로 입력하세요
-
-
-
-
----------------------------------------------------------------------------------------------	
-	
 	
