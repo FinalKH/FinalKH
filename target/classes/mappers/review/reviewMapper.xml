@@ -35,7 +35,7 @@ start with 1;
     
     <!-- 전체목록조회 -->
     <select id="listAll" resultType="com.kh.web.model.travel.dto.ReviewVO" >
-    select bno, subject, content, regdate, viewcnt from review
+    select bno, subject, content, regdate, viewcnt, show from review
     order by bno desc, regdate desc
     </select>
     

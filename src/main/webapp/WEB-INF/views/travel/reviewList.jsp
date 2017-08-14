@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>후 기</title>
 <!-- Semantic Ui  -->
 <link rel="stylesheet" type="text/css"
 	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.css">
@@ -74,8 +74,8 @@ table th {
 						<c:out value="${map.searchOption == 'user_name'?'selected':''}"/>>이름</option>
 					<option value="content"
 						<c:out value="${map.searchOption == 'content'?'selected':''}"/>>내용</option>
-					<option value="title"
-						<c:out value="${map.searchOption == 'title'?'selected':''}"/>>제목</option>
+					<option value="subject"
+						<c:out value="${map.searchOption == 'subject'?'selected':''}"/>>제목</option>
 				</select> <input name="keyword" value="${map.keyword}"> <input
 					type="submit" value="조회">
 				<!-- 로그인한 사용자만 글쓰기 버튼을 활성화 
@@ -106,7 +106,7 @@ table th {
 			<td>${row.bno}</td>
 			<!-- 게시글 상세보기 페이지로 이동시 게시글 목록페이지에 있는 검색조건, 키워드, 현재페이지 값을 유지하기 위해 -->
 			<td>
-				<a href="${path}/travel/view.do?bno=${row.bno}&curPage=${map.reviewPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">${row.title} 
+				<a href="${path}/travel/view.do?bno=${row.bno}&curPage=${map.reviewPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">${row.subject} 
 					<!-- ** 댓글이 있으면 게시글 이름 옆에 출력하기 -->
 					<c:if test="${row.recnt > 0}">
 						<span style="color: red;">(${row.recnt})
