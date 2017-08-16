@@ -2,64 +2,55 @@ package com.kh.web.controller.travel;
 
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kh.web.model.travel.dto.AreaVO;
 import com.kh.web.service.travel.TravelService;
 
 
-@Controller // 현재 클래스를 스프링에서 관리하는 컨트롤러 bean으로 생성
-@RequestMapping("/travel/*") // 모든맵핑은 /travel/를 상속
+@Controller
+@RequestMapping("/travel/*")
 public class TravelController {
 	// 로깅을 위한 변수
 	private static final Logger logger = LoggerFactory.getLogger(TravelController.class);
 	
 	@Inject
 	TravelService travelService;
-		
-	@RequestMapping("practice.do")
-	public String practice(){
-		logger.info("practice.do");
-		return "travel/practice";	// views/travel/makePlan.jsp로 포워드
-	}
 	
-	@RequestMapping("practice2.do")
-	public String practice2(){
-		logger.info("practice2.do");
-		return "travel/practice2";	// views/travel/makePlan.jsp로 포워드
-	}
-	
-	// 01. 여행 계획 만들기 화면
-	@RequestMapping("makePlan.do")
-	public String makePlan(){
-		logger.info("makePlan.do");
-/*		String tourApi = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList"
-		+ "?ServiceKey=ZhnHJ1fzbYGAO2Xl%2FSg5MHWhMO0GkoIguiXKwi3%2BlAB8OTO1xYkmp0228On6RJ6lgh6Z4%2BLCWnAsnPm0wysTgA%3D%3D"
-		+ "&contentTypeId=&areaCode=&sigunguCode=&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC"
-		+ "&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=26000&pageNo=1&_type=json";*/
-		
-		return "travel/makePlan";	// views/travel/makePlan.jsp로 포워드
-	}
-		
-	// 03. 마이 페이지
-	
-	@RequestMapping("myPage.do")
-	public String myPage(){
-		logger.info("myPage.do");
-		
-		return "travel/myPage";	// views/travel/makePlan.jsp로 포워드
-	}
-	// 03. 마이 페이지
 	@RequestMapping("createPlan.do")
-	public String createPlan(){
+	public String createPlan(Model model){
 		logger.info("createPlan.do");
+		// 일단 첫 로딩시에 전체 area 데이터를 가져와서 맵에 마커 정보를 띄운다
+		model.addAttribute("list", travelService.list());
+		return "travel/createPlan";
+	}
+	
+	@RequestMapping("makePlan.do")
+	public String makePlan(Model model){
+		logger.info("makePlan.do");
+		model.addAttribute("list", travelService.listContentCommon());
+		return "travel/makePlan";
+	}
+	
+	// 그 다음 
+	//맵 범위에  있는 데이터를 DB에서 실시간으로 가져오게 하는 컨트롤러
+	//로직
+	//전체 범위 안에 
+	@RequestMapping("bringAllInMap.do")
+	// 이 컨트롤러를 요청 할 때 브라우저에서는 맵의 위치와 사이즈 정보를 함께 보내옴
+	public void bringAllInMap(@RequestParam String mapSizeX, @RequestParam String mapSizeY, HttpSession session){		
+		logger.info("bringAllInMap.do");
+		//mapSizeX
+		//mapSizeY
 		
-		return "travel/createPlan";	// views/travel/makePlan.jsp로 포워드
+
 	}
 	
 }
