@@ -41,5 +41,9 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return sqlSession.selectList("review.listAll");
 	}
 	
+	@Override
+	public void increaseViewcnt(int bno) throws Exception {
+		sqlSession.update("review.viewcnt", bno);
+	}
 
 }

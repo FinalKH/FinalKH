@@ -46,7 +46,16 @@ start with 1;
 			bno, subject, content, regdate, viewcnt, show
 		FROM 
 			review 
-		AND 
+		where
 			bno = #{bno}
 	</select>
+	<!-- 조회수 -->
+	<update id="viewcnt">
+		UPDATE 
+			review
+		SET 
+			viewcnt = viewcnt + 1 
+		WHERE 
+			bno = #{bno}
+	</update>
 </mapper>

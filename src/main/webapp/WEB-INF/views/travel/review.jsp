@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,30 +24,38 @@
 	</div>
 </header>
 <section>
-<h2>게시글 보기</h2>
-<form name="form1" method="post">
-    <div>        <!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 -->
-        작성일자 : <fmt:formatDate value="${dto.regdate}" pattern="yyyy-MM-dd a HH:mm:ss"/>
-                <!-- 날짜 형식 => yyyy 4자리연도, MM 월, dd 일, a 오전/오후, HH 24시간제, hh 12시간제, mm 분, ss 초 -->
+	<div class="container">
+    <div class="row marketing">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+	<c:choose>
+		<c:when test="${dto.show == 'y'}">
+		<!-- show가 y면 -->	
+			<!-- 게시물 상세보기 영역 -->
+		
+          <div class="panel-heading">
+            <h3 class="panel-title">${dto.subject}
+            </h3>
+            <span class="pull-right text-right"><fmt:formatDate value="${dto.regdate}" pattern="yyyy-MM-dd a HH:mm:ss"/> </span>
+          </div>
+          <div class="panel-body">${dto.content}</div>
+        </div>
+      
+				<div style="width:650px; text-align: center;">
+					<!-- 게시물번호를 hidden으로 처리 -->
+					<input type="hidden" name="bno" value="${dto.bno}">
+				
+					<!-- 상세보기 화면에서 게시글 목록화면으로 이동 -->
+					<button type="button" id="btnList">목록</button>
+				</div>
+			
+			<!-- 게시물 상세보기 영역 -->	
+					
+			</c:when>
+	</c:choose>
+	</div>
     </div>
-    <div>
-        조회수 : ${dto.viewcnt}
-    </div>
-    <div>
-        제목
-        <input name="title" id="title" size="80" value="${dto.subject}" placeholder="제목을 입력해주세요">
-    </div>
-    <div>
-        내용
-        <textarea name="content" id="content" rows="4" cols="80" placeholder="내용을 입력해주세요">${dto.content}</textarea>
-    </div>
-    <div style="width:650px; text-align: center;">
-        <!-- 게시물번호를 hidden으로 처리 -->
-        <input type="hidden" name="bno" value="${dto.bno}">
-        <button type="button" id="btUpdete">수정</button>
-        <button type="button" id="btDelete">삭제</button>
-    </div>
-</form>
+  </div>
 </section>
 <footer>
 	<div class="ui fluid container">

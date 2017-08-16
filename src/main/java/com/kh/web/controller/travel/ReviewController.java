@@ -75,10 +75,16 @@ public class ReviewController {
 	
 	// 보기
 	@RequestMapping(value="/review.do", method = RequestMethod.GET)
-	public ModelAndView review(@RequestParam int bno, HttpSession session) throws Exception{
+	public ModelAndView review(@RequestParam int bno, @RequestParam int curPage, @RequestParam String searchOption,
+			@RequestParam String keyword, HttpSession session) throws Exception{
 		ModelAndView mav = new ModelAndView();
+		reviewService.increaseViewcnt(bno, session);
 		mav.setViewName("travel/review");
 		mav.addObject("dto", reviewService.read(bno));
+		mav.addObject("curPage", curPage);
+		mav.addObject("searchOption", searchOption);
+		mav.addObject("keyword", keyword);
+		logger.info("mav:", mav);
 		return mav;
 	}
 		

@@ -11,5 +11,6 @@ public interface ReviewDAO {
 	public ReviewVO read(int bno ) throws Exception; 
 	//글 전체 목록 ==> 검색옵션, 키워드 매개변수 추가
 	public List<ReviewVO> listAll(int start, int end, String searchOption, String keyword) throws Exception;
-	
+	//조회수
+	public void increaseViewcnt(int bno) throws Exception;
 }
