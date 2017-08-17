@@ -5,7 +5,18 @@
 <head>
 <title>여행 도시 선택하기</title>
 <%@ include file="../include/headerTravel.jsp"%>
+<<<<<<< HEAD
 
+=======
+<style>
+body {
+	padding: 0em;
+}
+ui.grid {
+color:blue;
+} 
+</style>
+>>>>>>> e3e5afce046857744303677d6d004ec969f23f21
 </head>
 <body>
 	<%@ include file="../include/menuTravel.jsp"%>
@@ -20,6 +31,7 @@
 					style="overflow: scroll; margin-right: -14px;">
 
 					<c:forEach var="row" items="${list}">
+<<<<<<< HEAD
 						<div class="item">
 							<div class="right floated content">
 								<div class="ui icon button">
@@ -31,6 +43,20 @@
 							</div>
 						</div>
 					</c:forEach>
+=======
+					<div class="item">
+						<div class="right floated content">
+							<div class="ui icon button" id="${row.areaCode}">
+								<i class="plus icon"></i>
+							</div>
+						</div>
+						<div class="center floated red content" id="${row.areaCode}">
+							<div class="description">${row.areaName}</div>
+						</div>
+					</div>
+					</c:forEach>
+
+>>>>>>> e3e5afce046857744303677d6d004ec969f23f21
 				</div>
 			</div>
 			<div class="thirteen wide fluid blue column">
@@ -99,6 +125,7 @@
 		}
 
 		$(document).ready(function() {
+<<<<<<< HEAD
 			jQuery.ajax({
 				type : "GET",
 				url : "http://",
@@ -186,6 +213,57 @@
 						url : 'https://mt.googleapis.com/vt/icon/name=icons/onion/22-blue-dot.png'
 					});
 		}
+=======
+		     jQuery.ajax({
+		           type:"GET",
+		           url:"http://",	   
+		           dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+		           success : function(data) {
+		        	   	alert(JSON.stringify(data));
+		                alert("성공");
+		           },
+		           complete : function(data) {
+		                alert("완료");
+		           },
+		           error : function(xhr, status, error) {
+		                 alert("에러발생");
+		           }
+		     });
+		});
+		var cities = new Array();
+
+		cities['한국']   = 'Seoul';
+		cities['일본']   = '도쿄';
+		cities['그리스'] = 'Athens';
+		cities['United States'] = 'Washington, D.C.';
+		cities['프랑스'] = '파리';
+		cities['中國']   = '北京';
+
+		for (var i in cities) {
+		  document.write(cities[i], '<br />');
+		}
+		alert(1);
+		var arr = new Array(); 
+		arr = '${list}';
+		alert(arr);
+		$('arr').each(alert(arr));
+		alert(1);
+	<c:forEach var="row" items="${list}">
+			var name = "${row.areaName}";
+			var mapX = "${row.areaMapX}";
+			var mapY = "${row.areaMapY}";
+			new naver.maps.Marker({
+		    position: new naver.maps.LatLng(mapY, mapX),
+		    title: name,
+		    map: map
+		});
+	</c:forEach>		
+
+
+		
+		</script>
+		
+>>>>>>> e3e5afce046857744303677d6d004ec969f23f21
 
 		function onMouseOut(e) {
 			var marker = e.overlay, seq = marker.get('seq');
