@@ -9,34 +9,35 @@
 body {
 	padding: 0em;
 }
+ui.grid {
+color:blue;
+} 
 </style>
 </head>
 <body>
 	<%@ include file="../include/menuTravel.jsp"%>
 	<div class="ui fluid container" style="padding: 0em;">
 		<div class="ui grid">
-			<div class="sixteen wide fluid grey column"
+			<div class="sixteen wide fluid column"
 				style="height: 89px; margin: -15px;"></div>
-			<div class="three wide fluid red column">
+			<div class="three wide fluid column">
 				<div class="ui row">제목, 뒤로가기 동적 생성</div>
 				<div class="ui row">지역 대분류</div>
-				<div class="ui fluid red list" id="content"
+				<div class="ui fluid list" id="content"
 					style="overflow: scroll; margin-right: -14px;">
 					
 					<c:forEach var="row" items="${list}">
 					<div class="item">
 						<div class="right floated content">
-							<div class="ui icon button">
+							<div class="ui icon button" id="${row.areaCode}">
 								<i class="plus icon"></i>
 							</div>
 						</div>
-						<div class="center floated content">
+						<div class="center floated red content" id="${row.areaCode}">
 							<div class="description">${row.areaName}</div>
 						</div>
 					</div>
 					</c:forEach>
-
-
 
 				</div>
 			</div>
@@ -101,69 +102,36 @@ body {
 		           }
 		     });
 		});
-		
+		var cities = new Array();
 
-	</script>
-		<script>
-	<c:forEach var="row1" items="${list}">
-			var mapX = "${row1.areaMapX}";
-			var mapY = "${row1.areaMapY}";
+		cities['한국']   = 'Seoul';
+		cities['일본']   = '도쿄';
+		cities['그리스'] = 'Athens';
+		cities['United States'] = 'Washington, D.C.';
+		cities['프랑스'] = '파리';
+		cities['中國']   = '北京';
+
+		for (var i in cities) {
+		  document.write(cities[i], '<br />');
+		}
+		alert(1);
+		var arr = new Array(); 
+		arr = '${list}';
+		alert(arr);
+		$('arr').each(alert(arr));
+		alert(1);
+	<c:forEach var="row" items="${list}">
+			var name = "${row.areaName}";
+			var mapX = "${row.areaMapX}";
+			var mapY = "${row.areaMapY}";
 			new naver.maps.Marker({
 		    position: new naver.maps.LatLng(mapY, mapX),
+		    title: name,
 		    map: map
 		});
-		</c:forEach>		
-		var markers = [],
-	    infoWindows = [];
+	</c:forEach>		
 
-	for (var key in MARKER_SPRITE_POSITION) {
 
-	    var position = new naver.maps.LatLng(
-	        southWest.lat() + latSpan * Math.random(),
-	        southWest.lng() + lngSpan * Math.random());
-
-	    var marker = new naver.maps.Marker({
-	        map: map,
-	        position: position,
-	        title: key,
-	        icon: {
-	            url: HOME_PATH +'/img/example/sp_pins_spot_v3.png',
-	            size: new naver.maps.Size(24, 37),
-	            anchor: new naver.maps.Point(12, 37),
-	            origin: new naver.maps.Point(MARKER_SPRITE_POSITION[key][0], MARKER_SPRITE_POSITION[key][1])
-	        },
-	        zIndex: 100
-	    });
-
-	    var infoWindow = new naver.maps.InfoWindow({
-	        content: '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'+ key.substr(0, 1) +'"</b>.</div>'
-	    });
-
-	    markers.push(marker);
-	    infoWindows.push(infoWindow);
-	};
-
-	naver.maps.Event.addListener(map, 'idle', function() {
-	    updateMarkers(map, markers);
-	});
-		// 해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
-		function getClickHandler(seq) {
-		    return function(e) {
-		        var marker = markers[seq],
-		            infoWindow = infoWindows[seq];
-
-		        if (infoWindow.getMap()) {
-		            infoWindow.close();
-		        } else {
-		            infoWindow.open(map, marker);
-		        }
-		    }
-		}
-
-		for (var i=0, ii=markers.length; i<ii; i++) {
-		    naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
-		}
-		
 		
 		</script>
 		
