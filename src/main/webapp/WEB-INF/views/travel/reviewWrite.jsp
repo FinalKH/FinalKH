@@ -88,15 +88,35 @@
 					width:400,
 					//fontNames : [ '맑은고딕', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New' ],
 					//fontNamesIgnoreCheck : [ '맑은고딕' ],
-					focus: true,
+					focus: true ,
 					callbacks: {
 				          onImageUpload: function(files, editor, welEditable) {
+				        	  console.log(files);
+				        	  console.log(editor);
+				        	  console.log(welEditable);
 				            for (var i = files.length - 1; i >= 0; i--) {
 				              sendFile(files[i], this);
 				            }
 				          }
 				        }
 				});
+				
+			function sendFile(files, editor, welEditable) {
+			      var form_data = new FormData();
+			      form_data.append('file', file);
+				      $.ajax({
+				        data: form_data,
+				        type: "POST",
+				        url: 'uploadPath',
+				        cache: false,
+				        contentType: false,
+				        enctype: 'multipart/form-data',
+				        processData: false,
+				        success: function(url) {
+				        	editor.insertImage(welEditable, url);		        
+			        }
+				})
+			}
 			});
 			
 			</script>
