@@ -7,6 +7,7 @@
 <head>
 <title>여행 계획 작성하기</title>
 <%@ include file="../include/headerTravel.jsp"%>
+<script type="text/javascript" src="${path}/include/js/fullCalendar.js"></script>
 </head>
 <body>
 	<%@ include file="../include/menuTravel.jsp"%>
@@ -27,7 +28,9 @@
 
 					<div class="ui green inverted segment">
 						<p>일정 날짜 선택 컴퍼넌트 공간</p>
-						<p>time : 	<div class="text" id="api"></div></p>
+						<p>time :
+						<div class="text" id="api"></div>
+						</p>
 
 						<div class="ui fluid container">
 							<div class="grid">
@@ -344,188 +347,75 @@
 
 
 	<!-- 스크립트 태그 -->
-	<script type="text/javascript" src="${path}/include/js/fullCalendar.js"></script>
+
 	<script>
 		$('.ui.bound.top.sticky#user').sticky({
 			context : '#context1',
 			offset : 80,
 			type : 'push'
 		});
+
 		$('.ui.bound.top.sticky#day').sticky({
 			context : '#context1',
 			offset : 80,
 			type : 'push'
 		});
-		</script>
-		<script>
-		
+
+		// html 에서 map이란 아이디를 찾아서 적용시킴
 		var map = new naver.maps.Map('map', {
-		    center: new naver.maps.LatLng(37.5666805, 126.9784147),
-		    zoom: 5,
-		    mapTypeId: naver.maps.MapTypeId.NORMAL
-		});
-
-		var infowindow = new naver.maps.InfoWindow();
-
-		function onSuccessGeolocation(position) {
-		    var location = new naver.maps.LatLng(position.coords.latitude,
-		                                         position.coords.longitude);
-
-		    map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
-		    map.setZoom(10); // 지도의 줌 레벨을 변경합니다.
-
-		    infowindow.setContent('<div style="padding:20px;">' +
-		        'latitude: '+ location.lat() +'<br />' +
-		        'longitude: '+ location.lng() +'</div>');
-
-		    infowindow.open(map, location);
-		}
-
-		function onErrorGeolocation() {
-		    var center = map.getCenter();
-
-		    infowindow.setContent('<div style="padding:20px;">' +
-		        '<h5 style="margin-bottom:5px;color:#f00;">Geolocation failed!</h5>'+ "latitude: "+ center.lat() +"<br />longitude: "+ center.lng() +'</div>');
-
-		    infowindow.open(map, center);
-		}
-
-		$(window).on("load", function() {
-		    if (navigator.geolocation) {
-		        navigator.geolocation.getCurrentPosition(onSuccessGeolocation, onErrorGeolocation);
-		    } else {
-		        var center = map.getCenter();
-
-		        infowindow.setContent('<div style="padding:20px;"><h5 style="margin-bottom:5px;color:#f00;">Geolocation not supported</h5>'+ "latitude: "+ center.lat() +"<br />longitude: "+ center.lng() +'</div>');
-		        infowindow.open(map, center);
-		    }
-		});
-		$(document).ready(function() {
-		     jQuery.ajax({
-		           type:"GET",
-		           url:"http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=ZhnHJ1fzbYGAO2Xl%2FSg5MHWhMO0GkoIguiXKwi3%2BlAB8OTO1xYkmp0228On6RJ6lgh6Z4%2BLCWnAsnPm0wysTgA%3D%3D&contentTypeId=&areaCode=&sigunguCode=&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=10&pageNo=1&_type=json",	   
-		           dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
-		           success : function(data) {
-		        	   alert(data);
-		        	   alert(JSON.stringify(data));
-		                $('#api').append(data.response.body.items.item[0].title);
-		                $('#api').append(data.response.body.items.item[0].mapx);
-		                $('#api').append(data.response.body.items.item[0].mapy);
-		                $('#api').append(" ");
-		                $('#api').append(data.response.body.items);
-		                var mapx = parseFloat(data.response.body.items.item[0].mapx);
-		                var mapy = parseFloat(data.response.body.items.item[0].mapy);
-		                alert(mapy);
-		                alert(mapx);
-		                
-		                var map = new naver.maps.Map('map', {
-		                    center: new naver.maps.LatLng(mapy, mapx),
-		                    zoom: 10
-		                });
-
-		                var marker = new naver.maps.Marker({
-		                    position: new naver.maps.LatLng(mapy, mapx),
-		                    map: map
-		                });
-		                
-		                var contentString = [
-		                    '<div class="iw_inner">',
-		                    '   <h3>서울특별시청</h3>',
-		                    '   <p>서울특별시 중구 태평로1가 31 | 서울특별시 중구 세종대로 110 서울특별시청<br>',
-		                    '       <img src="./img/hi-seoul.jpg" width="55" height="55" alt="서울시청" class="thumb" /><br>',
-		                    '       02-120 | 공공,사회기관 > 특별,광역시청<br>',
-		                    '       <a href="http://www.seoul.go.kr" target="_blank">www.seoul.go.kr/</a>',
-		                    '   </p>',
-		                    '</div>'
-		                ].join('');
-
-		                var infowindow = new naver.maps.InfoWindow({
-		                    content: contentString
-		                });
-
-		                naver.maps.Event.addListener(marker, "click", function(e) {
-		                    if (infowindow.getMap()) {
-		                        infowindow.close();
-		                    } else {
-		                        infowindow.open(map, marker);
-		                        infowindow.open(map, Coord);
-		                    }
-		                });
-		                
-		                function initGeocoder() {
-		        		    var latlng = map.getCenter();
-		        		    var utmk = naver.maps.TransCoord.fromLatLngToUTMK(latlng); // 위/경도 -> UTMK
-		        		    var tm128 = naver.maps.TransCoord.fromUTMKToTM128(utmk);   // UTMK -> TM128
-		        		    var naverCoord = naver.maps.TransCoord.fromTM128ToNaver(tm128); // TM128 -> NAVER
-
-		        		    infoWindow = new naver.maps.InfoWindow({
-		        		        content: ''
-		        		    });
-
-		        		    map.addListener('click', function(e) {
-		        		        var latlng = e.coord,
-		        		            utmk = naver.maps.TransCoord.fromLatLngToUTMK(latlng),
-		        		            tm128 = naver.maps.TransCoord.fromUTMKToTM128(utmk),
-		        		            naverCoord = naver.maps.TransCoord.fromTM128ToNaver(tm128);
-
-		        		        utmk.x = parseFloat(utmk.x.toFixed(1));
-		        		        utmk.y = parseFloat(utmk.y.toFixed(1));
-
-		        		        infoWindow.setContent([
-		        		            '<div style="padding:10px;width:300px;font-size:14px;line-height:20px;">',
-		        		            '<strong>LatLng</strong> : '+ latlng +'<br />',
-		        		            '<strong>UTMK</strong> : '+ utmk +'<br />',
-		        		            '<strong>TM128</strong> : '+ tm128 +'<br />',
-		        		            '<strong>NAVER</strong> : '+ naverCoord +'<br />',
-		        		            '</div>'
-		        		        ].join(''));
-
-		        		        infoWindow.open(map, latlng);
-		        		    });
-		        		}
-
-		        		naver.maps.onJSContentLoaded = initGeocoder;
-		        		
-		        	    var contentEl = $('<div class="iw_inner" style="width:350px;position:absolute;top:0;right:0;z-index:1000;background-color:#fff;border:solid 1px #333;">'
-		        	            + '<h3>Map States</h3>'
-		        	            + '<p style="font-size:14px;">zoom : <em class="zoom">'+ map.getZoom() +'</em></p>'
-		        	            + '<p style="font-size:14px;">center : <em class="center">'+ map.getCenter() +'</em></p>'
-		        	            + '<p style="font-size:14px;">bounds : <em class="bounds">'+ map.getBounds() +'</em></p>'
-		        	            + '</div>');
-
-		        	        contentEl.appendTo(map.getElement());
-
-		        	        naver.maps.Event.addListener(map, 'zoom_changed', function(zoom) {
-		        	            contentEl.find('.zoom').text(zoom);
-		        	        });
-
-		        	        naver.maps.Event.addListener(map, 'bounds_changed', function(bounds) {
-		        	            contentEl.find('.center').text(map.getCenter());
-		        	            contentEl.find('.bounds').text(bounds);
-		        	        });
-		        	        
-		        	        
-		                alert("성공");
-		           },
-		           complete : function(data) {
-
-		           },
-		           error : function(xhr, status, error) {
-		                 alert("에러발생");
-		           }
-		     });
-		});
+			center : new naver.maps.LatLng(37.5666805, 126.9784147),
+			zoom : 2,
+			mapTypeId : naver.maps.MapTypeId.NORMAL
+		}),
+		bounds = map.getBounds(),
+	    southWest = bounds.getSW(),
+	    northEast = bounds.getNE(),
+	    lngSpan = northEast.lng() - southWest.lng(),
+	    latSpan = northEast.lat() - southWest.lat(),
+		markers = [],
+		infoWindows = [];
 		
-/* 		<c:forEach var="row1" items="${list}">
-		var mapX = "${row1.areaMapX}";
-		var mapY = "${row1.areaMapY}";
-		new naver.maps.Marker({
-	    position: new naver.maps.LatLng(mapY, mapX),
-	    map: map
-	});
-	</c:forEach>	 */
-		
+		$.ajax({
+			type : "GET",
+			url : "${path}/travel/makePlan.do",
+			//dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+			async : false, // Ajax 처리가 완료될 때까지 브라우져가 멈춰줌
+			// 기본 값은 true 로 설정 되어 있음
+			success : function(data) {
+				alert(southWest);
+				alert(northEast);
+				alert("성공");
+			},
+			complete : function(data) {
+				alert(southWest);
+				alert(northEast);
+				alert("완료");
+			},
+			error : function(xhr, status, error) {
+				alert(southWest);
+				alert(northEast);
+				alert("에러발생");
+			}
+		});
 
+/* 		$(document).bringAllInMap(function() {
+			$.ajax({
+				type : "GET",
+				url : "${path}/travel/bringAllInMap.do",
+				//dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+				async : false, // Ajax 처리가 완료될 때까지 브라우져가 멈춰줌
+				// 기본 값은 true 로 설정 되어 있음
+				success : function(data) {
+					alert("성공");
+				},
+				complete : function(data) {
+					alert("완료");
+				},
+				error : function(xhr, status, error) {
+					alert("에러발생");
+				}
+			});
+		}); */
 	</script>
 </body>
 </html>
