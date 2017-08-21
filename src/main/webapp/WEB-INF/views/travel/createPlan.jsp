@@ -16,8 +16,15 @@
 			<div class="three wide fluid column" id="left"
 				style="margin-top: -15px;">
 
+
+
+
 				<div class="ui fluid aligned divided big animated selection list"
 					id="content" style="overflow: scroll; margin-right: -14px;">
+
+					
+
+					
 
 					<div class="ui two top attached buttons">
 						<div class="ui button" id="toggleButton">나의 일정</div>
@@ -29,7 +36,7 @@
 					<c:forEach var="row" items="${list}">
 						<div class="item">
 							<div class="right floated content">
-								<div class="ui icon button" id="${row.areaCode}">
+								<div class="ui area icon button" id="${row.areaName}">
 									<i class="plus icon"></i>
 								</div>
 							</div>
@@ -42,25 +49,8 @@
 			</div>
 			<div class="thirteen wide fluid blue column">
 
-				<div class="ui left very sidebar vertical menu">
-					<c:forEach var="row" items="${list}">
-						<div class="item">
-							<div class="ui fluid grid">
-								<div class="ten wide column">
-									<div class="content">${row.areaName}</div>
-								</div>
-								<div class="six wide column">
-									<div class="right floated content">
-										<div class="ui icon button" id="${row.areaCode}">
-											<i class="plus icon"></i>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</c:forEach>
-
+				<div class="ui left very sidebar vertical menu" id="sidebar">
+					<!-- 사용자가 만든 일정이 들어가는 곳 -->
 				</div>
 
 				<div class="pusher">
@@ -78,18 +68,22 @@
 					<div class="content">제목과 출발일 입력</div>
 				</h2>
 				<form class="ui large login form"
-					action="/web/member/loginCheck_test.do" method="post" name="login">
+					action="${path}/travel/makePlan.do" method="post" name="3">
 					<div class="ui stacked segment">
 						<div class="field">
-							<div class="ui basic label">TITLE</div>
-							<div class="ui input"><input type="text" name="email" id="email"
-							placeholder="E-mail address"></div>
+
+							<div class="ui input">
+								<div class="ui basic large label">TITLE</div>
+								<input type="text" name="1" id="1" placeholder="1">
+							</div>
 
 						</div>
 						<div class="field">
-							<div class="ui basic label">DATE</div>
-							<div class="ui input"><input type="password" name="password" id="password"
-							placeholder="Password"></div>
+
+							<div class="ui input">
+								<div class="ui basic large label">DATE</div>
+								<input type="text" name="2" id="2" placeholder="2">
+							</div>
 
 						</div>
 						<div class="ui fluid large orange submit button">상세일정 만들기</div>
@@ -117,10 +111,10 @@
 		var $window = $(window); /* 윈도우창에 대한 정보를 사용하기 위해 */
 
 		function getMapSize() { /* 윈도우창의 크기를 불러와서  */
-			var size = new naver.maps.Size($window.width(), $window.height() - 73);
+			var size = new naver.maps.Size($window.width(),
+					$window.height() - 73);
 			return size;
 		};
-
 
 		now_select_city_cnt = $('#selected_cities .s_cities').length;
 		console.log('now_select_city_cnt:' + now_select_city_cnt);
@@ -219,59 +213,65 @@
 				} else {
 					marker.setAnimation(naver.maps.Animation.BOUNCE);
 				}
-				
-			    var point = e.coord;
 
-			    var path = polyline.getPath();
-			    path.push(point);
+				var point = e.coord;
+
+				var path = polyline.getPath();
+				path.push(point);
 			}
 		}
 
 		for (var i = 0, ii = markers.length; i < ii; i++) {
-			naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
+			naver.maps.Event.addListener(markers[i], 'click',
+					getClickHandler(i));
 
 		}
-		
 
-/* 	    naver.maps.Event.addListener(markers[i], "mouseover", onMouseOver(i));
-	    naver.maps.Event.addListener(markers[i], "mouseout", onMouseOut(i)); */
-/* 		function onMouseOver(e) {
-			var marker = e.overlay, seq = marker.get('seq');
+		$('.ui.sidebar').sidebar({
+			context : $('#map'),
+			dimPage : false,
+			closable : false
+		}).sidebar('attach events', '#toggleButton');
 
-			marker
-					.setIcon({
-						url : 'https://mt.googleapis.com/vt/icon/name=icons/onion/22-blue-dot.png'
-					});
-		}
-
-		function onMouseOut(e) {
-			var marker = e.overlay, seq = marker.get('seq');
-
-			marker.setIcon({
-				url : 'http://www.diacomp.org/omb/images/Google/ltblue.png'
-			});
-		} */
-		
-
-		$('.ui.sidebar')
-		  .sidebar({
-			  context: $('#map'),
-			  dimPage: false,
-			  closable: false
-		  })
-		  .sidebar('attach events', '#toggleButton')
-		;
-		
 		function detailForm() {
-			$('.ui.detailForm.modal')
-			  .modal({
-				  onHide : function(){
-					  document.getElementById("email").value = "";
-					  document.getElementById("password").value = "";
-				  }
-			  })
-			  .modal('show');
+			$('.ui.detailForm.modal').modal({
+				onHide : function() {
+
+				}
+			}).modal('show');
 		}
+
+		$('.area.button')
+				.click(
+						function() {
+							var $id = $(this).attr('id');
+							var $div = $('<div class="item" id="userPickItem"><div class="ui icon tiny buttons"><button class="ui button" id="userDelete"><i class="delete icon"></i></button><button class="ui black disabled button">'
+									+ $id
+									+ '</button></div><div class="ui icon tiny right floated buttons"><button class="ui button" id="minusButton"><i class="minus icon"></i></button><button class="ui black disabled button"><span id="dateDay">2</span>일</button><button class="ui button" id="plusButton"><i class="plus icon"></i></button></div></div>');
+							$('#sidebar').append($div);
+
+						});
+		$(document).on("click", "#userDelete", function() {
+			$(this).parent().parent().remove();
+		});
+		$(document).on("click", "#plusButton", function() {
+			var baseVal = $(this).parent().find("#dateDay").text();
+			console.log(baseVal);
+			$(this).parent().find("#dateDay").empty();
+			$(this).parent().find("#dateDay").text(Number(baseVal) + 1);
+		});
+		$(document).on("click", "#minusButton", function() {
+			var baseVal = $(this).parent().find("#dateDay").text();
+			if(baseVal>=2){
+			$(this).parent().find("#dateDay").empty();
+			$(this).parent().find("#dateDay").text(baseVal - 1);
+			}else{console.log("1일보다 작게 할 수는 없습니다");}
+		});
+
+		/* 		$('#userDelete').click(function() {
+		 alert($(this).parent().parent().parent());
+		
+		 }); */
 	</script>
 </body>
 </html>

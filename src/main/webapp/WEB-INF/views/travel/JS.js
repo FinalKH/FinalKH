@@ -735,3 +735,40 @@ function get_ko_city_in_state(st_srl, st_name) {
 		}
 	});
 }
+
+
+
+function getStateInMap(st_srl, st_name) {
+	$('#city_list_title .cu_title').text(st_name);
+	$.ajax({
+		type : "post",
+		url : "/api/city/get_ko_city_in_state",
+		dataType : "json",
+		data : {
+			'st_srl' : st_srl
+		},
+		success : function(data) {
+			console.log(data);
+			html = '';
+
+			$.each(data.response_data, function(key, val) {
+				html += '<div class="item" data-no="' + key + '" data="' + val.ci_srl + '" data-ci_name="' + val.ci_name + '" data-lat="' + val.ci_lat + '" data-lng="' + val.ci_lng + '" data-is_state="0">';
+				html += '<div class="img_box fl"><img src="' + val.ci_image + '"></div>';
+				html += '<div class="info_box fl"><div class="info_title">' + val.ci_name + '</div><div class="info_sub_title">' + val.ci_name_en + '</div></div>';
+				html += '<div class="spot_to_inspot"><img src="/res/img/workspace/new/spot_to_inspot_a.png"></div>';
+				html += '<div class="clear"></div></div>';
+				add_marker_city(val.ci_lat, val.ci_lng, val.ci_name, val.ci_name_en, val.ci_srl, key, 0);
+			});
+			$('#city_list_box').html(html);
+			$('#city_list_title .back_btn').attr('data-go_state', '1');
+
+
+		},
+		error : function(data) {
+			//console.log(data);
+		},
+		complete : function() {
+			fitBoundsToVisibleMarkers();
+		}
+	});
+}

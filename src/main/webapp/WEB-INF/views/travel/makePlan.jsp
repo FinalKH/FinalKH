@@ -22,8 +22,6 @@
 			<div class="two wide column">
 				<div class="ui bound top sticky" id="day">
 					<div class="ui green inverted segment">
-						<p>일정 날짜 선택 컴퍼넌트 공간</p>
-						time :
 						<div class="text" id="api"></div>
 						<div class="ui fluid container">
 							<div class="grid">
@@ -84,9 +82,13 @@
 			<div class="three wide column">
 				<div class="ui bound top sticky" id="user">
 					<div class="ui blue inverted segment">
-						<p>사용자가 추가한 관광지 리스트 컴퍼넌트 공간</p>
 						<div class="ui fluid container">
 							<div class="grid">
+								<div class="sixteen wide red column">
+									<div class="ui padded grid">
+										<div class="sixteen wide teal column">저장</div>
+									</div>
+								</div>
 								<div class="sixteen wide column">
 									<div class="row">
 										<div class="ui padded grid">
@@ -122,7 +124,6 @@
 			<div class="eleven wide column">
 				<div class="ui red inverted segment">
 					<div class="ui inverted segment">
-						<p>사용자가 검색과 분류 선택 기능을 사용할 수 있는 컴퍼넌트 공간</p>
 						<div class="ui fluid container">
 							<div class="ui stackable grid">
 								<div class="four wide column">
@@ -200,7 +201,6 @@
 						</div>
 					</div>
 					<div class="ui inverted segment">
-						<p>지도안에 마커로 표시되어 있는 관광지들의 간략 정보 리스트</p>
 						<div class="ui fluid container">
 							<div class="ui stackable grid">
 								<div class="four wide column">
@@ -318,139 +318,140 @@
 			offset : 80,
 			type : 'push'
 		});
-	
+
 		$('.ui.bound.top.sticky#day').sticky({
 			context : '#context1',
 			offset : 80,
 			type : 'push'
 		});
-	
+
 		var map = new naver.maps.Map('map', {
-				center : new naver.maps.LatLng(37.5666805, 126.9784147),
-				zoom : 12,
-				mapTypeId : naver.maps.MapTypeId.NORMAL
-			}),
-			markers = [],
-			infoWindows = [];
-	
+			center : new naver.maps.LatLng(37.5666805, 126.9784147),
+			zoom : 12,
+			mapTypeId : naver.maps.MapTypeId.NORMAL
+		}), markers = [], infoWindows = [];
+
 		naver.maps.Event.addListener(map, 'idle', function() {
-	
+
 			bringAllInMap();
 		});
-	
-	
+
 		function deleteAllInMap() {
 			marker.setMap(null);
 		}
-	
+
 		function bringAllInMap() {
-			var data = {},
-				bounds = map.getBounds();
+			var data = {}, bounds = map.getBounds();
 			data["eastBP"] = bounds.getNE().lng();
 			data["westBP"] = bounds.getSW().lng();
 			data["southBP"] = bounds.getSW().lat();
 			data["northBP"] = bounds.getNE().lat();
 			//alert(JSON.stringify(data));
-	
-			$.ajax({
-				type : "post",
-				url : "${path}/travel/bringAllInMap.do",
-				dataType : "json",
-				data : JSON.stringify(data),
-				processData : false,
-				contentType : "application/json;charset=UTF-8",
-				async : false,
-				success : function(result) {
-					console.log(result),
-					$.each(result, function(key, value) {
-						var position = new naver.maps.LatLng(value.mapY, value.mapX);
-	
-						var marker = new naver.maps.Marker({
-							map : map,
-							position : position,
-							title : value.contentId,
-							icon : "http://www.owenscorning.com/images/orange-dot.png",
-						});
-	
-						var infoWindow = new naver.maps.InfoWindow(
-							{
-								content : '<div style="text-align:center;padding:10px;"><span style="color:black">' + value.title + '</span></div>'
-							});
-	
-						markers.push(marker);
-						infoWindows.push(infoWindow);
-	
+
+			$
+					.ajax({
+						type : "post",
+						url : "${path}/travel/bringAllInMap.do",
+						dataType : "json",
+						data : JSON.stringify(data),
+						processData : false,
+						contentType : "application/json;charset=UTF-8",
+						async : false,
+						success : function(result) {
+									console.log(result),
+									$.each(
+													result,
+													function(key, value) {
+														var position = new naver.maps.LatLng(
+																value.mapY,
+																value.mapX);
+
+														var marker = new naver.maps.Marker(
+																{
+																	map : map,
+																	position : position,
+																	title : value.contentId,
+																	icon : "http://www.owenscorning.com/images/orange-dot.png",
+																});
+
+														var infoWindow = new naver.maps.InfoWindow(
+																{
+																	content : '<div style="text-align:center;padding:10px;"><span style="color:black">'
+																			+ value.title
+																			+ '</span></div>'
+																});
+
+														markers.push(marker);
+														infoWindows
+																.push(infoWindow);
+
+													});
+							for (var i = 0, ii = markers.length; i < ii; i++) {
+								naver.maps.Event.addListener(markers[i],
+										'click', getClickHandler(i));
+							}
+
+						},
+						error : function(xhr, status, error) {
+							alert('error');
+						}
 					});
-					for (var i = 0, ii = markers.length; i < ii; i++) {
-						naver.maps.Event.addListener(markers[i], 'click',
-							getClickHandler(i));
-					}
-	
-				},
-				error : function(xhr, status, error) {
-					alert('error');
-				}
-			});
-		}
-		;
-	
+		};
+
 		function getClickHandler(seq) {
 			return function(e) {
-	
-				var marker = markers[seq],
-					infoWindow = infoWindows[seq];
+
+				var marker = markers[seq], infoWindow = infoWindows[seq];
 				if (marker.getIcon() === ('http://www.owenscorning.com/images/orange-dot.png')) {
 					marker
-						.setIcon({
-							url : 'http://www.diacomp.org/omb/images/Google/ltblue.png'
-						});
+							.setIcon({
+								url : 'http://www.diacomp.org/omb/images/Google/ltblue.png'
+							});
 				} else {
 					marker.setIcon({
-	
+
 					});
 				}
-	
+
 				if (infoWindow.getMap()) {
 					infoWindow.open(map, marker);
 				} else {
 					infoWindow.open(map, marker);
 				}
-	
+
 				if (marker.getAnimation() !== null) {
 					marker.setAnimation(null);
 				} else {
 					marker.setAnimation(naver.maps.Animation.BOUNCE);
 				}
-	
+
 				var point = e.coord;
-	
+
 				var path = polyline.getPath();
 				path.push(point);
 				path.setPath(null);
 			}
 		}
-	
+
 		function onMouseOver(e) {
-			var marker = e.overlay,
-				seq = marker.get('seq');
-	
+			var marker = e.overlay, seq = marker.get('seq');
+
 			marker
-				.setIcon({
-					url : 'https://mt.googleapis.com/vt/icon/name=icons/onion/22-blue-dot.png'
-				});
+					.setIcon({
+						url : 'https://mt.googleapis.com/vt/icon/name=icons/onion/22-blue-dot.png'
+					});
 		}
-	
+
 		function onMouseOut(e) {
-			var marker = e.overlay,
-				seq = marker.get('seq');
-	
+			var marker = e.overlay, seq = marker.get('seq');
+
 			marker.setIcon({
 				url : 'http://www.diacomp.org/omb/images/Google/ltblue.png'
 			});
 		}
 		bringAllInMap()
 		/* 		$(#map). */
-	
+
 		var polyline = new naver.maps.Polyline({
 			map : map,
 			path : [],
