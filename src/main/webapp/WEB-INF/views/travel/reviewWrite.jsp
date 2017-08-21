@@ -103,17 +103,17 @@
 				
 			function sendFile(files, editor, welEditable) {
 			      var form_data = new FormData();
-			      form_data.append('file', file);
+			      form_data.append('file', el);
 				      $.ajax({
 				        data: form_data,
 				        type: "POST",
-				        url: 'uploadPath',
+				        url: '${path}/image',
 				        cache: false,
 				        contentType: false,
 				        enctype: 'multipart/form-data',
 				        processData: false,
 				        success: function(url) {
-				        	editor.insertImage(welEditable, url);		        
+				        	$(el).summernote('editor.insertImage', url);        
 			        }
 				})
 			}

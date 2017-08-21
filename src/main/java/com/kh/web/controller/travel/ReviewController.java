@@ -4,21 +4,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.web.model.travel.dto.ReviewVO;
 import com.kh.web.service.travel.ReviewService;
 import com.kh.web.service.travel.reviewPager;
+import com.kh.web.util.UploadFileUtils;
 
 @Controller
 public class ReviewController {
@@ -86,6 +91,18 @@ public class ReviewController {
 		mav.addObject("keyword", keyword);
 		logger.info("mav:", mav);
 		return mav;
+	}
+	
+	@Resource(name="uploadPath")
+	String uploadPath;
+	
+	@RequestMapping(value="/image", method=RequestMethod.POST)
+	public ResponseEntity<String> reviewimg(@RequestParam("file") MultipartFile file) throws Exception {
+		System.out.println("업로드");
+		logger.info("originalName : "+file.getOriginalFilename());
+		logger.info("size : "+file.getSize());
+		logger.info("contentType : "+file.getContentType());
+		return new ResponseEntity<String>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()), HttpStatus.OK);
 	}
 		
 }
