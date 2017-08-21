@@ -11,43 +11,33 @@
 </head>
 <body>
 	<%@ include file="../include/menuTravel.jsp"%>
-
 	<!-- 헤더 정보 공간 -->
 	<div class="ui fluid container">
 		<div class="ui purple inverted segment">
 			<p>헤더 정보 공간</p>
-
 		</div>
 	</div>
-
 	<div class="ui fluid container" id="context1">
 		<div class="ui grid">
 			<div class="two wide column">
-
 				<div class="ui bound top sticky" id="day">
-
 					<div class="ui green inverted segment">
 						<p>일정 날짜 선택 컴퍼넌트 공간</p>
-						<p>time :
+						time :
 						<div class="text" id="api"></div>
-						</p>
-
 						<div class="ui fluid container">
 							<div class="grid">
-
 								<div class="sixteen wide column">
 									<div class="ui padded grid">
 										<div class="eight wide orange column">날짜</div>
 										<div class="eight wide orange column">에딧 버튼</div>
 									</div>
 								</div>
-
 								<div class="sixteen wide column">
 									<div class="ui padded grid">
 										<div class="sixteen wide orange column">전체 일정 보기</div>
 									</div>
 								</div>
-
 								<div class="eight wide column">
 									<div class="row">
 										<div class="ui padded grid">
@@ -75,7 +65,6 @@
 											<div class="eight wide red column">논산시</div>
 										</div>
 									</div>
-
 									<div class="sixteen wide column">
 										<div class="ui padded grid">
 											<div class="sixteen wide orange column">DAY 추가</div>
@@ -86,13 +75,9 @@
 											<div class="sixteen wide orange column">이용 방법</div>
 										</div>
 									</div>
-
-
 								</div>
 							</div>
 						</div>
-
-
 					</div>
 				</div>
 			</div>
@@ -100,8 +85,6 @@
 				<div class="ui bound top sticky" id="user">
 					<div class="ui blue inverted segment">
 						<p>사용자가 추가한 관광지 리스트 컴퍼넌트 공간</p>
-
-
 						<div class="ui fluid container">
 							<div class="grid">
 								<div class="sixteen wide column">
@@ -118,8 +101,6 @@
 										</div>
 									</div>
 								</div>
-
-
 								<div class="sixteen wide column">
 									<div class="ui padded grid">
 										<div class="four wide black column">관광지 사진</div>
@@ -127,8 +108,6 @@
 										<div class="two wide red column">버튼</div>
 									</div>
 								</div>
-
-
 								<div class="sixteen wide column">
 									<div class="ui padded grid">
 										<div class="eight wide black column">내 장소 추가</div>
@@ -137,15 +116,11 @@
 								</div>
 							</div>
 						</div>
-
-
-
 					</div>
 				</div>
 			</div>
 			<div class="eleven wide column">
 				<div class="ui red inverted segment">
-
 					<div class="ui inverted segment">
 						<p>사용자가 검색과 분류 선택 기능을 사용할 수 있는 컴퍼넌트 공간</p>
 						<div class="ui fluid container">
@@ -224,8 +199,6 @@
 							</div>
 						</div>
 					</div>
-
-
 					<div class="ui inverted segment">
 						<p>지도안에 마커로 표시되어 있는 관광지들의 간략 정보 리스트</p>
 						<div class="ui fluid container">
@@ -239,7 +212,6 @@
 														src="https://semantic-ui.com/images/wireframe/image.png">
 												</div>
 											</div>
-
 										</div>
 										<div class="ten wide white column">관광지 설명</div>
 										<div class="two wide orange column">
@@ -254,9 +226,6 @@
 						</div>
 					</div>
 				</div>
-
-
-
 				<div class="ui red segment">
 					<p>지도 API 공간</p>
 					<div id="map" style="width: 100%; height: 900px;"></div>
@@ -267,7 +236,6 @@
 					<p></p>
 					<div id="calendar"></div>
 				</div>
-
 				<div class="ui red segment">
 					<div class="ui padded grid">
 						<div class="sixteen wide column">댓글(10)</div>
@@ -295,7 +263,6 @@
 			</div>
 		</div>
 	</div>
-
 	<!-- 풋터 공간 -->
 	<div class="ui fluid container">
 		<div class="ui black inverted segment">
@@ -304,7 +271,6 @@
 				<div class="ui center aligned container">
 					<div class="ui stackable inverted divided grid">
 						<div class="three wide column">
-
 							<h4 class="ui inverted header">Group 1</h4>
 							<div class="ui inverted link list">
 								<a href="#" class="item">Link One</a> <a href="#" class="item">Link
@@ -345,77 +311,152 @@
 		</div>
 	</div>
 
-
 	<!-- 스크립트 태그 -->
-
 	<script>
 		$('.ui.bound.top.sticky#user').sticky({
 			context : '#context1',
 			offset : 80,
 			type : 'push'
 		});
-
+	
 		$('.ui.bound.top.sticky#day').sticky({
 			context : '#context1',
 			offset : 80,
 			type : 'push'
 		});
-
-		// html 에서 map이란 아이디를 찾아서 적용시킴
+	
 		var map = new naver.maps.Map('map', {
-			center : new naver.maps.LatLng(37.5666805, 126.9784147),
-			zoom : 2,
-			mapTypeId : naver.maps.MapTypeId.NORMAL
-		}),
-		bounds = map.getBounds(),
-	    southWest = bounds.getSW(),
-	    northEast = bounds.getNE(),
-	    lngSpan = northEast.lng() - southWest.lng(),
-	    latSpan = northEast.lat() - southWest.lat(),
-		markers = [],
-		infoWindows = [];
-		
-		$.ajax({
-			type : "GET",
-			url : "${path}/travel/makePlan.do",
-			//dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
-			async : false, // Ajax 처리가 완료될 때까지 브라우져가 멈춰줌
-			// 기본 값은 true 로 설정 되어 있음
-			success : function(data) {
-				alert(southWest);
-				alert(northEast);
-				alert("성공");
-			},
-			complete : function(data) {
-				alert(southWest);
-				alert(northEast);
-				alert("완료");
-			},
-			error : function(xhr, status, error) {
-				alert(southWest);
-				alert(northEast);
-				alert("에러발생");
-			}
+				center : new naver.maps.LatLng(37.5666805, 126.9784147),
+				zoom : 12,
+				mapTypeId : naver.maps.MapTypeId.NORMAL
+			}),
+			markers = [],
+			infoWindows = [];
+	
+		naver.maps.Event.addListener(map, 'idle', function() {
+	
+			bringAllInMap();
 		});
-
-/* 		$(document).bringAllInMap(function() {
+	
+	
+		function deleteAllInMap() {
+			marker.setMap(null);
+		}
+	
+		function bringAllInMap() {
+			var data = {},
+				bounds = map.getBounds();
+			data["eastBP"] = bounds.getNE().lng();
+			data["westBP"] = bounds.getSW().lng();
+			data["southBP"] = bounds.getSW().lat();
+			data["northBP"] = bounds.getNE().lat();
+			//alert(JSON.stringify(data));
+	
 			$.ajax({
-				type : "GET",
+				type : "post",
 				url : "${path}/travel/bringAllInMap.do",
-				//dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
-				async : false, // Ajax 처리가 완료될 때까지 브라우져가 멈춰줌
-				// 기본 값은 true 로 설정 되어 있음
-				success : function(data) {
-					alert("성공");
-				},
-				complete : function(data) {
-					alert("완료");
+				dataType : "json",
+				data : JSON.stringify(data),
+				processData : false,
+				contentType : "application/json;charset=UTF-8",
+				async : false,
+				success : function(result) {
+					console.log(result),
+					$.each(result, function(key, value) {
+						var position = new naver.maps.LatLng(value.mapY, value.mapX);
+	
+						var marker = new naver.maps.Marker({
+							map : map,
+							position : position,
+							title : value.contentId,
+							icon : "http://www.owenscorning.com/images/orange-dot.png",
+						});
+	
+						var infoWindow = new naver.maps.InfoWindow(
+							{
+								content : '<div style="text-align:center;padding:10px;"><span style="color:black">' + value.title + '</span></div>'
+							});
+	
+						markers.push(marker);
+						infoWindows.push(infoWindow);
+	
+					});
+					for (var i = 0, ii = markers.length; i < ii; i++) {
+						naver.maps.Event.addListener(markers[i], 'click',
+							getClickHandler(i));
+					}
+	
 				},
 				error : function(xhr, status, error) {
-					alert("에러발생");
+					alert('error');
 				}
 			});
-		}); */
+		}
+		;
+	
+		function getClickHandler(seq) {
+			return function(e) {
+	
+				var marker = markers[seq],
+					infoWindow = infoWindows[seq];
+				if (marker.getIcon() === ('http://www.owenscorning.com/images/orange-dot.png')) {
+					marker
+						.setIcon({
+							url : 'http://www.diacomp.org/omb/images/Google/ltblue.png'
+						});
+				} else {
+					marker.setIcon({
+	
+					});
+				}
+	
+				if (infoWindow.getMap()) {
+					infoWindow.open(map, marker);
+				} else {
+					infoWindow.open(map, marker);
+				}
+	
+				if (marker.getAnimation() !== null) {
+					marker.setAnimation(null);
+				} else {
+					marker.setAnimation(naver.maps.Animation.BOUNCE);
+				}
+	
+				var point = e.coord;
+	
+				var path = polyline.getPath();
+				path.push(point);
+				path.setPath(null);
+			}
+		}
+	
+		function onMouseOver(e) {
+			var marker = e.overlay,
+				seq = marker.get('seq');
+	
+			marker
+				.setIcon({
+					url : 'https://mt.googleapis.com/vt/icon/name=icons/onion/22-blue-dot.png'
+				});
+		}
+	
+		function onMouseOut(e) {
+			var marker = e.overlay,
+				seq = marker.get('seq');
+	
+			marker.setIcon({
+				url : 'http://www.diacomp.org/omb/images/Google/ltblue.png'
+			});
+		}
+		bringAllInMap()
+		/* 		$(#map). */
+	
+		var polyline = new naver.maps.Polyline({
+			map : map,
+			path : [],
+			strokeColor : '#5347AA',
+			strokeWeight : 2
+		});
 	</script>
 </body>
 </html>

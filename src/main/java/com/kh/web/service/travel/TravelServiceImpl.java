@@ -12,6 +12,7 @@ import com.kh.web.controller.travel.TravelController;
 import com.kh.web.model.travel.dao.TravelDAO;
 import com.kh.web.model.travel.dto.AreaVO;
 import com.kh.web.model.travel.dto.ContentCommonVO;
+import com.kh.web.model.travel.dto.MapBoundVO;
 
 @Service
 public class TravelServiceImpl implements TravelService {
@@ -19,20 +20,20 @@ public class TravelServiceImpl implements TravelService {
 
 	@Inject
 	TravelDAO travelDao;
-	
+
 	@Override
 	public List<AreaVO> list() {
-		List<AreaVO> AreaItems = travelDao.selectAllArea();
-		return AreaItems; 
+		return travelDao.selectAllArea();
 	}
-	
+
 	@Override
 	public List<ContentCommonVO> listContentCommon() {
-		List<ContentCommonVO> ContentCommonItems = travelDao.selectAllContentCommon();
-		return ContentCommonItems; 
+		return travelDao.selectAllContentCommon();
 	}
-	
-	
 
+	public List<Object> bringAllInMap(MapBoundVO mapBoundVO){
+		logger.info(String.valueOf(mapBoundVO));
+	return travelDao.bringAllInMap(mapBoundVO);
 
+	}
 }
