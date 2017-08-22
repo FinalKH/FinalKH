@@ -22,16 +22,12 @@
 				<div class="ui fluid aligned divided big animated selection list"
 					id="content" style="overflow: scroll; margin-right: -14px;">
 
-					
 
-					
+
+
 
 					<div class="ui two top attached buttons">
 						<div class="ui button" id="toggleButton">나의 일정</div>
-
-						<div class="ui button"
-							onclick="location.href='javascript:detailForm()'">상세일정 만들기
-						</div>
 					</div>
 					<c:forEach var="row" items="${list}">
 						<div class="item">
@@ -50,6 +46,8 @@
 			<div class="thirteen wide fluid blue column">
 
 				<div class="ui left very sidebar vertical menu" id="sidebar">
+					<div class="ui fluid button"
+						onclick="location.href='javascript:detailForm()'">상세일정 만들기</div>
 					<!-- 사용자가 만든 일정이 들어가는 곳 -->
 				</div>
 

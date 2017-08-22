@@ -17,6 +17,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM T_ContentCommon
 	</select>
 	<select id="bringAllInMap" resultType="com.kh.web.model.travel.dto.ContentCommonVO">
-		SELECT * FROM T_ContentCommon where (mapX between #{westBP} AND #{eastBP}) AND (mapY between #{southBP} AND #{northBP}) AND rownum &lt;= 10
+		SELECT * FROM T_ContentCommon where (mapX between #{westBP} AND #{eastBP}) AND (mapY between #{southBP} AND #{northBP}) AND rownum &lt;= 100
 	</select>
 </mapper>
