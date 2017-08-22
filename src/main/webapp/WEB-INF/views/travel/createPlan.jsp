@@ -20,7 +20,7 @@
 
 
 				<div class="ui fluid aligned divided big animated selection list"
-					id="content" style="overflow: scroll; margin-right: -14px;">
+					id="content" style="overflow-y:auto; overflow-x:hidden; margin-right: -14px;">
 
 
 
@@ -222,7 +222,6 @@
 		for (var i = 0, ii = markers.length; i < ii; i++) {
 			naver.maps.Event.addListener(markers[i], 'click',
 					getClickHandler(i));
-
 		}
 
 		$('.ui.sidebar').sidebar({
@@ -260,10 +259,12 @@
 		});
 		$(document).on("click", "#minusButton", function() {
 			var baseVal = $(this).parent().find("#dateDay").text();
-			if(baseVal>=2){
-			$(this).parent().find("#dateDay").empty();
-			$(this).parent().find("#dateDay").text(baseVal - 1);
-			}else{console.log("1일보다 작게 할 수는 없습니다");}
+			if (baseVal >= 2) {
+				$(this).parent().find("#dateDay").empty();
+				$(this).parent().find("#dateDay").text(baseVal - 1);
+			} else {
+				console.log("1일보다 작게 할 수는 없습니다");
+			}
 		});
 
 		/* 		$('#userDelete').click(function() {
