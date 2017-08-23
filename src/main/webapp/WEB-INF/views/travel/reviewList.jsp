@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>후 기</title>
 <!-- Semantic Ui  -->
 <link rel="stylesheet" type="text/css"
 	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.css">
@@ -74,8 +74,8 @@ table th {
 						<c:out value="${map.searchOption == 'user_name'?'selected':''}"/>>이름</option>
 					<option value="content"
 						<c:out value="${map.searchOption == 'content'?'selected':''}"/>>내용</option>
-					<option value="title"
-						<c:out value="${map.searchOption == 'title'?'selected':''}"/>>제목</option>
+					<option value="subject"
+						<c:out value="${map.searchOption == 'subject'?'selected':''}"/>>제목</option>
 				</select> <input name="keyword" value="${map.keyword}"> <input
 					type="submit" value="조회">
 				<!-- 로그인한 사용자만 글쓰기 버튼을 활성화 
@@ -102,24 +102,26 @@ table th {
 				<c:choose>
 			<c:when test="${row.show == 'y'}">
 		<!-- show 컬럼이 y일때(삭제X 글) -->
-		<tr>
+		<tr>		
 			<td>${row.bno}</td>
 			<!-- 게시글 상세보기 페이지로 이동시 게시글 목록페이지에 있는 검색조건, 키워드, 현재페이지 값을 유지하기 위해 -->
 			<td>
-				<a href="${path}/board/view.do?bno=${row.bno}&curPage=${map.boardPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">${row.title} 
+				<a href="${path}/review.do?bno=${row.bno}&curPage=${map.reviewPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">${row.subject} 
 					<!-- ** 댓글이 있으면 게시글 이름 옆에 출력하기 -->
 					<c:if test="${row.recnt > 0}">
 						<span style="color: red;">(${row.recnt})
 						</span>
 					</c:if>
 				</a>
-			</td>
-			<td>${row.userName}</td>
+			</td>			
 			<td>
 				<!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 -->
 				<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 			</td>
-			<td>${row.viewcnt}</td>
+			<td>0</td>
+			<td>
+				${row.viewcnt}
+			</td>
 		</tr>
 			</c:when>
 			<c:otherwise>
@@ -127,7 +129,7 @@ table th {
 		<tr>
 			<td colspan="5" align="left">
 				<c:if test="${row.recnt > 0}">
-					<a href="${path}/board/view.do?bno=${row.bno}&curPage=${map.boardPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">삭제된 게시물입니다.
+					<a href="${path}/review.do?bno=${row.bno}&curPage=${map.reviewPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">삭제된 게시물입니다.
 					<!-- ** 댓글이 있으면 게시글 이름 옆에 출력하기 -->
 						<span style="color: red;">(${row.recnt})
 						</span>
@@ -142,15 +144,17 @@ table th {
 				</c:choose>
 				</c:forEach>
 				</tbody>
-				<tfoot>
+				</table>
+				<table class="ui celled table">
+				<tbody>
 					<tr>
-						<th width="25" id="writebt" colspan="1">
-						<a class="ui button"	id="wbt" href="${path}/reviewWrite.do">글쓰기</a>
+						<th id="writebt" colspan="1">
+						<a class="ui button"	id="wbt" href="${path}/reviewWrite.do" >글쓰기</a>
 						</th>						
 						<th colspan="4">
 							<div class="ui right floated pagination menu">
 							<!-- 처음페이지로 이동 : 현재 페이지가 1보다 크면  [처음]하이퍼링크를 화면에 출력-->
-							<c:if test="${map.boardPager.curBlock > 1}">
+							<c:if test="${map.reviewPager.curBlock > 1}">
 								<a href="javascript:list('1')">[처음]</a>
 							</c:if>
 								<!--<a class="icon item"> <i class="left chevron icon"></i></a> <a
@@ -159,10 +163,10 @@ table th {
 									class="right chevron icon"></i>
 								</a>-->
 							<!-- **하나의 블럭 시작페이지부터 끝페이지까지 반복문 실행 -->
-				<c:forEach var="num" begin="${map.boardPager.blockBegin}" end="${map.boardPager.blockEnd}">
+				<c:forEach var="num" begin="${map.reviewPager.blockBegin}" end="${map.reviewPager.blockEnd}">
 					<!-- 현재페이지이면 하이퍼링크 제거 -->
 					<c:choose>
-						<c:when test="${num == map.boardPager.curPage}">
+						<c:when test="${num == map.reviewPager.curPage}">
 							<span class="item" style="color: red">${num}</span>&nbsp;
 						</c:when>
 						<c:otherwise>
@@ -172,19 +176,20 @@ table th {
 				</c:forEach>
 				
 				<!-- 다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 [다음]하이퍼링크를 화면에 출력 -->
-				<c:if test="${map.boardPager.curBlock <= map.boardPager.totBlock}">
-					<a href="javascript:list('${map.boardPager.nextPage}')">[다음]</a>
+				<c:if test="${map.reviewPager.curBlock <= map.reviewPager.totBlock}">
+					<a href="javascript:list('${map.reviewPager.nextPage}')">[다음]</a>
 				</c:if>
 				
 				<!-- 끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 [끝]하이퍼링크를 화면에 출력 -->
-				<c:if test="${map.boardPager.curPage <= map.boardPager.totPage}">
-					<a href="javascript:list('${map.boardPager.totPage}')">[끝]</a>
+				<c:if test="${map.reviewPager.curPage <= map.reviewPager.totPage}">
+					<a href="javascript:list('${map.reviewPager.totPage}')">[끝]</a>
 				</c:if>
 							</div>
 						</th>
 					</tr>
-				</tfoot>
-			</table>
+				</tbody>
+				</table>
+			
 		</div><!-- grid -->
 	</div><!-- ui container --> 
 	</section>

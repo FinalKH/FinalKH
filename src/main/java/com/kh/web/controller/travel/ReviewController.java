@@ -4,22 +4,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.web.model.board.dto.BoardVO;
 import com.kh.web.model.travel.dto.ReviewVO;
-import com.kh.web.service.board.BoardPager;
-import com.kh.web.service.board.BoardService;
 import com.kh.web.service.travel.ReviewService;
+import com.kh.web.service.travel.reviewPager;
+import com.kh.web.util.UploadFileUtils;
 
 @Controller
 public class ReviewController {
@@ -27,30 +31,41 @@ public class ReviewController {
 
 	@Inject
 	ReviewService reviewService;
-	@Inject
-	BoardService boardService;
 
-	// 02. 여행 후기 관련
-	@RequestMapping("reviewList.do")
-	public ModelAndView reviewList(@RequestParam(defaultValue = "title") String searchOption,
+	// 여행 후기 관련	
+	// 작성
+	@RequestMapping(value = "/reviewWrite.do", method = RequestMethod.GET)
+	public String reviewWrite() {
+		logger.info("");
+		return "travel/reviewWrite";
+	}
+
+	@RequestMapping(value = "/reviewInsert.do", method = RequestMethod.POST)
+	public String reviewInsert(@ModelAttribute ReviewVO vo,HttpSession session) throws Exception {
+		logger.info("123");
+
+		reviewService.create(vo);		
+		return "redirect:reviewList.do";
+	}
+	
+	//리스트
+	@RequestMapping("/reviewList.do")
+	public ModelAndView reviewList(@RequestParam(defaultValue = "subject") String searchOption,
 			@RequestParam(defaultValue = "") String keyword, @RequestParam(defaultValue = "1") int curPage)
 			throws Exception {
-		// 레코드의 갯수 계산
-		int count = boardService.countArticle(searchOption, keyword);
 		// 페이지 나누기 관련 처리
-		BoardPager boardPager = new BoardPager(count, curPage);
-		int start = boardPager.getPageBegin();
-		int end = boardPager.getPageEnd();
+		reviewPager reviewPager = new reviewPager(curPage);
+		int start = reviewPager.getPageBegin();
+		int end = reviewPager.getPageEnd();
 
-		List<BoardVO> list = boardService.listAll(start, end, searchOption, keyword);
+		List<ReviewVO> list =reviewService.listAll(start, end, searchOption, keyword);
 
 		// 데이터를 맵에 저장
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list); // list
-		map.put("count", count); // 레코드의 갯수
 		map.put("searchOption", searchOption); // 검색옵션
 		map.put("keyword", keyword); // 검색키워드
-		map.put("boardPager", boardPager);
+		map.put("reviewPager", reviewPager);
 		// ModelAndView - 모델과 뷰
 		ModelAndView mav = new ModelAndView();
 		/*
@@ -59,21 +74,35 @@ public class ReviewController {
 		 * mav.addObject("keyword", keyword);
 		 */
 		mav.addObject("map", map); // 맵에 저장된 데이터를 mav에 저장
-		mav.setViewName("travel/reviewList"); // 뷰를 list.jsp로 설정
-		return mav; // // list.jsp로 List가 전달된다.
+		mav.setViewName("travel/reviewList"); // 뷰를 List.jsp로 설정
+		return mav; // // jsp로 List가 전달된다.
 	}
-
-	@RequestMapping(value = "reviewWrite.do", method = RequestMethod.GET)
-	public String reviewWrite() {
-		logger.info("");
-		return "travel/reviewWrite";
+	
+	// 보기
+	@RequestMapping(value="/review.do", method = RequestMethod.GET)
+	public ModelAndView review(@RequestParam int bno, @RequestParam int curPage, @RequestParam String searchOption,
+			@RequestParam String keyword, HttpSession session) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		reviewService.increaseViewcnt(bno, session);
+		mav.setViewName("travel/review");
+		mav.addObject("dto", reviewService.read(bno));
+		mav.addObject("curPage", curPage);
+		mav.addObject("searchOption", searchOption);
+		mav.addObject("keyword", keyword);
+		logger.info("mav:", mav);
+		return mav;
 	}
-
-	@RequestMapping(value = "reviewInsert.do", method = RequestMethod.POST)
-	public String reviewInsert(@ModelAttribute ReviewVO vo) throws Exception {
-		logger.info("123");
-
-		reviewService.create(vo);
-		return "redirect:reviewWrite.do";
+	
+	@Resource(name="uploadPath")
+	String uploadPath;
+	
+	@RequestMapping(value="/image", method=RequestMethod.POST)
+	public ResponseEntity<String> reviewimg(@RequestParam("file") MultipartFile file) throws Exception {
+		System.out.println("업로드");
+		logger.info("originalName : "+file.getOriginalFilename());
+		logger.info("size : "+file.getSize());
+		logger.info("contentType : "+file.getContentType());
+		return new ResponseEntity<String>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()), HttpStatus.OK);
 	}
+		
 }
