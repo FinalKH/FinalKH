@@ -73,7 +73,7 @@ hr{display:none;}
 		<div id="section">
 			<div id="article1" >
 				<h2>국내 여행지</h2>
-				<a href="#"><img class="hello" src="" width="500px" heigth="500px"/></a>
+				<a href="#"><img class="hello" src="" width="500px" height="500px"/></a>
 			</div><!-- //article1 -->
 			
 			<div id="article2">

@@ -3,8 +3,6 @@ package com.kh.web.model.travel.dao;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 

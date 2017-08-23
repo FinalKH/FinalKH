@@ -5,30 +5,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 <mapper namespace="travel">
-
-<<<<<<< HEAD
-    <!--  -->
-    <select id="selectImage" resultType="com.kh.web.model.travel.dto.ImageVO">
-        SELECT
-          *
-        FROM T_Spot
-        <!-- WHERE Spot_Num = #{spotNum} -->
-    </select>
-    
-=======
+	<!-- -->
+	<select id="selectImage" resultType="com.kh.web.model.travel.dto.ImageVO">
+		SELECT
+		*
+		FROM T_Spot
+		<!-- WHERE Spot_Num = #{spotNum} -->
+	</select>
 	<select id="selectAllArea" resultType="com.kh.web.model.travel.dto.AreaVO">
 		SELECT * FROM T_Area
 	</select>
-
-	<select id="selectAllSiGunGu" resultType="com.kh.web.model.travel.dto.SiGunGuVO">
-		SELECT * FROM T_SiGunGu
-	</select>
-	
 	<select id="selectAllContentCommon" resultType="com.kh.web.model.travel.dto.ContentCommonVO">
-		SELECT * FROM T_ContentCommon
+		SELECT * FROM
+		T_ContentCommon
 	</select>
 	<select id="bringAllInMap" resultType="com.kh.web.model.travel.dto.ContentCommonVO">
-		SELECT * FROM T_ContentCommon where (mapX between #{westBP} AND #{eastBP}) AND (mapY between #{southBP} AND #{northBP}) AND rownum &lt;= 100
+		SELECT * FROM
+		T_ContentCommon where (mapX between #{westBP} AND #{eastBP}) AND (mapY
+		between #{southBP} AND #{northBP}) AND rownum &lt;= 100
 	</select>
->>>>>>> origin/Jeayoung
 </mapper>

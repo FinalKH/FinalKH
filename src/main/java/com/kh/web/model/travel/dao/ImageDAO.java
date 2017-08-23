@@ -2,8 +2,6 @@
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import com.kh.web.model.travel.dto.ImageVO;
 
 public interface ImageDAO {

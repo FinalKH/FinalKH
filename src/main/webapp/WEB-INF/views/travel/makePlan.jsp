@@ -215,7 +215,7 @@
 					<div id="map" style="width: 100%; height: 900px;"></div>
 				</div>
 				<div class="ui segment">
-									<div id="calendar"></div>
+					<div id="calendar"></div>
 				</div>
 				<div class="ui red segment">
 					<div class="ui padded grid">
@@ -472,10 +472,7 @@
 
 
 		
-<<<<<<< HEAD
-<<<<<<< HEAD
-		
-=======
+
 /* 		<c:forEach var="row1" items="${list}">
 		var mapX = "${row1.areaMapX}";
 		var mapY = "${row1.areaMapY}";
@@ -484,9 +481,7 @@
 	    map: map
 	});
 	</c:forEach>	 */
->>>>>>> develop
-		
-=======
+
 		$(document).ready(function () {
 		    $('.pick.button').on('click', function () {
 		    	var $id = $(this).attr('id');
@@ -515,7 +510,6 @@
 			            });
 
 		    });
->>>>>>> origin/Jeayoung
 
 		});
 	</script>
