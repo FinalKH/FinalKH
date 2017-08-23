@@ -15,17 +15,9 @@
 				style="height: 89px; margin: -15px;"></div>
 			<div class="three wide fluid column" id="left"
 				style="margin-top: -15px;">
-
-
-
-
 				<div class="ui fluid aligned divided big animated selection list"
-					id="content" style="overflow-y:auto; overflow-x:hidden; margin-right: -14px;">
-
-
-
-
-
+					id="content"
+					style="overflow-y: auto; overflow-x: hidden; margin-right: -14px;">
 					<div class="ui two top attached buttons">
 						<div class="ui button" id="toggleButton">나의 일정</div>
 					</div>
@@ -84,7 +76,9 @@
 							</div>
 
 						</div>
-						<div class="ui fluid large orange submit button">상세일정 만들기</div>
+						<div class="ui fluid large orange submit button"
+							onclick="location.href='${path}/travel/makePlan.do'">상세일정
+							만들기</div>
 					</div>
 
 					<div class="ui error message"></div>

@@ -124,19 +124,6 @@
 			</div>
 			<div class="eleven wide column">
 				<div class="ui segment">
-					<div id='external-events'>
-						<h4>Draggable Events</h4>
-						<div class='fc-event'>My Event 1</div>
-						<div class='fc-event'>My Event 2</div>
-						<div class='fc-event'>My Event 3</div>
-						<div class='fc-event'>My Event 4</div>
-						<div class='fc-event'>My Event 5</div>
-						<p>
-							<input type='checkbox' id='drop-remove' /> <label
-								for='drop-remove'>remove after drop</label>
-						</p>
-					</div>
-					<div id="calendar"></div>
 					<div class="ui inverted segment">
 						<div class="ui fluid container">
 
@@ -145,7 +132,7 @@
 									<div class="row">
 										<div class="ui padded grid">
 
-											
+
 											<div class="left floated four wide blue column">지역</div>
 											<div class="right floated four wide red column">
 												<button class="ui inverted basic button">지역변경</button>
@@ -227,7 +214,9 @@
 				<div class="ui segment">
 					<div id="map" style="width: 100%; height: 900px;"></div>
 				</div>
-				<div class="ui segment"></div>
+				<div class="ui segment">
+									<div id="calendar"></div>
+				</div>
 				<div class="ui red segment">
 					<div class="ui padded grid">
 						<div class="sixteen wide column">댓글(10)</div>
@@ -307,32 +296,6 @@
 	<!-- 스크립트 태그 -->
 	<script>
 		$(document).ready(function() {
-
-			/* initialize the external events
-			-----------------------------------------------------------------*/
-
-			$('#external-events .fc-event').each(function() {
-
-				// store data so the calendar knows to render an event upon drop
-				$(this).data('event', {
-					title : $.trim($(this).text()), // use the element's text as the event title
-					stick : true
-				// maintain when user navigates (see docs on the renderEvent method)
-				});
-
-				// make the event draggable using jQuery UI
-				$(this).draggable({
-					zIndex : 999,
-					revert : true, // will cause the event to go back to its
-					revertDuration : 0
-				//  original position after the drag
-				});
-
-			});
-
-			/* initialize the calendar
-			-----------------------------------------------------------------*/
-
 			$('#calendar').fullCalendar({
 				header : {
 					left : 'prev,next today',
@@ -507,19 +470,38 @@
 			strokeWeight : 2
 		});
 
-		$(document)
-				.on(
-						"click",
-						'.pick.button',
-						function() {
-							var $id = $(this).attr('id');
-							var $div = $('<div class="item" id="userPickItem" draggable="true"><div class="ui icon tiny buttons"><button class="ui button" id="userDelete"><i class="delete icon"></i>'
-									+ $id
-									+ '</button><button class="ui black disabled button"></button></div><div class="ui icon tiny right floated buttons"><button class="ui button" id="minusButton"><i class="minus icon"></i></button><button class="ui black disabled button"><span id="dateDay">2</span>일</button><button class="ui button" id="plusButton"><i class="plus icon"></i></button></div></div>');
-							$('#userPick').append($div);
 
-						});
-		alert(1);
+		
+		$(document).ready(function () {
+		    $('.pick.button').on('click', function () {
+		    	var $id = $(this).attr('id');
+				var $div = $('<div class="item" id="userPickItem"><div class="ui icon tiny buttons"><button class="ui button" id="userDelete"><i class="delete icon"></i>'
+						+ $id
+						+ '</button><button class="ui black disabled button"></button></div><div class="ui icon tiny right floated buttons"><button class="ui button" id="minusButton"><i class="minus icon"></i></button><button class="ui black disabled button"></button></div></div>');
+				$('#userPick').append($div);				
+				  $('#userPickItem').each(function(index) {
+					  $(this).data('event', {
+							title : $.trim($(this).text()), // use the element's text as the event title
+							stick : true
+						// maintain when user navigates (see docs on the renderEvent method)
+					  })
+			            });
+				  $('#userPickItem').each(function(index) {
+					  $(this).draggable({
+							zIndex : 999,
+							revert : true, // will cause the event to go back to its
+							revertDuration : 0,
+							appendTo: 'body',
+							containment: 'window',
+							scroll: false,
+							helper: 'clone'
+						//  original position after the drag
+					  })
+			            });
+
+		    });
+
+		});
 	</script>
 </body>
 </html>
