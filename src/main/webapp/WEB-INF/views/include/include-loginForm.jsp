@@ -93,11 +93,8 @@ body>.grid {
 
 <!-- DIMMER 처리된 회원가입 페이지  -->
 <div class="ui container">
-	<div class="ui basic signupForm modal">
-		<i class="close icon"></i>
-		<div class="content">
+	<div class="ui basic signupForm modal" style="width:450px; text-align:center; margin-left:-250px;">
 			<%@ include file="../include/include-signUpForm.jsp"%>
-		</div>
 	</div>
 </div>
 <script>

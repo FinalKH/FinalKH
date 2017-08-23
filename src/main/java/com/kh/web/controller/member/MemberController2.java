@@ -81,7 +81,7 @@ public class MemberController2 {
             mav.setViewName("main");
             mav.addObject("msg", "success");
         } else {    // 로그인 실패
-            // login.jsp로 이동
+            // main.jsp로 이동
             mav.setViewName("main");
             mav.addObject("msg", "failure");
         }

@@ -516,7 +516,18 @@
 		     });
 		});
 		
+<<<<<<< HEAD
 		
+=======
+/* 		<c:forEach var="row1" items="${list}">
+		var mapX = "${row1.areaMapX}";
+		var mapY = "${row1.areaMapY}";
+		new naver.maps.Marker({
+	    position: new naver.maps.LatLng(mapY, mapX),
+	    map: map
+	});
+	</c:forEach>	 */
+>>>>>>> develop
 		
 
 	</script>

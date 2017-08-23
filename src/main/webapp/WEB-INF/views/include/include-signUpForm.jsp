@@ -66,13 +66,13 @@ body>.grid {
     ;
   </script>
 
-<div class="ui middle aligned center aligned grid">
+
 	<div class="signUp column">
 		<h2 class="ui teal image header">
 			<img src="https://semantic-ui.com/examples/assets/images/logo.png"
 				class="image">
+			<div class="content">Sign-up your account</div>
 		</h2>
-		<h2>Sign-up your account</h2>
 		<form class="ui large signup form" action="${path}/member/insert.do" method="post">
 			<div class="ui stacked segment">
 				<div class="field">
@@ -105,4 +105,3 @@ body>.grid {
 			<div class="ui error message"></div>
 		</form>
 	</div>
-</div>
