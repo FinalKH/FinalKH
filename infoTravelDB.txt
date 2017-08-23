@@ -1,4 +1,4 @@
---------------------------------------
+﻿--------------------------------------
 
 
 	-- DB 정보 인덱스
@@ -404,6 +404,23 @@
 	-- 1. 멤버 테스트 쿼리
 	SELECT COUNT(*) FROM tbl_member;		
 	-- 총 데이터가 100개라면 성공적으로 입력 된 것
+
+
+	--후기 테스트 테이블--
+alter table review drop primary key cascade;
+drop sequence seq_review;
+drop table review;
+create table review(
+bno number not null primary key,
+subject varchar2(200),
+content varchar2(4000),
+regdate date default sysdate,
+viewcnt number default 0,
+show char(1) default 'y'
+); 
+
+create sequence seq_review
+start with 1;	
 
 	
 	-- @ 최종 테이블, 시퀀스 구조 확인
