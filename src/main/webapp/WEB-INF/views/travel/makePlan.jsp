@@ -215,7 +215,7 @@
 					<div id="map" style="width: 100%; height: 900px;"></div>
 				</div>
 				<div class="ui segment">
-					<div id="calendar"></div>
+									<div id="calendar"></div>
 				</div>
 				<div class="ui red segment">
 					<div class="ui padded grid">
@@ -472,16 +472,6 @@
 
 
 		
-
-/* 		<c:forEach var="row1" items="${list}">
-		var mapX = "${row1.areaMapX}";
-		var mapY = "${row1.areaMapY}";
-		new naver.maps.Marker({
-	    position: new naver.maps.LatLng(mapY, mapX),
-	    map: map
-	});
-	</c:forEach>	 */
-
 		$(document).ready(function () {
 		    $('.pick.button').on('click', function () {
 		    	var $id = $(this).attr('id');

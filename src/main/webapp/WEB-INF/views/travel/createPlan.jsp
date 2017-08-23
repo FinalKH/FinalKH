@@ -6,98 +6,85 @@
 <title>여행 도시 선택하기</title>
 <%@ include file="../include/headerTravel.jsp"%>
 
-
 </head>
 <body>
 	<%@ include file="../include/menuTravel.jsp"%>
 	<div class="ui fluid container" style="padding: 0em;">
 		<div class="ui grid">
-			<div class="sixteen wide fluid grey column"
+			<div class="sixteen wide fluid column"
 				style="height: 89px; margin: -15px;"></div>
-
-
-			<div class="three wide fluid column">
-				<div class="ui right button"
-					onclick="location.href='${path}/travel/makePlan.do'">
-					<i class="move icon"></i>상세 일정 만들기
-				</div>
-				<div class="ui fluid list" id="content"
-					style="overflow: scroll; margin-right: -14px;">
-
-
-					<div class="three wide fluid column" id="left"
-						style="margin-top: -15px;">
-						<div class="ui fluid aligned divided big animated selection list"
-							id="content"
-							style="overflow-y: auto; overflow-x: hidden; margin-right: -14px;">
-							<div class="ui two top attached buttons">
-								<div class="ui button" id="toggleButton">나의 일정</div>
-							</div>
-
-							<c:forEach var="row" items="${list}">
-								<div class="item">
-									<div class="right floated content">
-										<div class="ui area icon button" id="${row.areaName}">
-											<i class="plus icon"></i>
-										</div>
-									</div>
-									<img class="ui tiny image" src="${row.areaImage}">
-									<div class="content">${row.areaName}</div>
+			<div class="three wide fluid column" id="left"
+				style="margin-top: -15px;">
+				<div class="ui fluid aligned divided big animated selection list"
+					id="content"
+					style="overflow-y: auto; overflow-x: hidden; margin-right: -14px;">
+					<div class="ui two top attached buttons">
+						<div class="ui button" id="toggleButton">나의 일정</div>
+					</div>
+					<c:forEach var="row" items="${list}">
+						<div class="item">
+							<div class="right floated content">
+								<div class="ui area icon button" id="${row.areaName}">
+									<i class="plus icon"></i>
 								</div>
-							</c:forEach>
-
+							</div>
+							<img class="ui tiny image" src="${row.areaImage}">
+							<div class="content">${row.areaName}</div>
 						</div>
+					</c:forEach>
+				</div>
 
-					</div>
-					<div class="thirteen wide fluid blue column">
+			</div>
+			<div class="thirteen wide fluid blue column">
 
-						<div class="ui left very sidebar vertical menu" id="sidebar">
-							<div class="ui fluid button"
-								onclick="location.href='javascript:detailForm()'">상세일정 만들기</div>
-							<!-- 사용자가 만든 일정이 들어가는 곳 -->
-						</div>
+				<div class="ui left very sidebar vertical menu" id="sidebar">
+					<div class="ui fluid button"
+						onclick="location.href='javascript:detailForm()'">상세일정 만들기</div>
+					<!-- 사용자가 만든 일정이 들어가는 곳 -->
+				</div>
 
-						<div class="pusher">
-							<div id="map" style="width: 100%; margin: -14px;"></div>
-						</div>
-					</div>
+				<div class="pusher">
+					<div id="map" style="width: 100%; margin: -14px;"></div>
 				</div>
 			</div>
+		</div>
+	</div>
 
-			<div class="ui container">
-				<div class="ui basic detailForm modal"
-					style="width: 450px; text-align: center; margin-left: -250px;">
-					<div class="login column">
-						<h2 class="ui orange header">
-							제목과 출발일 입력
-						</h2>
-						<form class="ui large login form"
-							action="${path}/travel/makePlan.do" method="post" name="3">
-							<div class="ui stacked segment">
-								<div class="field">
+	<div class="ui container">
+		<div class="ui basic detailForm modal"
+			style="width: 450px; text-align: center; margin-left: -250px;">
+			<div class="login column">
+				<h2 class="ui orange header">
+					<div class="content">제목과 출발일 입력</div>
+				</h2>
+				<form class="ui large login form"
+					action="${path}/travel/makePlan.do" method="post" name="3">
+					<div class="ui stacked segment">
+						<div class="field">
 
-									<div class="ui input">
-										<div class="ui basic large label">TITLE</div>
-										<input type="text" name="1" id="1" >
-									</div>
-
-								</div>
-								<div class="field">
-
-									<div class="ui input">
-										<div class="ui basic large label">DATE</div>
-										<input type="text" name="2" id="2" >
-									</div>
-
-								</div>
-								<div class="ui fluid large orange submit button"
-									onclick="location.href='${path}/travel/makePlan.do'">상세일정
-									만들기</div>
+							<div class="ui input">
+								<div class="ui basic large label">TITLE</div>
+								<input type="text" name="1" id="1" placeholder="1">
 							</div>
-						</form>
 
+						</div>
+						<div class="field">
+
+							<div class="ui input">
+								<div class="ui basic large label">DATE</div>
+								<input type="text" name="2" id="2" placeholder="2">
+							</div>
+
+						</div>
+						<div class="ui fluid large orange submit button"
+							onclick="location.href='${path}/travel/makePlan.do'">상세일정
+							만들기</div>
 					</div>
-				</div>
+
+					<div class="ui error message"></div>
+
+				</form>
+
 			</div>
 		</div>
 	</div>
@@ -142,6 +129,7 @@
 			resizeContent();
 			$(window).resize(function() {
 				resizeContent();
+				alert(map.getMapSize());
 			});
 		});
 
@@ -149,25 +137,8 @@
 			$height = $(window).height() - 87;
 			$('body div#content').height($height);
 		}
-		
-		$(document).ready(function() {
 
-		     jQuery.ajax({
-		           type:"GET",
-		           url:"http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode?ServiceKey=ZhnHJ1fzbYGAO2Xl%2FSg5MHWhMO0GkoIguiXKwi3%2BlAB8OTO1xYkmp0228On6RJ6lgh6Z4%2BLCWnAsnPm0wysTgA%3D%3D&MobileOS=ETC&MobileApp=AppTesting&numOfRows=20&_type=json",	   
-		           dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
-		           success : function(data) {
-		        	   	alert(JSON.stringify(data));
-		                alert("성공");
-		           },
-		           complete : function(data) {
-		                alert("완료");
-		           },
-		           error : function(xhr, status, error) {
-		                 alert("에러발생");
-		           }
-		     });
-		});
+		$(document).ready(function() {
 			jQuery.ajax({
 				type : "GET",
 				url : "http://",
@@ -290,7 +261,10 @@
 			}
 		});
 
-
+		/* 		$('#userDelete').click(function() {
+		 alert($(this).parent().parent().parent());
+		
+		 }); */
 	</script>
 </body>
 </html>
