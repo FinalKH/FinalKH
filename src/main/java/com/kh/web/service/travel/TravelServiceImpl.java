@@ -5,12 +5,19 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.kh.web.model.travel.dao.TravelDAO;
+<<<<<<< HEAD
+=======
+import com.kh.web.model.travel.dto.AreaVO;
+import com.kh.web.model.travel.dto.ContentCommonVO;
+import com.kh.web.model.travel.dto.MapBoundVO;
+>>>>>>> origin/Jeayoung
 
 @Service // 현재 클래스를 스프링에서 관리하는 service bean으로 등록
 public class TravelServiceImpl implements TravelService {
 	
 	@Inject
 	TravelDAO travelDao;
+<<<<<<< HEAD
 	
 /*	
 	// 01_01. 회원 로그인체크
@@ -38,4 +45,22 @@ public class TravelServiceImpl implements TravelService {
 		// 세션 정보를 초기화 시킴
 		session.invalidate();
 	}*/
+=======
+
+	@Override
+	public List<AreaVO> list() {
+		return travelDao.selectAllArea();
+	}
+
+	@Override
+	public List<ContentCommonVO> listContentCommon() {
+		return travelDao.selectAllContentCommon();
+	}
+
+	public List<Object> bringAllInMap(MapBoundVO mapBoundVO){
+		logger.info(String.valueOf(mapBoundVO));
+	return travelDao.bringAllInMap(mapBoundVO);
+
+	}
+>>>>>>> origin/Jeayoung
 }

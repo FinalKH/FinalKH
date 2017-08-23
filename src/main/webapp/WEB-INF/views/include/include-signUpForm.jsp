@@ -2,9 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
 <style type="text/css">
-body {
-	background-color: #DADADA;
-}
 
 body>.grid {
 	height: 100%;

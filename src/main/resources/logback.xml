@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Strict>
 <configuration>
-    <!-- log4jdbc-log4j2 -->
-	<logger name="jdbc.sqlonly"        level="DEBUG"/>
-    <logger name="jdbc.sqltiming"      level="INFO"/>
-    <logger name="jdbc.audit"          level="WARN"/>
-    <logger name="jdbc.resultset"      level="ERROR"/>
-    <logger name="jdbc.resultsettable" level="ERROR"/>
-    <logger name="jdbc.connection"     level="INFO"/>
-    
+	<!-- log4jdbc-log4j2 -->
+	<logger name="jdbc.sqlonly" level="DEBUG" />
+	<logger name="jdbc.sqltiming" level="INFO" />
+	<logger name="jdbc.audit" level="WARN" />
+	<logger name="jdbc.resultset" level="ERROR" />
+	<logger name="jdbc.resultsettable" level="ERROR" />
+	<logger name="jdbc.connection" level="INFO" />
+
 	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 		<layout class="ch.qos.logback.classic.PatternLayout">
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-4level [%logger.%method:%line]-
-				%msg%n</pattern>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-4level [%logger.%method:%line] - %msg%n</pattern>
 		</layout>
 	</appender>
 
@@ -25,8 +24,7 @@
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
 		<encoder>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-4level [%logger.%method:%line]
-				- %msg %n</pattern>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-4level [%logger.%method:%line] - %msg%n</pattern>
 		</encoder>
 	</appender>
 

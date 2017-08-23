@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>
+		#moreMenu{display:none}
+	</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){ //DOM이 준비되고
+			$('#toggleButton').click(function(){ // ID가 toggleButton인 요소를 클릭하면
+				var state = $('#moreMenu').css('display'); // state 변수에 ID가 moreMenu인 요소의 display의 속성을 '대입'
+				if(state == 'none'){ // state가 none 상태일경우 
+					$('#moreMenu').show(); // ID가 moreMenu인 요소를 show();
+				}else{
+					$('#moreMenu').hide(); // ID가 moreMenu인 요소를 hide();			
+				}
+			});
+		});
+		$(document).ready(function(){ //DOM이 준비되고
+			$('#toggleButton2').click(function(){ // #toggleButton2를 클릭하면
+				$('#moreMenu2').toggle(); // #moreMenu2를 알아서 토.글!
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div id="toggleButton">숨기기/보이기1</div>
+	<div id="moreMenu">....1</div>
+	<div id="toggleButton2">숨기기/보이기2</div>
+	<div id="moreMenu2">....2</div>
+</body>
+
+</html>

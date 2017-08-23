@@ -78,7 +78,23 @@
 			-- 메모장에 아래의 쿼리 전체를 입력
 			-- sql>@createall.sql
 
-			
+					update T_Area set AreaImage = 'http://img.earthtory.com/img/city_images/310/seoul_1425373106.jpg' where AreaCode='1';
+		update T_Area set AreaImage = 'https://img-wishbeen.akamaized.net/plan/1435194648611_4582757611_efcc7cf8be_o.jpg' where AreaCode='2';
+		update T_Area set AreaImage = 'http://mw2.google.com/mw-panoramio/photos/medium/55499884.jpg' where AreaCode='3';
+		update T_Area set AreaImage = 'http://mw2.google.com/mw-panoramio/photos/medium/40704282.jpg' where AreaCode='4';
+		update T_Area set AreaImage = 'http://mw2.google.com/mw-panoramio/photos/medium/8532958.jpg' where AreaCode='5';
+		update T_Area set AreaImage = 'http://img.earthtory.com/img/city_images/311/busan_1425371432.jpg' where AreaCode='6';
+		update T_Area set AreaImage = 'http://cfile25.uf.tistory.com/image/2066AB374E6A06C00EA384' where AreaCode='7';
+		update T_Area set AreaImage = 'http://mw2.google.com/mw-panoramio/photos/medium/102904133.jpg' where AreaCode='8';
+		update T_Area set AreaImage = 'http://www.earthtory.com/res/img/city/ko_state/ko_10208.jpg' where AreaCode='31';
+		update T_Area set AreaImage = 'http://www.earthtory.com/res/img/city/ko_state/ko_10209.jpg' where AreaCode='32';
+		update T_Area set AreaImage = 'http://www.earthtory.com/res/img/city/ko_state/ko_10210.jpg' where AreaCode='33';
+		update T_Area set AreaImage = 'http://www.earthtory.com/res/img/city/ko_state/ko_10211.jpg' where AreaCode='34';
+		update T_Area set AreaImage = 'http://www.earthtory.com/res/img/city/ko_state/ko_10212.jpg' where AreaCode='35'; 
+		update T_Area set AreaImage = 'http://www.earthtory.com/res/img/city/ko_state/ko_10213.jpg' where AreaCode='36';
+		update T_Area set AreaImage = 'http://www.earthtory.com/res/img/city/ko_state/ko_10214.jpg' where AreaCode='37';
+		update T_Area set AreaImage = 'http://www.earthtory.com/res/img/city/ko_state/ko_10215.jpg' where AreaCode='38';
+		update T_Area set AreaImage = 'http://img.earthtory.com/img/city_images/312/jeju_1425527708.jpg' where AreaCode='39';
 			
 			
 ----------------------------------------------------------------------------------------------			
@@ -98,6 +114,7 @@
 		AreaName varchar2(50) not null,		-- 지역이름
 		AreaMapX varchar2(10) not null,		-- 지역경도
 		AreaMapY varchar2(10) not null,		-- 지역위도
+		AreaImage  varchar2(200) not null,	-- 지역 이미지
 		primary key(AreaCode)				-- 기본키 설정
 		);
 	
@@ -108,24 +125,25 @@
 		-- 외래키 설정 필요 없음
 	
 		-- 시도지역 기본 데이터 생성
-		insert into T_Area values ('1', '서울', '126.984028', '37.544085');
-		insert into T_Area values ('2', '인천', '126.607680', '37.591575');
-		insert into T_Area values ('3', '대전', '127.399092', '36.342052');
-		insert into T_Area values ('4', '대구', '128.568285', '35.845876');
-		insert into T_Area values ('5', '광주', '126.835549', '35.154133');
-		insert into T_Area values ('6', '부산', '129.077638', '35.202122');
-		insert into T_Area values ('7', '울산', '129.228810', '35.572096');
-		insert into T_Area values ('8', '세종특별자치시', '127.267336', '36.553425');
-		insert into T_Area values ('31', '경기도', '127.342078', '37.484153');
-		insert into T_Area values ('32', '강원도', '128.268018', '37.836673');
-		insert into T_Area values ('33', '충청북도', '127.719236', '36.737902');
-		insert into T_Area values ('34', '충청남도', '126.891799', '36.546952');
-		insert into T_Area values ('35', '경상북도', '128.686032', '36.477738'); 
-		insert into T_Area values ('36', '경상남도', '128.291687', '35.314592');
-		insert into T_Area values ('37', '전라북도', '127.152512', '35.717951');
-		insert into T_Area values ('38', '전라남도', '126.923376', '34.900833');
-		insert into T_Area values ('39', '제주도', '126.541411', '33.387009');
+		insert into T_Area values ('1', '서울', '126.984028', '37.544085', 'http://img.earthtory.com/img/city_images/310/seoul_1425373106.jpg');
+		insert into T_Area values ('2', '인천', '126.607680', '37.591575', 'https://img-wishbeen.akamaized.net/plan/1435194648611_4582757611_efcc7cf8be_o.jpg');
+		insert into T_Area values ('3', '대전', '127.399092', '36.342052', 'http://mw2.google.com/mw-panoramio/photos/medium/55499884.jpg');
+		insert into T_Area values ('4', '대구', '128.568285', '35.845876', 'http://mw2.google.com/mw-panoramio/photos/medium/40704282.jpg');
+		insert into T_Area values ('5', '광주', '126.835549', '35.154133', 'http://mw2.google.com/mw-panoramio/photos/medium/8532958.jpg');
+		insert into T_Area values ('6', '부산', '129.077638', '35.202122', 'http://img.earthtory.com/img/city_images/311/busan_1425371432.jpg');
+		insert into T_Area values ('7', '울산', '129.228810', '35.572096', 'http://cfile25.uf.tistory.com/image/2066AB374E6A06C00EA384');
+		insert into T_Area values ('8', '세종', '127.267336', '36.553425', 'http://mw2.google.com/mw-panoramio/photos/medium/102904133.jpg');
+		insert into T_Area values ('31', '경기도', '127.342078', '37.484153', 'http://www.earthtory.com/res/img/city/ko_state/ko_10208.jpg');
+		insert into T_Area values ('32', '강원도', '128.268018', '37.836673', 'http://www.earthtory.com/res/img/city/ko_state/ko_10209.jpg');
+		insert into T_Area values ('33', '충청북도', '127.719236', '36.737902', 'http://www.earthtory.com/res/img/city/ko_state/ko_10210.jpg');
+		insert into T_Area values ('34', '충청남도', '126.891799', '36.546952', 'http://www.earthtory.com/res/img/city/ko_state/ko_10211.jpg');
+		insert into T_Area values ('35', '경상북도', '128.686032', '36.477738', 'http://www.earthtory.com/res/img/city/ko_state/ko_10212.jpg'); 
+		insert into T_Area values ('36', '경상남도', '128.291687', '35.314592', 'http://www.earthtory.com/res/img/city/ko_state/ko_10213.jpg');
+		insert into T_Area values ('37', '전라북도', '127.152512', '35.717951', 'http://www.earthtory.com/res/img/city/ko_state/ko_10214.jpg');
+		insert into T_Area values ('38', '전라남도', '126.923376', '34.900833', 'http://www.earthtory.com/res/img/city/ko_state/ko_10215.jpg');
+		insert into T_Area values ('39', '제주도', '126.541411', '33.387009', 'http://img.earthtory.com/img/city_images/312/jeju_1425527708.jpg');
 		
+
 		
 		
 	-- 2. 시군구지역 관련 DB 정보

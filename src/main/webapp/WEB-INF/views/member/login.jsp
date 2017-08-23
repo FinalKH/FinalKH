@@ -31,7 +31,7 @@
 </script>
 </head>
 <body>
-<%@ include file="../include/menu.jsp" %>
+
 <h2>로그인</h2>
 	<form name="form1" method="post">
 		<table border="1" style="width:400px">
