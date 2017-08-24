@@ -13,14 +13,14 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.js"></script>
 <!-- Full Calendar -->
-<link rel='stylesheet' type='text/css'
+<!-- <link rel='stylesheet' type='text/css'
 	href='http://arshaw.com/js/fullcalendar-1.6.3/fullcalendar/fullcalendar.css' />
 <script type='text/javascript'
 	src='http://arshaw.com/js/fullcalendar-1.6.3/jquery/jquery-1.10.2.min.js'></script>
 <script type='text/javascript'
 	src='http://arshaw.com/js/fullcalendar-1.6.3/jquery/jquery-ui-1.10.3.custom.min.js'></script>
 <script type='text/javascript'
-	src='http://arshaw.com/js/fullcalendar-1.6.3/fullcalendar/fullcalendar.min.js'></script>
+	src='http://arshaw.com/js/fullcalendar-1.6.3/fullcalendar/fullcalendar.min.js'></script> -->
 <!-- include summernote libraries(jQuery, bootstrap) -->
 <link
 	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
@@ -91,29 +91,30 @@
 					focus: true ,
 					callbacks: {
 				          onImageUpload: function(files, editor, welEditable) {
-				        	  console.log(files);
-				        	  console.log(editor);
-				        	  console.log(welEditable);
-				            for (var i = files.length - 1; i >= 0; i--) {
+				            /* for (var i = files.length - 1; i >= 0; i--) {
 				              sendFile(files[i], this);
-				            }
+				            } */				            
+				            sendFile(files[0], this);
 				          }
 				        }
 				});
 				
-			function sendFile(files, editor, welEditable) {
-			      var form_data = new FormData();
-			      form_data.append('file', el);
+			function sendFile(file, editor) {
+			      form_data = new FormData();
+			      form_data.append('file', file);
 				      $.ajax({
 				        data: form_data,
 				        type: "POST",
-				        url: '${path}/image',
+				        url: '${path}image',
 				        cache: false,
 				        contentType: false,
 				        enctype: 'multipart/form-data',
 				        processData: false,
 				        success: function(url) {
-				        	$(el).summernote('editor.insertImage', url);        
+				        	console.log('file : '+file);
+				        	console.log('url : '+url);
+				        	//el.summernote('editor.insertImage', url);
+				        	editor.insertImage(welEditable, form_data);				        						
 			        }
 				})
 			}
