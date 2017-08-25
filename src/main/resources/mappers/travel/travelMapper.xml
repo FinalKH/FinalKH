@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="selectImage" resultType="com.kh.web.model.travel.dto.ImageVO">
         SELECT
           *
-        FROM T_Spot
+        FROM T_SPOT
         <!-- WHERE Spot_Num = #{spotNum} -->
     </select>
     

@@ -50,7 +50,8 @@
 	<beans:bean id="uploadPath" class="java.lang.String">
 		<!-- constructor-arg : 생성자 매개변수 -->
 		<!-- <beans:constructor-arg value="C:\\Users\\doubles\\Desktop\\workspace\\gitSpring\\spring02\\src\\main\\resources\\upload"/> -->
-		<beans:constructor-arg value="C:\\FinalKH\\upload"/>
+		<!-- <beans:constructor-arg value="C:\\FinalKH\\upload"/> -->
+		<beans:constructor-arg value="F:\\work\\FinalKH\\src\\main"/>
 	</beans:bean>
 	
 	<!-- 인터셉터 bean 설정 -->

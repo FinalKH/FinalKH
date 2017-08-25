@@ -4,14 +4,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
-<mapper namespace="travel">
+<mapper namespace="uploade">
 
     <!--  -->
-    <select id="selectImage" resultType="com.kh.web.model.travel.dto.ImageVO">
-        SELECT
-          *
-        FROM T_SPOT
-        <!-- WHERE Spot_Num = #{spotNum} -->
-    </select>
+    <insert id="saveImage" parameterType="com.kh.web.model.upload.VO">
+        INSERT INTO img_table VALUES(#{img})
+    </insert>
     
 </mapper>

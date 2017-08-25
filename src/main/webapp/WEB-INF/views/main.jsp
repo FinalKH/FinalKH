@@ -7,8 +7,7 @@
 
 </head>
 <body bgcolor="white">
-<%@ include file="include/menuTravel.jsp" %>
-<<<<<<< HEAD
+
 
 <%@ include file="mainMain.jsp" %>
 
@@ -16,8 +15,6 @@
 
 
 
-=======
-<%@ include file="mainMain.jsp" %>
->>>>>>> develop
+
 </body>
 </html>

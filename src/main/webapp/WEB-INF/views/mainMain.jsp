@@ -1,20 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.net.URLEncoder"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<<<<<<< HEAD
-
-=======
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
 <script type="text/javascript">
-$(function(){
-  $('.hello').animate({left:1400,top:500},500);
-});
+	$(function() {
+		$('.hello').animate({
+			left : 200
+		}, function() {
+			$('.hello').animate({
+				left : 50
+			});
+		});
+	});
 </script>
->>>>>>> develop
 <style>
 /* reset.css */
 html,body{width:100%;height:100%;}
@@ -29,7 +33,6 @@ q:after,q:before{content:"";}/* 인용표시 없애기 */
 abbr,acronym{border:none;}
 img,li,input{vertical-align:middle;}/*버티컬 얼라인 기본값은 바톰.*/
 hr{display:none;}
-#skipNavi,.hidden{position:absolute;left:0;top:0;width:0;height:0;font-size:0;line-height:0;text-indent:-9999px;overflow:hidden;visibility:hidden;}
 
 
 
@@ -41,30 +44,6 @@ hr{display:none;}
 #article1{padding-bottom:100px;}
 .logo{padding-left:50px;}
 
-<<<<<<< HEAD
-</style>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
-<script type="text/javascript">
-$(function(){
-  $('.article1').animate({
-  	left:200
-  },1000);
-});
-</script>
-</head>
-<body bgcolor="white">
-	<div id="wrap">
-	
-		<%@include file="include/headerMain.jsp" %>
-		
-		<div id="section">
-			<div id="article1">
-				<img src="images/tour.png"/>
-			</div><!-- //article1 -->
-			
-			<div id="article2">
-				<img src="images/pop.png"/>
-=======
 #footer{width:100%; height:110px; margin-top:120px; float:left; border-top:2px solid gray; font-size: 15px;padding-bottom:100px;}
 .info {
    position: absolute;
@@ -81,13 +60,12 @@ $(function(){
    font-size: 20px;
    font-weight: bold;
 }
-
-
-
-
+img{
+	padding-right:50px;
+}
 </style>
-
 </head>
+<%@ include file="include/headerTravel.jsp"%>
 <body >
 	<%@ include file="include/menuTravel.jsp"%>
 	<div id="wrap">
@@ -101,23 +79,26 @@ $(function(){
 		<div id="section">
 			<div id="article1" >
 				<h2>국내 여행지</h2>
-				<a href="#"><img class="hello" src="" width="500px" heigth="500px"/></a>
+				
+				<c:forEach var="list" items = "${list}">
+					<a href="#"><img class="hello" src="${list.imgurl}" width="250px" heigth="250px"/></a>
+				</c:forEach>
 			</div><!-- //article1 -->
 			
 			<div id="article2">
 				<h2>추천 여행지</h2>
-				<a href="#"><img src="http://cfile21.uf.tistory.com/image/264E2A3555AC9BF80D7AB4"/></a>
->>>>>>> develop
+				
+				<c:forEach var="list" items = "${list}">
+					<a href="#"><img class="hello" src="${list.imgurl}" width="250px" heigth="250px"/></a>
+				</c:forEach>
+
 			</div><!-- //article2 -->
 		
 		</div><!-- //section -->
 		
-<<<<<<< HEAD
+
 		<%@include file="include/footerMain.jsp" %>
-=======
-		
-		<jsp:include page="include/footerMain.jsp"/>
->>>>>>> develop
+
 		
 	</div><!-- //wrap -->
 </body>

@@ -1,28 +1,30 @@
 package com.kh.web.model.travel.dto;
 
 public class ImageVO {
-	private String Spotnum;
-	private String ImgUrl;
+	private String spotnum;
+	private String imgurl;
 	
+	public String getSpotnum() {
+		return spotnum;
+	}
+
+	public void setSpotnum(String spotnum) {
+		this.spotnum = spotnum;
+	}
+
+	public String getImgurl() {
+		return imgurl;
+	}
+
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
+	}
+
 	public ImageVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getSpotnum() {
-		return Spotnum;
-	}
-
-	public void setSpotnum(String spotnum) {
-		Spotnum = spotnum;
-	}
-
-	public String getImgUrl() {
-		return ImgUrl;
-	}
-
-	public void setImgUrl(String imgUrl) {
-		ImgUrl = imgUrl;
-	}
+	
 
 }

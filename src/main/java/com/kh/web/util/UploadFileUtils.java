@@ -55,7 +55,7 @@ public class UploadFileUtils {
 		System.out.println(datePath);
 		// 디렉토리 생성 메서드 호출
 		makeDir(uploadPath, yearPath, monthPath, datePath);
-		return datePath;
+		return yearPath;
 	}
 	
 	// 디렉토리 생성
