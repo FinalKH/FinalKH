@@ -24,14 +24,19 @@
 						style="height: 610px;">
 						<div class="ui fluid container"
 							style="margin: 0px; padding: 0px; border: 0px;">
-							<button class="ui icon blue fluid button">
-								09.07~09.08<i class="setting icon"></i>에딧
-							</button>
-							<button class="ui black fluid button">전체일정보기</button>
+							<div class="ui segment" style="margin: 0px; padding: 2px;">
+								<button class="ui icon blue fluid button">
+									09.07~09.08<i class="setting icon"></i>에딧
+								</button>
+								<button class="ui black fluid button">전체일정보기</button>
+							</div>
 							<div class="ui fluid menu list"
-								style="height: 410px; overflow-y: auto; overflow-x: hidden;"></div>
-							<button class="ui fluid blue button">DAY 추가</button>
-							<button class="ui fluid black button">이용 방법</button>
+								style="height: 400px; overflow-y: auto; overflow-x: hidden;"></div>
+							<div class="ui segment" style="margin: 0px; padding: 2px;">
+								<button class="ui fluid blue button">DAY 추가</button>
+								<button class="ui fluid black button">이용 방법</button>
+							</div>
+
 						</div>
 					</div>
 				</div>
@@ -44,12 +49,16 @@
 						<div class="ui fluid container">
 
 							<div class="grid">
-								<div class="ui fluid segment">
+								<div class="ui fluid segment" style="margin: 0px; padding: 3px;">
 									<div class="sixteen wide red fluid column">
-										<div class="ui fluid buttons">
-											<button class="ui black button">임시저장 & 닫기</button>
-											<button class="ui orange button">완료</button>
+
+										<div class="ui segment" style="margin: 0px; padding: 0px;">
+											<div class="ui two buttons">
+												<button class="ui black button">임시저장 & 닫기</button>
+												<button class="ui orange button">완료</button>
+											</div>
 										</div>
+
 									</div>
 									<div class="row">
 										<div class="ui center aligned fluid segment">
@@ -73,13 +82,13 @@
 									</div>
 
 								</div>
-								<div class="ui segment">
+								<div class="ui segment" style="padding: 10px;">
 									<div class="sixteen wide blue column">
 										<div class="ui padded red grid">
 
 											<div class="ui left very vertical divided black fluid list"
 												id="userPick"
-												style="height: 295px; width: 700px; overflow-y: auto; overflow-x: hidden;">
+												style="height: 345px; width: 300px; padding: 0px; overflow-y: auto; overflow-x: hidden;">
 
 												<!-- 사용자가 만든 일정이 들어가는 곳 -->
 											</div>
@@ -87,7 +96,7 @@
 									</div>
 								</div>
 								<div class="sixteen wide column">
-									<div class="ui segment">
+									<div class="ui segment" style="margin: 0px; padding: 3px;">
 										<div class="ui two buttons">
 											<div class="ui black button">내 장소 +</div>
 											<div class="ui orange button">교통 추가</div>
@@ -103,7 +112,7 @@
 			</div>
 			<div class="eleven wide column">
 
-				<div class="ui segment" >
+				<div class="ui segment">
 					<div id="calendar"></div>
 				</div>
 				<div class="ui tertiary inverted blue segment">
@@ -197,7 +206,7 @@
 						</div>
 					</div>
 
-					<div class="ui fluid container" style="padding:5px;">
+					<div class="ui fluid container" style="padding: 5px;">
 						<div
 							class="ui fluid middle aligned divided big animated selection menu list"
 							id="contentInMap"
@@ -306,227 +315,225 @@
 					}
 				}
 			});
-
+	
 		});
 		$('.ui.bound.top.sticky#user').sticky({
 			context : '#context1',
 			offset : 80,
 			type : 'push'
 		});
-
+	
 		$('.ui.bound.top.sticky#day').sticky({
 			context : '#context1',
 			offset : 80,
 			type : 'push'
 		});
-
+	
 		var map = new naver.maps.Map('map', {
-			center : new naver.maps.LatLng(37.5666805, 126.9784147),
-			zoom : 12,
-			mapTypeId : naver.maps.MapTypeId.NORMAL
-		}), markers = [], infoWindows = [];
-
+				center : new naver.maps.LatLng(37.5666805, 126.9784147),
+				zoom : 12,
+				mapTypeId : naver.maps.MapTypeId.NORMAL
+			}),
+			markers = [],
+			infoWindows = [];
+	
 		naver.maps.Event.addListener(map, 'idle', function() {
-
+	
 			bringAllInMap();
 		});
-
+	
 		function deleteAllInMap() {
 			marker.setMap(null);
 		}
-
+	
 		function bringAllInMap() {
-			var data = {}, bounds = map.getBounds();
+			var data = {},
+				bounds = map.getBounds();
 			data["eastBP"] = bounds.getNE().lng();
 			data["westBP"] = bounds.getSW().lng();
 			data["southBP"] = bounds.getSW().lat();
 			data["northBP"] = bounds.getNE().lat();
 			//alert(JSON.stringify(data));
-
+	
 			$
-					.ajax({
-						type : "post",
-						url : "${path}/travel/bringAllInMap.do",
-						dataType : "json",
-						data : JSON.stringify(data),
-						processData : false,
-						contentType : "application/json;charset=UTF-8",
-						async : false,
-						success : function(result) {
-							console.log(result);
-							for (var i = 0, ii = markers.length; i < ii; i++) {
-								markers.pop().setMap(null)
-
-							}
-							;
-							markers = [];
-							infoWindows = [];
-							$('#contentInMap').empty();
-							$
-									.each(
-											result,
-											function(key, value) {
-												var position = new naver.maps.LatLng(
-														value.mapY, value.mapX);
-
-												var marker = new naver.maps.Marker(
-														{
-															map : map,
-															position : position,
-															title : value.contentId,
-															icon : "http://www.owenscorning.com/images/orange-dot.png",
-														});
-
-												var infoWindow = new naver.maps.InfoWindow(
-														{
-															content : '<div style="text-align:center;padding:10px;"><span style="color:black">'
-																	+ value.title
-																	+ '</span></div>'
-														});
-
-												markers.push(marker);
-												infoWindows.push(infoWindow);
-												var $div = $('	<div class="item" style="width:300px;"'
-														+ 'firstImage='+value.firstImage+'" title="'+value.title+'"contentId="'+value.contentId + '">'
-														+ '<img class="ui image" src="' + value.firstImage + '" style="height: 100px; width:150px"><div class="content">'
-														+ value.title
-														+ '</div><div class="right floated content"><div class="ui pick icon button" ><i class="plus icon"></i></div></div></div>');
-												$('#contentInMap').append($div);
-											});
-							for (var i = 0, ii = markers.length; i < ii; i++) {
-								naver.maps.Event.addListener(markers[i],
-										'click', getClickHandler(i));
-							}
-
-						},
-						error : function(xhr, status, error) {
-							alert('error');
+				.ajax({
+					type : "post",
+					url : "${path}/travel/bringAllInMap.do",
+					dataType : "json",
+					data : JSON.stringify(data),
+					processData : false,
+					contentType : "application/json;charset=UTF-8",
+					async : false,
+					success : function(result) {
+						console.log(result);
+						for (var i = 0, ii = markers.length; i < ii; i++) {
+							markers.pop().setMap(null)
+	
 						}
-					});
-		};
+						;
+						markers = [];
+						infoWindows = [];
+						$('#contentInMap').empty();
+						$
+							.each(
+								result,
+								function(key, value) {
+									var position = new naver.maps.LatLng(
+										value.mapY, value.mapX);
+	
+									var marker = new naver.maps.Marker(
+										{
+											map : map,
+											position : position,
+											title : value.contentId,
+											icon : "http://www.owenscorning.com/images/orange-dot.png",
+										});
+	
+									var infoWindow = new naver.maps.InfoWindow(
+										{
+											content : '<div style="text-align:center;padding:10px;"><span style="color:black">'
+												+ value.title
+												+ '</span></div>'
+										});
+	
+									markers.push(marker);
+									infoWindows.push(infoWindow);
+									var $div = $('	<div class="item" id="pickItem" style="width:300px;"'
+										+ 'firstImage=' + value.firstImage + '" title="' + value.title + '"contentId="' + value.contentId + '">'
+										+ '<img class="ui image" src="' + value.firstImage + '" style="height: 100px; width:150px"><div class="content">'
+										+ value.title
+										+ '</div><div class="right floated content"><div class="ui pick icon button" ><i class="plus icon"></i></div></div></div>');
+									$('#contentInMap').append($div);
+								});
+						for (var i = 0, ii = markers.length; i < ii; i++) {
+							naver.maps.Event.addListener(markers[i],
+								'click', getClickHandler(i));
+						}
+						$('.pick.button')
+							.on(
+								'click',
+								function() {
+									var $title = $(this).parent()
+										.parent().attr('title');
+									var $firstImage = $(this)
+										.parent().parent()
+										.attr('firstImage');
+									var $contentId = $(this)
+										.parent().parent()
+										.attr('title');
+									alert($title);
+									var $div = $('<div class="fluid draggable item" id="userPickItem">'
+										+ '<img class="ui image" src="' + $firstImage + '" style="height: 50px; width:50px">'
+										+ '<div class="content">'
+										+ $title
+										+ '</div>'
+										+ '<div class="right floated content">'
+										+ '<div class="ui icon button" id="userPickDeleteButton">'
+										+ '<i class="delete icon"></i>'
+										+ '</div>'
+										+ '</div>'
+										+ '</div>');
+									$('#userPick').append($div);
+									$('.draggable')
+										.data(
+											'event',
+											{
+												title : $
+													.trim($(
+														'.draggable')
+														.text()),
+												stick : true
+											})
+										.draggable(
+											{
+												zIndex : 999,
+												revert : true,
+												revertDuration : 0,
+												appendTo : 'body',
+												containment : 'window',
+												scroll : false,
+												helper : 'clone'
+											});
+								});
+	
+					},
+					error : function(xhr, status, error) {
+						alert('error');
+					}
+				});
+		}
+		;
+	
 		function getClickHandler(seq) {
 			return function(e) {
-
-				var marker = markers[seq], infoWindow = infoWindows[seq];
+	
+				var marker = markers[seq],
+					infoWindow = infoWindows[seq];
 				if (marker.getIcon() === ('http://www.owenscorning.com/images/orange-dot.png')) {
 					marker
-							.setIcon({
-								url : 'http://www.diacomp.org/omb/images/Google/ltblue.png'
-							});
+						.setIcon({
+							url : 'http://www.diacomp.org/omb/images/Google/ltblue.png'
+						});
 				} else {
 					marker.setIcon({
-
+	
 					});
 				}
-
+	
 				if (infoWindow.getMap()) {
 					infoWindow.open(map, marker);
 				} else {
 					infoWindow.open(map, marker);
 				}
-
+	
 				if (marker.getAnimation() !== null) {
 					marker.setAnimation(null);
 				} else {
 					marker.setAnimation(naver.maps.Animation.BOUNCE);
 				}
-
+	
 				var point = e.coord;
-
+	
 				var path = polyline.getPath();
 				path.push(point);
 				path.setPath(null);
 			}
 		}
-
+	
 		function onMouseOver(e) {
-			var marker = e.overlay, seq = marker.get('seq');
-
+			var marker = e.overlay,
+				seq = marker.get('seq');
+	
 			marker
-					.setIcon({
-						url : 'https://mt.googleapis.com/vt/icon/name=icons/onion/22-blue-dot.png'
-					});
+				.setIcon({
+					url : 'https://mt.googleapis.com/vt/icon/name=icons/onion/22-blue-dot.png'
+				});
 		}
-
+	
 		function onMouseOut(e) {
-			var marker = e.overlay, seq = marker.get('seq');
-
+			var marker = e.overlay,
+				seq = marker.get('seq');
+	
 			marker.setIcon({
 				url : 'http://www.diacomp.org/omb/images/Google/ltblue.png'
 			});
 		}
 		bringAllInMap()
 		/* 		$(#map). */
-
+	
 		var polyline = new naver.maps.Polyline({
 			map : map,
 			path : [],
 			strokeColor : '#5347AA',
 			strokeWeight : 2
 		});
-
-		$(document)
-				.ready(
-						function() {
-							$('.pick.button')
-									.on(
-											'click',
-											function() {
-												var $title = $(this).parent()
-														.parent().attr('title');
-												var $firstImage = $(this)
-														.parent().parent()
-														.attr('firstImage');
-												var $contentId = $(this)
-														.parent().parent()
-														.attr('title');
-												var $div = $('<div class="fluid item" id="userPickItem">'
-														+ '<img class="ui image" src="'+$firstImage+'" style="height: 50px; width:50px">'
-														+ '<div class="content">'
-														+ $title
-														+ '</div>'
-														+ '<div class="right floated content">'
-														+ '<div class="ui icon button">'
-														+ '<i class="delete icon"></i>'
-														+ '</div>'
-														+ '</div>'
-														+ '</div>');
-												$('#userPick').append($div);
-												$('#userPickItem')
-														.each(
-																function(index) {
-																	$(this)
-																			.data(
-																					'event',
-																					{
-																						title : $
-																								.trim($(
-																										this)
-																										.text()), // use the element's text as the event title
-																						stick : true
-																					// maintain when user navigates (see docs on the renderEvent method)
-																					})
-																});
-												$('#userPickItem')
-														.each(
-																function(index) {
-																	$(this)
-																			.draggable(
-																					{
-																						zIndex : 999,
-																						revert : true, // will cause the event to go back to its
-																						revertDuration : 0,
-																						appendTo : 'body',
-																						containment : 'window',
-																						scroll : false,
-																						helper : 'clone'
-																					//  original position after the drag
-																					})
-																});
-
-											});
-
-						});
+	
+		$(document).on("click", "#userPickDeleteButton", function() {
+			$(this).parent().parent().remove();
+		});
+		$(document).on("click", "#pickItem", function() {
+			$(this).remove();
+		});
 	</script>
 </body>
 </html>
