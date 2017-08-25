@@ -5,7 +5,8 @@
 <head>
 <title>여행 도시 선택하기</title>
 <%@ include file="../include/headerTravel.jsp"%>
-
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
 <script type="text/javascript" src="${path}/include/js/calendar.js"></script>
 </head>
 
@@ -65,17 +66,16 @@
 						<div class="field">
 
 							<div class="ui input">
-								<div class="ui basic large label">TITLE</div>
-								<input type="text" name="1" id="1" placeholder="1">
+								<div class="ui basic large label">제목</div>
+								<input type="text" name="1" id="1">
 							</div>
 
 						</div>
 						<div class="field">
 
 							<div class="ui input">
-								<div class="ui basic large label">DATE</div>
-								<input type="text" name="2" id="2" placeholder="2">
-								<div id="cal"></div>
+								<div class="ui basic large label">날짜</div>
+								<input type="text" id="testDatepicker" name="2" id="2">
 							</div>
 
 						</div>
@@ -270,6 +270,28 @@
 		 alert($(this).parent().parent().parent());
 		
 		 }); */
+
+		$(function() {
+			$("#testDatepicker").datepicker(
+					{
+						
+						buttonImage : 'http://www.badmintonasia.org/html/images/material/icon-calendar.png',
+						showOn : 'both',
+						dateFormat : 'yy-mm-dd',
+						dayNames : [ '월요일', '화요일', '수요일', '목요일', '금요일', '토요일',
+								'일요일' ],
+						dayNamesMin : [ '월', '화', '수', '목', '금', '토', '일' ],
+						monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월',
+								'7월', '8월', '9월', '10월', '11월', '12월' ],
+						monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월',
+								'7월', '8월', '9월', '10월', '11월', '12월' ],
+						changeMonth : true,
+						changeYear : true,
+						nextText : '다음 달',
+						prevText : '이전 달'
+
+					});
+		});
 	</script>
 </body>
 </html>

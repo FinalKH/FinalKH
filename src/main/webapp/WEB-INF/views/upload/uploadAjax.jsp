@@ -12,7 +12,7 @@
 		border: 1px dotted blue;
 	}
 	
-	small {
+	.small {
 		margin-left: 3px;
 		font-weight: bold;
 		color: gray;

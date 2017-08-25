@@ -5,10 +5,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
 <title>여행 계획 작성하기</title>
 <%@ include file="../include/headerTravel.jsp"%>
+
 </head>
 <body>
+
 	<%@ include file="../include/menuTravel.jsp"%>
 	<!-- 헤더 정보 공간 -->
 	<div class="ui fluid container">
@@ -178,10 +182,11 @@
 
 									<div class="ui fluid segment">
 										<div class="row">
-											<div class="ui compact icon five item fluid menu">
-												<a class="item"> <i class="circular photo large icon"></i></a>
-												<a class="item"> <i class="circular food large icon"></i></a>
-												<a class="item"> <i
+											<div class="ui icon five item fluid menu">
+												<a class="active item"> <i
+													class="circular photo large icon"></i></a> <a class="item">
+													<i class="circular food large icon"></i>
+												</a> <a class="item"> <i
 													class="circular shopping bag large icon"></i></a> <a
 													class="item"> <i class="circular building large icon"></i>
 												</a> <a class="item"> <i class="circular tag large icon"></i></a>
@@ -218,6 +223,7 @@
 				<div class="ui segment">
 					<div id="map" style="width: 100%; height: 900px;"></div>
 				</div>
+
 				<div class="ui segment">
 					<div class="ui padded grid">
 						<div class="sixteen wide column">댓글(10)</div>
@@ -307,6 +313,7 @@
 					center : 'title',
 					right : 'month,agendaWeek,agendaDay'
 				},
+				defaultView : 'agendaWeek',
 				editable : true,
 				droppable : true, // this allows things to be dropped onto the calendar
 				drop : function() {
@@ -433,18 +440,25 @@
 														+ '</div>'
 														+ '</div>');
 												$('#userPick').append($div);
-												$('#userPick .draggable:last-child').data('event', {
-													title : $.trim($title),
-													stick : true
-												}).draggable({
-													zIndex : 999,
-													revert : true,
-													revertDuration : 0,
-													appendTo : 'body',
-													containment : 'window',
-													scroll : false,
-													helper : 'clone'
-												});
+												$(
+														'#userPick .draggable:last-child')
+														.data(
+																'event',
+																{
+																	title : $
+																			.trim($title),
+																	stick : true
+																})
+														.draggable(
+																{
+																	zIndex : 999,
+																	revert : true,
+																	revertDuration : 0,
+																	appendTo : 'body',
+																	containment : 'window',
+																	scroll : false,
+																	helper : 'clone'
+																});
 											});
 
 						},
@@ -518,13 +532,55 @@
 		$(document).on("click", "#userPickDeleteButton", function() {
 			$(this).parent().parent().remove();
 		});
-		$(document).on("click", "#pickItem", function() {
-			//alert('pick');
-			//$(this).remove();
-		});
+
+		$(document)
+				.on(
+						"click",
+						"#pickItem",
+						function() {
+							var data = {}, bounds = map.getBounds();
+							data["eastBP"] = bounds.getNE().lng();
+							data["westBP"] = bounds.getSW().lng();
+							data["southBP"] = bounds.getSW().lat();
+							data["northBP"] = bounds.getNE().lat();
+							var contentId = 126508;
+							$
+									.ajax({
+										type : "get",
+										headers : {
+											'Accept' : 'application/json',
+											'Content-Type' : 'text/plain'
+										},
+										url : "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=ZhnHJ1fzbYGAO2Xl%2FSg5MHWhMO0GkoIguiXKwi3%2BlAB8OTO1xYkmp0228On6RJ6lgh6Z4%2BLCWnAsnPm0wysTgA%3D%3D",
+										data : "&contentId="+contentId+"&defaultYN=Y&addrinfoYN=Y&overviewYN=Y&MobileOS=ETC&MobileApp=AppTesting&_type=json",
+										dataType : "json",
+										processData : false,
+										contentType : "application/json;charset=UTF-8",
+										cache : false,
+										async : true,
+										success : function(result) {
+											alert(JSON
+													.stringify(result.response.body.items.item.overview));
+										},
+										error : function(xhr, status, error) {
+											alert(error);
+										}
+									});
+						});
+
 		$(document).on("click", "#userPickAllDelete", function() {
 			$('#userPick').children().remove();
 		});
+
+		$('.ui.menu').on(
+				'click',
+				'.item',
+				function() {
+					if (!$(this).hasClass('dropdown')) {
+						$(this).addClass('active').siblings('.item')
+								.removeClass('active');
+					}
+				});
 	</script>
 </body>
 </html>
