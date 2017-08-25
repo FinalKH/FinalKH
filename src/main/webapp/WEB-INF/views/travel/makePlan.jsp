@@ -66,7 +66,8 @@
 												<div class="four wide middle aligned fluid column">DAY1</div>
 												<div class="twelve wide middle aligned fluid column">
 													17.09.07
-													<div class="ui circular basic refresh tiny icon button">
+													<div class="ui circular basic refresh tiny icon button"
+														id="userPickAllDelete">
 														<i class="refresh icon"></i>
 													</div>
 												</div>
@@ -297,6 +298,7 @@
 	</div>
 
 	<!-- 스크립트 태그 -->
+
 	<script>
 		$(document).ready(function() {
 			$('#calendar').fullCalendar({
@@ -315,225 +317,215 @@
 					}
 				}
 			});
-	
+
 		});
 		$('.ui.bound.top.sticky#user').sticky({
 			context : '#context1',
 			offset : 80,
 			type : 'push'
 		});
-	
+
 		$('.ui.bound.top.sticky#day').sticky({
 			context : '#context1',
 			offset : 80,
 			type : 'push'
 		});
-	
+
 		var map = new naver.maps.Map('map', {
-				center : new naver.maps.LatLng(37.5666805, 126.9784147),
-				zoom : 12,
-				mapTypeId : naver.maps.MapTypeId.NORMAL
-			}),
-			markers = [],
-			infoWindows = [];
-	
+			center : new naver.maps.LatLng(37.5666805, 126.9784147),
+			zoom : 12,
+			mapTypeId : naver.maps.MapTypeId.NORMAL
+		}), markers = [], infoWindows = [];
+
 		naver.maps.Event.addListener(map, 'idle', function() {
-	
+
 			bringAllInMap();
 		});
-	
+
 		function deleteAllInMap() {
 			marker.setMap(null);
 		}
-	
+
 		function bringAllInMap() {
-			var data = {},
-				bounds = map.getBounds();
+			var data = {}, bounds = map.getBounds();
 			data["eastBP"] = bounds.getNE().lng();
 			data["westBP"] = bounds.getSW().lng();
 			data["southBP"] = bounds.getSW().lat();
 			data["northBP"] = bounds.getNE().lat();
 			//alert(JSON.stringify(data));
-	
+
 			$
-				.ajax({
-					type : "post",
-					url : "${path}/travel/bringAllInMap.do",
-					dataType : "json",
-					data : JSON.stringify(data),
-					processData : false,
-					contentType : "application/json;charset=UTF-8",
-					async : false,
-					success : function(result) {
-						console.log(result);
-						for (var i = 0, ii = markers.length; i < ii; i++) {
-							markers.pop().setMap(null)
-	
-						}
-						;
-						markers = [];
-						infoWindows = [];
-						$('#contentInMap').empty();
-						$
-							.each(
-								result,
-								function(key, value) {
-									var position = new naver.maps.LatLng(
-										value.mapY, value.mapX);
-	
-									var marker = new naver.maps.Marker(
-										{
-											map : map,
-											position : position,
-											title : value.contentId,
-											icon : "http://www.owenscorning.com/images/orange-dot.png",
-										});
-	
-									var infoWindow = new naver.maps.InfoWindow(
-										{
-											content : '<div style="text-align:center;padding:10px;"><span style="color:black">'
-												+ value.title
-												+ '</span></div>'
-										});
-	
-									markers.push(marker);
-									infoWindows.push(infoWindow);
-									var $div = $('	<div class="item" id="pickItem" style="width:300px;"'
+					.ajax({
+						type : "post",
+						url : "${path}/travel/bringAllInMap.do",
+						dataType : "json",
+						data : JSON.stringify(data),
+						processData : false,
+						contentType : "application/json;charset=UTF-8",
+						async : false,
+						success : function(result) {
+							console.log(result);
+							for (var i = 0, ii = markers.length; i < ii; i++) {
+								markers.pop().setMap(null)
+
+							}
+							;
+							markers = [];
+							infoWindows = [];
+							$('#contentInMap').empty();
+							$
+									.each(
+											result,
+											function(key, value) {
+												var position = new naver.maps.LatLng(
+														value.mapY, value.mapX);
+
+												var marker = new naver.maps.Marker(
+														{
+															map : map,
+															position : position,
+															title : value.contentId,
+															icon : "http://www.owenscorning.com/images/orange-dot.png",
+														});
+
+												var infoWindow = new naver.maps.InfoWindow(
+														{
+															content : '<div style="text-align:center;padding:10px;"><span style="color:black">'
+																	+ value.title
+																	+ '</span></div>'
+														});
+
+												markers.push(marker);
+												infoWindows.push(infoWindow);
+												var $div = $('	<div class="item" id="pickItem" style="width:300px;"'
 										+ 'firstImage=' + value.firstImage + '" title="' + value.title + '"contentId="' + value.contentId + '">'
-										+ '<img class="ui image" src="' + value.firstImage + '" style="height: 100px; width:150px"><div class="content">'
-										+ value.title
-										+ '</div><div class="right floated content"><div class="ui pick icon button" ><i class="plus icon"></i></div></div></div>');
-									$('#contentInMap').append($div);
-								});
-						for (var i = 0, ii = markers.length; i < ii; i++) {
-							naver.maps.Event.addListener(markers[i],
-								'click', getClickHandler(i));
-						}
-						$('.pick.button')
-							.on(
-								'click',
-								function() {
-									var $title = $(this).parent()
-										.parent().attr('title');
-									var $firstImage = $(this)
-										.parent().parent()
-										.attr('firstImage');
-									var $contentId = $(this)
-										.parent().parent()
-										.attr('title');
-									alert($title);
-									var $div = $('<div class="fluid draggable item" id="userPickItem">'
-										+ '<img class="ui image" src="' + $firstImage + '" style="height: 50px; width:50px">'
-										+ '<div class="content">'
-										+ $title
-										+ '</div>'
-										+ '<div class="right floated content">'
-										+ '<div class="ui icon button" id="userPickDeleteButton">'
-										+ '<i class="delete icon"></i>'
-										+ '</div>'
-										+ '</div>'
-										+ '</div>');
-									$('#userPick').append($div);
-									$('.draggable')
-										.data(
-											'event',
-											{
-												title : $
-													.trim($(
-														'.draggable')
-														.text()),
-												stick : true
-											})
-										.draggable(
-											{
-												zIndex : 999,
-												revert : true,
-												revertDuration : 0,
-												appendTo : 'body',
-												containment : 'window',
-												scroll : false,
-												helper : 'clone'
+														+ '<img class="ui image" src="' + value.firstImage + '" style="height: 100px; width:150px"><div class="content">'
+														+ value.title
+														+ '</div><div class="right floated content"><div class="ui pick icon button" ><i class="plus icon"></i></div></div></div>');
+												$('#contentInMap').append($div);
 											});
-								});
-	
-					},
-					error : function(xhr, status, error) {
-						alert('error');
-					}
-				});
-		}
-		;
-	
+							for (var i = 0, ii = markers.length; i < ii; i++) {
+								naver.maps.Event.addListener(markers[i],
+										'click', getClickHandler(i));
+							}
+							$('.pick.button')
+									.on(
+											'click',
+											function() {
+												var $title = $(this).parent()
+														.parent().attr('title');
+												var $firstImage = $(this)
+														.parent().parent()
+														.attr('firstImage');
+												var $contentId = $(this)
+														.parent().parent()
+														.attr('contentId');
+
+												var $div = $('<div class="fluid draggable item" id="userPickItem">'
+														+ '<img class="ui image" src="' + $firstImage + '" style="height: 50px; width:50px">'
+														+ '<div class="content">'
+														+ $title
+														+ '</div>'
+														+ '<div class="right floated content">'
+														+ '<div class="ui icon button" id="userPickDeleteButton">'
+														+ '<i class="delete icon"></i>'
+														+ '</div>'
+														+ '</div>'
+														+ '</div>');
+												$('#userPick').append($div);
+												$('#userPick .draggable:last-child').data('event', {
+													title : $.trim($title),
+													stick : true
+												}).draggable({
+													zIndex : 999,
+													revert : true,
+													revertDuration : 0,
+													appendTo : 'body',
+													containment : 'window',
+													scroll : false,
+													helper : 'clone'
+												});
+											});
+
+						},
+						error : function(xhr, status, error) {
+							alert('error');
+						}
+					});
+		};
+
 		function getClickHandler(seq) {
 			return function(e) {
-	
-				var marker = markers[seq],
-					infoWindow = infoWindows[seq];
+
+				var marker = markers[seq], infoWindow = infoWindows[seq];
 				if (marker.getIcon() === ('http://www.owenscorning.com/images/orange-dot.png')) {
 					marker
-						.setIcon({
-							url : 'http://www.diacomp.org/omb/images/Google/ltblue.png'
-						});
+							.setIcon({
+								url : 'http://www.diacomp.org/omb/images/Google/ltblue.png'
+							});
 				} else {
 					marker.setIcon({
-	
+
 					});
 				}
-	
+
 				if (infoWindow.getMap()) {
 					infoWindow.open(map, marker);
 				} else {
 					infoWindow.open(map, marker);
 				}
-	
+
 				if (marker.getAnimation() !== null) {
 					marker.setAnimation(null);
 				} else {
 					marker.setAnimation(naver.maps.Animation.BOUNCE);
 				}
-	
+
 				var point = e.coord;
-	
+
 				var path = polyline.getPath();
 				path.push(point);
 				path.setPath(null);
 			}
 		}
-	
+
 		function onMouseOver(e) {
-			var marker = e.overlay,
-				seq = marker.get('seq');
-	
+			var marker = e.overlay, seq = marker.get('seq');
+
 			marker
-				.setIcon({
-					url : 'https://mt.googleapis.com/vt/icon/name=icons/onion/22-blue-dot.png'
-				});
+					.setIcon({
+						url : 'https://mt.googleapis.com/vt/icon/name=icons/onion/22-blue-dot.png'
+					});
 		}
-	
+
 		function onMouseOut(e) {
-			var marker = e.overlay,
-				seq = marker.get('seq');
-	
+			var marker = e.overlay, seq = marker.get('seq');
+
 			marker.setIcon({
 				url : 'http://www.diacomp.org/omb/images/Google/ltblue.png'
 			});
 		}
 		bringAllInMap()
 		/* 		$(#map). */
-	
+
 		var polyline = new naver.maps.Polyline({
 			map : map,
 			path : [],
 			strokeColor : '#5347AA',
 			strokeWeight : 2
 		});
-	
+
 		$(document).on("click", "#userPickDeleteButton", function() {
 			$(this).parent().parent().remove();
 		});
 		$(document).on("click", "#pickItem", function() {
-			$(this).remove();
+			//alert('pick');
+			//$(this).remove();
+		});
+		$(document).on("click", "#userPickAllDelete", function() {
+			$('#userPick').children().remove();
 		});
 	</script>
 </body>
 </html>
+

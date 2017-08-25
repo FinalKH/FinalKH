@@ -6,7 +6,9 @@
 <title>여행 도시 선택하기</title>
 <%@ include file="../include/headerTravel.jsp"%>
 
+<script type="text/javascript" src="${path}/include/js/calendar.js"></script>
 </head>
+
 <body>
 	<%@ include file="../include/menuTravel.jsp"%>
 	<div class="ui fluid container" style="padding: 0em;">
@@ -73,6 +75,7 @@
 							<div class="ui input">
 								<div class="ui basic large label">DATE</div>
 								<input type="text" name="2" id="2" placeholder="2">
+								<div id="cal"></div>
 							</div>
 
 						</div>
@@ -88,6 +91,8 @@
 			</div>
 		</div>
 	</div>
+
+
 	<script>
 		var map = new naver.maps.Map('map', { /* 네이버 지도 객체 초기 생성 */
 			center : new naver.maps.LatLng(36.5, 129),

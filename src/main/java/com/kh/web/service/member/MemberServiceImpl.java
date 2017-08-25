@@ -39,7 +39,7 @@ public class MemberServiceImpl implements MemberService {
 	public boolean loginCheck(MemberVO vo, HttpSession session) {
 		String rawPassword = vo.getUserPw(); // 사용자가 로그인하기 위해 입력한 기본 패스워드
 		String encodedPassword = memberDao.loginCheck(vo);// DB에서 암호화된 패스워드를 불러옴
-		boolean result = passwordEncoder.matches(rawPassword, encodedPassword);
+		boolean result = rawPassword.equals(encodedPassword);
 		if (result) { // true일 경우 세션에 등록
 			MemberVO vo2 = viewMember(vo);
 			// 세션 변수 등록
