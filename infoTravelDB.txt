@@ -998,6 +998,14 @@ show char(1) default 'y'
 create sequence seq_review
 start with 1;	
 
+
+	-- 준구 멤버 테이블 --
+	create table test_member (email varchar2(60) primary key, password varchar2(65), userid varchar2(30), gradename varchar2(20));
+	create table usergrade (gradename varchar2(20) primary key);
+	ALTER TABLE test_member ADD CONSTRAINT Fk_testmember FOREIGN KEY(gradename) REFERENCES usergrade(gradename);
+	insert into  usergrade values ('일반');
+	insert into  usergrade values ('관리자');
+	insert into  usergrade values ('슈퍼관리자');
 	
 	-- @ 최종 테이블, 시퀀스 구조 확인
 	SELECT * FROM tab;

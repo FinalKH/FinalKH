@@ -76,7 +76,7 @@ body>.grid {
 							placeholder="Password">
 					</div>
 				</div>
-				<div class="ui fluid large teal submit button">로그인</div>
+				<button class="ui fluid large teal submit button" onclick="submit">로그인</button>
 			</div>
 
 			<div class="ui error message"></div>

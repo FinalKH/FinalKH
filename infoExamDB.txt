@@ -515,15 +515,15 @@ SQL>
 SQL>
 SQL> craete test_member;
 SP2-0734: "craete tes..."(으)로 시작되는 알 수 없는 명령 - 나머지 줄은 무시되었습니다.
-SQL> create table test_member (email varchar2(50), password varchar2(70), userid varchar2(70), usergrade varchar2(30));
+SQL> create table test_member (email varchar2(60), password varchar2(65), userid varchar2(20), usergrade varchar2(10));
 
 테이블이 생성되었습니다.
 
-SQL> create table usergrade (gradename varchar2(30) primary key);
+SQL> create table usergrade (gradename varchar2(10) primary key);
 
 테이블이 생성되었습니다.
 
-SQL> alter table test_member modify (usergrade varchar2(30) primary key);
+SQL> alter table test_member modify (email varchar2(60) primary key);
 
 테이블이 변경되었습니다.
 

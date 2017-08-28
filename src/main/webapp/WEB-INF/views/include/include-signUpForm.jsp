@@ -61,6 +61,7 @@ body>.grid {
        ; 
      }) 
     ;
+  
   </script>
 
 
@@ -96,7 +97,8 @@ body>.grid {
 							placeholder="User ID">
 					</div>
 				</div>
-				<div class="ui fluid large teal submit button">가입</div>
+				<button class="ui fluid large teal submit button" onclick="submit">가입</button>
+				
 			</div>
 			<div><p>가입을 클릭하시면 <a href ="#">서비스 약관</a>과 <a href="#">개인정보 취급방침</a>을 읽고 동의하신 것으로 간주됩니다.</p></div>
 			<div class="ui error message"></div>
