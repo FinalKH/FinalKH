@@ -60,12 +60,18 @@
 	<beans:bean id="loginInterceptor" class="com.kh.web.interceptor.LoginInterceptor" />
 	<!-- 관리자 세션체크 bean -->
 	<beans:bean id="adminInterceptor" class="com.kh.web.interceptor.AdminInterceptor" />
+	<!-- 멤버 세션체크 bean -->
+	<beans:bean id="memberInterceptor" class="com.kh.web.interceptor.MemberInterceptor" />
+
+
 	<!-- 인터셉터 매핑정보 -->
-
-
 	<interceptors>
-
-
+		<!-- 관리자 세션체크 매핑 -->
+		<interceptor>
+			<mapping path="/travel/createPlan.do" />
+			<mapping path="/travel/makePlan.do" />
+			<beans:ref bean="memberInterceptor" />
+		</interceptor>
 		<!-- 관리자 세션체크 매핑 -->
 		<interceptor>
 			<mapping path="/shop/product/write.do" />

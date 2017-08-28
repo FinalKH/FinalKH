@@ -58,7 +58,7 @@
 
 										<div class="ui segment" style="margin: 0px; padding: 0px;">
 											<div class="ui two buttons">
-												<button class="ui black button">임시저장 & 닫기</button>
+												<button class="ui black button">임시저장 후 닫기</button>
 												<button class="ui orange button">완료</button>
 											</div>
 										</div>

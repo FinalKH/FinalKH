@@ -22,8 +22,9 @@
 					id="content"
 					style="overflow-y: auto; overflow-x: hidden; margin-right: -14px;">
 					<div class="ui two top attached buttons">
-						<div class="ui blue button" id="toggleButton">나의 일정</div>
+						<div class="ui blue button" id="toggleButton">${sessionScope.userid}의 일정</div>
 					</div>
+
 					<c:forEach var="row" items="${list}">
 						<div class="item">
 							<div class="right floated content">
@@ -81,7 +82,7 @@
 						</div>
 						<div class="ui fluid large orange submit button"
 							onclick="location.href='${path}/travel/makePlan.do'">상세일정
-							만들기</div>
+							만들기${sessionScope.email}</div>
 					</div>
 
 					<div class="ui error message"></div>
@@ -91,6 +92,8 @@
 			</div>
 		</div>
 	</div>
+	
+	
 
 
 	<script>

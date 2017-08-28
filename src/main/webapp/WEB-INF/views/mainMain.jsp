@@ -173,13 +173,13 @@ hr {
 			id="contentInMap"
 			style="height: 150px; overflow-y: auto; overflow-x: auto; padding: 0px;">
 			<!-- form data가 이곳으로 이동 -->
-			<
+			
 			<iframe name="iframePhoto"></iframe>
 		</div>
 
 
 		<div class="ui inverted blue segment">
-			<div class"div" contentEditable="true">
+			<div class="div" contentEditable="true">
 				타이핑 가능
 				<div class="uploadedList" contentEditable="true"></div>
 			</div>
