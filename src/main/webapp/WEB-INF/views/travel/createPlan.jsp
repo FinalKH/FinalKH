@@ -22,7 +22,8 @@
 					id="content"
 					style="overflow-y: auto; overflow-x: hidden; margin-right: -14px;">
 					<div class="ui two top attached buttons">
-						<div class="ui blue button" id="toggleButton">${sessionScope.userid}의 일정</div>
+						<div class="ui blue button" id="toggleButton">${sessionScope.userid}의
+							일정</div>
 					</div>
 
 					<c:forEach var="row" items="${list}">
@@ -78,11 +79,13 @@
 								<div class="ui basic large label">날짜</div>
 								<input type="text" id="testDatepicker" name="2" id="2">
 							</div>
-
 						</div>
-						<div class="ui fluid large orange submit button"
-							onclick="location.href='${path}/travel/makePlan.do'">상세일정
-							만들기${sessionScope.email}</div>
+						
+						<form class="ui form" action="${path}/travel/makePlan.do">
+							<div class="ui fluid large orange submit button"
+								id="completionButton">상세일정 만들기${sessionScope.email}</div>
+						</for>
+
 					</div>
 
 					<div class="ui error message"></div>
@@ -92,8 +95,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 
 
 	<script>
@@ -298,6 +301,29 @@
 								prevText : '이전 달'
 
 							});
+		});
+
+		$(document).ready(function() {
+			// 상품 수정 버튼 클릭이벤트
+			$("#completionButton").click(function() {
+				var productName = $("#productName").val();
+				var productPrice = $("#productPrice").val();
+				var productDesc = $("#productDesc").val();
+				// 상품 수정 폼 유효성 검사
+				if (productName == "") {
+					alert("상품명을 입력해주세요");
+					productName.foucs();
+				} else if (productPrice == "") {
+					alert("상품 가격을 입력해주세요");
+					productPrice.focus();
+				} else if (productDesc == "") {
+					alert("상품 설명을 입력해주세요");
+					productDesc.focus();
+				}
+				document.form.action = "${path}/travel/makePlan.do";
+				document.form.submit();
+			});
+
 		});
 	</script>
 </body>
