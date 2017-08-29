@@ -1,4 +1,4 @@
-package com.kh.web.DBparse;
+package com.kh.web.dbParse;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.kh.web.DBparse;
+package com.kh.web.dbParse;
 
 import com.google.gson.annotations.SerializedName;
 

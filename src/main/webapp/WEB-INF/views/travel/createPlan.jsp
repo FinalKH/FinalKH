@@ -356,8 +356,9 @@
 
 			});
 			alert(date);
-
 		});
+		
+		
 	</script>
 </body>
 </html>

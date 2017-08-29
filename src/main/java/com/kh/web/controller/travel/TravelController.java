@@ -46,6 +46,13 @@ public class TravelController {
 		return "travel/makePlan";
 	}
 
+	@RequestMapping("sight.do")
+	public String sight(HttpServletRequest request) {
+		logger.info("sight.do");
+		// model.addAttribute("list", travelService.listContentCommon());
+		return "travel/sight";
+	}
+
 	@ResponseBody
 	@RequestMapping(value = "bringAllInMap.do", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
 	public ResponseEntity<Object> bringAllInMap(HttpServletRequest request, @RequestBody MapBoundVO mapBoundVO) {

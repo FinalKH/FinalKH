@@ -224,28 +224,79 @@
 					<div id="map" style="width: 100%; height: 900px;"></div>
 				</div>
 
-				<div class="ui segment">
-					<div class="ui padded grid">
-						<div class="sixteen wide column">댓글(10)</div>
-						<div class="one wide blue column">아이콘</div>
-						<div class="thirteen wide orange column">댓글쓰는 공간</div>
-						<div class="two wide red column">저장 버튼</div>
-
-						<div class="one wide column">아이콘</div>
-						<div class="fifteen wide column">
-							<div class="row">
-								<div class="ui grid">
-									<div class="two wide blue column">이름</div>
-									<div class="one wide red column">소셜아이콘</div>
-									<div class="thirteen wide brown column">댓글 단 날짜</div>
+				<div class="ui fluid segment">
+					<div class="ui fluid comments" style="width:500px">
+						<h3 class="ui dividing header">Comments</h3>
+						<div class="comment">
+							<a class="avatar"> <img src="/images/avatar/small/matt.jpg">
+							</a>
+							<div class="content">
+								<a class="author">Matt</a>
+								<div class="metadata">
+									<span class="date">Today at 5:42PM</span>
 								</div>
-							</div>
-							<div class="row">
-								<div class="ui grid">
-									<div class="orange column">댓글 쓰는 공간</div>
+								<div class="text">How artistic!</div>
+								<div class="actions">
+									<a class="reply">Reply</a>
 								</div>
 							</div>
 						</div>
+						<div class="comment">
+							<a class="avatar"> <img src="/images/avatar/small/elliot.jpg">
+							</a>
+							<div class="content">
+								<a class="author">Elliot Fu</a>
+								<div class="metadata">
+									<span class="date">Yesterday at 12:30AM</span>
+								</div>
+								<div class="text">
+									<p>This has been very useful for my research. Thanks as
+										well!</p>
+								</div>
+								<div class="actions">
+									<a class="reply">Reply</a>
+								</div>
+							</div>
+							<div class="comments">
+								<div class="comment">
+									<a class="avatar"> <img
+										src="/images/avatar/small/jenny.jpg">
+									</a>
+									<div class="content">
+										<a class="author">Jenny Hess</a>
+										<div class="metadata">
+											<span class="date">Just now</span>
+										</div>
+										<div class="text">Elliot you are always so right :)</div>
+										<div class="actions">
+											<a class="reply">Reply</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="comment">
+							<a class="avatar"> <img src="/images/avatar/small/joe.jpg">
+							</a>
+							<div class="content">
+								<a class="author">Joe Henderson</a>
+								<div class="metadata">
+									<span class="date">5 days ago</span>
+								</div>
+								<div class="text">Dude, this is awesome. Thanks so much</div>
+								<div class="actions">
+									<a class="reply">Reply</a>
+								</div>
+							</div>
+						</div>
+						<form class="ui reply form">
+							<div class="field">
+								<textarea></textarea>
+							</div>
+							<div class="ui blue labeled submit icon button">
+								<i class="icon edit"></i> Add Reply
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -552,7 +603,9 @@
 											'Content-Type' : 'text/plain'
 										},
 										url : "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=ZhnHJ1fzbYGAO2Xl%2FSg5MHWhMO0GkoIguiXKwi3%2BlAB8OTO1xYkmp0228On6RJ6lgh6Z4%2BLCWnAsnPm0wysTgA%3D%3D",
-										data : "&contentId="+contentId+"&defaultYN=Y&addrinfoYN=Y&overviewYN=Y&MobileOS=ETC&MobileApp=AppTesting&_type=json",
+										data : "&contentId="
+												+ contentId
+												+ "&defaultYN=Y&addrinfoYN=Y&overviewYN=Y&MobileOS=ETC&MobileApp=AppTesting&_type=json",
 										dataType : "json",
 										processData : false,
 										contentType : "application/json;charset=UTF-8",
