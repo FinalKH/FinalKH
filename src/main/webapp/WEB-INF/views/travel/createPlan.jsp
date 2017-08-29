@@ -8,8 +8,8 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
 <script type="text/javascript" src="${path}/include/js/calendar.js"></script>
-</head>
 
+</head>
 <body>
 	<%@ include file="../include/menuTravel.jsp"%>
 	<div class="ui fluid container" style="padding: 0em;">
@@ -25,7 +25,6 @@
 						<div class="ui blue button" id="toggleButton">${sessionScope.userid}의
 							일정</div>
 					</div>
-
 					<c:forEach var="row" items="${list}">
 						<div class="item">
 							<div class="right floated content">
@@ -38,23 +37,20 @@
 						</div>
 					</c:forEach>
 				</div>
-
 			</div>
 			<div class="thirteen wide fluid blue column">
-
 				<div class="ui left very sidebar vertical menu" id="sidebar">
 					<div class="ui fluid orange button"
 						onclick="location.href='javascript:detailForm()'">상세일정 만들기</div>
 					<!-- 사용자가 만든 일정이 들어가는 곳 -->
 				</div>
-
 				<div class="pusher">
 					<div id="map" style="width: 100%; margin: -14px;"></div>
 				</div>
+
 			</div>
 		</div>
 	</div>
-
 	<div class="ui container">
 		<div class="ui basic detailForm modal"
 			style="width: 450px; text-align: center; margin-left: -250px;">
@@ -62,36 +58,28 @@
 				<h2 class="ui orange header">
 					<div class="content">제목과 출발일 입력</div>
 				</h2>
-				<form class="ui large login form"
-					action="${path}/travel/makePlan.do" method="post" name="3">
+				<form class="ui large title form"
+					action="${path}/travel/makePlan.do" method="post">
 					<div class="ui stacked segment">
 						<div class="field">
-
 							<div class="ui input">
 								<div class="ui basic large label">제목</div>
-								<input type="text" name="1" id="1">
+								<input type="text" name="title" placeholder="즐거운 여행">
 							</div>
-
 						</div>
 						<div class="field">
-
 							<div class="ui input">
 								<div class="ui basic large label">날짜</div>
-								<input type="text" id="testDatepicker" name="2" id="2">
+								<input type="text" id="datePicker" name="datePicker">
 							</div>
 						</div>
-						
-						<form class="ui form" action="${path}/travel/makePlan.do">
-							<div class="ui fluid large orange submit button"
-								id="completionButton">상세일정 만들기${sessionScope.email}</div>
-						</for>
-
+						<div class="field">
+							<button class="ui fluid large orange submit button"
+								onclick="submit">상세계획 만들기</button>
+						</div>
 					</div>
-
 					<div class="ui error message"></div>
-
 				</form>
-
 			</div>
 		</div>
 	</div>
@@ -278,7 +266,7 @@
 		 }); */
 
 		$(function() {
-			$("#testDatepicker")
+			$("#datePicker")
 					.datepicker(
 							{
 
@@ -324,6 +312,31 @@
 				document.form.submit();
 			});
 
+		});
+
+		$('#completionButton').api({
+			url : 'http://www.google.com'
+		});
+		
+		$(document).ready(function() {
+			$('.ui.title.form').form({
+				fields : {
+					title : {
+						identifier : 'title',
+						rules : [ {
+							type : 'empty',
+							prompt : '제목을 입력해 주세요'
+						} ]
+					},
+					datePicker : {
+						identifier : 'datePicker',
+						rules : [ {
+							type : 'empty',
+							prompt : '날짜를 입력해 주세요'
+						} ]
+					}
+				}
+			});
 		});
 	</script>
 </body>
