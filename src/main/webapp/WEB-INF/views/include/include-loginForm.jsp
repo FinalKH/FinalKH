@@ -15,43 +15,33 @@ body>.grid {
 }
 </style>
 <script>
-  $(document)
-    .ready(function() {
-      $('.ui.login.form')
-        .form({
-          fields: {
-            email: {
-              identifier  : 'email',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your e-mail'
-                },
-                {
-                  type   : 'email',
-                  prompt : 'Please enter a valid e-mail'
-                }
-              ]
-            },
-            password: {
-              identifier  : 'password',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your password'
-                },
-                {
-                  type   : 'length[8]',
-                  prompt : 'Your password must be at least 8 characters'
-                } 
-              ] 
-            }
-          } 
-        }) 
-       ;
-     }) 
-   ;
-  </script>
+	$(document).ready(function() {
+		$('.ui.login.form').form({
+			fields : {
+				email : {
+					identifier : 'email',
+					rules : [ {
+						type : 'empty',
+						prompt : 'Please enter your e-mail'
+					}, {
+						type : 'email',
+						prompt : 'Please enter a valid e-mail'
+					} ]
+				},
+				password : {
+					identifier : 'password',
+					rules : [ {
+						type : 'empty',
+						prompt : 'Please enter your password'
+					}, {
+						type : 'length[8]',
+						prompt : 'Your password must be at least 8 characters'
+					} ]
+				}
+			}
+		});
+	});
+</script>
 
 
 <div class="login column">
@@ -96,16 +86,14 @@ body>.grid {
 	</div>
 </div>
 <script>
-function signupForm() {
-	$('.ui.signupForm.modal')
-	.modal({
-		  onHide : function(){
-			  document.getElementById("semail").value = "";
-			  document.getElementById("pwd").value = "";
-			  document.getElementById("pwdchk").value = "";
-			  document.getElementById("userid").value = "";
-		  }
-	  })
-	.modal('show');
-}
+	function signupForm() {
+		$('.ui.signupForm.modal').modal({
+			onHide : function() {
+				document.getElementById("semail").value = "";
+				document.getElementById("pwd").value = "";
+				document.getElementById("pwdchk").value = "";
+				document.getElementById("userid").value = "";
+			}
+		}).modal('show');
+	}
 </script>

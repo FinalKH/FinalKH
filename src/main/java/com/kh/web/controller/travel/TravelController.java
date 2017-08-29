@@ -39,8 +39,9 @@ public class TravelController {
 	}
 
 	@RequestMapping("makePlan.do")
-	public String makePlan(Model model) {
+	public String makePlan(HttpServletRequest request) {
 		logger.info("makePlan.do");
+		logger.info(request.getParameterNames().toString());
 		// model.addAttribute("list", travelService.listContentCommon());
 		return "travel/makePlan";
 	}

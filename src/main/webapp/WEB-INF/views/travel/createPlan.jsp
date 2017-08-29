@@ -64,7 +64,7 @@
 						<div class="field">
 							<div class="ui input">
 								<div class="ui basic large label">제목</div>
-								<input type="text" name="title" placeholder="즐거운 여행">
+								<input type="text" id="title" name="title" placeholder="즐거운 여행">
 							</div>
 						</div>
 						<div class="field">
@@ -74,8 +74,8 @@
 							</div>
 						</div>
 						<div class="field">
-							<button class="ui fluid large orange submit button"
-								onclick="submit">상세계획 만들기</button>
+							<button class="ui fluid large orange detailForm submit button"
+								onclick="submit">상세일정 만들기</button>
 						</div>
 					</div>
 					<div class="ui error message"></div>
@@ -235,7 +235,7 @@
 				.click(
 						function() {
 							var $id = $(this).attr('id');
-							var $div = $('<div class="item" id="userPickItem"><div class="ui icon tiny buttons"><button class="ui button" id="userDelete"><i class="delete icon"></i></button><button class="ui black disabled button">'
+							var $div = $('<div class="item" id="userPickItem"><div class="ui icon tiny buttons"><button class="ui button" id="userDelete"><i class="delete icon"></i></button><button class="ui black disabled button" id="areaName">'
 									+ $id
 									+ '</button></div><div class="ui icon tiny right floated buttons"><button class="ui button" id="minusButton"><i class="minus icon"></i></button><button class="ui black disabled button"><span id="dateDay">2</span>일</button><button class="ui button" id="plusButton"><i class="plus icon"></i></button></div></div>');
 							$('#sidebar').append($div);
@@ -291,52 +291,72 @@
 							});
 		});
 
-		$(document).ready(function() {
+		$(document).on("click", function() {
 			// 상품 수정 버튼 클릭이벤트
-			$("#completionButton").click(function() {
-				var productName = $("#productName").val();
-				var productPrice = $("#productPrice").val();
-				var productDesc = $("#productDesc").val();
-				// 상품 수정 폼 유효성 검사
-				if (productName == "") {
-					alert("상품명을 입력해주세요");
-					productName.foucs();
-				} else if (productPrice == "") {
-					alert("상품 가격을 입력해주세요");
-					productPrice.focus();
-				} else if (productDesc == "") {
-					alert("상품 설명을 입력해주세요");
-					productDesc.focus();
-				}
-				document.form.action = "${path}/travel/makePlan.do";
-				document.form.submit();
-			});
 
 		});
+		$("#completionButton").click(function() {
+			var productName = $("#productName").val();
+			var productPrice = $("#productPrice").val();
+			var productDesc = $("#productDesc").val();
+			// 상품 수정 폼 유효성 검사
+			if (productName == "") {
+				alert("상품명을 입력해주세요");
+				productName.foucs();
+			} else if (productPrice == "") {
+				alert("상품 가격을 입력해주세요");
+				productPrice.focus();
+			} else if (productDesc == "") {
+				alert("상품 설명을 입력해주세요");
+				productDesc.focus();
+			}
+			document.form.action = "${path}/travel/makePlan.do";
+			document.form.submit();
+		});
 
+		$('.ui.form').form({
+			fields : {
+				title : {
+					identifier : 'title',
+					rules : [ {
+						type : 'empty',
+						prompt : '제목을 입력해 주세요'
+					} ]
+				},
+				datePicker : {
+					identifier : 'datePicker',
+					rules : [ {
+						type : 'empty',
+						prompt : '날짜를 입력해 주세요'
+					} ]
+				}
+			}
+		});
 		$('#completionButton').api({
 			url : 'http://www.google.com'
 		});
-		
-		$(document).ready(function() {
-			$('.ui.title.form').form({
-				fields : {
-					title : {
-						identifier : 'title',
-						rules : [ {
-							type : 'empty',
-							prompt : '제목을 입력해 주세요'
-						} ]
-					},
-					datePicker : {
-						identifier : 'datePicker',
-						rules : [ {
-							type : 'empty',
-							prompt : '날짜를 입력해 주세요'
-						} ]
-					}
-				}
+
+		$(document).on("click", "#minusButton", function() {
+			var baseVal = $(this).parent().find("#dateDay").text();
+			if (baseVal >= 2) {
+				$(this).parent().find("#dateDay").empty();
+				$(this).parent().find("#dateDay").text(baseVal - 1);
+			} else {
+				console.log("1일보다 작게 할 수는 없습니다");
+			}
+		});
+
+		$('.ui.detailForm.submit.button').click(function() {
+			var date = $('#datePicker').val();
+			var title = $('#title').val();
+			alert(title);
+			$('#sidebar #userPickItem').each(function(index) {
+				alert($('#userPickItem').find("#areaName").text());
+				alert($('#userPickItem').find("#dateDay").text());
+
 			});
+			alert(date);
+
 		});
 	</script>
 </body>
