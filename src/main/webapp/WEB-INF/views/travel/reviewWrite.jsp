@@ -36,11 +36,11 @@
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
 	<!-- JSTL 사용 설정 -->
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%--@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"--%>
+<%--@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"--%>
+<%--@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"--%>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></scrpit> -->
-<script src="<c:url value='/include/js/common.js'/>" charset="utf-8"></script>
+<%-- <script src="<c:url value='/include/js/common.js'/>" charset="utf-8"></script> --%>
 <script type="text/javascript">
     /* $(document).ready(function(){
         $("#ibt").click(function(){
@@ -122,7 +122,7 @@
 				        	console.log('file : '+file);
 				        	console.log('url : '+url);
 				        	//editor.insertImage(welEditable, data.url);
-				        	$(el).summernote('editor.insertImage', url);
+				        	//$(el).summernote('editor.insertImage', url);
 				        	/* var str = "";
 							// 이미지파일이면 썸네일 이미지 출력
 							if(checkImageType(data)){ 
