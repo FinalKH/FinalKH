@@ -30,7 +30,7 @@ public class MemberDAOImpl_Test_JG implements MemberDAO_Test_JG{
     }
     
     
- 
+    // 회원가입
     @Override
     public void insertMember_test(MemberVo_Test_JG vot) {
     	sqlSession.insert("member.insertMember2", vot);

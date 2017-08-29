@@ -13,8 +13,8 @@
 				class="skyatlas red icon"></i>메인</a> <a class="item"
 				href="${path}/travel/createPlan.do"><i class="map icon"></i>여행플랜</a>
 			<a class="item"><i class="help circle icon"></i>이용방법</a> <a
-				class="item"><i class="book icon"></i> 여행팁</a> <a class="item"><i
-				class="map signs icon"></i> 여행일정</a> <a class="item"><i
+				class="item"><i class="book icon"></i> 여행팁</a> <a class="item" href="${path}/itinerary/list.do">
+				<i class="map signs icon"></i> 여행일정</a> <a class="item"><i
 				class="camera retro icon"></i> 관광지</a> <a class="item"
 				href="${path}/reviewList.do"><i class="book icon"></i> 여행후기</a> <a
 				class="item" href="${path}/member/list.do"><i class="book icon"></i>회원관리</a>
