@@ -223,80 +223,89 @@
 				<div class="ui segment">
 					<div id="map" style="width: 100%; height: 900px;"></div>
 				</div>
-
-				<div class="ui fluid segment">
-					<div class="ui fluid comments" style="width:500px">
-						<h3 class="ui dividing header">Comments</h3>
-						<div class="comment">
-							<a class="avatar"> <img src="/images/avatar/small/matt.jpg">
-							</a>
-							<div class="content">
-								<a class="author">Matt</a>
-								<div class="metadata">
-									<span class="date">Today at 5:42PM</span>
-								</div>
-								<div class="text">How artistic!</div>
-								<div class="actions">
-									<a class="reply">Reply</a>
-								</div>
-							</div>
+				<div class="ui fluid container">
+					<div class="ui fulid grid">
+						<div class="eight wide column">
+							<div class="ui fluid segment"></div>
 						</div>
-						<div class="comment">
-							<a class="avatar"> <img src="/images/avatar/small/elliot.jpg">
-							</a>
-							<div class="content">
-								<a class="author">Elliot Fu</a>
-								<div class="metadata">
-									<span class="date">Yesterday at 12:30AM</span>
-								</div>
-								<div class="text">
-									<p>This has been very useful for my research. Thanks as
-										well!</p>
-								</div>
-								<div class="actions">
-									<a class="reply">Reply</a>
-								</div>
-							</div>
-							<div class="comments">
-								<div class="comment">
-									<a class="avatar"> <img
-										src="/images/avatar/small/jenny.jpg">
-									</a>
-									<div class="content">
-										<a class="author">Jenny Hess</a>
-										<div class="metadata">
-											<span class="date">Just now</span>
-										</div>
-										<div class="text">Elliot you are always so right :)</div>
-										<div class="actions">
-											<a class="reply">Reply</a>
+						<div class="eight wide column">
+							<div class="ui fluid segment">
+								<div class="ui fluid comments" style="max-width: 100%">
+									<h3 class="ui dividing header">댓글</h3>
+									<div class="comment">
+										<a class="avatar"> <img
+											src="/images/avatar/small/matt.jpg">
+										</a>
+										<div class="content">
+											<a class="author">홍길동</a>
+											<div class="metadata">
+												<span class="date">오늘 5:42PM</span>
+											</div>
+											<div class="text">멋지네요!</div>
+											<div class="actions">
+												<a class="reply">답글</a>
+											</div>
 										</div>
 									</div>
+									<div class="comment">
+										<a class="avatar"> <img
+											src="/images/avatar/small/elliot.jpg">
+										</a>
+										<div class="content">
+											<a class="author">엘리엇</a>
+											<div class="metadata">
+												<span class="date">어제 12:30AM</span>
+											</div>
+											<div class="text">
+												<p>연구에 도움이 되었습니다</p>
+											</div>
+											<div class="actions">
+												<a class="reply">답글</a>
+											</div>
+										</div>
+										<div class="comments">
+											<div class="comment">
+												<a class="avatar"> <img
+													src="/images/avatar/small/jenny.jpg">
+												</a>
+												<div class="content">
+													<a class="author">제니</a>
+													<div class="metadata">
+														<span class="date">방금 전</span>
+													</div>
+													<div class="text">잘했어요</div>
+													<div class="actions">
+														<a class="reply">답글</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="comment">
+										<a class="avatar"> <img src="/images/avatar/small/joe.jpg">
+										</a>
+										<div class="content">
+											<a class="author">abc</a>
+											<div class="metadata">
+												<span class="date">5일전</span>
+											</div>
+											<div class="text">감사합니다</div>
+											<div class="actions">
+												<a class="reply">답글</a>
+											</div>
+										</div>
+									</div>
+									<form class="ui reply form">
+										<div class="field">
+											<textarea></textarea>
+										</div>
+										<div class="ui blue labeled submit icon button">
+											<i class="icon edit"></i> 댓글 달기
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
-						<div class="comment">
-							<a class="avatar"> <img src="/images/avatar/small/joe.jpg">
-							</a>
-							<div class="content">
-								<a class="author">Joe Henderson</a>
-								<div class="metadata">
-									<span class="date">5 days ago</span>
-								</div>
-								<div class="text">Dude, this is awesome. Thanks so much</div>
-								<div class="actions">
-									<a class="reply">Reply</a>
-								</div>
-							</div>
-						</div>
-						<form class="ui reply form">
-							<div class="field">
-								<textarea></textarea>
-							</div>
-							<div class="ui blue labeled submit icon button">
-								<i class="icon edit"></i> Add Reply
-							</div>
-						</form>
 					</div>
 				</div>
 			</div>
@@ -364,6 +373,7 @@
 					center : 'title',
 					right : 'month,agendaWeek,agendaDay'
 				},
+				lang : "ko",
 				defaultView : 'agendaWeek',
 				editable : true,
 				droppable : true, // this allows things to be dropped onto the calendar
