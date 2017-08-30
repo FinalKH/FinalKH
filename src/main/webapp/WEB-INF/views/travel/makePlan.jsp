@@ -624,7 +624,6 @@
 		$(document).on("click", "#userPickAllDelete", function() {
 			$('#userPick').children().remove();
 		});
-
 		$('.ui.menu').on(
 				'click',
 				'.item',

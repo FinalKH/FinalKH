@@ -24,4 +24,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		T_ContentCommon where (mapX between #{westBP} AND #{eastBP}) AND (mapY
 		between #{southBP} AND #{northBP}) AND rownum &lt;= 100
 	</select>
+	<insert id="insertPlanMain">
+		insert
+		into T_PlanMain values
+		(seq_PlanMainNum.nextval, #{title},
+		#{startDay}, #{completion},
+		#{email})
+	</insert>
+	<select id="selectLast" resultType="java.lang.String">
+		SELECT PlanMainNum FROM
+		(SELECT * FROM T_PlanMain ORDER BY PlanMainNum DESC)
+		WHERE ROWNUM = 1
+	</select>
+	<select id="selectArea" resultType="java.lang.String">
+		SELECT areaCode FROM T_Area where areaName=#{areaName} 
+	</select>
+	<insert id="insertPlanRough">
+		insert
+		into T_PlanRough values (seq_PlanRoughNum.nextval, #{planMainNum},
+		#{areaCode}, #{planDay})
+	</insert>
 </mapper>

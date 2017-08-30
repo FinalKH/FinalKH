@@ -847,8 +847,8 @@
 		-- 외래키 설정 필요 없음
 		
 		-- 유저등급 기본데이터 설정
-		insert into T_UserGrade values ('일반회원');
-		insert into T_UserGrade values ('특별회원');
+		insert into T_UserGrade values ('일반');
+		insert into T_UserGrade values ('특별');
 		insert into T_UserGrade values ('관리자');
 		
 		
@@ -874,17 +874,6 @@
 		-- 생성해야할 계정 kh@kh.com
 
 		
-		
-		-- 준구 멤버 테이블 --
-		create table test_member (email varchar2(60) primary key, password varchar2(65), userid varchar2(30), gradename varchar2(20));
-		create table usergrade (gradename varchar2(20) primary key);
-		ALTER TABLE test_member ADD CONSTRAINT Fk_testmember FOREIGN KEY(gradename) REFERENCES usergrade(gradename);
-		insert into  usergrade values ('일반');
-		insert into  usergrade values ('관리자');
-		insert into  usergrade values ('슈퍼관리자');
-		
-		
-		
 	-- 12. 계획메인 관련 DB 정보
 		-- 계획메인 테이블 생성
 		create table T_PlanMain(
@@ -900,7 +889,7 @@
 		CREATE sequence Seq_PlanMainNum increment by 1 start with 1;
 		
 		-- 계획메인 외래키 설정
-		ALTER TABLE T_PlanMain ADD CONSTRAINT Fk_PlanMainEmail FOREIGN KEY(Email) REFERENCES test_member(Email);
+		ALTER TABLE T_PlanMain ADD CONSTRAINT Fk_PlanMainEmail FOREIGN KEY(Email) REFERENCES t_userInfo(Email);
 		
 		-- 계획메인 기본데이터 설정
 		-- 나중에

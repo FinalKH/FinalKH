@@ -58,8 +58,7 @@
 				<h2 class="ui orange header">
 					<div class="content">제목과 출발일 입력</div>
 				</h2>
-				<form class="ui large title form"
-					action="${path}/travel/makePlan.do" method="post">
+				<div class="ui large title form">
 					<div class="ui stacked segment">
 						<div class="field">
 							<div class="ui input">
@@ -74,12 +73,11 @@
 							</div>
 						</div>
 						<div class="field">
-							<button class="ui fluid large orange detailForm submit button"
-								onclick="submit">상세일정 만들기</button>
+							<button class="ui fluid large orange detailForm button">상세일정 만들기</button>
 						</div>
 					</div>
 					<div class="ui error message"></div>
-				</form>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -346,19 +344,38 @@
 			}
 		});
 
-		$('.ui.detailForm.submit.button').click(function() {
-			var date = $('#datePicker').val();
-			var title = $('#title').val();
-			alert(title);
-			$('#sidebar #userPickItem').each(function(index) {
-				alert($('#userPickItem').find("#areaName").text());
-				alert($('#userPickItem').find("#dateDay").text());
+		$('.ui.detailForm.button').click(
+				function() {
+					alert(1);
+					var jsonArray = new Object();
+					jsonArray["title"] = $('#title').val();
+					jsonArray["datePicker"] = $('#datePicker').val();
 
-			});
-			alert(date);
-		});
-		
-		
+					$('#sidebar #userPickItem').each(
+							function(index) {
+								var userPickArray = new Object();
+								userPickArray.areaName = $(this).find("#areaName").text();
+								userPickArray.dateDay = $(this).find("#dateDay").text();
+								jsonArray["userPickItem"+index] = userPickArray;
+							});
+					alert(JSON.stringify(jsonArray));
+									
+					$.ajax({
+					    url : "${path}/travel/insertPlanMainRough.do",
+					    type : 'post',
+					    data : JSON.stringify(jsonArray),
+					    contentType : "application/json;charset=UTF-8",
+					    success : function(respBody) {
+							alert("성공");
+					    },
+					    error : function(xhr, ajaxoptions, thrownError, status, error) {
+					    	alert(status);
+					    }
+					}); 
+					
+					location.href="${path}/travel/makePlan.do";
+
+				});
 	</script>
 </body>
 </html>
