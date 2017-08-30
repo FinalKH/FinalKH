@@ -856,10 +856,10 @@
 	-- 11. 유저정보 관련 DB 정보
 		-- 유저정보 테이블 생성
 		create table T_UserInfo(
-		Email varchar2(50),	 				-- 
-		UserId varchar2(50),	 			--
-		Password varchar2(70),				--
-		GradeName varchar2(50),				--
+		Email varchar2(60),	 				-- 
+		UserId varchar2(30),	 			--
+		Password varchar2(65),				--
+		GradeName varchar2(20),				--
 		primary key(Email)					-- 
 		);
 	
@@ -998,15 +998,6 @@ show char(1) default 'y'
 create sequence seq_review
 start with 1;	
 
-
-	-- 준구 멤버 테이블 --
-	create table test_member (email varchar2(60) primary key, password varchar2(65), userid varchar2(30), gradename varchar2(20));
-	create table usergrade (gradename varchar2(20) primary key);
-	ALTER TABLE test_member ADD CONSTRAINT Fk_testmember FOREIGN KEY(gradename) REFERENCES usergrade(gradename);
-	insert into  usergrade values ('일반');
-	insert into  usergrade values ('관리자');
-	insert into  usergrade values ('슈퍼관리자');
-	
 	-- @ 최종 테이블, 시퀀스 구조 확인
 	SELECT * FROM tab;
 	SELECT * FROM all_sequences WHERE SEQUENCE_OWNER='FINALKH';

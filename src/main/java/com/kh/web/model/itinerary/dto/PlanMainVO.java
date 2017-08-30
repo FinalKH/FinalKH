@@ -8,18 +8,20 @@ public class PlanMainVO {
 	private Date startDay;
 	private String completion;
 	private String email;
+	private String userId;
 	
-	public PlanMainVO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public PlanMainVO(String planMainNum, String title, Date startDay, String completion, String email) {
+	public PlanMainVO(String planMainNum, String title, Date startDay, String completion, String email, String userId) {
 		super();
 		this.planMainNum = planMainNum;
 		this.title = title;
 		this.startDay = startDay;
 		this.completion = completion;
 		this.email = email;
+		this.userId = userId;
+	}
+	public PlanMainVO() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	public String getPlanMainNum() {
 		return planMainNum;
@@ -51,11 +53,18 @@ public class PlanMainVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	@Override
 	public String toString() {
 		return "PlanMainVO [planMainNum=" + planMainNum + ", title=" + title + ", startDay=" + startDay
-				+ ", completion=" + completion + ", email=" + email + "]";
+				+ ", completion=" + completion + ", email=" + email + ", userId=" + userId + "]";
 	}
+	
 	
 	
 	

@@ -13,8 +13,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			title,
 			startday,
 			completion,
-			email
+			email,
+			userid
 		FROM t_planmain
+		NATURAL JOIN t_userinfo
+		ORDER BY planmainnum
 	</select>
 	
+	<!-- 여행 장소 뽑아내기 -->
+	<!-- <select id="areaList" resultType="com.kh.web.model.itinerary.dto.t_areaVO">
+		SELECT
+		 	areaname,
+		 	areaimage
+		FROM t_planmain
+		NATURAL JOIN t_planrough
+		NATURAL JOIN t_area
+		WHERE planmainnum = #{
+	</select> -->
 </mapper>

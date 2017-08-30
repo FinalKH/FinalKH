@@ -27,11 +27,9 @@ public class ItineraryController {
 	@RequestMapping("list.do")
 	public String ItineraryList(Model model2){
 	// controller => service => dao 요청
-		// 내용 채우기
+		// 리스트로 만들기
 		List<PlanMainVO> list2 = itineraryService.itineraryList();
-		
 		model2.addAttribute("list", list2);
-		
 		return "itinerary/itineraryMain";
 	}
 }

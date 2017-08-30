@@ -41,43 +41,55 @@
       font-weight: normal;
       margin: 2em 0em 5em;
     }
-
+	.column {
+	  margin-top: 8em;
+	}
 
     .ui.table {
       table-layout: fixed;
     }
   </style>
 </head>
-
 <body>
-<div class="ui container">
+<div class="ui itinerary container">
   <h1 align="center">인기 여행일정</h1>
   <h2 class="ui dividing header" align="center">다른 여행자들의 일정을 참고해 나만의 여행을 계획해보세요!</h2>
   <div class="ui four column very relaxed grid">
-    <div class="column">
-      <c:forEach var="iti" items="${list}">
-  	    <div class="ui card">
-    	  <div class="image">
-		    <img src="http://img.earthtory.com/img/city_images/312/jeju_1425527708.jpg">
-		  </div>
-		  <div class="content">
-		    <a class="header">${iti.title}</a>
-		    <div class="meta">
-		      <span class="date">${iti.startDay}</span>
-		    </div>
-		    <div class="description">
-		      ${iti.email}
-		    </div>
-		  </div>
-		  <div class="extra content">
-		    <a>
-		      <i class="eye icon"></i>
-		      22 views
-		    </a>
+	<c:forEach var="iti" items="${list}">
+	  <div class="column">
+		<div class="ui link cards">
+		  <div class="card">
+		  	<span class="right top">
+		  	  ${iti.planMainNum }
+		  	</span>
+			<div class="image">
+			  <img src="http://mw2.google.com/mw-panoramio/photos/medium/40704282.jpg">
+			</div>
+			<div class="content">
+			  <a class="header">${iti.title}</a>
+			  <div class="meta">
+				<span class="date">
+			  	  대구
+				</span>
+			  </div>
+				<div class="description">
+				작성자 : ${iti.userId} ${iti.planMainNum }
+			  </div>
+			</div>
+			<div class="extra content">
+			  
+			  <span class="right floated">
+        		<fmt:formatDate value="${iti.startDay}" pattern="yyyy.MM.dd" />
+    		  </span>
+			  <span>
+				<i class="eye icon"></i>
+				22 views
+			  </span>
+			</div>
 		  </div>
 		</div>
-	  </c:forEach>
-    </div>
+	  </div>
+	</c:forEach>
   </div>
 </div>
 

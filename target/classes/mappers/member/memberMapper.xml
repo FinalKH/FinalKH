@@ -89,7 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 로그인 체크 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
 	<select id="loginCheck2" resultType="String">
-        SELECT password FROM test_member
+        SELECT password FROM t_userinfo
 		WHERE email = #{email}
     </select>
     
@@ -99,7 +99,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             email,
             userid,
             gradename
-        FROM test_member
+        FROM t_userinfo
         WHERE email = #{email}
     </select>
 	
@@ -109,15 +109,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
           email,
           userid,
           gradename
-        FROM test_member
+        FROM t_userinfo
     </select>
     
     <!-- 02. 회원 등록 -->
     <insert id="insertMember2">
-        INSERT INTO test_member
-            (email, password, userid, gradename)
+        INSERT INTO t_userinfo
+            (email, userid, password, gradename)
         VALUES 
-            (#{email}, #{password}, #{userid}, '일반')    
+            (#{email}, #{userid}, #{password}, '일반')    
     </insert>
     
 	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
