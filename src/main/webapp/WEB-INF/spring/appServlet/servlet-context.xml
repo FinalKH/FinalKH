@@ -23,7 +23,7 @@
 	<!-- 리소스 설정 -->
 	<!-- mapping : 가상 경로(상대경로), location : 리소스가 실제로 저장된 경로 -->
 	<resources mapping="/resources/**" location="/resources/" />
-	<resources mapping="/include/**" location="/WEB-INF/views/include/"/>
+	<resources mapping="/include/**" location="/WEB-INF/views/include/, classpath=/WEB-INF/views/include/"/>
 	<resources mapping="/images/**" location="/WEB-INF/views/images/"/>
 	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
