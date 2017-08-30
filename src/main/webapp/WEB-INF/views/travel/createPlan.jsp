@@ -358,7 +358,7 @@
 								userPickArray.dateDay = $(this).find("#dateDay").text();
 								jsonArray["userPickItem"+index] = userPickArray;
 							});
-					alert(JSON.stringify(jsonArray));
+					console.log(JSON.stringify(jsonArray));
 									
 					$.ajax({
 					    url : "${path}/travel/insertPlanMainRough.do",
@@ -366,10 +366,10 @@
 					    data : JSON.stringify(jsonArray),
 					    contentType : "application/json;charset=UTF-8",
 					    success : function(respBody) {
-							alert("성공");
+					    	console.log("성공");
 					    },
 					    error : function(xhr, ajaxoptions, thrownError, status, error) {
-					    	alert(status);
+					    	console.log(status);
 					    }
 					}); 
 					
