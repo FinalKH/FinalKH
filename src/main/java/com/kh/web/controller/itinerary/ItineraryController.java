@@ -25,13 +25,12 @@ public class ItineraryController {
 	// 01 여행일정 목록
 	//
 	@RequestMapping("list.do")
-	public String ItineraryList(Model model){
+	public String ItineraryList(Model model2){
+	// controller => service => dao 요청
 		// 내용 채우기
-		logger.info("list.do");
+		List<PlanMainVO> list2 = itineraryService.itineraryList();
 		
-		List<PlanMainVO> list = itineraryService.itineraryList();
-		
-		model.addAttribute("list", list);
+		model2.addAttribute("list", list2);
 		
 		return "itinerary/itineraryMain";
 	}

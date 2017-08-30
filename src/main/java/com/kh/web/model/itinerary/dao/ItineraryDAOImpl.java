@@ -16,10 +16,9 @@ import com.kh.web.service.itinerary.ItineraryServiceImpl;
 public class ItineraryDAOImpl implements ItineraryDAO{
 	@Inject
 	SqlSession sqlSession;
-	private static final Logger logger = LoggerFactory.getLogger(ItineraryDAOImpl.class);
+	
 	@Override
 	public List<PlanMainVO> itineraryList() {
-		logger.info("dao");
 		return sqlSession.selectList("itinerary.itineraryList");
 	}
 }

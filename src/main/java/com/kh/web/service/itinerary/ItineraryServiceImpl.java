@@ -8,22 +8,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.kh.web.model.itinerary.dao.ItineraryDAOImpl;
+import com.kh.web.model.itinerary.dao.ItineraryDAO;
 import com.kh.web.model.itinerary.dto.PlanMainVO;
 
 @Service
 public class ItineraryServiceImpl implements ItineraryService{
 	
-	
-	
 	@Inject
-	ItineraryDAOImpl itineraryDao;
-	
-	private static final Logger logger = LoggerFactory.getLogger(ItineraryServiceImpl.class);
+	ItineraryDAO itineraryDao;
 	
 	@Override
 	public List<PlanMainVO> itineraryList(){
-		logger.info("Service");
 		return itineraryDao.itineraryList();
 	}
 }
