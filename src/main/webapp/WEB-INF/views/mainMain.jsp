@@ -8,17 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
-<script type="text/javascript">
-	$(function() {
-		$('.hello').animate({
-			left : 200
-		}, function() {
-			$('.hello').animate({
-				left : 50
-			});
-		});
-	});
-</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+<script src="http://malsup.github.io/jquery.cycle2.js"></script>
 <style>
 /* reset.css */
 html,body{width:100%;height:100%;}
@@ -40,8 +31,8 @@ hr{display:none;}
 #wrap{width:1400px;margin:0 auto;}
 
 #article1, #article2{padding-left:150px;}
-#article1{padding-top:50px;}
-#article1{padding-bottom:100px;}
+#article1{padding-top:100px;}
+#article1{padding-bottom:70px;}
 .logo{padding-left:50px;}
 
 #footer{width:100%; height:110px; margin-top:120px; float:left; border-top:2px solid gray; font-size: 15px;padding-bottom:100px;}
@@ -60,37 +51,83 @@ hr{display:none;}
    font-size: 20px;
    font-weight: bold;
 }
-img{
-	padding-right:50px;
+
+
+.center {
+	text-align: center;
 }
+.cycle-slideshow, .cycle-slideshow * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.cycle-slideshow {
+	width: 45%;
+	min-width: 200px;
+	max-width: 500px;
+	margin: 10px auto;
+	padding: 0;
+	position: relative;
+	background: url(http://malsup.github.com/images/spinner.gif) 50% 50%
+		no-repeat;
+}
+ .cycle-slideshow img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 0;
+	display: block;
+}
+
+
 </style>
 </head>
 <%@ include file="include/headerTravel.jsp"%>
 <body >
 	<%@ include file="include/menuTravel.jsp"%>
 	<div id="wrap">
-	
-	
-		<jsp:include page="include/headerMain.jsp"/>
-		
-		
-		
-		
 		<div id="section">
 			<div id="article1" >
-				<h2>국내 여행지</h2>
+				<h2 class="center">국내 여행지</h2>
 				
-				<c:forEach var="list" items = "${list}">
-					<a href="#"><img class="hello" src="${list.imgurl}" width="250px" heigth="250px"/></a>
-				</c:forEach>
+				<div class="cycle-slideshow" 
+					data-cycle-fx="scrollHorz"
+					data-cycle-timeout="0"
+					data-cycle-prev="#prev"
+					data-cycle-next="#next">
+			
+					<c:forEach var="list" items = "${list}">
+						<img src="${list.imgurl}" width="250px" heigth="250px"/>
+					</c:forEach>
+			
+				</div>
+				<div class="center">
+					<a href="#" id="prev">&lt;&lt;</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" id="next">&gt;&gt;</a>
+				</div>
+				
+				
+				
+				
 			</div><!-- //article1 -->
 			
 			<div id="article2">
-				<h2>추천 여행지</h2>
+				<h2 class="center">추천 여행지</h2>
 				
-				<c:forEach var="list" items = "${list}">
-					<a href="#"><img class="hello" src="${list.imgurl}" width="250px" heigth="250px"/></a>
-				</c:forEach>
+				<div class="cycle-slideshow" 
+					data-cycle-fx="scrollHorz"
+					data-cycle-timeout="0"
+					data-cycle-prev="#prev2"
+					data-cycle-next="#next2">
+			
+					<c:forEach var="list" items = "${list}">
+						<img src="${list.imgurl}" width="250px" heigth="250px"/>
+					</c:forEach>
+			
+				</div>
+				<div class="center">
+					<a href="#" id="prev2">&lt;&lt;</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" id="next2">&gt;&gt;</a>
+				</div>
 
 			</div><!-- //article2 -->
 		

@@ -21,7 +21,7 @@ import com.kh.web.service.travel.ImageService;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		Date date = new Date();
@@ -32,21 +32,12 @@ public class HomeController {
 	}
 	@Inject
 	ImageService imageService;
-	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main(Model model) throws Exception {
 		List<ImageVO> list = imageService.imageList();
 	    model.addAttribute("list", list);
 		return "mainMain";
 	}
-	
-	// 준구 테스트 (main을 홈으로)
-	/*@RequestMapping("/main1.do")
-	public String main1(Model model) throws Exception{
-		logger.info("main.....");
-		List<ImageVO> list = imageService.imageList();
-	    model.addAttribute("list", list);
-	    return "mainMain";
-	}*/
 	
 	
 	// doA 매핑

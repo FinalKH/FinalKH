@@ -43,7 +43,7 @@
 			
 			$.ajax({
 				type: "post",
-				url: "${path}/upload/uploadAjax",
+				url: "${path}/upload/uploa1859dAjax",
 				data: formData,
 				dataType: "text",
 				// processData: true=> get방식, false => post방식
