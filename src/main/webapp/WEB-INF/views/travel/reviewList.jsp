@@ -23,10 +23,6 @@
 	src='http://arshaw.com/js/fullcalendar-1.6.3/fullcalendar/fullcalendar.min.js'></script>
 <script>
 	$(document).ready(function(){
-		$("#wbt").click(function(){
-			// 페이지 주소 변경(이동)
-			location.href = "${path}/reviewWrite.do";
-		});
 	});
 	// 원하는 페이지로 이동시 검색조건, 키워드 값을 유지하기 위해 
 	function list(page){
@@ -52,12 +48,11 @@ table th {
 </style>
 </head>
 <body>
-	<%@ include file="../include/headerTravel.jsp"%>
-	<%@ include file="../include/menuTravel.jsp"%>
 	<header>
 	<div class="ui fluid container">
 		<div class="ui purple segment">
-			<p><%@ include file="../include/headerMain.jsp"%></p>
+			<p><%@ include file="../include/headerTravel.jsp"%>
+	<%@ include file="../include/menuTravel.jsp"%></p>
 		</div>
 	</div>
 	</header>
@@ -149,7 +144,7 @@ table th {
 				<tbody>
 					<tr>
 						<th id="writebt" colspan="1">
-						<a class="ui button"	id="wbt" href="${path}/reviewWrite.do" >글쓰기</a>
+						<a class="ui button" href="${path}/reviewWrite.do" >글쓰기</a>
 						</th>						
 						<th colspan="4">
 							<div class="ui right floated pagination menu">
