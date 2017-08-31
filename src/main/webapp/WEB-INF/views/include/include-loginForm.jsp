@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <style type="text/css">
 
+body {
+    background-color: #DADADA;
+}
 
 body>.grid {
 	height: 100%;

@@ -18,9 +18,6 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 
 
-
-
-
 <!-- js 라이브러리 설정 -->
 
 <script
