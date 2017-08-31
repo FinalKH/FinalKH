@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.web.model.travel.dto.MapBoundVO;
 import com.kh.web.model.travel.dto.PlanMainVO;
+import com.kh.web.model.travel.dto.PlanRoughVO;
 import com.kh.web.service.travel.TravelService;
 import com.kh.web.util.JsonResponseUtil;
 
@@ -36,6 +36,8 @@ public class TravelController {
 
 	private PlanMainVO planMainVO;
 
+	private Map<String, Object> returMap;
+
 	@RequestMapping("createPlan.do")
 	public String createPlan(Model model) {
 		logger.info("createPlan.do");
@@ -45,8 +47,8 @@ public class TravelController {
 		return "travel/createPlan";
 	}
 
-	@RequestMapping(value = "makePlan.do")
-	public String makePlan(HttpServletRequest request, HttpSession session) {
+	@RequestMapping(value = "makePlan.do", produces = "text/plain;charset=utf-8")
+	public String makePlan(HttpServletRequest request, HttpSession session, @RequestBody PlanRoughVO planRoughVO) {
 		logger.info("makePlan.do");
 
 		return "travel/makePlan";
@@ -72,36 +74,24 @@ public class TravelController {
 	
 	@ResponseBody
 	@RequestMapping(value = "insertPlanMainRough.do", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
-	public ResponseEntity<String> insertPlanMainRough(HttpSession session, HttpServletRequest request, @RequestBody Map<String, Object> map){
-		ResponseEntity<String> entity = null;
-		
-		System.out.println(map.get("userPickItem"+0));
-		System.out.println(map.get("userPickItem"+1));
-		System.out.println(map.toString());
-		for(int i=0;i<map.size()-2;i++) {
-			System.out.println(((Map<String, Object>)map.get("userPickItem"+i)).get("areaName"));
-			System.out.println(((Map<String, Object>)map.get("userPickItem"+i)).get("dateDay"));
-		}
-		
-		System.out.println(map.size());
+	public Map<String, Object> insertPlanMainRough(HttpSession session, HttpServletRequest request, @RequestBody Map<String, Object> map){
+		returMap = null;
+
 		session.getAttribute("email");
 		map.get("title");
 		map.get("datePicker");
-		
-		
+				
 		PlanMainVO planMainVO = new PlanMainVO();
-
 
 		planMainVO.setCompletion("0");
 		planMainVO.setTitle(map.get("title").toString());
 		planMainVO.setStartDay(map.get("datePicker").toString());
 		planMainVO.setEmail(session.getAttribute("email").toString());
 		System.out.println(planMainVO.toString());
-				
 		travelService.insertPlanMainRough(planMainVO, map);
-		entity = new ResponseEntity<String>("success", HttpStatus.OK);
+						returMap.put("planMainNum", "123");
 		
-		return entity;
+		return returMap;
 	}
 
 }

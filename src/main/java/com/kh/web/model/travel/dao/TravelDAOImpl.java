@@ -21,6 +21,8 @@ import com.kh.web.model.travel.dto.PlanRoughVO;
 public class TravelDAOImpl implements TravelDAO {
 	private static final Logger logger = LoggerFactory.getLogger(TravelController.class);
 
+	private static final String String = null;
+
 	@Inject
 	SqlSession sqlSession;
 
@@ -39,7 +41,7 @@ public class TravelDAOImpl implements TravelDAO {
 		return sqlSession.selectList("travel.bringAllInMap", mapBoundVO);
 	}
 
-	public void insertPlanMainRough(PlanMainVO planMainVO,  Map<String, Object> map) {
+	public String insertPlanMainRough(PlanMainVO planMainVO,  Map<String, Object> map) {
 		System.out.println(planMainVO.getPlanMainNum());
 		System.out.println(planMainVO.toString());
 		sqlSession.insert("travel.insertPlanMain", planMainVO);
@@ -59,6 +61,8 @@ public class TravelDAOImpl implements TravelDAO {
 			System.out.println(planRoughVO.toString());
 			sqlSession.insert("travel.insertPlanRough", planRoughVO);
 		}
+		
+		return planMainNum;
 		
 	}
 

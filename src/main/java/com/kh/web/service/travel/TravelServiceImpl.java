@@ -40,11 +40,11 @@ public class TravelServiceImpl implements TravelService {
 	}
 
 	@Override
-	public boolean insertPlanMainRough(PlanMainVO planMainVO, Map<String, Object> map) {
+	public String insertPlanMainRough(PlanMainVO planMainVO, Map<String, Object> map) {
 
 
-		travelDao.insertPlanMainRough(planMainVO, map);
-		return false;
+		
+		return travelDao.insertPlanMainRough(planMainVO, map);
 	}
 
 }

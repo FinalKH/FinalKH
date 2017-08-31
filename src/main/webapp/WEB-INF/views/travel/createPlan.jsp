@@ -367,13 +367,16 @@
 					    contentType : "application/json;charset=UTF-8",
 					    success : function(respBody) {
 					    	console.log("성공");
+					    	alert(respBody);
+					    	alert(respBody.planMainNum);
+					    	location.href="${path}/travel/makePlan.do";
+					    	console.log("성공");
 					    },
 					    error : function(xhr, ajaxoptions, thrownError, status, error) {
 					    	console.log(status);
 					    }
 					}); 
 					
-					location.href="${path}/travel/makePlan.do";
 
 				});
 	</script>

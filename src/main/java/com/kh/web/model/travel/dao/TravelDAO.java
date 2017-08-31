@@ -16,6 +16,6 @@ public interface TravelDAO {
 
 	public List<Object> bringAllInMap(MapBoundVO mapBoundVO);
 
-	public void insertPlanMainRough(PlanMainVO planMainVO,  Map<String, Object> map);
+	public String insertPlanMainRough(PlanMainVO planMainVO,  Map<String, Object> map);
 
 }

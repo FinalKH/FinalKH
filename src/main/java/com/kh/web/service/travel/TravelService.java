@@ -13,6 +13,6 @@ public interface TravelService {
 	public List<AreaVO> list();
 	public List<ContentCommonVO> listContentCommon();
 	public List<Object> bringAllInMap(MapBoundVO mapBoundVO);
-	public boolean insertPlanMainRough(PlanMainVO planMainVO, Map<String, Object> map);
+	public String insertPlanMainRough(PlanMainVO planMainVO, Map<String, Object> map);
 
 }
