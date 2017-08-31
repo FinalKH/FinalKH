@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.kh.web.model.itinerary.dto.AreaVO;
 import com.kh.web.model.itinerary.dto.PlanMainVO;
 import com.kh.web.service.itinerary.ItineraryService;
 
@@ -29,7 +30,9 @@ public class ItineraryController {
 	// controller => service => dao 요청
 		// 리스트로 만들기
 		List<PlanMainVO> list2 = itineraryService.itineraryList();
+		List<AreaVO> list3 = itineraryService.areaList();
 		model2.addAttribute("list", list2);
+		model2.addAttribute("list2", list3);
 		return "itinerary/itineraryMain";
 	}
 }

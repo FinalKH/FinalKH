@@ -21,13 +21,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 여행 장소 뽑아내기 -->
-	<!-- <select id="areaList" resultType="com.kh.web.model.itinerary.dto.t_areaVO">
+	<select id="areaList" resultType="com.kh.web.model.itinerary.dto.AreaVO">
 		SELECT
 		 	areaname,
 		 	areaimage
 		FROM t_planmain
 		NATURAL JOIN t_planrough
 		NATURAL JOIN t_area
-		WHERE planmainnum = #{
-	</select> -->
+		WHERE planmainnum = #{ }
+	</select>
 </mapper>
