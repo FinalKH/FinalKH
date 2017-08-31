@@ -14,7 +14,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
-<script type="text/javascript" src="./include/ckeditor/ckeditor.js" charset="utf-8"></script>
+<script type="text/javascript" src="./include/ckeditor/ckeditor.js" ></script>
 <script type="text/javascript">
 </script>
 </head>
@@ -49,8 +49,23 @@
 					</div>
 					</form>
 					<script type="text/javascript">
-					CKEDITOR.replace( 'contents' ,{
-						filebrowerImageUploadUrl : '${path}/upimg'
+					$(function(){
+						CKEDITOR.replace( 'contents' ,{
+							uiColor : '696969',
+							filebrowserImageUploadUrl : './upimg.do'
+						});
+						CKEDITOR.on('dialogDefinition', function( ev ){
+				            var dialogName = ev.data.name;
+				            var dialogDefinition = ev.data.definition;
+				          
+				            switch (dialogName) {
+				                case 'image': //Image Properties dialog
+				                    //dialogDefinition.removeContents('info');
+				                    dialogDefinition.removeContents('Link');
+				                    dialogDefinition.removeContents('advanced');
+				                    break;
+				            }
+				        });
 					});
 					</script>
 				</div><!-- segment -->
