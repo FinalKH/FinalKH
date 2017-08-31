@@ -15,7 +15,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <script type="text/javascript" src="./include/ckeditor/ckeditor.js" ></script>
-<script type="text/javascript">
+<script type='text/javascript'> 
+    window.parent.CKEDITOR.tools.callFunction('{CKEditorFuncNum}','{file_path}','파일전송완료');
 </script>
 </head>
 <body>
@@ -52,7 +53,7 @@
 					$(function(){
 						CKEDITOR.replace( 'contents' ,{
 							uiColor : '696969',
-							filebrowserImageUploadUrl : './upimg.do'
+							filebrowserImageUploadUrl : '${path}/upimg'
 						});
 						CKEDITOR.on('dialogDefinition', function( ev ){
 				            var dialogName = ev.data.name;
