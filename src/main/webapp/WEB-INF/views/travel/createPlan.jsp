@@ -289,29 +289,6 @@
 							});
 		});
 
-		$(document).on("click", function() {
-			// 상품 수정 버튼 클릭이벤트
-
-		});
-		$("#completionButton").click(function() {
-			var productName = $("#productName").val();
-			var productPrice = $("#productPrice").val();
-			var productDesc = $("#productDesc").val();
-			// 상품 수정 폼 유효성 검사
-			if (productName == "") {
-				alert("상품명을 입력해주세요");
-				productName.foucs();
-			} else if (productPrice == "") {
-				alert("상품 가격을 입력해주세요");
-				productPrice.focus();
-			} else if (productDesc == "") {
-				alert("상품 설명을 입력해주세요");
-				productDesc.focus();
-			}
-			document.form.action = "${path}/travel/makePlan.do";
-			document.form.submit();
-		});
-
 		$('.ui.form').form({
 			fields : {
 				title : {
@@ -346,17 +323,21 @@
 
 		$('.ui.detailForm.button').click(
 				function() {
-					alert(1);
 					var jsonArray = new Object();
 					jsonArray["title"] = $('#title').val();
 					jsonArray["datePicker"] = $('#datePicker').val();
-
+					var j = 1;
 					$('#sidebar #userPickItem').each(
 							function(index) {
+
+								for(var i=0;i<$(this).find("#dateDay").text();i++,j++){
+
 								var userPickArray = new Object();
 								userPickArray.areaName = $(this).find("#areaName").text();
-								userPickArray.dateDay = $(this).find("#dateDay").text();
-								jsonArray["userPickItem"+index] = userPickArray;
+								userPickArray.dateDay = j;
+								jsonArray["userPickItem"+j] = userPickArray;
+								alert(j);
+								}
 							});
 					console.log(JSON.stringify(jsonArray));
 									
@@ -368,8 +349,7 @@
 					    success : function(respBody) {
 					    	console.log("성공");
 					    	alert(respBody);
-					    	alert(respBody.planMainNum);
-					    	location.href="${path}/travel/makePlan.do";
+					    	location.href="${path}/travel/makePlan.do?planMainNum="+respBody;
 					    	console.log("성공");
 					    },
 					    error : function(xhr, ajaxoptions, thrownError, status, error) {

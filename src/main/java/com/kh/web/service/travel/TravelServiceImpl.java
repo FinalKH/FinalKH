@@ -1,5 +1,6 @@
 package com.kh.web.service.travel;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,9 +19,9 @@ import com.kh.web.model.travel.dto.PlanMainVO;
 
 @Service // 현재 클래스를 스프링에서 관리하는 service bean으로 등록
 public class TravelServiceImpl implements TravelService {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(TravelController.class);
-	
+
 	@Inject
 	TravelDAO travelDao;
 
@@ -42,9 +43,20 @@ public class TravelServiceImpl implements TravelService {
 	@Override
 	public String insertPlanMainRough(PlanMainVO planMainVO, Map<String, Object> map) {
 
-
-		
 		return travelDao.insertPlanMainRough(planMainVO, map);
+	}
+
+	public Map<String, Object> selectPlanMainRough(String planMainNum) {
+		
+		logger.info("selectPlanMainRough");
+		logger.info(travelDao.selectPlanMain(planMainNum).toString());
+		logger.info(travelDao.selectPlanRoughAreaJoin(planMainNum).toString());
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("planMain", travelDao.selectPlanMain(planMainNum));
+		map.put("planRough", travelDao.selectPlanRoughAreaJoin(planMainNum));
+		
+		return map;
+
 	}
 
 }

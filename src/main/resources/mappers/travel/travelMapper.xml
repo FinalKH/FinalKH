@@ -33,15 +33,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	<select id="selectLast" resultType="java.lang.String">
 		SELECT PlanMainNum FROM
-		(SELECT * FROM T_PlanMain ORDER BY PlanMainNum DESC)
+		(SELECT * FROM T_PlanMain ORDER BY to_number(PlanMainNum) DESC)
 		WHERE ROWNUM = 1
 	</select>
 	<select id="selectArea" resultType="java.lang.String">
-		SELECT areaCode FROM T_Area where areaName=#{areaName} 
+		SELECT areaCode FROM T_Area
+		where areaName=#{areaName}
 	</select>
+	
+	<select id="selectPlanMain" resultType="com.kh.web.model.travel.dto.PlanMainVO">
+		select * from T_PlanMain
+		where PlanMainNum=#{planMainNum}
+	</select>
+	
+	<select id="selectPlanRoughAreaJoin" resultType="com.kh.web.model.travel.dto.PlanRoughAreaJoinVO">
+		select * FROM t_planrough inner JOIN t_area ON (t_planrough.areaCode = t_area.areaCode) where t_planrough.planMainNum=#{planMainNum};
+	</select>
+	
 	<insert id="insertPlanRough">
 		insert
-		into T_PlanRough values (seq_PlanRoughNum.nextval, #{planMainNum},
+		into T_PlanRough values
+		(seq_PlanRoughNum.nextval, #{planMainNum},
 		#{areaCode}, #{planDay})
 	</insert>
 </mapper>

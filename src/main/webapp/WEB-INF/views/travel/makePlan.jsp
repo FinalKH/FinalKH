@@ -34,8 +34,12 @@
 								</button>
 								<button class="ui black fluid button">전체일정보기</button>
 							</div>
-							<div class="ui fluid menu list"
-								style="height: 400px; overflow-y: auto; overflow-x: hidden;"></div>
+							<div class="ui segment">
+								<div class="ui divided animated selection itinerary list"
+									style="height: 365px; overflow-y: auto; overflow-x: hidden;">
+
+								</div>
+							</div>
 							<div class="ui segment" style="margin: 0px; padding: 2px;">
 								<button class="ui fluid blue button">DAY 추가</button>
 								<button class="ui fluid black button">이용 방법</button>
@@ -414,6 +418,42 @@
 			marker.setMap(null);
 		}
 
+		function parseJSON(data) {
+			return window.JSON && window.JSON.parse ? window.JSON.parse(data)
+					: (new Function("return " + data))();
+		}
+		$(document)
+				.ready(
+						function() {
+							var listJson = '${list}';
+							list = parseJSON(listJson);
+
+							var img = 'https://semantic-ui.com/images/avatar2/small/lena.png';
+							$
+									.each(
+											list.planRough,
+											function(index, value) {
+												$('.ui.itinerary.list')
+														.append(
+																"<div class='item'>"
+																		+ "<img class='ui avatar image' src="+img+">"
+																		+ "<div class='content'>"
+																		+ "DAY"
+																		+ list.planRough[index].planDay
+																		+ "</div>"
+																		+ "<div class='right floated content'>"
+																		+ list.planRough[index].areaCode
+																		+ "</div>"
+																		+ "</div>");
+											});
+						});
+
+		
+		
+		$('.ui.fluid.itinerary.menu.list')
+				.append(
+						"<div class='item'><img class='ui image'><div class='content'>가마목</div><div class='right floated content'><div class='ui icon button' id='userPickDeleteButton'><i class='delete icon'></i></div></div></div>");
+
 		function bringAllInMap() {
 			var data = {}, bounds = map.getBounds();
 			data["eastBP"] = bounds.getNE().lng();
@@ -643,6 +683,7 @@
 								.removeClass('active');
 					}
 				});
+		$()
 	</script>
 </body>
 </html>

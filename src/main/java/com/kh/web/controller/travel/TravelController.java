@@ -16,10 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.kh.web.model.travel.dto.MapBoundVO;
 import com.kh.web.model.travel.dto.PlanMainVO;
-import com.kh.web.model.travel.dto.PlanRoughVO;
 import com.kh.web.service.travel.TravelService;
 import com.kh.web.util.JsonResponseUtil;
 
@@ -34,24 +35,25 @@ public class TravelController {
 	@Inject
 	TravelService travelService;
 
-	private PlanMainVO planMainVO;
-
-	private Map<String, Object> returMap;
-
 	@RequestMapping("createPlan.do")
 	public String createPlan(Model model) {
 		logger.info("createPlan.do");
 		// 일단 첫 로딩시에 전체 area 데이터를 가져와서 맵에 마커 정보를 띄운다
 		model.addAttribute("list", travelService.list());
-		System.out.println(uploadPath);
 		return "travel/createPlan";
 	}
 
-	@RequestMapping(value = "makePlan.do", produces = "text/plain;charset=utf-8")
-	public String makePlan(HttpServletRequest request, HttpSession session, @RequestBody PlanRoughVO planRoughVO) {
+	@RequestMapping(value = "makePlan.do")
+	public ModelAndView makePlan(HttpServletRequest request, HttpSession session) {
 		logger.info("makePlan.do");
-
-		return "travel/makePlan";
+		logger.info(request.getParameter("planMainNum"));
+		Gson gson = new Gson();
+		travelService.selectPlanMainRough(request.getParameter("planMainNum").toString());
+		System.out.println(travelService.selectPlanMainRough(request.getParameter("planMainNum").toString()));
+		ModelAndView mav = new ModelAndView("travel/makePlan");
+		mav.addObject("list", gson.toJson(travelService.selectPlanMainRough(request.getParameter("planMainNum").toString())));
+		System.out.println(mav.getModel());
+		return mav;
 	}
 
 	@RequestMapping("sight.do")
@@ -67,20 +69,19 @@ public class TravelController {
 		logger.info("bringAllInMap.do");
 		logger.info(String.valueOf(mapBoundVO));
 		Object result = travelService.bringAllInMap(mapBoundVO);
-		return JsonResponseUtil.getJSONResponse(result);
 
+		return JsonResponseUtil.getJSONResponse(result);
 	}
 
-	
 	@ResponseBody
 	@RequestMapping(value = "insertPlanMainRough.do", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
-	public Map<String, Object> insertPlanMainRough(HttpSession session, HttpServletRequest request, @RequestBody Map<String, Object> map){
-		returMap = null;
+	public String insertPlanMainRough(HttpSession session, HttpServletRequest request,
+			@RequestBody Map<String, Object> map) {
 
 		session.getAttribute("email");
 		map.get("title");
 		map.get("datePicker");
-				
+		
 		PlanMainVO planMainVO = new PlanMainVO();
 
 		planMainVO.setCompletion("0");
@@ -88,10 +89,11 @@ public class TravelController {
 		planMainVO.setStartDay(map.get("datePicker").toString());
 		planMainVO.setEmail(session.getAttribute("email").toString());
 		System.out.println(planMainVO.toString());
-		travelService.insertPlanMainRough(planMainVO, map);
-						returMap.put("planMainNum", "123");
 		
-		return returMap;
+		travelService.insertPlanMainRough(planMainVO, map);
+		String returnString = planMainVO.getPlanMainNum();
+
+		return returnString;
 	}
 
 }
