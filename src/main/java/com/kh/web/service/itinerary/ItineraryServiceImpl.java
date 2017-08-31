@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.kh.web.model.itinerary.dao.ItineraryDAO;
-import com.kh.web.model.itinerary.dto.AreaVO;
+import com.kh.web.model.itinerary.dto.PlanAreaVO;
 import com.kh.web.model.itinerary.dto.PlanMainVO;
 
 @Service
@@ -21,7 +21,7 @@ public class ItineraryServiceImpl implements ItineraryService{
 		return itineraryDao.itineraryList();
 	}
 	@Override
-	public List<AreaVO> areaList() {
+	public List<PlanAreaVO> areaList() {
 		return itineraryDao.areaList();
 	}
 }

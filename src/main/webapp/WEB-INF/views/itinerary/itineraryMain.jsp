@@ -56,24 +56,43 @@
   <h2 class="ui dividing header" align="center">다른 여행자들의 일정을 참고해 나만의 여행을 계획해보세요!</h2>
   <div class="ui four column very relaxed grid">
 	<c:forEach var="iti" items="${list}">
+	  <c:set var="src" value="" />
 	  <div class="column">
 		<div class="ui link cards">
-		  <div class="card">
+		  <div class="ui card">
 		  	<span class="right top">
 		  	  ${iti.planMainNum }
 		  	</span>
-			<div class="image">
-			  <img src="http://mw2.google.com/mw-panoramio/photos/medium/40704282.jpg">
-			</div>
+			<a class="image" href="#">
+			  <c:forEach var="ini" items="${list2 }">
+				<c:set var="main" value="${iti.planMainNum }" />
+				<c:set var="area" value="${ini.planMainNum }" />
+				<c:if test="${main eq area }">
+				  <c:if test="${empty src }">
+					<c:set var="src" value="${ini.areaImage }" />
+					<img src="${src }">
+				  </c:if>
+				</c:if>
+			  </c:forEach>
+			  <c:if test="${empty src }">
+				<img src="http://alhayat-altayba.com/images/empty.png">
+			  </c:if>
+			</a>
 			<div class="content">
-			  <a class="header">${iti.title}</a>
+			  <a class="header" href="#">${iti.title}</a>
 			  <div class="meta">
 				<span class="date">
-			  	  대구
+			  	  <c:forEach var="ini" items="${list2 }">
+					<c:set var="main" value="${iti.planMainNum }" />
+					<c:set var="area" value="${ini.planMainNum }" />
+					<c:if test="${main eq area }">
+					  ${ini.areaName }
+					</c:if>
+				  </c:forEach>
 				</span>
 			  </div>
 				<div class="description">
-				작성자 : ${iti.userId} ${iti.planMainNum }
+				
 			  </div>
 			</div>
 			<div class="extra content">
@@ -82,8 +101,8 @@
         		<fmt:formatDate value="${iti.startDay}" pattern="yyyy.MM.dd" />
     		  </span>
 			  <span>
-				<i class="eye icon"></i>
-				22 views
+				<i class="user icon"></i>
+				${iti.userId}
 			  </span>
 			</div>
 		  </div>

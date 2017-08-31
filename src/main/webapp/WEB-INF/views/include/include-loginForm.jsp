@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/header.jsp" %>
 <style type="text/css">
 
 
@@ -55,7 +54,7 @@ body>.grid {
    ;
   </script>
 
-
+  
 	<div class="login column">
 		<h2 class="ui teal image header">
 			<img src="https://semantic-ui.com/examples/assets/images/logo.png"
@@ -76,7 +75,7 @@ body>.grid {
 							placeholder="Password">
 					</div>
 				</div>
-				<button class="ui fluid large teal submit button" onclick="submit">로그인</button>
+				<div class="ui fluid large teal submit button">로그인</div>
 			</div>
 
 			<div class="ui error message"></div>
