@@ -8,8 +8,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
 
-	//config.height = 800;
-	//config.uiColor = '#696969';
+	config.skin = 'moono-dark';
 	config.toolbar =[
         ['Source','-','Cut','Copy','Paste','PasteText','PasteFromWord','Undo','Redo','SelectAll','RemoveFormat'],
         '/',

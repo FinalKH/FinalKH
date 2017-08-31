@@ -52,7 +52,6 @@
 					<script type="text/javascript">
 					$(function(){
 						CKEDITOR.replace( 'contents' ,{
-							uiColor : '696969',
 							filebrowserImageUploadUrl : '${path}/upimg'
 						});
 						CKEDITOR.on('dialogDefinition', function( ev ){
