@@ -49,11 +49,9 @@ public class RvimgController {
 					System.out.println("폴더 생성 완료");
 				}
 				log.info(root_path + attach_path + filename);
-				System.out.println("파일경로 : "+file.getCanonicalPath());
 				upload.transferTo(file);
 			} catch (IOException e) {
 				e.printStackTrace();
-				System.err.println("파일경로얻어오기 에러 : "+e);
 			}
 		}
 
