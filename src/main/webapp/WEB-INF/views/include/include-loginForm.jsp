@@ -26,11 +26,11 @@ body>.grid {
               rules: [
                 {
                   type   : 'empty',
-                  prompt : 'Please enter your e-mail'
+                  prompt : '이메일을 입력해 주세요!'
                 },
                 {
                   type   : 'email',
-                  prompt : 'Please enter a valid e-mail'
+                  prompt : '이메일 형식에 맞게 입력하여 주세요'
                 }
               ]
             },
@@ -39,11 +39,11 @@ body>.grid {
               rules: [
                 {
                   type   : 'empty',
-                  prompt : 'Please enter your password'
+                  prompt : '비밀번호를 입력해 주세요!'
                 },
                 {
                   type   : 'length[8]',
-                  prompt : 'Your password must be at least 8 characters'
+                  prompt : '비밀번호는 최소 8자리여야 합니다'
                 } 
               ] 
             }
@@ -66,13 +66,13 @@ body>.grid {
             <div class="field">
                <div class="ui left icon input">
                   <i class="user icon"></i> <input type="text" name="email" id="email"
-                     placeholder="E-mail address">
+                     placeholder="이메일">
                </div>
             </div>
             <div class="field">
                <div class="ui login left icon input">
                   <i class="lock icon"></i> <input type="password" name="password" id="password"
-                     placeholder="Password">
+                     placeholder="비밀번호">
                </div>
             </div>
             <div class="ui fluid large teal submit button">로그인</div>
