@@ -29,8 +29,8 @@ public class RvimgController {
 	public String upimg(FileBean fileBean, HttpServletRequest request, Model model) {
 		System.out.println("====업로드시작===============================================");
 		HttpSession session = request.getSession();
-		String root_path = "D:/javawork/dev/";//session.getServletContext().getRealPath("/");
-		String attach_path = "upload/";//"src/main/resources/upload";
+		String root_path = session.getServletContext().getRealPath("/");  //"C:/Upload/";
+		String attach_path = "resources/upload/";	//"img/";
 
 		System.out.println("파일1 : " + root_path);
 		System.out.println("파일2 : " + attach_path);
@@ -56,7 +56,7 @@ public class RvimgController {
 		String file_path = attach_path + filename;
 		model.addAttribute("file_path", file_path);
 		model.addAttribute("CKEditorFuncNum", CKEditorFuncNum);
-		return null;//"travel/reviewWrite";
+		return "travel/reviewWrite";
 	}
 	/*public void communityImageUpload(HttpServletRequest request, HttpServletResponse response, @RequestParam MultipartFile upload) {
 		 

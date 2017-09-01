@@ -16,7 +16,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <script type="text/javascript" src="./include/ckeditor/ckeditor.js" ></script>
 <script type='text/javascript'> 
-    window.parent.CKEDITOR.tools.callFunction('{CKEditorFuncNum}','{file_path}','파일전송완료');
+    window.parent.CKEDITOR.tools.callFunction('${CKEditorFuncNum}','${file_path}','파일전송완료');
 </script>
 </head>
 <body>
