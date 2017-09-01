@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.web.model.itinerary.dto.PlanMainVO;
 import com.kh.web.model.member.dto.MemberVo_Test_JG;
 
 @Repository
@@ -34,8 +35,12 @@ public class MemberDAOImpl_Test_JG implements MemberDAO_Test_JG{
     @Override
     public void insertMember_test(MemberVo_Test_JG vot) {
     	sqlSession.insert("member.insertMember2", vot);
-    
     }
+    // 회원가입 이메일 중복 체크
+    @Override
+	public List<MemberVo_Test_JG> insertCheckList() {
+		return sqlSession.selectList("member.insertCheckList");
+	}
     // 01_01. 회원 로그인체크
     @Override
     public String loginCheck_test(MemberVo_Test_JG vot) {

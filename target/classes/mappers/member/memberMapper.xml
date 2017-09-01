@@ -121,6 +121,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             (#{email}, #{userid}, #{password}, '일반')    
     </insert>
     
+    <!-- 02-1. 회원 등록 이메일 중복 체크 -->
+    <insert id="insertCheckList">
+        SELECT
+          email
+        FROM t_userinfo   
+    </insert>
+    
 	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 	
 	<!-- 페이징 sql -->

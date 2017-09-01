@@ -52,8 +52,12 @@ public class MemberController2 {
     // * 폼에서 입력한 데이터를 받아오는 법 3가지 
     //public String memberInsert(HttpServlet request){
     //public String memberInsert(String Email, String Password, String userId){
-    public String memberInsert(@ModelAttribute MemberVo_Test_JG vot, HttpSession session){
-        // 테이블에 레코드 입력
+    public String memberInsert(@ModelAttribute Model model, MemberVo_Test_JG vot, HttpSession session){
+    	// 회원가입시 이메일 중복  체크
+    	List<MemberVo_Test_JG> list = memberService2.insertCheckList();
+    	model.addAttribute("list3",list);
+    	
+    	// 테이블에 레코드 입력
     	String Password = vot.getPassword();
     	String encryptPassword = passwordEncoder.encode(vot.getPassword());
     	logger.info(encryptPassword);

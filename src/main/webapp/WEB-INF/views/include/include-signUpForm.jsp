@@ -31,6 +31,10 @@ body>.grid {
                 {
                   type   : 'email',
                   prompt : '이메일 형식에 맞게 입력하여 주세요'
+                },
+                {
+                  type	 : 'match[ck]',
+                  prompt : '이메일이 이미 있습니다!'
                 }
               ]
             },
@@ -50,19 +54,27 @@ body>.grid {
            password_check: {
               identifier : 'sign_up_password_check',
                rules: [
-                  {
-                     type : 'match[pwd]',
-                     prompt : '비밀번호가 일치하지 않습니다'
-                  }
+                {
+                  type : 'match[pwd]',
+                  prompt : '비밀번호가 일치하지 않습니다'
+                }
               ]
            },
            userid: {
         	   identifier : 'userid',
-        	    rules: [
-        	      {
-        	    	  type : 'length[15]',
-        	    	  prompt : '닉네임은 최대 15글자 입니다'
-        	      }
+        	   rules: [
+        	    {
+        	      type : 'empty',
+        	      prompt : '닉네임을 설정해 주세요'
+        	    },
+        	    {
+        	      type : 'minLength[2]',
+        	      prompt : '닉네임은 최소 2글자 입니다'
+        	    },
+        	    {
+        	      type : 'maxLength[15]',
+        	      prompt : '닉네임은 최대 15글자 입니다'
+        	    }
         	  ]
            }
           } 
@@ -71,7 +83,9 @@ body>.grid {
      }) 
     ;
   </script>
-
+<c:forEach var="chk" items="${list3 }">
+	<c:set var="ck" value="${chk.email }" />
+</c:forEach>
 
    <div class="signUp column">
       <h2 class="ui teal image header">
