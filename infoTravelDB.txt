@@ -836,7 +836,7 @@
 	-- 10. 유저등급 관련 DB 정보
 		-- 유저등급 테이블 생성
 		create table T_UserGrade(
-		GradeName varchar2(50),	 			-- 
+		GradeName varchar2(10),	 			-- 
 		primary key(GradeName)				-- 
 		);
 	
@@ -847,8 +847,8 @@
 		-- 외래키 설정 필요 없음
 		
 		-- 유저등급 기본데이터 설정
-		insert into T_UserGrade values ('일반회원');
-		insert into T_UserGrade values ('특별회원');
+		insert into T_UserGrade values ('일반');
+		insert into T_UserGrade values ('특별');
 		insert into T_UserGrade values ('관리자');
 		
 		
@@ -856,10 +856,10 @@
 	-- 11. 유저정보 관련 DB 정보
 		-- 유저정보 테이블 생성
 		create table T_UserInfo(
-		Email varchar2(50),	 				-- 
-		UserId varchar2(50),	 			--
-		Password varchar2(70),				--
-		GradeName varchar2(50),				--
+		Email varchar2(60),	 				-- 
+		UserId varchar2(30),	 			--
+		Password varchar2(65),				--
+		GradeName varchar2(10),				--
 		primary key(Email)					-- 
 		);
 	
@@ -998,7 +998,6 @@ show char(1) default 'y'
 create sequence seq_review
 start with 1;	
 
-	
 	-- @ 최종 테이블, 시퀀스 구조 확인
 	SELECT * FROM tab;
 	SELECT * FROM all_sequences WHERE SEQUENCE_OWNER='FINALKH';

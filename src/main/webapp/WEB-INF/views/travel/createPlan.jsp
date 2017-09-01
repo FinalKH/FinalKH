@@ -5,8 +5,11 @@
 <head>
 <title>여행 도시 선택하기</title>
 <%@ include file="../include/headerTravel.jsp"%>
-
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+<script type="text/javascript" src="${path}/include/js/calendar.js"></script>
 </head>
+
 <body>
 	<%@ include file="../include/menuTravel.jsp"%>
 	<div class="ui fluid container" style="padding: 0em;">
@@ -19,7 +22,7 @@
 					id="content"
 					style="overflow-y: auto; overflow-x: hidden; margin-right: -14px;">
 					<div class="ui two top attached buttons">
-						<div class="ui button" id="toggleButton">나의 일정</div>
+						<div class="ui blue button" id="toggleButton">나의 일정</div>
 					</div>
 					<c:forEach var="row" items="${list}">
 						<div class="item">
@@ -38,7 +41,7 @@
 			<div class="thirteen wide fluid blue column">
 
 				<div class="ui left very sidebar vertical menu" id="sidebar">
-					<div class="ui fluid button"
+					<div class="ui fluid orange button"
 						onclick="location.href='javascript:detailForm()'">상세일정 만들기</div>
 					<!-- 사용자가 만든 일정이 들어가는 곳 -->
 				</div>
@@ -63,16 +66,16 @@
 						<div class="field">
 
 							<div class="ui input">
-								<div class="ui basic large label">TITLE</div>
-								<input type="text" name="1" id="1" placeholder="1">
+								<div class="ui basic large label">제목</div>
+								<input type="text" name="1" id="1">
 							</div>
 
 						</div>
 						<div class="field">
 
 							<div class="ui input">
-								<div class="ui basic large label">DATE</div>
-								<input type="text" name="2" id="2" placeholder="2">
+								<div class="ui basic large label">날짜</div>
+								<input type="text" id="testDatepicker" name="2" id="2">
 							</div>
 
 						</div>
@@ -88,6 +91,8 @@
 			</div>
 		</div>
 	</div>
+
+
 	<script>
 		var map = new naver.maps.Map('map', { /* 네이버 지도 객체 초기 생성 */
 			center : new naver.maps.LatLng(36.5, 129),
@@ -265,6 +270,32 @@
 		 alert($(this).parent().parent().parent());
 		
 		 }); */
+
+		$(function() {
+			$("#testDatepicker")
+					.datepicker(
+							{
+
+								buttonImage : 'http://www.badmintonasia.org/html/images/material/icon-calendar.png',
+								showOn : 'both',
+								dateFormat : 'yy-mm-dd',
+								dayNames : [ '월요일', '화요일', '수요일', '목요일', '금요일',
+										'토요일', '일요일' ],
+								dayNamesMin : [ '월', '화', '수', '목', '금', '토',
+										'일' ],
+								monthNames : [ '1월', '2월', '3월', '4월', '5월',
+										'6월', '7월', '8월', '9월', '10월', '11월',
+										'12월' ],
+								monthNamesShort : [ '1월', '2월', '3월', '4월',
+										'5월', '6월', '7월', '8월', '9월', '10월',
+										'11월', '12월' ],
+								changeMonth : true,
+								changeYear : true,
+								nextText : '다음 달',
+								prevText : '이전 달'
+
+							});
+		});
 	</script>
 </body>
 </html>
