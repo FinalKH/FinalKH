@@ -1,7 +1,8 @@
 package com.kh.web.model.travel.dto;
 
 public class ImageVO {
-	private String spotnum;
+	private String areaimage;
+	/*private String spotnum;
 	private String imgurl;
 	
 	public String getSpotnum() {
@@ -23,6 +24,14 @@ public class ImageVO {
 	public ImageVO() {
 		super();
 		// TODO Auto-generated constructor stub
+	}*/
+
+	public String getAreaimage() {
+		return areaimage;
+	}
+
+	public void setAreaimage(String areaimage) {
+		this.areaimage = areaimage;
 	}
 
 	

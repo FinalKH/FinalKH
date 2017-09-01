@@ -98,7 +98,7 @@ hr{display:none;}
 					data-cycle-next="#next">
 			
 					<c:forEach var="list" items = "${list}">
-						<img src="${list.imgurl}" width="250px" heigth="250px"/>
+						<img src="${list.areaimage}" width="250px" heigth="250px"/>
 					</c:forEach>
 			
 				</div>
@@ -121,7 +121,7 @@ hr{display:none;}
 					data-cycle-next="#next2">
 			
 					<c:forEach var="list" items = "${list}">
-						<img src="${list.imgurl}" width="250px" heigth="250px"/>
+						<img src="${list.areaimage}" width="250px" heigth="250px"/>
 					</c:forEach>
 			
 				</div>

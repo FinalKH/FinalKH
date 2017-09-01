@@ -59,6 +59,7 @@
 					if(checkImageType(data)){ 
 						str = "<div><a href='${path}/upload/displayFile?fileName="+getImageLink(data)+"'>";
 						str += "<img src='${path}/upload/displayFile?fileName="+data+"'></a>";
+						
 					// 이미지 파일이 아니면 다운로드
 					} else { 
 						str = "<div><a href='${path}/upload/displayFile?fileName="+data+"'>"+getOriginalName(data)+"</a>";	
@@ -129,6 +130,7 @@
 <body>
 <%@ include file="../include/menu.jsp" %>
 	<h2>AJAX File Upload</h2>
+	<%= %>
 	<!-- 파일을 업로드할 영역 -->
 	<div class="fileDrop"></div>
 	<!-- 업로드된 파일 목록 -->
