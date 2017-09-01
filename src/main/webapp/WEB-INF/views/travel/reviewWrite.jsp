@@ -52,7 +52,7 @@
 					<script type="text/javascript">
 					$(function(){
 						CKEDITOR.replace( 'contents' ,{
-							filebrowserImageUploadUrl : '${path}/upimg'
+							filebrowserImageUploadUrl : '${path}/upimg.do'
 						});
 						CKEDITOR.on('dialogDefinition', function( ev ){
 				            var dialogName = ev.data.name;
