@@ -95,5 +95,28 @@ public class TravelController {
 
 		return returnString;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "insertPlanDetail.do", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
+	public String insertDetail(HttpSession session, HttpServletRequest request,
+			@RequestBody Map<String, Object> map) {
+
+		session.getAttribute("email");
+		map.get("title");
+		map.get("datePicker");
+		
+		PlanMainVO planMainVO = new PlanMainVO();
+
+		planMainVO.setCompletion("0");
+		planMainVO.setTitle(map.get("title").toString());
+		planMainVO.setStartDay(map.get("datePicker").toString());
+		planMainVO.setEmail(session.getAttribute("email").toString());
+		System.out.println(planMainVO.toString());
+		
+		travelService.insertPlanMainRough(planMainVO, map);
+		String returnString = planMainVO.getPlanMainNum();
+
+		return returnString;
+	}
 
 }

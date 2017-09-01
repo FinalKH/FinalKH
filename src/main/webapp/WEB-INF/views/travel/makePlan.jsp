@@ -30,7 +30,8 @@
 							style="margin: 0px; padding: 0px; border: 0px;">
 							<div class="ui segment" style="margin: 0px; padding: 2px;">
 								<button class="ui icon blue fluid button">
-									09.07~09.08<i class="setting icon"></i>에딧
+									<div class="edit date text">09.07~09.08</div>
+									<i class="setting icon"></i>EDIT
 								</button>
 								<button class="ui black fluid button">전체일정보기</button>
 							</div>
@@ -63,7 +64,7 @@
 										<div class="ui segment" style="margin: 0px; padding: 0px;">
 											<div class="ui two buttons">
 												<button class="ui black button">임시저장 후 닫기</button>
-												<button class="ui orange button">완료</button>
+												<button class="ui orange completion button">완료</button>
 											</div>
 										</div>
 
@@ -71,9 +72,13 @@
 									<div class="row">
 										<div class="ui center aligned fluid segment">
 											<div class="ui fluid divided grid">
-												<div class="four wide middle aligned fluid column">DAY1</div>
-												<div class="twelve wide middle aligned fluid column">
-													17.09.07
+												<div class="four wide middle aligned fluid column">
+													DAY<a class="current pick day">6</a>
+												</div>
+												<div class="nine wide middle aligned fluid column">
+													<div class="ui current pick date text">17.09.06</div>
+												</div>
+												<div class="three wide middle aligned fluid column">
 													<div class="ui circular basic refresh tiny icon button"
 														id="userPickAllDelete">
 														<i class="refresh icon"></i>
@@ -322,7 +327,8 @@
 	<!-- 풋터 공간 -->
 	<div class="ui fluid container">
 		<div class="ui inverted segment">
-			<p>풋터 공간</p>
+			<div class="ui inverted segment"></div>
+
 			<div class="ui inverted vertical footer segment">
 				<div class="ui center aligned container">
 					<div class="ui stackable inverted divided grid">
@@ -370,27 +376,88 @@
 	<!-- 스크립트 태그 -->
 
 	<script>
-		$(document).ready(function() {
-			$('#calendar').fullCalendar({
-				header : {
-					left : 'prev,next today',
-					center : 'title',
-					right : 'month,agendaWeek,agendaDay'
-				},
-				lang : "ko",
-				defaultView : 'agendaWeek',
-				editable : true,
-				droppable : true, // this allows things to be dropped onto the calendar
-				drop : function() {
-					// is the "remove after drop" checkbox checked?
-					if ($('#drop-remove').is(':checked')) {
-						// if so, remove the element from the "Draggable Events" list
-						$(this).remove();
-					}
-				}
-			});
+		var listJson = '${list}';
+		list = parseJSON(listJson);
 
-		});
+		$(document)
+				.ready(
+						function() {
+
+							$
+									.each(
+											list.planRough,
+											function(index, value) {
+												$('.ui.itinerary.list')
+														.append(
+																"<div class='item' id='itineraryItem' planRoughNum="+list.planRough[index].planRoughNum+" planMainNum="+list.planRough[index].planMainNum+" areaCode="+list.planRough[index].areaCode+" planDay="+list.planRough[index].planDay+">"
+																		+ "<img class='ui avatar image' src="+list.planRough[index].areaImage+">"
+																		+ "<div class='content'>"
+																		+ "DAY"
+																		+ list.planRough[index].planDay
+																		+ "</div>"
+																		+ "<div class='right floated content'>"
+																		+ list.planRough[index].areaName
+																		+ "</div>"
+																		+ "</div>");
+												a = list.planRough[index].planDay
+
+											});
+
+							var startDate = new Date(list.planMain.startDay);
+							var endDate = new Date(startDate);
+							endDate.setDate(endDate.getDate() + (a * 1 - 1));
+							$('.ui.pick.date.text').empty();
+							$('.ui.pick.date.text').append(
+									$.datepicker.formatDate('y년 MM d일',
+											startDate));
+							$('.current.pick.day').empty();
+							$('.current.pick.day').append(
+									list.planRough[0].planDay);
+							$('.edit.date.text').empty();
+							$('.edit.date.text').append(
+									$.datepicker.formatDate('MM d일 ~ ',
+											startDate));
+							$('.edit.date.text').append(
+									$.datepicker.formatDate('MM d일', endDate));
+
+							endDate.setDate(endDate.getDate() + 1);
+							startDate.setDate(startDate.getDate() + 1);
+							$('#calendar').fullCalendar({
+								header : {
+									left : 'prev,next today',
+									center : 'title',
+									right : 'month,agendaWeek,agendaDay'
+								},
+								defaultView : 'agendaDay',
+								defaultDate : list.planMain.startDay,
+								validRange : {
+									start : list.planMain.startDay,
+									end : endDate
+
+								},
+								events : [ {
+									title : 'My Event',
+									start : '2017-09-21',
+									description : 'This is a cool event'
+								}
+								// more events here
+								],
+								/* 								visibleRange : {
+								 start : list.planMain.startDay,
+								 end : endDate
+								 }, */
+								editable : true,
+								droppable : true, // this allows things to be dropped onto the calendar
+								drop : function() {
+									// is the "remove after drop" checkbox checked?
+									if ($('#drop-remove').is(':checked')) {
+										// if so, remove the element from the "Draggable Events" list
+										$(this).remove();
+									}
+								}
+							});
+						});
+
 		$('.ui.bound.top.sticky#user').sticky({
 			context : '#context1',
 			offset : 80,
@@ -422,34 +489,7 @@
 			return window.JSON && window.JSON.parse ? window.JSON.parse(data)
 					: (new Function("return " + data))();
 		}
-		$(document)
-				.ready(
-						function() {
-							var listJson = '${list}';
-							list = parseJSON(listJson);
 
-							var img = 'https://semantic-ui.com/images/avatar2/small/lena.png';
-							$
-									.each(
-											list.planRough,
-											function(index, value) {
-												$('.ui.itinerary.list')
-														.append(
-																"<div class='item'>"
-																		+ "<img class='ui avatar image' src="+img+">"
-																		+ "<div class='content'>"
-																		+ "DAY"
-																		+ list.planRough[index].planDay
-																		+ "</div>"
-																		+ "<div class='right floated content'>"
-																		+ list.planRough[index].areaCode
-																		+ "</div>"
-																		+ "</div>");
-											});
-						});
-
-		
-		
 		$('.ui.fluid.itinerary.menu.list')
 				.append(
 						"<div class='item'><img class='ui image'><div class='content'>가마목</div><div class='right floated content'><div class='ui icon button' id='userPickDeleteButton'><i class='delete icon'></i></div></div></div>");
@@ -460,7 +500,6 @@
 			data["westBP"] = bounds.getSW().lng();
 			data["southBP"] = bounds.getSW().lat();
 			data["northBP"] = bounds.getNE().lat();
-			//alert(JSON.stringify(data));
 
 			$
 					.ajax({
@@ -509,7 +548,7 @@
 										+ 'firstImage=' + value.firstImage + '" title="' + value.title + '"contentId="' + value.contentId + '">'
 														+ '<img class="ui image" src="' + value.firstImage + '" style="height: 100px; width:150px"><div class="content">'
 														+ value.title
-														+ '</div><div class="right floated content"><div class="ui pick icon button" ><i class="plus icon"></i></div></div></div>');
+														+ '</div><div class="right floated content"><div class="ui pick icon button" id="pickButton"><i class="plus icon"></i></div></div></div>');
 												$('#contentInMap').append($div);
 											});
 							for (var i = 0, ii = markers.length; i < ii; i++) {
@@ -529,7 +568,7 @@
 														.parent().parent()
 														.attr('contentId');
 
-												var $div = $('<div class="fluid draggable item" id="userPickItem">'
+												var $div = $('<div class="fluid draggable item" id="userPickItem" contentId='+$contentId+'>'
 														+ '<img class="ui image" src="' + $firstImage + '" style="height: 50px; width:50px">'
 														+ '<div class="content">'
 														+ $title
@@ -548,6 +587,8 @@
 																{
 																	title : $
 																			.trim($title),
+																	className : $
+																			.trim($contentId),
 																	stick : true
 																})
 														.draggable(
@@ -558,7 +599,8 @@
 																	appendTo : 'body',
 																	containment : 'window',
 																	scroll : false,
-																	helper : 'clone'
+																	helper : 'clone',
+																	cursor : 'move'
 																});
 											});
 
@@ -638,39 +680,86 @@
 				.on(
 						"click",
 						"#pickItem",
-						function() {
-							var data = {}, bounds = map.getBounds();
-							data["eastBP"] = bounds.getNE().lng();
-							data["westBP"] = bounds.getSW().lng();
-							data["southBP"] = bounds.getSW().lat();
-							data["northBP"] = bounds.getNE().lat();
-							var contentId = 126508;
-							$
-									.ajax({
-										type : "get",
-										headers : {
-											'Accept' : 'application/json',
-											'Content-Type' : 'text/plain'
-										},
-										url : "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=ZhnHJ1fzbYGAO2Xl%2FSg5MHWhMO0GkoIguiXKwi3%2BlAB8OTO1xYkmp0228On6RJ6lgh6Z4%2BLCWnAsnPm0wysTgA%3D%3D",
-										data : "&contentId="
-												+ contentId
-												+ "&defaultYN=Y&addrinfoYN=Y&overviewYN=Y&MobileOS=ETC&MobileApp=AppTesting&_type=json",
-										dataType : "json",
-										processData : false,
-										contentType : "application/json;charset=UTF-8",
-										cache : false,
-										async : true,
-										success : function(result) {
-											alert(JSON
-													.stringify(result.response.body.items.item.overview));
-										},
-										error : function(xhr, status, error) {
-											alert(error);
-										}
-									});
+						function(e) {
+
+							var contentId = $(this).attr('contentId');
+
+							if (!$(e.target).is('#pickButton')
+									&& !$(e.target).is('.plus.icon')) {
+								//do some stuff
+								var data = {}, bounds = map.getBounds();
+								data["eastBP"] = bounds.getNE().lng();
+								data["westBP"] = bounds.getSW().lng();
+								data["southBP"] = bounds.getSW().lat();
+								data["northBP"] = bounds.getNE().lat();
+
+								$
+										.ajax({
+											type : "get",
+											headers : {
+												'Accept' : 'application/json',
+												'Content-Type' : 'text/plain'
+											},
+											url : "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=ZhnHJ1fzbYGAO2Xl%2FSg5MHWhMO0GkoIguiXKwi3%2BlAB8OTO1xYkmp0228On6RJ6lgh6Z4%2BLCWnAsnPm0wysTgA%3D%3D",
+											data : "&contentId="
+													+ contentId
+													+ "&defaultYN=Y&addrinfoYN=Y&overviewYN=Y&MobileOS=ETC&MobileApp=AppTesting&_type=json",
+											dataType : "json",
+											processData : false,
+											contentType : "application/json;charset=UTF-8",
+											cache : false,
+											async : true,
+											success : function(result) {
+												alert(JSON
+														.stringify(result.response.body.items.item.overview));
+											},
+											error : function(xhr, status, error) {
+												alert(error);
+											}
+										});
+							}
+							;
+
+						});
+		$(document).on(
+				"click",
+				"#itineraryItem",
+				function() {
+					$(this).parent().children().removeClass("active");
+					$(this).addClass("active");
+					$(".fc-agendaDay-button").trigger("click");
+					var attrNum = $(this).attr("planDay") - 1;
+
+					var currentDay = new Date(list.planMain.startDay);
+
+					currentDay.setDate(currentDay.getDate()
+							+ (($(this).attr("planDay")) * 1 - 1));
+					var currentDayPlus = new Date();
+
+					$('.ui.pick.date.text').empty();
+					$('.ui.pick.date.text').append(
+							$.datepicker.formatDate('y년 MM d일', currentDay));
+					$('.current.pick.day').empty();
+					$('.current.pick.day').append(
+							list.planRough[attrNum].planDay);
+
+					var json = JSON.stringify($("#calendar").fullCalendar(
+							"clientEvents").map(function(e) {
+						var rv = {};
+						Object.keys(e).filter(function(k) {
+							return k != "source" && !k.startsWith("_");
+						}).forEach(function(k) {
+							rv[k] = e[k];
 						});
 
+						return rv;
+					}));
+					alert(json);
+					$('#calendar').fullCalendar('gotoDate', currentDay);
+
+					$('#userPick').children().remove();
+
+				});
 		$(document).on("click", "#userPickAllDelete", function() {
 			$('#userPick').children().remove();
 		});
@@ -683,7 +772,81 @@
 								.removeClass('active');
 					}
 				});
-		$()
+
+		$(document)
+				.on(
+						"click",
+						".ui.completion.button",
+						function() {
+							var planRoughObjectArray = new Array();
+
+							var planRoughDetailObjectArray = new Object();
+							console.log($('#itineraryItem').length);
+							$($('.itinerary.list').children())
+									.each(
+											function(index, value) {
+												var planRoughObject = new Object();
+												planRoughObject.planRoughNum = $(
+														this).attr(
+														'planRoughNum');
+												planRoughObject.planMainNum = $(
+														this).attr(
+														'planMainNum');
+												planRoughObject.areaCode = $(
+														this).attr('areaCode');
+												planRoughObject.planDay = $(
+														this).attr('planDay');
+												planRoughObjectArray
+														.push(planRoughObject);
+
+												$(
+														$('.itinerary.list')
+																.children())
+														.each(
+																function(index,
+																		value) {
+																	var planRoughDetailObject = new Object();
+
+																});
+											});
+
+							var planRoughObjectArrayJson = JSON
+									.stringify(planRoughObjectArray);
+							alert(planRoughObjectArrayJson);
+
+							//jsonArray[""] = $('#title').val();
+							//jsonArray["datePicker"] = $('#datePicker').val();
+							/* 					var j = 1;
+							 $('#sidebar #userPickItem').each(
+							 function(index) {
+
+							 for(var i=0;i<$(this).find("#dateDay").text();i++,j++){
+
+							 var userPickArray = new Object();
+							 userPickArray.areaName = $(this).find("#areaName").text();
+							 userPickArray.dateDay = j;
+							 jsonArray["userPickItem"+j] = userPickArray;
+							 alert(j);
+							 }
+							 });
+							 console.log(JSON.stringify(jsonArray));
+							
+							 $.ajax({
+							 url : "${path}/travel/insertPlanMainRough.do",
+							 type : 'post',
+							 data : JSON.stringify(jsonArray),
+							 contentType : "application/json;charset=UTF-8",
+							 success : function(respBody) {
+							 console.log("성공");
+							 alert(respBody);
+							 location.href="${path}/itinerary/list.do?planMainNum="+respBody;
+							 console.log("성공");
+							 },
+							 error : function(xhr, ajaxoptions, thrownError, status, error) {
+							 console.log(status);
+							 }
+							 });  */
+						});
 	</script>
 </body>
 </html>
