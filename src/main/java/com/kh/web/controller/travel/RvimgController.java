@@ -44,6 +44,10 @@ public class RvimgController {
 			CKEditorFuncNum = fileBean.getCKEditorFuncNum();
 			try {
 				File file = new File(root_path + attach_path + filename);
+				if(!file.exists()){
+					file.mkdirs();
+					System.out.println("폴더 생성 완료");
+				}
 				log.info(root_path + attach_path + filename);
 				System.out.println("파일경로 : "+file.getCanonicalPath());
 				upload.transferTo(file);
