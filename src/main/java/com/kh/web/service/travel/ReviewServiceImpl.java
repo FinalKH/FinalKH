@@ -22,6 +22,7 @@ public class ReviewServiceImpl implements ReviewService{
 	public void create(ReviewVO vo) throws Exception {
     	
     	String subject = vo.getSubject();
+    	String writer = vo.getWriter();
 		String content = vo.getContent();
 		/*// *태그문자 처리 (< ==> &lt; > ==> &gt;)
 		// replace(A, B) A를 B로 변경
@@ -33,6 +34,7 @@ public class ReviewServiceImpl implements ReviewService{
 		content = content.replace("\n", "<br>");
 		System.out.print("여기"+content);*/
 		vo.setSubject(subject);
+		vo.setWriter(writer);
 		vo.setContent(content);
 		
 		reviewDao.create(vo);

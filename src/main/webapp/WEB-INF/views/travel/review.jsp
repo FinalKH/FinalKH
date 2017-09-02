@@ -47,9 +47,13 @@ $(document).ready(function(){
           <div class="center aligned yellow sixteen wide column ">${dto.content}</div>
                  
 			<div class="sixteen wide column" style="width:650px; text-align: center;">
-				<!-- 게시물번호를 hidden으로 처리 -->
-				<input type="hidden" name="bno" value="${dto.bno}">
-			
+				<a ><i class="big empty heart icon"></i></a>
+				<!-- 게시물번호를 hidden으로 처리 
+				<input type="hidden" name="bno" value="${dto.bno}">-->
+				<c:if test="${sessionScope.email != null}">
+				<a class="ui small button" href="${path}/#" >수정</a>
+				<a class="ui small button" href="${path}/#" >삭제</a>
+				</c:if>			
 				<!-- 상세보기 화면에서 게시글 목록화면으로 이동 -->
 				<a class="ui small button" href="${path}/reviewList.do" >목록</a>
 			</div>

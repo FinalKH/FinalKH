@@ -73,10 +73,6 @@ table th {
 						<c:out value="${map.searchOption == 'subject'?'selected':''}"/>>제목</option>
 				</select> <input name="keyword" value="${map.keyword}"> <input
 					type="submit" value="조회">
-				<!-- 로그인한 사용자만 글쓰기 버튼을 활성화 
-				<c:if test="${sessionScope.userId != null}">
-					<button type="button" id="btnWrite">글쓰기</button>
-				</c:if>-->
 			</div>
 			</form>
 			<table class="ui celled table">
@@ -144,8 +140,10 @@ table th {
 				<tbody>
 					<tr>
 						<th id="writebt" colspan="1">
+						<c:if test="${sessionScope.email != null}">
 						<a class="ui button" href="${path}/reviewWrite.do" >글쓰기</a>
-						</th>						
+						</c:if>
+						</th>
 						<th colspan="4">
 							<div class="ui right floated pagination menu">
 							<!-- 처음페이지로 이동 : 현재 페이지가 1보다 크면  [처음]하이퍼링크를 화면에 출력-->

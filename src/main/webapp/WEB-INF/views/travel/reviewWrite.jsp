@@ -35,6 +35,13 @@
 			<div class="four wide blue column">
 				<div class="ui left inverted segment">일정 만들기</div>
 			</div><!-- 일정 -->
+			<div class="twelve wide orange column">
+			<c:if test="${sessionScope.email != null}">
+				<div class="ui header">
+					${sessionScope.email.userid };
+				</div>
+			</c:if>
+			</div>
 			<div class="twelve wide red column">
 				<div class="ui segment">
 					<form name="form" id="form" method="post" action="${path}/reviewInsert.do">

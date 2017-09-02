@@ -5,6 +5,7 @@ import java.util.Date;
 public class ReviewVO { 
 	private int bno;			// 게시글 번호
 	private String subject;		// 게시글 제목
+	private String writer;		//	작성자
 	private String content;		// 게시글 내용	
 	private Date regdate;		// 게시글 작성일자 util.Date
 	private int viewcnt;		// 게시글 조회수
@@ -19,6 +20,13 @@ public class ReviewVO {
 	}
 	public String getSubject() {
 		return subject;
+	}
+	
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 	public void setSubject(String subject) {
 		this.subject = subject;
