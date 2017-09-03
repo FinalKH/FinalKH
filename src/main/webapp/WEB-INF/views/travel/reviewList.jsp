@@ -30,7 +30,7 @@
 	}
 </script>
 <style>
-.ui grid{padding:60px;}
+#reviewlist{padding:60px;}
 
 #tno {
 	width: 15px;
@@ -60,10 +60,9 @@ table th {
 	</header>
 	<section>
 	<div class="ui fluid container">
-		<div class="ui grid">
-		<div class="ui grid sixteen red wide column">
+		<div class="ui grid" id="reviewlist">
+		<div class="sixteen red wide column">
 			<form name="form1" method="post" action="${path}/reviewList.do">
-			<div class="ui segment">
 				<select name="searchOption">
 					<!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
 					<option value="all"
@@ -76,7 +75,7 @@ table th {
 						<c:out value="${map.searchOption == 'subject'?'selected':''}"/>>제목</option>
 				</select> <input name="keyword" value="${map.keyword}"> <input
 					type="submit" value="조회">
-			</div>
+			
 			</form>
 		</div>
 			<table class="ui celled table">

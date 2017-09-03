@@ -19,7 +19,7 @@
     window.parent.CKEDITOR.tools.callFunction('${CKEditorFuncNum}','${file_path}','업로드 완료');
 </script>
 <style>
-.ui grid{padding:60px;}
+#rwrite{padding:60px;}
 </style>
 </head>
 <body>
@@ -33,7 +33,7 @@
 	</header>
 	<section>
 	<div class="ui fluid container">
-		<div class="ui grid">
+		<div class="ui grid" id="rwrite">
 			<div class="sixteen wide purple column"></div>
 			<div class="four wide blue column">
 				<div class="ui left inverted segment">일정 만들기</div>

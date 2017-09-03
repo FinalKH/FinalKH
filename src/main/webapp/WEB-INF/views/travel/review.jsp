@@ -21,7 +21,7 @@ $(document).ready(function(){
 </script>
 </head>
 <style>
-.ui grid{padding:60px;}
+#view{padding:60px;}
 </style>
 <body>
 <header>
@@ -34,7 +34,7 @@ $(document).ready(function(){
 </header>
 <section>
 	<div class="ui fluid container">
-    <div class="ui grid">
+    <div class="ui grid" id="view">
 	<c:choose>
 		<c:when test="${dto.show == 'y'}">
 		<!-- show가 y면 -->	
@@ -50,7 +50,7 @@ $(document).ready(function(){
           <div class="center aligned yellow sixteen wide column ">${dto.content}</div>
                  
 			<div class="sixteen wide column" style="width:650px; text-align: center;">
-				<a ><i class="big empty heart icon"></i></a>
+				<a ><i class="big red heart icon"></i></a>
 				<!-- 게시물번호를 hidden으로 처리 
 				<input type="hidden" name="bno" value="${dto.bno}">-->
 				<c:if test="${sessionScope.email == dto.email}">
