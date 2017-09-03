@@ -860,7 +860,7 @@
 		UserId varchar2(30),	 			--
 		Password varchar2(65),				--
 		GradeName varchar2(10),				--
-		primary key(Email),					--
+		primary key(Email)					--
 		);
 	
 		-- 유저정보 시퀀스 생성
@@ -994,10 +994,10 @@ content varchar2(4000),
 regdate date default sysdate,
 viewcnt number default 0,
 show char(1) default 'y',
-constraint T_UserInfo_email_fk
+email varchar2(60),
 FOREIGN KEY(email)
-references T_UserInfo (UserId)
-); 
+references T_UserInfo (email)
+);
 
 create sequence seq_review
 start with 1;	

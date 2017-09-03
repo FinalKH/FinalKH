@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.SessionScope;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.web.model.travel.dto.ReviewVO;
@@ -31,13 +32,18 @@ public class ReviewController {
 	// 작성
 	@RequestMapping(value = "/reviewWrite.do", method = RequestMethod.GET)
 	public String reviewWrite() {
-		logger.info("");
+		logger.info("작성 시작");
 		return "travel/reviewWrite";
 	}
 
 	@RequestMapping(value = "/reviewInsert.do", method = RequestMethod.POST)
 	public String reviewInsert(@ModelAttribute ReviewVO vo,HttpSession session) throws Exception {
-		logger.info("123");
+		logger.info("작성 저장 시작");
+		// session에 저장된 userId를 writer에 저장
+		String email = (String) session.getAttribute("email");
+		// vo에 writer를 세팅
+		vo.setEmail(email);
+		System.out.println("글 주인 : "+email);
 
 		reviewService.create(vo);		
 		return "redirect:reviewList.do";
@@ -48,6 +54,7 @@ public class ReviewController {
 	public ModelAndView reviewList(@RequestParam(defaultValue = "subject") String searchOption,
 			@RequestParam(defaultValue = "") String keyword, @RequestParam(defaultValue = "1") int curPage)
 			throws Exception {
+		logger.info("리스트 시작");
 		// 페이지 나누기 관련 처리
 		reviewPager reviewPager = new reviewPager(curPage);
 		int start = reviewPager.getPageBegin();
@@ -77,13 +84,16 @@ public class ReviewController {
 	@RequestMapping(value="/review.do", method = RequestMethod.GET)
 	public ModelAndView review(@RequestParam int bno, @RequestParam int curPage, @RequestParam String searchOption,
 			@RequestParam String keyword, HttpSession session) throws Exception{
-		ModelAndView mav = new ModelAndView();
+		logger.info("보기 시작");
+		
 		reviewService.increaseViewcnt(bno, session); //조회수 증가
+		ModelAndView mav = new ModelAndView();
 		mav.setViewName("travel/review");
 		mav.addObject("dto", reviewService.read(bno));
-		mav.addObject("curPage", curPage);
-		mav.addObject("searchOption", searchOption);
-		mav.addObject("keyword", keyword);
+		System.out.println("읽기 : "+reviewService.read(bno));
+		//mav.addObject("curPage", curPage);
+		//mav.addObject("searchOption", searchOption);
+		//mav.addObject("keyword", keyword);
 		logger.info("mav:", mav);
 		return mav;
 	}

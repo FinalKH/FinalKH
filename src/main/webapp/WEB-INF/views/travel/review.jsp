@@ -20,6 +20,9 @@ $(document).ready(function(){
 });
 </script>
 </head>
+<style>
+.ui grid{padding:60px;}
+</style>
 <body>
 <header>
 	<div class="ui fluid container">
@@ -37,11 +40,11 @@ $(document).ready(function(){
 		<!-- show가 y면 -->	
 			<!-- 게시물 상세보기 영역 -->		
           <div class="left floated center aligned blue ten wide column">
-            <h2 class="ui header">${dto.subject}
-            </h2>
+            <h2 class="ui header">${dto.subject}</h2>
           </div>
           <div class="right floated left aligend red six wide column">
-            <h5 class="ui header"><fmt:formatDate value="${dto.regdate}" pattern="yyyy-MM-dd a HH:mm:ss"/> </h5>
+          	<h5 class="ui left floated sub header">${dto.writer}</h3>
+            <h5 class="ui right floated header"><fmt:formatDate value="${dto.regdate}" pattern="yyyy-MM-dd a HH:mm:ss"/> </h5>
           </div>
           
           <div class="center aligned yellow sixteen wide column ">${dto.content}</div>
@@ -50,7 +53,7 @@ $(document).ready(function(){
 				<a ><i class="big empty heart icon"></i></a>
 				<!-- 게시물번호를 hidden으로 처리 
 				<input type="hidden" name="bno" value="${dto.bno}">-->
-				<c:if test="${sessionScope.email != null}">
+				<c:if test="${sessionScope.email == dto.email}">
 				<a class="ui small button" href="${path}/#" >수정</a>
 				<a class="ui small button" href="${path}/#" >삭제</a>
 				</c:if>			

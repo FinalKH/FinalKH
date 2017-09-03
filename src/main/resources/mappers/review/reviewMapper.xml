@@ -27,15 +27,18 @@ start with 1;
 	<insert id="insert">
 		<!-- 글 번호를 시퀀스로 생성 -->
 		INSERT INTO review (
-		  bno, subject, content, show
+		  bno, subject, writer, content, show, email
 		) VALUES (
-		   seq_review.NEXTVAL, #{subject}, #{content} , 'y'
+		   seq_review.NEXTVAL, #{subject}, #{writer}, #{content} , 'y', #{email}
 		)
 	</insert>
     
     <!-- 전체목록조회 -->
     <select id="listAll" resultType="com.kh.web.model.travel.dto.ReviewVO" >
-    select bno, subject, content, regdate, viewcnt, show from review
+    SELECT
+    	 bno, subject, content, regdate, viewcnt, show 
+	FROM
+		review
     order by bno desc, regdate desc
     </select>
     
@@ -43,10 +46,12 @@ start with 1;
     <select id="view" resultType="com.kh.web.model.travel.dto.ReviewVO">
 		<!-- SELECT * FROM tbl_board  -->
 		SELECT 
-			bno, subject, content, regdate, viewcnt, show
+			bno, subject, content, regdate, writer, viewcnt, r.email, show
 		FROM 
-			review 
-		where
+			review r, t_userinfo u
+		WHERE
+			r.email = u.email
+		AND
 			bno = #{bno}
 	</select>
 	<!-- 조회수 -->

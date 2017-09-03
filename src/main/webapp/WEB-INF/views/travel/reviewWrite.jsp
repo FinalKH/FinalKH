@@ -16,8 +16,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <script type="text/javascript" src="./include/ckeditor/ckeditor.js" ></script>
 <script type='text/javascript'> 
-    window.parent.CKEDITOR.tools.callFunction('${CKEditorFuncNum}','${file_path}','파일전송완료');
+    window.parent.CKEDITOR.tools.callFunction('${CKEditorFuncNum}','${file_path}','업로드 완료');
 </script>
+<style>
+.ui grid{padding:60px;}
+</style>
 </head>
 <body>
 	<header>
@@ -35,16 +38,17 @@
 			<div class="four wide blue column">
 				<div class="ui left inverted segment">일정 만들기</div>
 			</div><!-- 일정 -->
-			<div class="twelve wide orange column">
-			<c:if test="${sessionScope.email != null}">
-				<div class="ui header">
-					${sessionScope.email.userid };
-				</div>
-			</c:if>
-			</div>
+			
+			
 			<div class="twelve wide red column">
 				<div class="ui segment">
 					<form name="form" id="form" method="post" action="${path}/reviewInsert.do">
+						<div class="twelve wide orange column">												
+							<input type="text" class="ui dividing header" name="writer" id="writer" value="${sessionScope.userid }" readonly/>													
+						</div>
+						<div class="four wide red column">
+							<input type="hidden" name="email" id="email" value="${sessionScope.email }">
+						</div>						
 						<div class="ui fluid input">
 							<input type="text" name="subject" id="subject" placeholder="제목을 입력하세요." />
 						</div>
@@ -52,7 +56,7 @@
 						<textarea name="content" id="contents" style="width: 700px; height: 400px;"></textarea>				
 						</div>
 					<div  align="center">
-						<button type="submit" id="ibt" class="ui button" >확인</button>
+						<input type="submit" id="ibt" class="ui button" value="확인"/>
 						<a class="ui button" href="${path}/reviewList.do" >취소</a>
 					</div>
 					</form>

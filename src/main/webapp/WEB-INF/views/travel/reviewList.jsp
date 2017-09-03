@@ -30,6 +30,8 @@
 	}
 </script>
 <style>
+.ui grid{padding:60px;}
+
 #tno {
 	width: 15px;
 }
@@ -58,6 +60,7 @@ table th {
 	</header>
 	<section>
 	<div class="ui fluid container">
+		<div class="ui grid">
 		<div class="ui grid sixteen red wide column">
 			<form name="form1" method="post" action="${path}/reviewList.do">
 			<div class="ui segment">
@@ -75,6 +78,7 @@ table th {
 					type="submit" value="조회">
 			</div>
 			</form>
+		</div>
 			<table class="ui celled table">
 			<colgroup>
 			<col style="width:30px">
