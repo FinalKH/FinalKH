@@ -91,15 +91,15 @@ public class ReviewController {
 		mav.setViewName("travel/review");
 		mav.addObject("dto", reviewService.read(bno));
 		System.out.println("읽기 : "+reviewService.read(bno));
-		//mav.addObject("curPage", curPage);
-		//mav.addObject("searchOption", searchOption);
-		//mav.addObject("keyword", keyword);
+		mav.addObject("curPage", curPage);
+		mav.addObject("searchOption", searchOption);
+		mav.addObject("keyword", keyword);
 		logger.info("mav:", mav);
 		return mav;
 	}
 	
 	// 수정
-	@RequestMapping(value="/reviewUpdate.do", method=RequestMethod.POST)
+	@RequestMapping(value="/reviewUpdate.do", method = RequestMethod.GET)
 	public String update(@ModelAttribute ReviewVO vo) throws Exception{
 		reviewService.update(vo);
 		return "redirect:review.do";

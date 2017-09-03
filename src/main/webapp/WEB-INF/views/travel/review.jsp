@@ -43,7 +43,7 @@ $(document).ready(function(){
             <h2 class="ui header">${dto.subject}</h2>
           </div>
           <div class="right floated left aligend red six wide column">
-          	<h5 class="ui left floated sub header">${dto.writer}</h3>
+          	<h5 class="ui left floated sub header">${dto.writer}</h5>
             <h5 class="ui right floated header"><fmt:formatDate value="${dto.regdate}" pattern="yyyy-MM-dd a HH:mm:ss"/> </h5>
           </div>
           
@@ -51,8 +51,8 @@ $(document).ready(function(){
                  
 			<div class="sixteen wide column" style="width:650px; text-align: center;">
 				<a ><i class="big red heart icon"></i></a>
-				<!-- 게시물번호를 hidden으로 처리 
-				<input type="hidden" name="bno" value="${dto.bno}">-->
+				<!-- 게시물번호를 hidden으로 처리 -->
+				<input type="hidden" name="bno" value="${dto.bno}">
 				<c:if test="${sessionScope.email == dto.email}">
 				<a class="ui small button" href="${path}/reviewUpdate.do" >수정</a>
 				<a class="ui small button" href="${path}/reviewDelete.do" >삭제</a>
@@ -64,7 +64,7 @@ $(document).ready(function(){
 			</c:when>
 	</c:choose>
 	
-    </div> <!--  -->
+    </div> <!--  grid -->
   </div><!-- container -->
 </section>
 <footer>
