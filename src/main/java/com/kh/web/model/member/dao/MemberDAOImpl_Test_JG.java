@@ -36,11 +36,6 @@ public class MemberDAOImpl_Test_JG implements MemberDAO_Test_JG{
     public void insertMember_test(MemberVo_Test_JG vot) {
     	sqlSession.insert("member.insertMember2", vot);
     }
-    // 회원가입 이메일 중복 체크
-    @Override
-	public List<MemberVo_Test_JG> insertCheckList() {
-		return sqlSession.selectList("member.insertCheckList");
-	}
     // 01_01. 회원 로그인체크
     @Override
     public String loginCheck_test(MemberVo_Test_JG vot) {

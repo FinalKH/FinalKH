@@ -31,10 +31,6 @@ public class MemberServiceImpl2 implements MemberService2{
     public void insertMember_test(MemberVo_Test_JG vot) {
     	memberDao_test.insertMember_test(vot);
     }
-    @Override
-	public List<MemberVo_Test_JG> insertCheckList(){
-		return memberDao_test.insertCheckList();
-	}
     // 01_01. 회원 로그인체크
     @Override
     public boolean loginCheck_test(MemberVo_Test_JG vot, HttpSession session) {

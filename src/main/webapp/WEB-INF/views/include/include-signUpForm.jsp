@@ -31,10 +31,6 @@ body>.grid {
                 {
                   type   : 'email',
                   prompt : '이메일 형식에 맞게 입력하여 주세요'
-                },
-                {
-                  type	 : 'match[ck]',
-                  prompt : '이메일이 이미 있습니다!'
                 }
               ]
             },
@@ -83,9 +79,6 @@ body>.grid {
      }) 
     ;
   </script>
-<c:forEach var="chk" items="${list3 }">
-	<c:set var="ck" value="${chk.email }" />
-</c:forEach>
 
    <div class="signUp column">
       <h2 class="ui teal image header">

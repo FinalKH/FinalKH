@@ -13,8 +13,6 @@ public interface MemberService2 {
     public List<MemberVo_Test_JG> memberList();
     // 회원 입력
     public void insertMember_test(MemberVo_Test_JG vot);
-    // 회원 입력 이메일 중복 체크
-    public List<MemberVo_Test_JG> insertCheckList();
     // 회원 삭제
     public void deleteMember_test(String email);
     // 회원정보 수정
