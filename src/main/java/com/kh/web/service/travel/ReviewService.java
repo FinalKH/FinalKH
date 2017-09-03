@@ -16,7 +16,7 @@ public interface ReviewService {
 	// 조회증가
 	public void increaseViewcnt(int bno, HttpSession session) throws Exception;
 	// 후기 수정
-	public void uodate(ReviewVO vo) throws Exception;
+	public void update(ReviewVO vo) throws Exception;
 	// 후기 삭제
 	public void delete(int bno) throws Exception;
 	// 추천

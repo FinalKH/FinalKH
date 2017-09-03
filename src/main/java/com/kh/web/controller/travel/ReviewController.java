@@ -97,5 +97,19 @@ public class ReviewController {
 		logger.info("mav:", mav);
 		return mav;
 	}
+	
+	// 수정
+	@RequestMapping(value="/reviewUpdate.do", method=RequestMethod.POST)
+	public String update(@ModelAttribute ReviewVO vo) throws Exception{
+		reviewService.update(vo);
+		return "redirect:review.do";
+	}
+	
+	// 삭제
+	@RequestMapping(value="/reviewDelete.do")
+	public String delete(@RequestParam int bno) throws Exception{
+		reviewService.delete(bno);
+		return "redirect:reviewList.do";
+	}
 						
 }

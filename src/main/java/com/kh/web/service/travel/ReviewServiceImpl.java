@@ -65,5 +65,20 @@ public class ReviewServiceImpl implements ReviewService{
             session.setAttribute("update_time_"+bno, current_time);
             
         }
-    }  
+    }
+
+ 	// 후기 수정
+ 	@Transactional
+	@Override
+	public void update(ReviewVO vo) throws Exception {
+ 		reviewDao.update(vo);
+ 				
+	}
+
+	// 후기 삭제
+	@Override
+	public void delete(int bno) throws Exception {
+		reviewDao.delete(bno);
+		
+	}  
 }

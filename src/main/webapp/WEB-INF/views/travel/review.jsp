@@ -54,8 +54,8 @@ $(document).ready(function(){
 				<!-- 게시물번호를 hidden으로 처리 
 				<input type="hidden" name="bno" value="${dto.bno}">-->
 				<c:if test="${sessionScope.email == dto.email}">
-				<a class="ui small button" href="${path}/#" >수정</a>
-				<a class="ui small button" href="${path}/#" >삭제</a>
+				<a class="ui small button" href="${path}/reviewUpdate.do" >수정</a>
+				<a class="ui small button" href="${path}/reviewDelete.do" >삭제</a>
 				</c:if>			
 				<!-- 상세보기 화면에서 게시글 목록화면으로 이동 -->
 				<a class="ui small button" href="${path}/reviewList.do" >목록</a>

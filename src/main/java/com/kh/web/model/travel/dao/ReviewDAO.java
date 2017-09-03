@@ -13,4 +13,8 @@ public interface ReviewDAO {
 	public List<ReviewVO> listAll(int start, int end, String searchOption, String keyword) throws Exception;
 	//조회수
 	public void increaseViewcnt(int bno) throws Exception;
+	// 후기 수정
+	public void update(ReviewVO vo) throws Exception;
+	// 후기 삭제
+	public void delete(int bno) throws Exception;
 }

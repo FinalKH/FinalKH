@@ -41,9 +41,21 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return sqlSession.selectList("review.listAll");
 	}
 	
+	// 조회수 증가
 	@Override
 	public void increaseViewcnt(int bno) throws Exception {
 		sqlSession.update("review.viewcnt", bno);
+	}
+	
+	// 후기 수정
+	@Override
+	public void update(ReviewVO vo) throws Exception{
+		sqlSession.update("review.update", vo);
+	}
+	
+	// 후기 삭제
+	public void delete(int bno) throws Exception{
+		sqlSession.delete("review.deleteArticle", bno);
 	}
 
 }

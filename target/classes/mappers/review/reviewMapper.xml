@@ -63,4 +63,25 @@ start with 1;
 		WHERE 
 			bno = #{bno}
 	</update>
+	
+	<!-- 후기 수정 -->
+	<update id="update">
+	UPDATE
+		review
+	SET
+		subject = #{subject},
+		content = #{content}
+	WHERE
+		bno = #{bno}
+	</update>
+	
+	<!-- 후기 삭제 -->
+	<update id="deleteArticle">
+	UPDATE
+		review
+	SET
+		show = 'n'
+	WHERE
+		bno = #{bno}
+	</update>
 </mapper>
