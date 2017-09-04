@@ -54,15 +54,17 @@
 <div class="ui itinerary container">
   <h1 align="center">인기 여행일정</h1>
   <h2 class="ui dividing header" align="center">다른 여행자들의 일정을 참고해 나만의 여행을 계획해보세요!</h2>
-  <div class="ui four column very relaxed grid">
+  <div class="ui four column very relaxed grid" id='mainColumn'>
 	<c:forEach var="iti" items="${list}">
 	  <c:set var="src" value="" />
-	  <div class="column">
+	  <div class="main column" id='componentColumn' planMainNum='${iti.planMainNum }'>
 		<div class="ui link cards">
 		  <div class="ui card">
 		  	<span class="right top">
 		  	  ${iti.planMainNum }
 		  	</span>
+		  	
+		  	
 			<a class="image" href="#">
 			  <c:forEach var="ini" items="${list2 }">
 				<c:set var="main" value="${iti.planMainNum }" />
@@ -111,6 +113,8 @@
 	</c:forEach>
   </div>
 </div>
-
+<script>
+alert($('#mainColumn').find('#componentColumn').attr('planMainNum'));
+</script>
 </body>
 </html>

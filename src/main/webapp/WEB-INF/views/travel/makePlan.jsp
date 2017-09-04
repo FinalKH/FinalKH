@@ -702,8 +702,7 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 											cache : false,
 											async : true,
 											success : function(result) {
-												console
-														.log(JSON
+												alert(JSON
 																.stringify(result.response.body.items.item.overview));
 											},
 											error : function(xhr, status, error) {
