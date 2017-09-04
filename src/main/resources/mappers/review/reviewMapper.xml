@@ -26,7 +26,7 @@ start with 1;
     <!-- 후기 작성 -->
 	<insert id="insert">
 		<!-- 글 번호를 시퀀스로 생성 -->
-		INSERT INTO review (
+		INSERT INTO t_reviewboard (
 		  bno, subject, writer, content, show, email
 		) VALUES (
 		   seq_review.NEXTVAL, #{subject}, #{writer}, #{content} , 'y', #{email}
@@ -38,7 +38,7 @@ start with 1;
     SELECT
     	 bno, subject, content, regdate, viewcnt, show 
 	FROM
-		review
+		t_reviewboard
     order by bno desc, regdate desc
     </select>
     
@@ -48,7 +48,7 @@ start with 1;
 		SELECT 
 			bno, subject, content, regdate, writer, viewcnt, r.email, show
 		FROM 
-			review r, t_userinfo u
+			t_reviewboard r, t_userinfo u
 		WHERE
 			r.email = u.email
 		AND
@@ -57,7 +57,7 @@ start with 1;
 	<!-- 조회수 -->
 	<update id="viewcnt">
 		UPDATE 
-			review
+			t_reviewboard
 		SET 
 			viewcnt = viewcnt + 1 
 		WHERE 
@@ -67,7 +67,7 @@ start with 1;
 	<!-- 후기 수정 -->
 	<update id="update">
 	UPDATE
-		review
+		t_reviewboardW
 	SET
 		subject = #{subject},
 		content = #{content}
@@ -78,7 +78,7 @@ start with 1;
 	<!-- 후기 삭제 -->
 	<update id="deleteArticle">
 	UPDATE
-		review
+		t_reviewboard
 	SET
 		show = 'n'
 	WHERE

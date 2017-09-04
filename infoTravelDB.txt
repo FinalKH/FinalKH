@@ -944,7 +944,7 @@
 		create table T_ReviewBoard(
 		BoardNum varchar2(10),	 			-- 
 		PlanNum varchar2(10),	 			--
-		Title varchar2(300),				--
+		Subject varchar2(300),				--
 		Content varchar2(2000),				--
 		RegDate varchar2(30),				--
 		ViewCount varchar2(10),				--
