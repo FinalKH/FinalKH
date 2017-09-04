@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import com.kh.web.model.itinerary.dto.PlanMainVO;
+import com.kh.web.model.itinerary.dto.PlanMainMemberVO;
 import com.kh.web.model.member.dto.MemberVo_Test_JG;
 
 public interface MemberDAO_Test_JG {

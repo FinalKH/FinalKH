@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kh.web.model.itinerary.dto.PlanAreaVO;
-import com.kh.web.model.itinerary.dto.PlanMainVO;
+import com.kh.web.model.itinerary.dto.PlanMainMemberVO;
 
 @Repository
 public class ItineraryDAOImpl implements ItineraryDAO{
@@ -16,7 +16,7 @@ public class ItineraryDAOImpl implements ItineraryDAO{
 	SqlSession sqlSession;
 	
 	@Override
-	public List<PlanMainVO> itineraryList() {
+	public List<PlanMainMemberVO> itineraryList() {
 		return sqlSession.selectList("itinerary.itineraryList");
 	}
 	

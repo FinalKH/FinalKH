@@ -2,7 +2,7 @@ package com.kh.web.model.itinerary.dto;
 
 import java.util.Date;
 
-public class PlanMainVO {
+public class PlanMainMemberVO {
 	private String planMainNum;
 	private String title;
 	private Date startDay;
@@ -10,7 +10,7 @@ public class PlanMainVO {
 	private String email;
 	private String userId;
 	
-	public PlanMainVO(String planMainNum, String title, Date startDay, String completion, String email, String userId) {
+	public PlanMainMemberVO(String planMainNum, String title, Date startDay, String completion, String email, String userId) {
 		super();
 		this.planMainNum = planMainNum;
 		this.title = title;
@@ -19,7 +19,7 @@ public class PlanMainVO {
 		this.email = email;
 		this.userId = userId;
 	}
-	public PlanMainVO() {
+	public PlanMainMemberVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

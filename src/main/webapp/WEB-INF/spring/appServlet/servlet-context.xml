@@ -59,7 +59,6 @@
 	<!-- 사용자 세션체크 bean -->
 	<beans:bean id="loginInterceptor" class="com.kh.web.interceptor.LoginInterceptor"/>
 	<!-- 관리자 세션체크 bean -->
-<<<<<<< HEAD
 	<beans:bean id="adminInterceptor" class="com.kh.web.interceptor.AdminInterceptor" />
 	<!-- 멤버 세션체크 bean -->
 	<beans:bean id="memberInterceptor" class="com.kh.web.interceptor.MemberInterceptor" />
@@ -74,12 +73,7 @@
 			<beans:ref bean="memberInterceptor" />
 		</interceptor>
 		<!-- 관리자 세션체크 매핑 -->
-=======
-	<beans:bean id="adminInterceptor" class="com.kh.web.interceptor.AdminInterceptor"/>
-	<!-- 인터셉터 매핑정보 -->
-	<interceptors>
-		<!-- 관리자 세션체크 매핑-->
->>>>>>> JunGu
+
 		<interceptor>
 			<mapping path="/shop/product/write.do"/>
 			<mapping path="/shop/product/insert.do"/>
@@ -87,7 +81,7 @@
 		</interceptor>
 		<!-- 사용자 세션체크 매핑 -->
 		<interceptor>
-<<<<<<< HEAD
+
 			<mapping path="/board/write.do" />
 			<mapping path="/board/insert.do" />
 			<mapping path="/board/update.do" />
@@ -97,16 +91,7 @@
 			<mapping path="/shop/cart/list.do" />
 
 			<beans:ref bean="loginInterceptor" />
-=======
-			<mapping path="/board/write.do"/>
-			<mapping path="/board/insert.do"/>
-			<mapping path="/board/update.do"/>
-			<mapping path="/board/delete.do"/>
-			<mapping path="/reply/insertRest.do"/>
-			<mapping path="/shop/cart/insert.do"/>
-			<mapping path="/shop/cart/list.do"/>
-			<beans:ref bean="loginInterceptor"/>
->>>>>>> JunGu
+
 		</interceptor>
 		<!-- 테스트 매핑-->
 		<interceptor>

@@ -6,55 +6,13 @@
 
 <!-- 헤더 메뉴 공간 -->
 <div class="ui fluid container">
-<<<<<<< HEAD
-	<div class="ui violet inverted segment">
-		<div class="ui labeled icon fixed menu">
-			<a class="item" href="${path}/main.do"><i
-				class="skyatlas red icon"></i>메인</a> <a class="item"
-				href="${path}/travel/createPlan.do"><i class="map icon"></i>여행플랜</a>
-			<a class="item"><i class="help circle icon"></i>이용방법</a> <a
-				class="item"><i class="book icon"></i> 여행팁</a> <a class="item"><i
-				class="map signs icon"></i> 여행일정</a> <a class="item"
-				href="${path}/travel/sight.do"><i class="camera retro icon"></i>
-				관광지</a> <a class="item" href="${path}/reviewList.do"><i
-				class="book icon"></i> 여행후기</a> <a class="item"
-				href="${path}/member/list.do"><i class="book icon"></i>회원관리</a>
-
-			<div class="right menu">
-				<a class="item" href="${path}/sample/sample.do"><i
-					class="cube orange icon"></i>예제</a>
-
-				<c:choose>
-					<c:when test="${sessionScope.userid == null}">
-						<a class="item" href="javascript:loginForm()"><i
-							class="sign in red icon"></i> 로그인</a>
-					</c:when>
-					<c:when
-						test="${sessionScope.userid != null and sessionScope.gradename == '관리자' }">
-						<a class="item" href="#"><i class="spy black icon"></i>관리자님!</a>
-						<a class="item" href="${path}/member/logout_test.do"><i
-							class="sign out red icon"></i> 로그아웃</a>
-					</c:when>
-					<c:when
-						test="${sessionScope.userid != null and sessionScope.gradename == '일반' }">
-						<a class="item" href="#"><i class="user circle blue icon"></i>${sessionScope.userid }님!</a>
-						<a class="item" href="${path}/member/logout_test.do"><i
-							class="sign out red icon"></i> 로그아웃</a>
-					</c:when>
-				</c:choose>
-
-
-			</div>
-		</div>
-	</div>
-=======
    <div class="ui violet inverted segment">
       <div class="ui labeled icon fixed menu">
             <a class="item" href="${path}/main.do"><i class="skyatlas big icon"></i>메인</a>
-            <a class="item" href="${path}/travel/makePlan.do"><i class="map icon"></i>여행플랜</a>
+            <a class="item" href="${path}/travel/createPlan.do"><i class="map icon"></i>여행플랜</a>
             <a class="item"><i class="help circle icon"></i>이용방법</a>
             <a class="item"><i class="book icon"></i> 여행팁</a>
-            <a class="item" href="${path}/itinerary/list.do"><i class="map signs icon"></i> 여행일정</a>
+            <a class="item"><i class="map signs icon"></i> 여행일정</a>
             <a class="item"><i class="camera retro icon"></i> 관광지</a>
             <a class="item" href="${path}/reviewList.do"><i class="book icon"></i> 여행후기</a>
             <a class="item" href="${path}/member/list.do"><i class="book icon"></i>회원관리</a>
@@ -80,7 +38,6 @@
          </div>
       </div>
    </div>
->>>>>>> JunGu
 </div>
 <!-- DIMMER 처리된 회원가입 페이지  -->
 <div class="ui container">
@@ -101,9 +58,8 @@ function loginForm() {
 }
 </script>
 <c:if test="${msg =='failure' }">
-   <script>
-   	$('.ui.loginForm.modal').modal('show');
-   	alert("It is wrong about your E-mail or Password");
+   <script>$('.ui.loginForm.modal').modal('show');
+   alert("It is wrong about your E-mail or Password");
    </script>
    
 </c:if>

@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.web.model.itinerary.dto.PlanAreaVO;
-import com.kh.web.model.itinerary.dto.PlanMainVO;
+import com.kh.web.model.itinerary.dto.PlanMainMemberVO;
 import com.kh.web.service.itinerary.ItineraryService;
 
 
@@ -29,7 +29,7 @@ public class ItineraryController {
 	public String ItineraryList(Model model2){
 	// controller => service => dao 요청
 		// 리스트로 만들기
-		List<PlanMainVO> list2 = itineraryService.itineraryList();
+		List<PlanMainMemberVO> list2 = itineraryService.itineraryList();
 		List<PlanAreaVO> list3 = itineraryService.areaList();
 		model2.addAttribute("list", list2);
 		model2.addAttribute("list2", list3);

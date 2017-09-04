@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.kh.web.model.itinerary.dto.PlanMainVO;
+import com.kh.web.model.itinerary.dto.PlanMainMemberVO;
 import com.kh.web.model.member.dto.MemberVo_Test_JG;
 
 @Repository
