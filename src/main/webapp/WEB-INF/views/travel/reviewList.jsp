@@ -36,11 +36,11 @@
 	width: 15px;
 }
 
-#tw, #tlast {
+#tw, #tr  {
 	width: 60px;
 }
 
-#tr {
+#tlast {
 	width: 25px;
 }
 
@@ -61,10 +61,10 @@ table th {
 	<section>
 	<div class="ui fluid container">
 		<div class="ui grid" id="reviewlist">
-		<div class="sixteen red wide column">
+		<!--div class="sixteen red wide column">
 			<form name="form1" method="post" action="${path}/reviewList.do">
 				<select name="searchOption">
-					<!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
+					<-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 >
 					<option value="all"
 						<c:out value="${map.searchOption == 'all'?'selected':''}"/>>전체</option>
 					<option value="user_name"
@@ -77,7 +77,7 @@ table th {
 					type="submit" value="조회">
 			
 			</form>
-		</div>
+		</div-->
 			<table class="ui celled table">
 			<colgroup>
 			<col style="width:30px">
@@ -87,7 +87,7 @@ table th {
 						<th id="tno">No</th>
 						<th>제목</th>
 						<th id="tw">글쓴이</th>
-						<th id="tr">추천</th>
+						<th id="tr">작성일</th>
 						<th id="tlast">조회수</th>
 					</tr>
 				</thead>
@@ -107,15 +107,16 @@ table th {
 						</span>
 					</c:if>
 				</a>
-			</td>			
+			</td>
+			<td>
+				#
+			</td>	
 			<td>
 				<!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 -->
 				<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 			</td>
 			<td>0</td>
-			<td>
-				${row.viewcnt}
-			</td>
+			
 		</tr>
 			</c:when>
 			<c:otherwise>

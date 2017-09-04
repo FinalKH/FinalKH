@@ -35,51 +35,13 @@ start with 1;
     
     <!-- 전체목록조회 -->
     <select id="listAll" resultType="com.kh.web.model.travel.dto.ReviewVO" >
-    <!-- 페이징 -->
-	<include refid="pagingHeader"></include>
     SELECT
-    	ROWNUM, bno, subject, content, regdate, viewcnt, show 
+    	 bno, subject, content, regdate, viewcnt, show 
 	FROM
-		review r, userinfo u
-		<!-- 검색 조건 -->
-	<include refid="search"></include>
+		review
     order by bno desc, regdate desc
-    <!-- 페이징 -->
-	<include refid="pagingFooter"></include>
     </select>
     
-    <!-- 검색 조건 sql -->
-	<sql id="search">
-		<choose>
-			<!-- 검색옵션이 전체 검색일 경우 -->
-			<when test="searchOption == 'all'">
-				WHERE 
-					r.writer = u.userid
-				AND	
-					(user_name like '%'||#{keyword}||'%'
-				OR 
-					content like '%'||#{keyword}||'%'
-				OR 
-					subject like '%'||#{keyword}||'%')
-			</when>
-			<!-- 전체 검색이 아닐 경우 -->
-			<otherwise>
-				WHERE 
-					r.writer = u.userid 
-				AND 
-					${searchOption} like '%'||#{keyword}||'%'
-			</otherwise>
-		</choose>
-	</sql>
-    <!-- 페이징 sql -->
-	<sql id="pagingHeader">
-		SELECT * FROM (
-			SELECT ROWNUM AS rn, A.* FROM (
-	</sql>
-	<sql id="pagingFooter">
-			) A
-		) WHERE rn BETWEEN #{start} AND #{end}
-	</sql>
     <!-- 후기 보기 -->
     <select id="view" resultType="com.kh.web.model.travel.dto.ReviewVO">
 		<!-- SELECT * FROM tbl_board  -->
@@ -122,5 +84,4 @@ start with 1;
 	WHERE
 		bno = #{bno}
 	</update>
-	
 </mapper>

@@ -102,6 +102,7 @@ public class ReviewController {
 	@RequestMapping(value="/reviewUpdate.do", method = RequestMethod.GET)
 	public String update(@ModelAttribute ReviewVO vo) throws Exception{
 		reviewService.update(vo);
+		logger.info("수정 완료 : "+vo);
 		return "redirect:review.do";
 	}
 	
