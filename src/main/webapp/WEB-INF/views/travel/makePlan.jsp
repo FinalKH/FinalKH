@@ -33,7 +33,7 @@
 									<div class="edit date text">09.07~09.08</div>
 									<i class="setting icon"></i>EDIT
 								</button>
-								<button class="ui black fluid button">전체일정보기</button>
+								<button class="ui black fluid button" id="totalItinerary">전체일정보기</button>
 							</div>
 							<div class="ui segment">
 								<div class="ui divided animated selection itinerary list"
@@ -63,7 +63,8 @@
 
 										<div class="ui segment" style="margin: 0px; padding: 0px;">
 											<div class="ui two buttons">
-												<button class="ui black button">임시저장 후 닫기</button>
+												<button class="ui black temporary save button">임시저장
+													후 닫기</button>
 												<button class="ui orange completion button">완료</button>
 											</div>
 										</div>
@@ -156,8 +157,8 @@
 											<div class="ui padded grid">
 												<div class="fluid column">
 													<div class="ui icon fluid input">
-														<input type="text" placeholder="Search"> <i
-															class="search icon"></i>
+														<input type="text" name="searchField" placeholder="Search">
+														<i class="search icon"></i>
 													</div>
 												</div>
 											</div>
@@ -170,14 +171,14 @@
 														<div class="inline  fluid fields">
 															<div class="field">
 																<div class="ui radio fluid checkbox">
-																	<input type="radio" name="loc"> <label>도시내
-																		검색</label>
+																	<input type="radio" id="locOption" name="loc"
+																		value="city" checked> <label>도시내 검색</label>
 																</div>
 															</div>
 															<div class="field">
 																<div class="ui radio fluid checkbox">
-																	<input type="radio" name="loc"> <label>전체
-																		검색</label>
+																	<input type="radio" id="locOption" name="loc" value="">
+																	<label>전체 검색</label>
 																</div>
 															</div>
 														</div>
@@ -191,24 +192,28 @@
 
 									<div class="ui fluid segment">
 										<div class="row">
-											<div class="ui icon five item fluid menu">
-												<a class="active item"> <i
-													class="circular photo large icon"></i></a> <a class="item">
-													<i class="circular food large icon"></i>
-												</a> <a class="item"> <i
+											<div class="ui icon five item fluid menu"
+												id="classificationMenu">
+												<a class="active item" id="basicPlace"><i
+													class="circular photo large icon"> </i></a> <a class="item"
+													id="food"><i class="circular food large icon"></i></a> <a
+													class="item" id="shop"><i
 													class="circular shopping bag large icon"></i></a> <a
-													class="item"> <i class="circular building large icon"></i>
-												</a> <a class="item"> <i class="circular tag large icon"></i></a>
+													class="item" id="accommodation"><i
+													class="circular building large icon"></i></a> <a class="item"
+													id="userPlace"><i class="circular tag large icon"></i></a>
 											</div>
 
 										</div>
 										<div class="row">
 											<div class="ui padded grid">
 												<div class="fluid column">
-													<select class="ui fluid dropdown">
-														<option value="">태그 선택</option>
-														<option value="1">Male</option>
-														<option value="0">Female</option>
+													<select class="ui fluid dropdown" id="tagDropdown">
+														<option value='12' contentTypeId='12'>관광지</option>
+														<option value='14' contentTypeId='14'>문화시설</option>
+														<option value='15' contentTypeId='15'>축제/공연/행사</option>
+														<option value='25' contentTypeId='25'>여행코스</option>
+														<option value='28' contentTypeId='28'>레포츠</option>
 													</select>
 												</div>
 											</div>
@@ -241,77 +246,22 @@
 							<div class="ui fluid segment">
 								<div class="ui fluid comments" style="max-width: 100%">
 									<h3 class="ui dividing header">댓글</h3>
-									<div class="comment">
-										<a class="avatar"> <img
-											src="/images/avatar/small/matt.jpg">
-										</a>
-										<div class="content">
-											<a class="author">홍길동</a>
-											<div class="metadata">
-												<span class="date">오늘 5:42PM</span>
-											</div>
-											<div class="text">멋지네요!</div>
-											<div class="actions">
-												<a class="reply">답글</a>
-											</div>
-										</div>
+
+
+									<!-- 댓글 목록 영역 -->
+									<div id="listReply">
+
 									</div>
-									<div class="comment">
-										<a class="avatar"> <img
-											src="/images/avatar/small/elliot.jpg">
-										</a>
-										<div class="content">
-											<a class="author">엘리엇</a>
-											<div class="metadata">
-												<span class="date">어제 12:30AM</span>
-											</div>
-											<div class="text">
-												<p>연구에 도움이 되었습니다</p>
-											</div>
-											<div class="actions">
-												<a class="reply">답글</a>
-											</div>
-										</div>
-										<div class="comments">
-											<div class="comment">
-												<a class="avatar"> <img
-													src="/images/avatar/small/jenny.jpg">
-												</a>
-												<div class="content">
-													<a class="author">제니</a>
-													<div class="metadata">
-														<span class="date">방금 전</span>
-													</div>
-													<div class="text">잘했어요</div>
-													<div class="actions">
-														<a class="reply">답글</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="comment">
-										<a class="avatar"> <img src="/images/avatar/small/joe.jpg">
-										</a>
-										<div class="content">
-											<a class="author">abc</a>
-											<div class="metadata">
-												<span class="date">5일전</span>
-											</div>
-											<div class="text">감사합니다</div>
-											<div class="actions">
-												<a class="reply">답글</a>
-											</div>
-										</div>
-									</div>
-									<form class="ui reply form">
-										<div class="field">
-											<textarea></textarea>
-										</div>
-										<div class="ui blue labeled submit icon button">
-											<i class="icon edit"></i> 댓글 달기
-										</div>
-									</form>
+									<!-- 댓글 목록 영역 -->
+
+
+									<!-- 댓글 작성 영역 -->
+
+									<div class="ui segment" id="replySegment"></div>
+
+									<!-- 댓글 작성 영역 -->
+
+
 								</div>
 							</div>
 						</div>
@@ -327,8 +277,6 @@
 	<!-- 풋터 공간 -->
 	<div class="ui fluid container">
 		<div class="ui inverted segment">
-			<div class="ui inverted segment"></div>
-
 			<div class="ui inverted vertical footer segment">
 				<div class="ui center aligned container">
 					<div class="ui stackable inverted divided grid">
@@ -378,7 +326,8 @@
 	<script>
 		var listJson = '${list}';
 		list = parseJSON(listJson);
-
+		var completion = list.planMain.completion;
+		console.log(completion);
 		$(document)
 				.ready(
 						function() {
@@ -402,6 +351,8 @@
 												a = list.planRough[index].planDay
 
 											});
+							($('.ui.itinerary.list').find('.item').first())
+									.addClass("active");
 
 							var startDate = new Date(list.planMain.startDay);
 							var endDate = new Date(startDate);
@@ -435,13 +386,6 @@
 									end : endDate
 
 								},
-								events : [ {
-									title : 'My Event',
-									start : '2017-09-21',
-									description : 'This is a cool event'
-								}
-								// more events here
-								],
 								/* 								visibleRange : {
 								 start : list.planMain.startDay,
 								 end : endDate
@@ -450,12 +394,15 @@
 								droppable : true, // this allows things to be dropped onto the calendar
 								drop : function() {
 									// is the "remove after drop" checkbox checked?
-									if ($('#drop-remove').is(':checked')) {
+									/* if ($('#drop-remove').is(':checked')) {
 										// if so, remove the element from the "Draggable Events" list
 										$(this).remove();
-									}
+									} */
+									$(this).remove();
 								}
 							});
+							
+							
 						});
 
 		$('.ui.bound.top.sticky#user').sticky({
@@ -472,14 +419,60 @@
 
 		var map = new naver.maps.Map('map', {
 			center : new naver.maps.LatLng(37.5666805, 126.9784147),
-			zoom : 12,
+			zoom : 2,
 			mapTypeId : naver.maps.MapTypeId.NORMAL
 		}), markers = [], infoWindows = [];
 
-		naver.maps.Event.addListener(map, 'idle', function() {
+		//맵을 이동할때 검색조건을로 맵 안에 있는 장소 표시해주는 메소드
+		naver.maps.Event.addListener(map, 'idle',
+				function() {
+					var contentTypeIdOption = $('#tagDropdown').find(
+							':selected').val();
+					console.log(contentTypeIdOption);
+					var areaCodeOption = $("input:radio[name=loc]:checked")
+							.val();
 
-			bringAllInMap();
-		});
+					if (($("input:radio[name=loc]:checked").val()) == "") {
+						var areaCodeOption = $("input:radio[name=loc]:checked")
+								.val()
+
+					} else {
+						var areaCodeOption = ($('.ui.itinerary.list').find(
+								'.active.item').attr('areaCode'));
+					}
+					;
+					console.log(areaCodeOption);
+					var titleOption = $('input[name=searchField]').val();
+					console.log(titleOption);
+
+					bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
+							titleOption)
+				});
+		
+		var contentTypeIdOption = $('#tagDropdown').find(
+		':selected').val();
+console.log(contentTypeIdOption);
+
+var areaCodeOption = $("input:radio[name=loc]:checked")
+		.val();
+
+if (($("input:radio[name=loc]:checked").val()) == "") {
+	var areaCodeOption = $("input:radio[name=loc]:checked")
+			.val()
+
+} else {
+	var areaCodeOption = ($('.ui.itinerary.list').find(
+			'.active.item').attr('areaCode'));
+}
+;
+alert(areaCodeOption);
+console.log(areaCodeOption);
+var titleOption = $('input[name=searchField]').val();
+console.log(titleOption);
+
+bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
+		titleOption)
+
 
 		function deleteAllInMap() {
 			marker.setMap(null);
@@ -494,7 +487,7 @@
 				.append(
 						"<div class='item'><img class='ui image'><div class='content'>가마목</div><div class='right floated content'><div class='ui icon button' id='userPickDeleteButton'><i class='delete icon'></i></div></div></div>");
 
-		function bringAllInMap() {
+		/* function bringAllInMap() {
 			var data = {}, bounds = map.getBounds();
 			data["eastBP"] = bounds.getNE().lng();
 			data["westBP"] = bounds.getSW().lng();
@@ -567,7 +560,8 @@
 												var $contentId = $(this)
 														.parent().parent()
 														.attr('contentId');
-
+												console.log($contentId);
+												console.log($title);
 												var $div = $('<div class="fluid draggable item" id="userPickItem" contentId='+$contentId+'>'
 														+ '<img class="ui image" src="' + $firstImage + '" style="height: 50px; width:50px">'
 														+ '<div class="content">'
@@ -587,7 +581,7 @@
 																{
 																	title : $
 																			.trim($title),
-																	className : $
+																	id : $
 																			.trim($contentId),
 																	stick : true
 																})
@@ -606,10 +600,10 @@
 
 						},
 						error : function(xhr, status, error) {
-							alert('error');
+							console.log('error');
 						}
 					});
-		};
+		}; */
 
 		function getClickHandler(seq) {
 			return function(e) {
@@ -662,9 +656,7 @@
 				url : 'http://www.diacomp.org/omb/images/Google/ltblue.png'
 			});
 		}
-		bringAllInMap()
-		/* 		$(#map). */
-
+		
 		var polyline = new naver.maps.Polyline({
 			map : map,
 			path : [],
@@ -683,7 +675,7 @@
 						function(e) {
 
 							var contentId = $(this).attr('contentId');
-
+							console.log(contentId);
 							if (!$(e.target).is('#pickButton')
 									&& !$(e.target).is('.plus.icon')) {
 								//do some stuff
@@ -710,17 +702,23 @@
 											cache : false,
 											async : true,
 											success : function(result) {
-												alert(JSON
-														.stringify(result.response.body.items.item.overview));
+												console
+														.log(JSON
+																.stringify(result.response.body.items.item.overview));
 											},
 											error : function(xhr, status, error) {
-												alert(error);
+												console.log(error);
 											}
 										});
 							}
 							;
 
 						});
+		
+		
+		$(document).on("click", "#totalItinerary", function(){
+			$(".fc-month-button").trigger("click");
+		});
 		$(document).on(
 				"click",
 				"#itineraryItem",
@@ -754,10 +752,51 @@
 
 						return rv;
 					}));
-					alert(json);
+					console.log(json);
 					$('#calendar').fullCalendar('gotoDate', currentDay);
 
 					$('#userPick').children().remove();
+					
+					var planRoughObjectArray = new Array();
+
+					var planRoughDetailObject = new Object();
+					console.log($('#itineraryItem').length);
+					$($('.itinerary.list').children()).each(
+							function(index, value) {
+								var planRoughObject = new Object();
+								planRoughObject.planRoughNum = $(this)
+										.attr('planRoughNum');
+								planRoughObject.planMainNum = $(this)
+										.attr('planMainNum');
+								planRoughObject.areaCode = $(this)
+										.attr('areaCode');
+								planRoughObject.planDay = $(this).attr(
+										'planDay');
+								planRoughObjectArray
+										.push(planRoughObject);
+							});
+					
+					var contentTypeIdOption = $('#tagDropdown').find(
+					':selected').val();
+			console.log(contentTypeIdOption);
+			var areaCodeOption = $("input:radio[name=loc]:checked")
+					.val();
+
+			if (($("input:radio[name=loc]:checked").val()) == "") {
+				var areaCodeOption = $("input:radio[name=loc]:checked")
+						.val()
+
+			} else {
+				var areaCodeOption = ($('.ui.itinerary.list').find(
+						'.active.item').attr('areaCode'));
+			}
+			;
+			console.log(areaCodeOption);
+			var titleOption = $('input[name=searchField]').val();
+			console.log(titleOption);
+
+			bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
+					titleOption)
 
 				});
 		$(document).on("click", "#userPickAllDelete", function() {
@@ -780,74 +819,556 @@
 						function() {
 							var planRoughObjectArray = new Array();
 
-							var planRoughDetailObjectArray = new Object();
+							var planRoughDetailObject = new Object();
 							console.log($('#itineraryItem').length);
-							$($('.itinerary.list').children())
+							$($('.itinerary.list').children()).each(
+									function(index, value) {
+										var planRoughObject = new Object();
+										planRoughObject.planRoughNum = $(this)
+												.attr('planRoughNum');
+										planRoughObject.planMainNum = $(this)
+												.attr('planMainNum');
+										planRoughObject.areaCode = $(this)
+												.attr('areaCode');
+										planRoughObject.planDay = $(this).attr(
+												'planDay');
+										planRoughObjectArray
+												.push(planRoughObject);
+									});
+
+							var planDetailObjectArray = JSON
+									.stringify($("#calendar")
+											.fullCalendar("clientEvents")
+											.map(
+													function(e) {
+														return {
+															planMainNum : list.planRough[0].planMainNum,
+															contentId : e.id,
+															startTime : e.start,
+															endTime : e.end
+
+														};
+													}));
+							console.log(planDetailObjectArray);
+
+							planRoughDetailObject.planRoughObjectArray = (planRoughObjectArray);
+							planRoughDetailObject.planDetailObjectArray = (planDetailObjectArray);
+
+							console.log(planRoughObjectArray);
+							console.log(planDetailObjectArray);
+							console.log(planRoughDetailObject);
+							$
+									.ajax({
+										url : "${path}/travel/insertPlanRoughDetail.do",
+										type : 'post',
+										data : JSON
+												.stringify(planRoughDetailObject),
+										contentType : "application/json;charset=UTF-8",
+										success : function(respBody) {
+											console.log("성공");
+											console.log(respBody);
+											location.href = "${path}/travel/mainMain.do";
+											console.log("성공");
+										},
+										error : function(xhr, ajaxoptions,
+												thrownError, status, error) {
+											console.log(status);
+										}
+									});
+
+						});
+		$(document)
+				.on(
+						"click",
+						".ui.temporary.save.button",
+						function() {
+							var planRoughObjectArray = new Array();
+
+							var planRoughDetailObject = new Object();
+							console.log($('#itineraryItem').length);
+							$($('.itinerary.list').children()).each(
+									function(index, value) {
+										var planRoughObject = new Object();
+										planRoughObject.planRoughNum = $(this)
+												.attr('planRoughNum');
+										planRoughObject.planMainNum = $(this)
+												.attr('planMainNum');
+										planRoughObject.areaCode = $(this)
+												.attr('areaCode');
+										planRoughObject.planDay = $(this).attr(
+												'planDay');
+										planRoughObjectArray
+												.push(planRoughObject);
+									});
+
+							var planDetailObjectArray = JSON
+									.stringify($("#calendar")
+											.fullCalendar("clientEvents")
+											.map(
+													function(e) {
+														return {
+															planMainNum : list.planRough[0].planMainNum,
+															contentId : e.id,
+															startTime : e.start,
+															endTime : e.end
+
+														};
+													}));
+							console.log(planDetailObjectArray);
+
+							planRoughDetailObject.planRoughObjectArray = (planRoughObjectArray);
+							planRoughDetailObject.planDetailObjectArray = (planDetailObjectArray);
+
+							console.log(planRoughObjectArray);
+							console.log(planDetailObjectArray);
+							console.log(planRoughDetailObject);
+							$
+									.ajax({
+										url : "${path}/travel/insertPlanRoughDetail.do",
+										type : 'post',
+										data : JSON
+												.stringify(planRoughDetailObject),
+										contentType : "application/json;charset=UTF-8",
+										success : function(respBody) {
+											console.log("성공");
+											console.log(respBody);
+											location.href = "${path}/travel/mainMain.do";
+											console.log("성공");
+										},
+										error : function(xhr, ajaxoptions,
+												thrownError, status, error) {
+											console.log(status);
+										}
+									});
+
+						});
+
+		$(document)
+				.on(
+						'click',
+						'#classificationMenu',
+						function() {
+							$('#tagDropdown').empty();
+							switch ($('#classificationMenu').find('.active')
+									.attr('id')) {
+							case 'basicPlace':
+								console.log('basicPlace');
+								$('#tagDropdown')
+										.append(
+												"<option value='12' contentTypeId='12'>관광지</option>"
+														+ "<option value='14' contentTypeId='14'>문화시설</option>"
+														+ "<option value='15' contentTypeId='15'>축제/공연/행사</option>"
+														+ "<option value='25' contentTypeId='25'>여행코스</option>"
+														+ "<option value='28' contentTypeId='28'>레포츠</option>")
+								break;
+							case 'food':
+								console.log('food');
+								$('#tagDropdown')
+										.append(
+												"<option value='39' contentTypeId='39'>음식점</option>")
+								break;
+							case 'shop':
+								$('#tagDropdown')
+										.append(
+												"<option value='38' contentTypeId='38'>쇼핑</option>")
+								break;
+							case 'accommodation':
+								$('#tagDropdown')
+										.append(
+												"<option value='32' contentTypeId='32'>숙박시설</option>")
+								break;
+							case 'userPlace':
+								$('#tagDropdown')
+										.append(
+												"<option value='' contentTypeId=''>전체 보기</option>"
+												+"<option value='99' contentTypeId='99'>사용자 추가 장소</option>")
+								break;
+							default:
+								console.log('분류 아무것도 선택되지 않음');
+							}
+
+							console.log('dropdown');
+							var contentTypeIdOption = $('#tagDropdown').find(
+									':selected').val();
+							console.log(contentTypeIdOption);
+							var areaCodeOption = $(
+									"input:radio[name=loc]:checked").val();
+
+							if (($("input:radio[name=loc]:checked").val()) == "") {
+								var areaCodeOption = $(
+										"input:radio[name=loc]:checked").val()
+
+							} else {
+								var areaCodeOption = ($('.ui.itinerary.list')
+										.find('.active.item').attr('areaCode'));
+							}
+							;
+							console.log(areaCodeOption);
+							var titleOption = $('input[name=searchField]')
+									.val();
+							console.log(titleOption);
+
+							bringPlaceOnMap(contentTypeIdOption,
+									areaCodeOption, titleOption)
+							bringPlaceOnMap(contentTypeIdOption,
+									areaCodeOption, titleOption);
+							console.log(1);
+
+						});
+
+		$('#tagDropdown').on(
+				'change',
+				(function() {
+					console.log('dropdown');
+					var contentTypeIdOption = $('#tagDropdown').find(
+							':selected').val();
+					console.log(contentTypeIdOption);
+					var areaCodeOption = $("input:radio[name=loc]:checked")
+							.val();
+
+					if (($("input:radio[name=loc]:checked").val()) == "") {
+						var areaCodeOption = $("input:radio[name=loc]:checked")
+								.val()
+
+					} else {
+						var areaCodeOption = ($('.ui.itinerary.list').find(
+								'.active.item').attr('areaCode'));
+					}
+					;
+					console.log(areaCodeOption);
+					var titleOption = $('input[name=searchField]').val();
+					console.log(titleOption);
+
+					bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
+							titleOption)
+					bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
+							titleOption);
+					console.log(1);
+
+				}));
+		$('input:radio').on(
+				'click',
+				(function() {
+					console.log('radio');
+					var contentTypeIdOption = $('#tagDropdown').find(
+							':selected').val();
+					console.log(contentTypeIdOption);
+					var areaCodeOption = $("input:radio[name=loc]:checked")
+							.val();
+
+					if (($("input:radio[name=loc]:checked").val()) == "") {
+						var areaCodeOption = $("input:radio[name=loc]:checked")
+								.val()
+
+					} else {
+						var areaCodeOption = ($('.ui.itinerary.list').find(
+								'.active.item').attr('areaCode'));
+					}
+					;
+					console.log(areaCodeOption);
+					var titleOption = $('input[name=searchField]').val();
+					console.log(titleOption);
+
+					bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
+							titleOption)
+
+				}));
+		$('input[name=searchField]').on(
+				'change',
+				(function() {
+					console.log('search');
+					var contentTypeIdOption = $('#tagDropdown').find(
+							':selected').val();
+					console.log(contentTypeIdOption);
+					var areaCodeOption = $("input:radio[name=loc]:checked")
+							.val();
+
+					if (($("input:radio[name=loc]:checked").val()) == "") {
+						var areaCodeOption = $("input:radio[name=loc]:checked")
+								.val()
+
+					} else {
+						var areaCodeOption = ($('.ui.itinerary.list').find(
+								'.active.item').attr('areaCode'));
+					}
+					;
+					console.log(areaCodeOption);
+					var titleOption = $('input[name=searchField]').val();
+					console.log(titleOption);
+
+					bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
+							titleOption)
+
+				}));
+
+		function bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
+				titleOption) {
+
+			var data = {}, bounds = map.getBounds();
+			data["eastBP"] = bounds.getNE().lng();
+			data["westBP"] = bounds.getSW().lng();
+			data["southBP"] = bounds.getSW().lat();
+			data["northBP"] = bounds.getNE().lat();
+			data["areaCodeOption"] = areaCodeOption;
+			data["contentTypeIdOption"] = contentTypeIdOption;
+			data["titleOption"] = titleOption;
+			console.log(JSON.stringify(data))
+			console.log($('.ui.itinerary.list').find('.active.item').attr(
+					'areaCode'));
+			console.log(JSON.stringify(data));
+			$
+					.ajax({
+						type : "post",
+						url : "${path}/travel/bringPlaceOnMap.do",
+						dataType : "json",
+						data : JSON.stringify(data),
+						processData : false,
+						contentType : "application/json;charset=UTF-8",
+						async : true,
+						success : function(result) {
+							console.log(result);
+							for (var i = 0, ii = markers.length; i < ii; i++) {
+								markers.pop().setMap(null)
+
+							}
+							;
+							markers = [];
+							infoWindows = [];
+							$('#contentInMap').empty();
+							$
 									.each(
-											function(index, value) {
-												var planRoughObject = new Object();
-												planRoughObject.planRoughNum = $(
-														this).attr(
-														'planRoughNum');
-												planRoughObject.planMainNum = $(
-														this).attr(
-														'planMainNum');
-												planRoughObject.areaCode = $(
-														this).attr('areaCode');
-												planRoughObject.planDay = $(
-														this).attr('planDay');
-												planRoughObjectArray
-														.push(planRoughObject);
+											result,
+											function(key, value) {
+												var position = new naver.maps.LatLng(
+														value.mapY, value.mapX);
 
+												var marker = new naver.maps.Marker(
+														{
+															map : map,
+															position : position,
+															title : value.contentId,
+															icon : "http://www.owenscorning.com/images/orange-dot.png",
+														});
+
+												var infoWindow = new naver.maps.InfoWindow(
+														{
+															content : '<div style="text-align:center;padding:10px;"><span style="color:black">'
+																	+ value.title
+																	+ '</span></div>'
+														});
+
+												markers.push(marker);
+												infoWindows.push(infoWindow);
+												var $div = $('	<div class="item" id="pickItem" style="width:300px;"'
+														+ 'firstImage='
+														+ value.firstImage
+														+ '" title="'
+														+ value.title
+														+ '"contentId="'
+														+ value.contentId
+														+ '">'
+														+ '<img class="ui image" src="'
+														+ value.firstImage
+														+ '" style="height: 100px; width:150px"><div class="content">'
+														+ value.title
+														+ '</div><div class="right floated content"><div class="ui pick icon button" id="pickButton"><i class="plus icon"></i></div></div></div>');
+												$('#contentInMap').append($div);
+											});
+							for (var i = 0, ii = markers.length; i < ii; i++) {
+								naver.maps.Event.addListener(markers[i],
+										'click', getClickHandler(i));
+							}
+							$('.pick.button')
+									.on(
+											'click',
+											function() {
+												var $title = $(this).parent()
+														.parent().attr('title');
+												var $firstImage = $(this)
+														.parent().parent()
+														.attr('firstImage');
+												var $contentId = $(this)
+														.parent().parent()
+														.attr('contentId');
+												console.log($contentId);
+												console.log($title);
+												var $div = $('<div class="fluid draggable item" id="userPickItem" contentId='
+														+ $contentId
+														+ '>'
+														+ '<img class="ui image" src="'
+														+ $firstImage
+														+ '" style="height: 50px; width:50px">'
+														+ '<div class="content">'
+														+ $title
+														+ '</div>'
+														+ '<div class="right floated content">'
+														+ '<div class="ui icon button" id="userPickDeleteButton">'
+														+ '<i class="delete icon"></i>'
+														+ '</div>'
+														+ '</div>'
+														+ '</div>');
+												$('#userPick').append($div);
 												$(
-														$('.itinerary.list')
-																.children())
-														.each(
-																function(index,
-																		value) {
-																	var planRoughDetailObject = new Object();
-
+														'#userPick .draggable:last-child')
+														.data(
+																'event',
+																{
+																	title : $
+																			.trim($title),
+																	id : $
+																			.trim($contentId),
+																	stick : true
+																})
+														.draggable(
+																{
+																	zIndex : 999,
+																	revert : true,
+																	revertDuration : 0,
+																	appendTo : 'body',
+																	containment : 'window',
+																	scroll : false,
+																	helper : 'clone',
+																	cursor : 'move'
 																});
 											});
 
-							var planRoughObjectArrayJson = JSON
-									.stringify(planRoughObjectArray);
-							alert(planRoughObjectArrayJson);
+						},
+						error : function(xhr, status, error) {
+							console.log('error');
+						}
+					});
+		};
+		
+		
 
-							//jsonArray[""] = $('#title').val();
-							//jsonArray["datePicker"] = $('#datePicker').val();
-							/* 					var j = 1;
-							 $('#sidebar #userPickItem').each(
-							 function(index) {
+		
+		var email = "<%=(String) session.getAttribute("email")%>"
 
-							 for(var i=0;i<$(this).find("#dateDay").text();i++,j++){
+		$(document)
+				.ready(
+						function() {
+							if (email != null) {
+								$('#replySegment')
+										.append(
 
-							 var userPickArray = new Object();
-							 userPickArray.areaName = $(this).find("#areaName").text();
-							 userPickArray.dateDay = j;
-							 jsonArray["userPickItem"+j] = userPickArray;
-							 alert(j);
-							 }
-							 });
-							 console.log(JSON.stringify(jsonArray));
-							
-							 $.ajax({
-							 url : "${path}/travel/insertPlanMainRough.do",
-							 type : 'post',
-							 data : JSON.stringify(jsonArray),
-							 contentType : "application/json;charset=UTF-8",
-							 success : function(respBody) {
-							 console.log("성공");
-							 alert(respBody);
-							 location.href="${path}/itinerary/list.do?planMainNum="+respBody;
-							 console.log("성공");
-							 },
-							 error : function(xhr, ajaxoptions, thrownError, status, error) {
-							 console.log(status);
-							 }
-							 });  */
+												"<form class='ui reply form'>"
+														+ "<div class='field'>"
+														+ "<textarea id='replytext' placeholder='댓글을 작성해주세요'></textarea>"
+														+ "</div>"
+														+ "<div class='right float content'>"
+														+ "<div class='ui blue labeled submit icon button'"
+						+"id='btnReply'>"
+														+ "<i class='icon edit'></i> 댓글 작성"
+														+ "</div>"
+														+ "<div class='ui right floated checkbox' style='float:right;'><input type='checkbox' id='secretReply'><label>비밀 댓글</label></div"
+														+ "</div>" + "</form>");
+							}
+							;
 						});
+
+		$(document).ready(function() {
+			//댓글 관련 script
+
+			/* --------------- 댓글 관련 -------------- */
+			// 1. 댓글 입력
+			$("#btnReply").click(function() {
+				alert("댓글입력 시작!");
+
+				//reply(); // 폼데이터 형식으로 입력
+				replyJson(); // json 형식으로 입력
+			});
+			listReplyRest();
+		});
+
+		// 댓글 입력 함수(json방식)
+		function replyJson() {
+			var content = $("#replytext").val();
+			var planMainNum = list.planRough[0].planMainNum;
+			// 비밀댓글 체크여부
+			var secretReply = "0";
+			alert(secretReply);
+			// 태그.is(":속성") 체크여부 true/false
+			if ($("#secretReply").is(":checked")) {
+				secretReply = "1";
+			}
+			alert(content);
+			alert(planMainNum);
+			alert(secretReply);
+			$.ajax({
+				type : "post",
+				url : "${path}/travel/insertPlanReplyRest.do",
+				headers : {
+					"Content-Type" : "application/json"
+				},
+				dateType : "json",
+				data : JSON.stringify({
+					planMainNum : planMainNum,
+					content : content,
+					secretReply : secretReply
+				}),
+				success : function() {
+					alert("댓글이 등록되었습니다.");
+					listReplyRest();
+				}
+			});
+		}
+
+		// 댓글 목록 - RestController를 이용 json형식으로 리턴
+		function listReplyRest() {
+			alert("댓글 로드시작.");
+			alert(list.planRough[0].planMainNum);
+			$
+					.ajax({
+						type : "get",
+						//contentType: "application/json", ==> 생략가능(RestController이기때문에 가능)
+						url : "${path}/travel/planReplyList.do?planMainNum="
+								+ list.planRough[0].planMainNum,
+						success : function(result) {
+							
+							console.log(result);
+							var output = null;
+							$("#listReply").empty();
+							for ( var i in result) {
+								output = "<div class='comment'>"
+										+ "<a class='avatar'> <img"
+								+ "	src='http://file2.instiz.net/data/file2/2016/07/19/f/b/6/fb6997b187692ccc866d880e9f0b892d.gif'>"
+										+ "</a>" + "<div class='content'>"
+										+ "	<a class='author'>"
+										+ result[i].email + "</a>"
+										+ "	<div class='metadata'>"
+										+ "		<span class='date'>"
+										+ result[i].regDate + "</span>"
+										+ "	</div>" + "	<div class='text'>"
+										+ result[i].content +"</div>"
+										+ "<div class='actions'>"
+										+ "	<a class='reply'>답글</a>" + "</div>"
+										+ "</div>" + "</div>"
+
+								alert('반복횟수');
+								$("#listReply").append(output);
+							}
+							
+							
+							alert("댓글이 로드되었습니다.");
+							;
+						}
+					});
+		}
+
+		// 댓글 수정화면 생성 함수
+		function showReplyModify(rno) {
+			$.ajax({
+				type : "get",
+				url : "${path}/reply/detail/" + rno,
+				success : function(result) {
+					$("#modifyReply").html(result);
+					// 태그.css("속성", "값")
+					$("#modifyReply").css("visibility", "visible");
+				}
+			})
+		}
 	</script>
+
 </body>
 </html>
 

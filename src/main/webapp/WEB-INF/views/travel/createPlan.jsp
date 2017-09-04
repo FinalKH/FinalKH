@@ -126,7 +126,7 @@
 			resizeContent();
 			$(window).resize(function() {
 				resizeContent();
-				alert(map.getMapSize());
+				console.log(map.getMapSize());
 			});
 		});
 
@@ -259,7 +259,7 @@
 		});
 
 		/* 		$('#userDelete').click(function() {
-		 alert($(this).parent().parent().parent());
+		 console.log($(this).parent().parent().parent());
 		
 		 }); */
 
@@ -336,7 +336,7 @@
 								userPickArray.areaName = $(this).find("#areaName").text();
 								userPickArray.dateDay = j;
 								jsonArray["userPickItem"+j] = userPickArray;
-								alert(j);
+								console.log(j);
 								}
 							});
 					console.log(JSON.stringify(jsonArray));
@@ -348,7 +348,7 @@
 					    contentType : "application/json;charset=UTF-8",
 					    success : function(respBody) {
 					    	console.log("성공");
-					    	alert(respBody);
+					    	console.log(respBody);
 					    	location.href="${path}/travel/makePlan.do?planMainNum="+respBody;
 					    	console.log("성공");
 					    },

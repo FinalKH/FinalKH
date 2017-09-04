@@ -12,8 +12,10 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.web.controller.travel.TravelController;
 import com.kh.web.model.travel.dto.AreaVO;
+import com.kh.web.model.travel.dto.BringPlaceOnMapVO;
 import com.kh.web.model.travel.dto.ContentCommonVO;
 import com.kh.web.model.travel.dto.MapBoundVO;
+import com.kh.web.model.travel.dto.PlanDetailVO;
 import com.kh.web.model.travel.dto.PlanMainVO;
 import com.kh.web.model.travel.dto.PlanRoughAreaJoinVO;
 import com.kh.web.model.travel.dto.PlanRoughVO;
@@ -37,9 +39,13 @@ public class TravelDAOImpl implements TravelDAO {
 		return sqlSession.selectList("travel.selectAllContentCommon");
 	}
 
-	public List<Object> bringAllInMap(MapBoundVO mapBoundVO) {
+	public List<ContentCommonVO> bringAllInMap(MapBoundVO mapBoundVO) {
 		logger.info(String.valueOf(mapBoundVO));
 		return sqlSession.selectList("travel.bringAllInMap", mapBoundVO);
+	}
+	public List<ContentCommonVO> bringPlaceOnMap(BringPlaceOnMapVO bringPlaceOnMapVO) {
+		logger.info(String.valueOf(bringPlaceOnMapVO));
+		return sqlSession.selectList("travel.bringPlaceOnMap", bringPlaceOnMapVO);
 	}
 
 	public PlanMainVO selectPlanMain(String planMainNum) {
@@ -75,4 +81,30 @@ public class TravelDAOImpl implements TravelDAO {
 
 	}
 
+	public boolean deleteAllPlanDetail(PlanDetailVO planDetailVO) {
+		boolean returnBoolean = false;
+		sqlSession.delete("travel.deleteAllPlanDetail", planDetailVO);
+		returnBoolean = true;
+		return returnBoolean;
+	}
+
+	public boolean deleteAllPlanRough(PlanRoughVO planRoughVO) {
+		boolean returnBoolean = false;
+		sqlSession.delete("travel.deleteAllPlanRough", planRoughVO);
+		returnBoolean = true;
+		return returnBoolean;
+	}
+
+	public boolean insertPlanRough(PlanRoughVO planRoughVO) {
+		boolean returnBoolean = false;
+		sqlSession.insert("travel.insertPlanRough", planRoughVO);
+		returnBoolean = true;
+		return returnBoolean;
+	}
+	public boolean insertPlanDetail(PlanDetailVO planDetailVO) {
+		boolean returnBoolean = false;
+		sqlSession.insert("travel.insertPlanDetail", planDetailVO);
+		returnBoolean = true;
+		return returnBoolean;
+	}
 }

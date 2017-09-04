@@ -921,10 +921,10 @@
 		-- 계획상세 테이블 생성
 		create table T_PlanDetail(
 		PlanDetailNum varchar2(10),			-- 
-		PlanRoughNum varchar2(10),	 		-- 
+		PlanMainNum varchar2(10),	 		-- 
 		ContentId varchar2(10),	 			--
-		StartTime date,						--
-		EndTime date,						--
+		StartTime varchar2(30),						--
+		EndTime varchar2(30),						--
 		primary key(PlanDetailNum)			-- 
 		);
 	
@@ -932,7 +932,7 @@
 		CREATE sequence Seq_PlanDetailNum increment by 1 start with 1;
 		
 		-- 계획상세 외래키 설정
-		ALTER TABLE T_PlanDetail ADD CONSTRAINT Fk_PlanDetailPlanRoughNum FOREIGN KEY(PlanRoughNum) REFERENCES T_PlanRough(PlanRoughNum);
+		ALTER TABLE T_PlanDetail ADD CONSTRAINT Fk_PlanDetailPlanMainNum FOREIGN KEY(PlanMainNum) REFERENCES T_PlanMain(PlanMainNum);
 		ALTER TABLE T_PlanDetail ADD CONSTRAINT Fk_PlanDetailContentId FOREIGN KEY(ContentId) REFERENCES T_ContentCommon(ContentId);
 		
 		-- 계획상세 기본데이터 설정
@@ -1012,7 +1012,31 @@
 		
 		-- 리뷰댓글 기본데이터 설정
 		-- 나중에
-
+		
+		
+		-- 18. 플랜댓글 관련 DB 정보
+		-- 플랜댓글 테이블 생성
+		create table T_PlanReply(
+		planReplyNum varchar2(10),	 			-- 
+		planMainNum varchar2(10),	 			-- 
+		Email varchar2(50),					--
+		Content varchar2(2000),				--
+		RegDate varchar2(30),				--
+		UpdateDate varchar2(30),			--	
+		SecretReply varchar2(5),			--
+		primary key(planReplyNum)				-- 
+		);
+	
+		-- 플랜댓글 시퀀스 생성
+		CREATE sequence Seq_PlanReplyNum increment by 1 start with 1;
+		
+		-- 플랜댓글 외래키 설정
+		ALTER TABLE T_PlanReply ADD CONSTRAINT Fk_PlanReplyEmail FOREIGN KEY(Email) REFERENCES T_UserInfo(Email);
+		ALTER TABLE T_PlanReply ADD CONSTRAINT Fk_PlanReplyPlanMainNum FOREIGN KEY(planMainNum) REFERENCES T_PlanMain(planMainNum);
+		
+		-- 플랜댓글 기본데이터 설정
+		-- 나중에
+	
 
 
 	-- 테스트 모음 --	

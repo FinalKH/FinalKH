@@ -3,7 +3,7 @@ package com.kh.web.model.travel.dto;
 public class PlanDetailVO {
 
 	private String planDetailNum;
-	private String planRoughNum;
+	private String planMainNum;
 	private String contentId;
 	private String startTime;
 	private String endTime;
@@ -13,10 +13,10 @@ public class PlanDetailVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PlanDetailVO(String planDetailNum, String planRoughNum, String contentId, String startTime, String endTime) {
+	public PlanDetailVO(String planDetailNum, String planMainNum, String contentId, String startTime, String endTime) {
 		super();
 		this.planDetailNum = planDetailNum;
-		this.planRoughNum = planRoughNum;
+		this.planMainNum = planMainNum;
 		this.contentId = contentId;
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -30,12 +30,12 @@ public class PlanDetailVO {
 		this.planDetailNum = planDetailNum;
 	}
 
-	public String getPlanRoughNum() {
-		return planRoughNum;
+	public String getPlanMainNum() {
+		return planMainNum;
 	}
 
-	public void setPlanRoughNum(String planRoughNum) {
-		this.planRoughNum = planRoughNum;
+	public void setPlanMainNum(String planMainNum) {
+		this.planMainNum = planMainNum;
 	}
 
 	public String getContentId() {
@@ -64,7 +64,7 @@ public class PlanDetailVO {
 
 	@Override
 	public String toString() {
-		return "PlanDetailVO [planDetailNum=" + planDetailNum + ", planRoughNum=" + planRoughNum + ", contentId="
+		return "PlanDetailVO [planDetailNum=" + planDetailNum + ", planMainNum=" + planMainNum + ", contentId="
 				+ contentId + ", startTime=" + startTime + ", endTime=" + endTime + "]";
 	}
 
