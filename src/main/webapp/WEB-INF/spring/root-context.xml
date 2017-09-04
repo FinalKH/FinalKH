@@ -16,10 +16,19 @@
 		<!-- 드라이버 클래스 이름이 변경됨 -->
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		<!-- 연결문자열에 log4jdbc가 추가됨 -->
+<<<<<<< HEAD
 		<property name="url" value="jdbc:log4jdbc:oracle:thin:@mirror4ego.iptime.org:1521:orcl" />
 
+=======
+		<!-- <property name="url" value="jdbc:log4jdbc:oracle:thin:@mirror4ego.iptime.org:1521:orcl" />
+>>>>>>> fuckingsitt
 		<property name="username" value="finalkh" />
-		<property name="password" value="finalkh" />
+		<property name="password" value="finalkh" /> -->
+		
+		<property name="url" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:orcl" />
+		<property name="username" value="scott" />
+		<property name="password" value="tiger" />
+		
 	</bean>
 	<!-- 아파치 DBCP 설정 -->
 	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" 

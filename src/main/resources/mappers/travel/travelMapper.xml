@@ -31,6 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{eastBP}) AND (mapY between #{southBP} AND
 		#{northBP})
 
+<<<<<<< HEAD
 		<if test="titleOption != null and (titleOption != ''.toString())">
 			AND title like '%' || #{titleOption, jdbcType=VARCHAR} ||
 			'%'
@@ -97,4 +98,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{contentId}, #{startTime},
 		#{endTime, jdbcType=VARCHAR})
 	</insert>
+=======
+    <!--  -->
+    <select id="selectImage" resultType="com.kh.web.model.travel.dto.ImageVO">
+        SELECT
+  		AREAIMAGE
+        FROM T_AREA
+        <!-- WHERE Spot_Num = #{spotNum} -->
+    </select>
+    
+>>>>>>> fuckingsitt
 </mapper>

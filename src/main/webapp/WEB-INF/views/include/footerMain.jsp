@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="reset.css"/>
+<style>
+#footer{width:100%; height:110px;margin-top:230px;float:left;border-top:1px solid gray;font-size:15px;}
+.info{position:absolute;padding-left:250px;padding-top:10px;position:relative;right:50px;}
+.info li{float:left;padding-right: 50px;}
+.addres strong{font-size: 20px;font-weight: bold;}
+</style>
+</head>
+<body>
 	<div id="footer">
 		<ul class="info">
 			<li>
@@ -27,3 +40,5 @@
 			</li>
 		</ul>
 	</div><!-- //footer -->
+</body>
+</html>

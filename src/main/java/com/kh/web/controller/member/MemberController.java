@@ -1,5 +1,8 @@
 package com.kh.web.controller.member;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.util.List;
 
 import javax.inject.Inject;

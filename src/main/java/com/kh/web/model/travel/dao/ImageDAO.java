@@ -5,6 +5,6 @@ import java.util.List;
 import com.kh.web.model.travel.dto.ImageVO;
 
 public interface ImageDAO {
-	// 회원 목록 
+	// 이미지
     public List<ImageVO> imageList();
 }

@@ -53,15 +53,16 @@ public class UploadController {
 	@RequestMapping(value="/upload/uploadForm", method=RequestMethod.POST)
 	public ModelAndView uplodaForm(MultipartFile file, ModelAndView mav) throws Exception{
 		// 파일의 원본이름 저장
+		String save = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
 		String savedName = file.getOriginalFilename();
 		// 파일의 정보 로그 출력
 		logger.info("파일이름 :"+file.getOriginalFilename());
 		logger.info("파일크기 : "+file.getSize());
 		logger.info("컨텐트 타입 : "+file.getContentType());
 		// 랜덤생성+파일이름 저장하기 위해  파일명 랜덤생성 메서드호출 
-		savedName = uploadFile(savedName, file.getBytes());
+		//savedName = uploadFile(savedName, file.getBytes());
 		mav.setViewName("upload/uploadResult");
-		mav.addObject("savedName", savedName);
+		mav.addObject("savedName", save);
 		
 		return mav; // uploadResult.jsp(결과화면)로 포워딩
 	}
@@ -169,6 +170,15 @@ public class UploadController {
         // 데이터와 http 상태 코드 전송
         return new ResponseEntity<String>("deleted", HttpStatus.OK);
     }
+    
+    
+    
+    
+    /*************************************ajax file연습*****************************************************/
+    
+    
+    
+    
     
     /****************************** # ajax 방식의 업로드 처리  *********************************/
 }

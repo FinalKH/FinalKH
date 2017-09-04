@@ -23,6 +23,7 @@ public class ImageDAOImpl implements ImageDAO{
     // 회원목록
     @Override
     public List<ImageVO> imageList() {
+    	
         return sqlSession.selectList("travel.selectImage");
         
     }
