@@ -18,7 +18,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter{
 		HttpSession session = request.getSession();
 		// session에 관리자id가 null이면
 		if(session.getAttribute("email") == null){
-			response.sendRedirect(request.getContextPath()+"/member/login.do?msg=nologin"); //일반사용자 로그인화면으로 리다이렉트
+			response.sendRedirect(request.getContextPath()+"/main.do?msg=nologin"); //일반사용자 로그인화면으로 리다이렉트
 			return false; // 요청 실행 X
 		// null이 아니면
 		} else {

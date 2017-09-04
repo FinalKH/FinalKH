@@ -66,7 +66,7 @@
 
 	<!-- 인터셉터 매핑정보 -->
 	<interceptors>
-		<!-- 관리자 세션체크 매핑 -->
+		<!-- 멤버 세션체크 매핑 -->
 		<interceptor>
 			<mapping path="/travel/createPlan.do" />
 			<mapping path="/travel/makePlan.do" />
@@ -87,6 +87,7 @@
 			<mapping path="/reply/insertRest.do" />
 			<mapping path="/shop/cart/insert.do" />
 			<mapping path="/shop/cart/list.do" />
+
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 		<!-- 테스트 매핑 -->
