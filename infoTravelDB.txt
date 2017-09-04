@@ -836,7 +836,7 @@
 	-- 10. 유저등급 관련 DB 정보
 		-- 유저등급 테이블 생성
 		create table T_UserGrade(
-		GradeName varchar2(50),	 			-- 
+		GradeName varchar2(10),	 			-- 
 		primary key(GradeName)				-- 
 		);
 	
@@ -856,10 +856,10 @@
 	-- 11. 유저정보 관련 DB 정보
 		-- 유저정보 테이블 생성
 		create table T_UserInfo(
-		Email varchar2(50),	 				-- 
-		UserId varchar2(50),	 			--
-		Password varchar2(70),				--
-		GradeName varchar2(50),				--
+		Email varchar2(60),	 				-- 
+		UserId varchar2(30),	 			--
+		Password varchar2(65),				--
+		GradeName varchar2(10),				--
 		primary key(Email)					-- 
 		);
 	
@@ -1043,7 +1043,28 @@
 	-- 1. 멤버 테스트 쿼리
 	SELECT COUNT(*) FROM tbl_member;		
 	-- 총 데이터가 100개라면 성공적으로 입력 된 것
+<<<<<<< HEAD
 	
+=======
+
+
+	--후기 테스트 테이블--
+alter table review drop primary key cascade;
+drop sequence seq_review;
+drop table review;
+create table review(
+bno number not null primary key,
+subject varchar2(200),
+content varchar2(4000),
+regdate date default sysdate,
+viewcnt number default 0,
+show char(1) default 'y'
+); 
+
+create sequence seq_review
+start with 1;	
+
+>>>>>>> JunGu
 	-- @ 최종 테이블, 시퀀스 구조 확인
 	SELECT * FROM tab;
 	SELECT * FROM all_sequences WHERE SEQUENCE_OWNER='FINALKH';

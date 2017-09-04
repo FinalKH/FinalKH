@@ -13,53 +13,56 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.js"></script>
-<title>Insert title here</title>
+<title>후기</title>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+});
+</script>
 </head>
 <body>
 <header>
 	<div class="ui fluid container">
 		<div class="ui purple segment">
-			<p><%@ include file="../include/headerMain.jsp"%></p>
+			<p><%@ include file="../include/headerTravel.jsp"%>
+	<%@ include file="../include/menuTravel.jsp"%></p>
 		</div>
 	</div>
 </header>
 <section>
-	<div class="container">
-    <div class="row marketing">
-      <div class="col-lg-12">
-        <div class="panel panel-default">
+	<div class="ui fluid container">
+    <div class="ui grid">
 	<c:choose>
 		<c:when test="${dto.show == 'y'}">
 		<!-- show가 y면 -->	
-			<!-- 게시물 상세보기 영역 -->
-		
-          <div class="panel-heading">
-            <h3 class="panel-title">${dto.subject}
-            </h3>
-            <span class="pull-right text-right"><fmt:formatDate value="${dto.regdate}" pattern="yyyy-MM-dd a HH:mm:ss"/> </span>
+			<!-- 게시물 상세보기 영역 -->		
+          <div class="left floated center aligned blue ten wide column">
+            <h2 class="ui header">${dto.subject}
+            </h2>
           </div>
-          <div class="panel-body">${dto.content}</div>
-        </div>
-      
-				<div style="width:650px; text-align: center;">
-					<!-- 게시물번호를 hidden으로 처리 -->
-					<input type="hidden" name="bno" value="${dto.bno}">
-				
-					<!-- 상세보기 화면에서 게시글 목록화면으로 이동 -->
-					<button type="button" id="btnList">목록</button>
-				</div>
+          <div class="right floated left aligend red six wide column">
+            <h5 class="ui header"><fmt:formatDate value="${dto.regdate}" pattern="yyyy-MM-dd a HH:mm:ss"/> </h5>
+          </div>
+          
+          <div class="center aligned yellow sixteen wide column ">${dto.content}</div>
+                 
+			<div class="sixteen wide column" style="width:650px; text-align: center;">
+				<!-- 게시물번호를 hidden으로 처리 -->
+				<input type="hidden" name="bno" value="${dto.bno}">
 			
-			<!-- 게시물 상세보기 영역 -->	
-					
+				<!-- 상세보기 화면에서 게시글 목록화면으로 이동 -->
+				<a class="ui small button" href="${path}/reviewList.do" >목록</a>
+			</div>
+			<!-- 게시물 상세보기 영역 -->						
 			</c:when>
 	</c:choose>
-	</div>
-    </div>
-  </div>
+	
+    </div> <!--  -->
+  </div><!-- container -->
 </section>
 <footer>
 	<div class="ui fluid container">
-		<div class="ui purple segment">
+		<div class="ui purple grid">
 			<p><%@ include file="../include/footerMain.jsp"%></p>
 		</div>
 	</div>

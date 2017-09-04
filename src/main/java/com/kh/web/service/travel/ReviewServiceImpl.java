@@ -23,7 +23,7 @@ public class ReviewServiceImpl implements ReviewService{
     	
     	String subject = vo.getSubject();
 		String content = vo.getContent();
-		// *태그문자 처리 (< ==> &lt; > ==> &gt;)
+		/*// *태그문자 처리 (< ==> &lt; > ==> &gt;)
 		// replace(A, B) A를 B로 변경
 		subject = subject.replace("<", "&lt;");
 		subject = subject.replace("<", "&gt;");
@@ -31,7 +31,7 @@ public class ReviewServiceImpl implements ReviewService{
 		subject = subject.replace("  ",	"&nbsp;&nbsp;");
 		// *줄바꿈 문자처리
 		content = content.replace("\n", "<br>");
-		System.out.print("여기"+content);
+		System.out.print("여기"+content);*/
 		vo.setSubject(subject);
 		vo.setContent(content);
 		

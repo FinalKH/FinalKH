@@ -4,6 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<!-- @@@@@달려있는게 준구 member(실제 우리가 쓰는 회원) 쿼리문 입니다. @와 @ 사이에 있어욥 -->
 <mapper namespace="member">
 	
  	<!-- 01. 로그인 체크 
@@ -115,10 +116,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <!-- 02. 회원 등록 -->
     <insert id="insertMember2">
         INSERT INTO t_userinfo
+<<<<<<< HEAD
             (email, password, userid, gradename)
+=======
+            (email, userid, password, gradename)
+>>>>>>> JunGu
         VALUES 
-            (#{email}, #{password}, #{userid}, '일반')    
+            (#{email}, #{userid}, #{password}, '일반')    
     </insert>
+    
     
 	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 	

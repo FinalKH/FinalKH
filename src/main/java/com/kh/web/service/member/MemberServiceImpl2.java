@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.kh.web.model.itinerary.dto.PlanMainVO;
 import com.kh.web.model.member.dao.MemberDAOImpl_Test_JG;
 import com.kh.web.model.member.dto.MemberVo_Test_JG;
 

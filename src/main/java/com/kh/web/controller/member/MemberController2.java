@@ -53,7 +53,7 @@ public class MemberController2 {
     //public String memberInsert(HttpServlet request){
     //public String memberInsert(String Email, String Password, String userId){
     public String memberInsert(@ModelAttribute MemberVo_Test_JG vot, HttpSession session){
-        // 테이블에 레코드 입력
+    	// 테이블에 레코드 입력
     	String Password = vot.getPassword();
     	String encryptPassword = passwordEncoder.encode(vot.getPassword());
     	logger.info(encryptPassword);

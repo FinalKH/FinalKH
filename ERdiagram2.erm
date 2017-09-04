@@ -11,8 +11,13 @@
 	</page_setting>
 	<category_index>0</category_index>
 	<zoom>1.0</zoom>
+<<<<<<< HEAD
 	<x>765</x>
 	<y>468</y>
+=======
+	<x>641</x>
+	<y>333</y>
+>>>>>>> JunGu
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -237,7 +242,7 @@
 					</connections>
 					<name>카테고리</name>
 					<selected>true</selected>
-					<node_element>27</node_element>
+					<node_element>26</node_element>
 				</category>
 				<category>
 					<id>36</id>
@@ -320,7 +325,11 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2017-08-09 15:36:34</creation_date>
+<<<<<<< HEAD
 			<updated_date>2017-08-31 20:26:49</updated_date>
+=======
+			<updated_date>2017-08-30 19:58:58</updated_date>
+>>>>>>> JunGu
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -4773,7 +4782,7 @@
 			<connections>
 				<relation>
 					<id>0</id>
-					<source>27</source>
+					<source>26</source>
 					<target>0</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -4803,7 +4812,11 @@
 			<columns>
 				<normal_column>
 					<id>0</id>
+<<<<<<< HEAD
 					<referenced_column>276</referenced_column>
+=======
+					<referenced_column>271</referenced_column>
+>>>>>>> JunGu
 					<relation>0</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -5289,7 +5302,7 @@
 			<connections>
 				<relation>
 					<id>1</id>
-					<source>27</source>
+					<source>26</source>
 					<target>1</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -5319,7 +5332,11 @@
 			<columns>
 				<normal_column>
 					<id>14</id>
+<<<<<<< HEAD
 					<referenced_column>276</referenced_column>
+=======
+					<referenced_column>271</referenced_column>
+>>>>>>> JunGu
 					<relation>1</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -5871,7 +5888,7 @@
 			<connections>
 				<relation>
 					<id>2</id>
-					<source>27</source>
+					<source>26</source>
 					<target>2</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -5901,7 +5918,11 @@
 			<columns>
 				<normal_column>
 					<id>30</id>
+<<<<<<< HEAD
 					<referenced_column>276</referenced_column>
+=======
+					<referenced_column>271</referenced_column>
+>>>>>>> JunGu
 					<relation>2</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -6915,7 +6936,7 @@
 			<connections>
 				<relation>
 					<id>3</id>
-					<source>27</source>
+					<source>26</source>
 					<target>3</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -6945,7 +6966,11 @@
 			<columns>
 				<normal_column>
 					<id>60</id>
+<<<<<<< HEAD
 					<referenced_column>276</referenced_column>
+=======
+					<referenced_column>271</referenced_column>
+>>>>>>> JunGu
 					<relation>3</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -7497,7 +7522,7 @@
 			<connections>
 				<relation>
 					<id>4</id>
-					<source>27</source>
+					<source>26</source>
 					<target>4</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -7659,7 +7684,11 @@
 				</normal_column>
 				<normal_column>
 					<id>80</id>
+<<<<<<< HEAD
 					<referenced_column>276</referenced_column>
+=======
+					<referenced_column>271</referenced_column>
+>>>>>>> JunGu
 					<relation>4</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -7716,7 +7745,7 @@
 			<connections>
 				<relation>
 					<id>5</id>
-					<source>27</source>
+					<source>26</source>
 					<target>5</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -7746,7 +7775,11 @@
 			<columns>
 				<normal_column>
 					<id>81</id>
+<<<<<<< HEAD
 					<referenced_column>276</referenced_column>
+=======
+					<referenced_column>271</referenced_column>
+>>>>>>> JunGu
 					<relation>5</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -8348,9 +8381,70 @@
 						<decimal_size>0</decimal_size>
 					</sequence>
 				</normal_column>
+<<<<<<< HEAD
+=======
+			</columns>
+			<indexes>
+			</indexes>
+			<complex_unique_key_list>
+			</complex_unique_key_list>
+			<table_properties>
+				<schema></schema>
+			</table_properties>
+		</table>
+		<table>
+			<id>6</id>
+			<height>149</height>
+			<width>175</width>
+				<font_name>맑은 고딕</font_name>
+				<font_size>9</font_size>
+			<x>1309</x>
+			<y>1697</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+				<relation>
+					<id>6</id>
+					<source>26</source>
+					<target>6</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+			</connections>
+			<physical_name>T_ConvenienceHearing</physical_name>
+			<logical_name>새 테이블</logical_name>
+			<description></description>
+			<constraint></constraint>
+			<primary_key_name></primary_key_name>
+			<option></option>
+			<columns>
+>>>>>>> JunGu
 				<normal_column>
 					<word_id>153</word_id>
 					<id>96</id>
+<<<<<<< HEAD
+=======
+					<referenced_column>271</referenced_column>
+					<relation>6</relation>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -8513,9 +8607,70 @@
 						<decimal_size>0</decimal_size>
 					</sequence>
 				</normal_column>
+<<<<<<< HEAD
+=======
+			</columns>
+			<indexes>
+			</indexes>
+			<complex_unique_key_list>
+			</complex_unique_key_list>
+			<table_properties>
+				<schema></schema>
+			</table_properties>
+		</table>
+		<table>
+			<id>7</id>
+			<height>149</height>
+			<width>208</width>
+				<font_name>맑은 고딕</font_name>
+				<font_size>9</font_size>
+			<x>46</x>
+			<y>1162</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+				<relation>
+					<id>7</id>
+					<source>26</source>
+					<target>7</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+			</connections>
+			<physical_name>T_ContentImage</physical_name>
+			<logical_name>새 테이블</logical_name>
+			<description>accomcount&#x09;수용인원  수용인원&#x0D;&#x0A;chkbabycarriage&#x09;유모차대여여부&#x09;유모차대여여부&#x0D;&#x0A;chkcreditcard&#x09;신용카드가능여부&#x09;신용카드가능여부&#x0D;&#x0A;chkpet&#x09;애완동물가능여부&#x09;애완동물가능여부&#x0D;&#x0A;expagerange&#x09;체험가능연령&#x09;체험가능연령&#x0D;&#x0A;expguide&#x09;체험안내&#x09;체험안내&#x0D;&#x0A;heritage1&#x09;세계문화유산유무&#x09;세계문화유산유무&#x0D;&#x0A;heritage2&#x09;세계자연유산유무&#x09;세계자연유산유무&#x0D;&#x0A;heritage3&#x09;세계기록유산유무&#x09;세계기록유산유무&#x0D;&#x0A;infocenter&#x09;문의및안내&#x09;문의및안내&#x0D;&#x0A;opendate&#x09;개장일&#x09;개장일&#x0D;&#x0A;parking&#x09;주차시설&#x09;주차시설&#x0D;&#x0A;restdate&#x09;쉬는날&#x09;쉬는날&#x0D;&#x0A;useseason&#x09;이용시기&#x09;이용시기&#x0D;&#x0A;usetime&#x09;이용시간&#x09;이용시간&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;agelimit&#x09;관람가능연령&#x09;관람가능연령&#x0D;&#x0A;bookingplace&#x09;예매처&#x09;예매처&#x0D;&#x0A;discountinfofestival&#x09;할인정보&#x09;할인정보&#x0D;&#x0A;eventenddate&#x09;행사종료일&#x09;행사종료일&#x0D;&#x0A;eventhomepage&#x09;행사홈페이지&#x09;행사홈페이지&#x0D;&#x0A;eventplace&#x09;행사장소&#x09;행사장소&#x0D;&#x0A;eventstartdate&#x09;행사시작일&#x09;행사시작일&#x0D;&#x0A;festivalgrade&#x09;축제등급&#x09;축제등급&#x0D;&#x0A;placeinfo&#x09;행사장위치안내&#x09;행사장위치안내&#x0D;&#x0A;playtime&#x09;공연시간&#x09;공연시간&#x0D;&#x0A;program&#x09;행사프로그램&#x09;행사프로그램&#x0D;&#x0A;spendtimefestival&#x09;관람소요시간&#x09;관람소요시간&#x0D;&#x0A;sponsor1&#x09;주최자정보&#x09;주최자정보&#x0D;&#x0A;sponsor1tel&#x09;주최자연락처&#x09;주최자연락처&#x0D;&#x0A;sponsor2&#x09;주관사정보&#x09;주관사정보&#x0D;&#x0A;sponsor2tel&#x09;주관사연락처&#x09;주관사연락처&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;accomcountlodging&#x09;수용가능인원&#x09;contentTypeId=32&#x0D;&#x0A;(숙박)&#x09;수용가능인원&#x0D;&#x0A;benikia&#x09;베니키아여부&#x09;베니키아여부&#x0D;&#x0A;checkintime&#x09;입실시간&#x09;입실시간&#x0D;&#x0A;checkouttime&#x09;퇴실시간&#x09;퇴실시간&#x0D;&#x0A;chkcooking&#x09;객실내취사여부&#x09;객실내취사여부&#x0D;&#x0A;foodplace&#x09;식음료장&#x09;식음료장&#x0D;&#x0A;goodstay&#x09;굿스테이여부&#x09;굿스테이여부&#x0D;&#x0A;hanok&#x09;한옥여부&#x09;한옥여부&#x0D;&#x0A;infocenterlodging&#x09;문의및안내&#x09;문의및안내&#x0D;&#x0A;parkinglodging&#x09;주차시설&#x09;주차시설&#x0D;&#x0A;pickup&#x09;픽업서비스&#x09;픽업서비스&#x0D;&#x0A;roomcount&#x09;객실수&#x09;객실수&#x0D;&#x0A;reservationlodging&#x09;예약안내&#x09;예약안내&#x0D;&#x0A;reservationurl&#x09;예약안내홈페이지&#x09;예약안내홈페이지&#x0D;&#x0A;roomtype&#x09;객실유형&#x09;객실유형&#x0D;&#x0A;scalelodging&#x09;규모&#x09;규모&#x0D;&#x0A;subfacility&#x09;부대시설 (기타)&#x09;부대시설 (기타)&#x0D;&#x0A;barbecue&#x09;바비큐장여부&#x09;부대시설정보&#x0D;&#x0A;beauty&#x09;뷰티시설정보&#x0D;&#x0A;beverage&#x09;식음료장여부&#x0D;&#x0A;bicycle&#x09;자전거대여여부&#x0D;&#x0A;campfire&#x09;캠프파이어여부&#x0D;&#x0A;fitness&#x09;휘트니스센터여부&#x0D;&#x0A;karaoke&#x09;노래방여부&#x0D;&#x0A;publicbath&#x09;공용샤워실여부&#x0D;&#x0A;publicpc&#x09;공용 PC실여부&#x0D;&#x0A;sauna&#x09;사우나실여부&#x0D;&#x0A;seminar&#x09;세미나실여부&#x0D;&#x0A;Sports&#x09;스포츠시설여부&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;chkbabycarriageshopping&#x09;유모차대여여부&#x09;contentTypeId=38&#x0D;&#x0A;(쇼핑)&#x09;유모차대여여부&#x0D;&#x0A;chkcreditcardshopping&#x09;신용카드가능여부&#x09;신용카드가능여부&#x0D;&#x0A;chkpetshopping&#x09;애완동물가능여부&#x09;애완동물가능여부&#x0D;&#x0A;culturecenter&#x09;문화센터바로가기&#x09;문화센터바로가기&#x0D;&#x0A;fairday&#x09;장서는날&#x09;장서는날&#x0D;&#x0A;infocentershopping&#x09;문의및안내&#x09;문의및안내&#x0D;&#x0A;opendateshopping&#x09;개장일&#x09;개장일&#x0D;&#x0A;opentime&#x09;영업시간&#x09;영업시간&#x0D;&#x0A;parkingshopping&#x09;주차시설&#x09;주차시설&#x0D;&#x0A;restdateshopping&#x09;쉬는날&#x09;쉬는날&#x0D;&#x0A;restroom&#x09;화장실설명&#x09;화장실설명&#x0D;&#x0A;saleitem&#x09;판매품목&#x09;판매품목&#x0D;&#x0A;saleitemcost&#x09;판매품목별가격&#x09;판매품목별가격&#x0D;&#x0A;scaleshopping&#x09;규모&#x09;규모&#x0D;&#x0A;shopguide&#x09;매장안내&#x09;매장안내&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;chkcreditcardfood&#x09;신용카드가능여부&#x09;contentTypeId=39&#x0D;&#x0A;(음식점)&#x09;신용카드가능여부&#x0D;&#x0A;discountinfofood&#x09;할인정보&#x09;할인정보&#x0D;&#x0A;firstmenu&#x09;대표메뉴&#x09;대표메뉴&#x0D;&#x0A;infocenterfood&#x09;문의및안내&#x09;문의및안내&#x0D;&#x0A;kidsfacility&#x09;어린이놀이방&#x09;어린이놀이방&#x0D;&#x0A;opendatefood&#x09;개업일&#x09;개업일&#x0D;&#x0A;opentimefood&#x09;영업시간&#x09;영업시간&#x0D;&#x0A;packing&#x09;포장가능여부&#x09;포장가능여부&#x0D;&#x0A;parkingfood&#x09;주차시설&#x09;주차시설&#x0D;&#x0A;reservationfood&#x09;예약안내&#x09;예약안내&#x0D;&#x0A;restdatefood&#x09;쉬는날&#x09;쉬는날&#x0D;&#x0A;scalefood&#x09;규모&#x09;규모&#x0D;&#x0A;seat&#x09;좌석수&#x09;좌석수&#x0D;&#x0A;smoking&#x09;금연/흡연여부&#x09;금연/흡연여부&#x0D;&#x0A;treatmenu&#x09;취급메뉴&#x09;취급메뉴&#x0D;&#x0A;subevent&#x09;부대행사&#x09;부대행사내용&#x0D;&#x0A;usetimefestival&#x09;이용요금&#x09;이용요금&#x0D;&#x0A;distance&#x09;코스총거리&#x09;contentTypeId=25&#x0D;&#x0A;(여행코스)&#x09;코스총거리&#x0D;&#x0A;infocentertourcourse&#x09;문의및안내&#x09;문의및안내&#x0D;&#x0A;schedule&#x09;코스일정&#x09;코스일정&#x0D;&#x0A;taketime&#x09;코스총소요시간&#x09;코스총소요시간&#x0D;&#x0A;theme&#x09;코스테마&#x09;코스테마&#x0D;&#x0A;accomcountleports&#x09;수용인원&#x09;contentTypeId=28&#x0D;&#x0A;(레포츠)&#x09;수용인원&#x0D;&#x0A;chkbabycarriageleports&#x09;유모차대여여부&#x09;유모차대여여부&#x0D;&#x0A;chkcreditcardleports&#x09;신용카드가능여부&#x09;신용카드가능여부&#x0D;&#x0A;chkpetleports&#x09;애완동물가능여부&#x09;애완동물가능여부&#x0D;&#x0A;expagerangeleports&#x09;체험가능연령&#x09;체험가능연령&#x0D;&#x0A;infocenterleports&#x09;문의및안내&#x09;문의및안내&#x0D;&#x0A;openperiod&#x09;개장기간&#x09;개장기간&#x0D;&#x0A;parkingfeeleports&#x09;주차요금&#x09;주차요금&#x0D;&#x0A;parkingleports&#x09;주차시설&#x09;주차시설&#x0D;&#x0A;reservation&#x09;예약안내&#x09;예약안내&#x0D;&#x0A;restdateleports&#x09;쉬는날&#x09;쉬는날&#x0D;&#x0A;scaleleports&#x09;규모&#x09;규모&#x0D;&#x0A;usefeeleports&#x09;입장료&#x09;입장료&#x0D;&#x0A;usetimeleports&#x09;이용시간&#x09;이용시간</description>
+			<constraint></constraint>
+			<primary_key_name></primary_key_name>
+			<option></option>
+			<columns>
+>>>>>>> JunGu
 				<normal_column>
 					<word_id>14</word_id>
 					<id>101</id>
+<<<<<<< HEAD
+=======
+					<referenced_column>271</referenced_column>
+					<relation>7</relation>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -8666,6 +8821,10 @@
 			<option></option>
 			<columns>
 				<normal_column>
+<<<<<<< HEAD
+=======
+					<word_id>226</word_id>
+>>>>>>> JunGu
 					<id>104</id>
 					<referenced_column>276</referenced_column>
 					<relation>8</relation>
@@ -8732,9 +8891,70 @@
 						<decimal_size>0</decimal_size>
 					</sequence>
 				</normal_column>
+<<<<<<< HEAD
+=======
+			</columns>
+			<indexes>
+			</indexes>
+			<complex_unique_key_list>
+			</complex_unique_key_list>
+			<table_properties>
+				<schema></schema>
+			</table_properties>
+		</table>
+		<table>
+			<id>8</id>
+			<height>317</height>
+			<width>176</width>
+				<font_name>맑은 고딕</font_name>
+				<font_size>9</font_size>
+			<x>1309</x>
+			<y>1361</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+				<relation>
+					<id>8</id>
+					<source>26</source>
+					<target>8</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+			</connections>
+			<physical_name>T_ConveniencePhysical</physical_name>
+			<logical_name>새 테이블</logical_name>
+			<description></description>
+			<constraint></constraint>
+			<primary_key_name></primary_key_name>
+			<option></option>
+			<columns>
+>>>>>>> JunGu
 				<normal_column>
 					<word_id>46</word_id>
 					<id>106</id>
+<<<<<<< HEAD
+=======
+					<referenced_column>271</referenced_column>
+					<relation>8</relation>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -8766,7 +8986,11 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+<<<<<<< HEAD
 					<word_id>50</word_id>
+=======
+					<word_id>137</word_id>
+>>>>>>> JunGu
 					<id>107</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -9219,7 +9443,7 @@
 			<connections>
 				<relation>
 					<id>9</id>
-					<source>27</source>
+					<source>26</source>
 					<target>9</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -9248,8 +9472,13 @@
 			<option></option>
 			<columns>
 				<normal_column>
+<<<<<<< HEAD
 					<id>120</id>
 					<referenced_column>276</referenced_column>
+=======
+					<id>119</id>
+					<referenced_column>271</referenced_column>
+>>>>>>> JunGu
 					<relation>9</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -9852,9 +10081,15 @@
 			</color>
 			<connections>
 				<relation>
+<<<<<<< HEAD
 					<id>11</id>
 					<source>27</source>
 					<target>12</target>
+=======
+					<id>10</id>
+					<source>26</source>
+					<target>10</target>
+>>>>>>> JunGu
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
 						<target_xp>-1</target_xp>
@@ -9883,8 +10118,13 @@
 			<columns>
 				<normal_column>
 					<id>135</id>
+<<<<<<< HEAD
 					<referenced_column>276</referenced_column>
 					<relation>11</relation>
+=======
+					<referenced_column>271</referenced_column>
+					<relation>10</relation>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -10179,9 +10419,70 @@
 						<decimal_size>0</decimal_size>
 					</sequence>
 				</normal_column>
+<<<<<<< HEAD
+=======
+			</columns>
+			<indexes>
+			</indexes>
+			<complex_unique_key_list>
+			</complex_unique_key_list>
+			<table_properties>
+				<schema></schema>
+			</table_properties>
+		</table>
+		<table>
+			<id>11</id>
+			<height>149</height>
+			<width>175</width>
+				<font_name>맑은 고딕</font_name>
+				<font_size>9</font_size>
+			<x>1321</x>
+			<y>2117</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+				<relation>
+					<id>11</id>
+					<source>26</source>
+					<target>11</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+			</connections>
+			<physical_name>T_ConvenienceInfants</physical_name>
+			<logical_name>새 테이블</logical_name>
+			<description></description>
+			<constraint></constraint>
+			<primary_key_name></primary_key_name>
+			<option></option>
+			<columns>
+>>>>>>> JunGu
 				<normal_column>
 					<word_id>201</word_id>
 					<id>144</id>
+<<<<<<< HEAD
+=======
+					<referenced_column>271</referenced_column>
+					<relation>11</relation>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -10377,9 +10678,70 @@
 						<decimal_size>0</decimal_size>
 					</sequence>
 				</normal_column>
+<<<<<<< HEAD
+=======
+			</columns>
+			<indexes>
+			</indexes>
+			<complex_unique_key_list>
+			</complex_unique_key_list>
+			<table_properties>
+				<schema></schema>
+			</table_properties>
+		</table>
+		<table>
+			<id>13</id>
+			<height>821</height>
+			<width>206</width>
+				<font_name>맑은 고딕</font_name>
+				<font_size>9</font_size>
+			<x>1024</x>
+			<y>1525</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+				<relation>
+					<id>12</id>
+					<source>26</source>
+					<target>13</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+			</connections>
+			<physical_name>T_ContentRepeat32</physical_name>
+			<logical_name>새 테이블</logical_name>
+			<description></description>
+			<constraint></constraint>
+			<primary_key_name></primary_key_name>
+			<option></option>
+			<columns>
+>>>>>>> JunGu
 				<normal_column>
 					<word_id>184</word_id>
 					<id>150</id>
+<<<<<<< HEAD
+=======
+					<referenced_column>271</referenced_column>
+					<relation>12</relation>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -11798,9 +12160,15 @@
 					<referenced_complex_unique_key>null</referenced_complex_unique_key>
 				</relation>
 				<relation>
+<<<<<<< HEAD
 					<id>17</id>
 					<source>19</source>
 					<target>15</target>
+=======
+					<id>14</id>
+					<source>28</source>
+					<target>14</target>
+>>>>>>> JunGu
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
 						<target_xp>-1</target_xp>
@@ -11863,6 +12231,11 @@
 				<normal_column>
 					<word_id>32</word_id>
 					<id>188</id>
+<<<<<<< HEAD
+=======
+					<referenced_column>300</referenced_column>
+					<relation>14</relation>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -11894,6 +12267,10 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+<<<<<<< HEAD
+=======
+					<word_id>260</word_id>
+>>>>>>> JunGu
 					<id>189</id>
 					<referenced_column>202</referenced_column>
 					<relation>17</relation>
@@ -11928,6 +12305,10 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+<<<<<<< HEAD
+=======
+					<word_id>54</word_id>
+>>>>>>> JunGu
 					<id>190</id>
 					<referenced_column>194</referenced_column>
 					<relation>16</relation>
@@ -12137,6 +12518,53 @@
 				<b>192</b>
 			</color>
 			<connections>
+<<<<<<< HEAD
+=======
+				<relation>
+					<id>15</id>
+					<source>24</source>
+					<target>15</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+				<relation>
+					<id>16</id>
+					<source>14</source>
+					<target>15</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+>>>>>>> JunGu
 			</connections>
 			<physical_name>T_ContentType</physical_name>
 			<logical_name>새 테이블</logical_name>
@@ -12179,8 +12607,13 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+<<<<<<< HEAD
 					<word_id>57</word_id>
 					<id>195</id>
+=======
+					<word_id>53</word_id>
+					<id>196</id>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -12400,6 +12833,11 @@
 				<normal_column>
 					<word_id>232</word_id>
 					<id>200</id>
+<<<<<<< HEAD
+=======
+					<referenced_column>187</referenced_column>
+					<relation>16</relation>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -12433,6 +12871,11 @@
 				<normal_column>
 					<word_id>233</word_id>
 					<id>201</id>
+<<<<<<< HEAD
+=======
+					<referenced_column>262</referenced_column>
+					<relation>15</relation>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -12486,6 +12929,53 @@
 				<b>192</b>
 			</color>
 			<connections>
+<<<<<<< HEAD
+=======
+				<relation>
+					<id>17</id>
+					<source>18</source>
+					<target>16</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+				<relation>
+					<id>18</id>
+					<source>20</source>
+					<target>16</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+>>>>>>> JunGu
 			</connections>
 			<physical_name>T_Cat1</physical_name>
 			<logical_name>새 테이블</logical_name>
@@ -12615,8 +13105,13 @@
 			<columns>
 				<normal_column>
 					<id>204</id>
+<<<<<<< HEAD
 					<referenced_column>276</referenced_column>
 					<relation>20</relation>
+=======
+					<referenced_column>217</referenced_column>
+					<relation>18</relation>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -12650,6 +13145,11 @@
 				<normal_column>
 					<word_id>7</word_id>
 					<id>205</id>
+<<<<<<< HEAD
+=======
+					<referenced_column>209</referenced_column>
+					<relation>17</relation>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -13109,9 +13609,70 @@
 						<decimal_size>0</decimal_size>
 					</sequence>
 				</normal_column>
+<<<<<<< HEAD
+=======
+			</columns>
+			<indexes>
+			</indexes>
+			<complex_unique_key_list>
+			</complex_unique_key_list>
+			<table_properties>
+				<schema></schema>
+			</table_properties>
+		</table>
+		<table>
+			<id>21</id>
+			<height>443</height>
+			<width>208</width>
+				<font_name>맑은 고딕</font_name>
+				<font_size>9</font_size>
+			<x>515</x>
+			<y>1336</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+				<relation>
+					<id>21</id>
+					<source>26</source>
+					<target>21</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+			</connections>
+			<physical_name>T_ContentIntro15</physical_name>
+			<logical_name>새 테이블</logical_name>
+			<description>accomcount&#x09;수용인원  수용인원&#x0D;&#x0A;chkbabycarriage&#x09;유모차대여여부&#x09;유모차대여여부&#x0D;&#x0A;chkcreditcard&#x09;신용카드가능여부&#x09;신용카드가능여부&#x0D;&#x0A;chkpet&#x09;애완동물가능여부&#x09;애완동물가능여부&#x0D;&#x0A;expagerange&#x09;체험가능연령&#x09;체험가능연령&#x0D;&#x0A;expguide&#x09;체험안내&#x09;체험안내&#x0D;&#x0A;heritage1&#x09;세계문화유산유무&#x09;세계문화유산유무&#x0D;&#x0A;heritage2&#x09;세계자연유산유무&#x09;세계자연유산유무&#x0D;&#x0A;heritage3&#x09;세계기록유산유무&#x09;세계기록유산유무&#x0D;&#x0A;infocenter&#x09;문의및안내&#x09;문의및안내&#x0D;&#x0A;opendate&#x09;개장일&#x09;개장일&#x0D;&#x0A;parking&#x09;주차시설&#x09;주차시설&#x0D;&#x0A;restdate&#x09;쉬는날&#x09;쉬는날&#x0D;&#x0A;useseason&#x09;이용시기&#x09;이용시기&#x0D;&#x0A;usetime&#x09;이용시간&#x09;이용시간&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;agelimit&#x09;관람가능연령&#x09;관람가능연령&#x0D;&#x0A;bookingplace&#x09;예매처&#x09;예매처&#x0D;&#x0A;discountinfofestival&#x09;할인정보&#x09;할인정보&#x0D;&#x0A;eventenddate&#x09;행사종료일&#x09;행사종료일&#x0D;&#x0A;eventhomepage&#x09;행사홈페이지&#x09;행사홈페이지&#x0D;&#x0A;eventplace&#x09;행사장소&#x09;행사장소&#x0D;&#x0A;eventstartdate&#x09;행사시작일&#x09;행사시작일&#x0D;&#x0A;festivalgrade&#x09;축제등급&#x09;축제등급&#x0D;&#x0A;placeinfo&#x09;행사장위치안내&#x09;행사장위치안내&#x0D;&#x0A;playtime&#x09;공연시간&#x09;공연시간&#x0D;&#x0A;program&#x09;행사프로그램&#x09;행사프로그램&#x0D;&#x0A;spendtimefestival&#x09;관람소요시간&#x09;관람소요시간&#x0D;&#x0A;sponsor1&#x09;주최자정보&#x09;주최자정보&#x0D;&#x0A;sponsor1tel&#x09;주최자연락처&#x09;주최자연락처&#x0D;&#x0A;sponsor2&#x09;주관사정보&#x09;주관사정보&#x0D;&#x0A;sponsor2tel&#x09;주관사연락처&#x09;주관사연락처&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;accomcountlodging&#x09;수용가능인원&#x09;contentTypeId=32&#x0D;&#x0A;(숙박)&#x09;수용가능인원&#x0D;&#x0A;benikia&#x09;베니키아여부&#x09;베니키아여부&#x0D;&#x0A;checkintime&#x09;입실시간&#x09;입실시간&#x0D;&#x0A;checkouttime&#x09;퇴실시간&#x09;퇴실시간&#x0D;&#x0A;chkcooking&#x09;객실내취사여부&#x09;객실내취사여부&#x0D;&#x0A;foodplace&#x09;식음료장&#x09;식음료장&#x0D;&#x0A;goodstay&#x09;굿스테이여부&#x09;굿스테이여부&#x0D;&#x0A;hanok&#x09;한옥여부&#x09;한옥여부&#x0D;&#x0A;infocenterlodging&#x09;문의및안내&#x09;문의및안내&#x0D;&#x0A;parkinglodging&#x09;주차시설&#x09;주차시설&#x0D;&#x0A;pickup&#x09;픽업서비스&#x09;픽업서비스&#x0D;&#x0A;roomcount&#x09;객실수&#x09;객실수&#x0D;&#x0A;reservationlodging&#x09;예약안내&#x09;예약안내&#x0D;&#x0A;reservationurl&#x09;예약안내홈페이지&#x09;예약안내홈페이지&#x0D;&#x0A;roomtype&#x09;객실유형&#x09;객실유형&#x0D;&#x0A;scalelodging&#x09;규모&#x09;규모&#x0D;&#x0A;subfacility&#x09;부대시설 (기타)&#x09;부대시설 (기타)&#x0D;&#x0A;barbecue&#x09;바비큐장여부&#x09;부대시설정보&#x0D;&#x0A;beauty&#x09;뷰티시설정보&#x0D;&#x0A;beverage&#x09;식음료장여부&#x0D;&#x0A;bicycle&#x09;자전거대여여부&#x0D;&#x0A;campfire&#x09;캠프파이어여부&#x0D;&#x0A;fitness&#x09;휘트니스센터여부&#x0D;&#x0A;karaoke&#x09;노래방여부&#x0D;&#x0A;publicbath&#x09;공용샤워실여부&#x0D;&#x0A;publicpc&#x09;공용 PC실여부&#x0D;&#x0A;sauna&#x09;사우나실여부&#x0D;&#x0A;seminar&#x09;세미나실여부&#x0D;&#x0A;Sports&#x09;스포츠시설여부&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;chkbabycarriageshopping&#x09;유모차대여여부&#x09;contentTypeId=38&#x0D;&#x0A;(쇼핑)&#x09;유모차대여여부&#x0D;&#x0A;chkcreditcardshopping&#x09;신용카드가능여부&#x09;신용카드가능여부&#x0D;&#x0A;chkpetshopping&#x09;애완동물가능여부&#x09;애완동물가능여부&#x0D;&#x0A;culturecenter&#x09;문화센터바로가기&#x09;문화센터바로가기&#x0D;&#x0A;fairday&#x09;장서는날&#x09;장서는날&#x0D;&#x0A;infocentershopping&#x09;문의및안내&#x09;문의및안내&#x0D;&#x0A;opendateshopping&#x09;개장일&#x09;개장일&#x0D;&#x0A;opentime&#x09;영업시간&#x09;영업시간&#x0D;&#x0A;parkingshopping&#x09;주차시설&#x09;주차시설&#x0D;&#x0A;restdateshopping&#x09;쉬는날&#x09;쉬는날&#x0D;&#x0A;restroom&#x09;화장실설명&#x09;화장실설명&#x0D;&#x0A;saleitem&#x09;판매품목&#x09;판매품목&#x0D;&#x0A;saleitemcost&#x09;판매품목별가격&#x09;판매품목별가격&#x0D;&#x0A;scaleshopping&#x09;규모&#x09;규모&#x0D;&#x0A;shopguide&#x09;매장안내&#x09;매장안내&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;chkcreditcardfood&#x09;신용카드가능여부&#x09;contentTypeId=39&#x0D;&#x0A;(음식점)&#x09;신용카드가능여부&#x0D;&#x0A;discountinfofood&#x09;할인정보&#x09;할인정보&#x0D;&#x0A;firstmenu&#x09;대표메뉴&#x09;대표메뉴&#x0D;&#x0A;infocenterfood&#x09;문의및안내&#x09;문의및안내&#x0D;&#x0A;kidsfacility&#x09;어린이놀이방&#x09;어린이놀이방&#x0D;&#x0A;opendatefood&#x09;개업일&#x09;개업일&#x0D;&#x0A;opentimefood&#x09;영업시간&#x09;영업시간&#x0D;&#x0A;packing&#x09;포장가능여부&#x09;포장가능여부&#x0D;&#x0A;parkingfood&#x09;주차시설&#x09;주차시설&#x0D;&#x0A;reservationfood&#x09;예약안내&#x09;예약안내&#x0D;&#x0A;restdatefood&#x09;쉬는날&#x09;쉬는날&#x0D;&#x0A;scalefood&#x09;규모&#x09;규모&#x0D;&#x0A;seat&#x09;좌석수&#x09;좌석수&#x0D;&#x0A;smoking&#x09;금연/흡연여부&#x09;금연/흡연여부&#x0D;&#x0A;treatmenu&#x09;취급메뉴&#x09;취급메뉴&#x0D;&#x0A;subevent&#x09;부대행사&#x09;부대행사내용&#x0D;&#x0A;usetimefestival&#x09;이용요금&#x09;이용요금&#x0D;&#x0A;distance&#x09;코스총거리&#x09;contentTypeId=25&#x0D;&#x0A;(여행코스)&#x09;코스총거리&#x0D;&#x0A;infocentertourcourse&#x09;문의및안내&#x09;문의및안내&#x0D;&#x0A;schedule&#x09;코스일정&#x09;코스일정&#x0D;&#x0A;taketime&#x09;코스총소요시간&#x09;코스총소요시간&#x0D;&#x0A;theme&#x09;코스테마&#x09;코스테마&#x0D;&#x0A;accomcountleports&#x09;수용인원&#x09;contentTypeId=28&#x0D;&#x0A;(레포츠)&#x09;수용인원&#x0D;&#x0A;chkbabycarriageleports&#x09;유모차대여여부&#x09;유모차대여여부&#x0D;&#x0A;chkcreditcardleports&#x09;신용카드가능여부&#x09;신용카드가능여부&#x0D;&#x0A;chkpetleports&#x09;애완동물가능여부&#x09;애완동물가능여부&#x0D;&#x0A;expagerangeleports&#x09;체험가능연령&#x09;체험가능연령&#x0D;&#x0A;infocenterleports&#x09;문의및안내&#x09;문의및안내&#x0D;&#x0A;openperiod&#x09;개장기간&#x09;개장기간&#x0D;&#x0A;parkingfeeleports&#x09;주차요금&#x09;주차요금&#x0D;&#x0A;parkingleports&#x09;주차시설&#x09;주차시설&#x0D;&#x0A;reservation&#x09;예약안내&#x09;예약안내&#x0D;&#x0A;restdateleports&#x09;쉬는날&#x09;쉬는날&#x0D;&#x0A;scaleleports&#x09;규모&#x09;규모&#x0D;&#x0A;usefeeleports&#x09;입장료&#x09;입장료&#x0D;&#x0A;usetimeleports&#x09;이용시간&#x09;이용시간</description>
+			<constraint></constraint>
+			<primary_key_name></primary_key_name>
+			<option></option>
+			<columns>
+>>>>>>> JunGu
 				<normal_column>
 					<word_id>242</word_id>
 					<id>219</id>
+<<<<<<< HEAD
+=======
+					<referenced_column>271</referenced_column>
+					<relation>21</relation>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -14304,9 +14865,14 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+<<<<<<< HEAD
 					<id>251</id>
 					<referenced_column>252</referenced_column>
 					<relation>22</relation>
+=======
+					<word_id>259</word_id>
+					<id>250</id>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -15083,12 +15649,21 @@
 		</table>
 		<table>
 			<id>26</id>
+<<<<<<< HEAD
 			<height>149</height>
 			<width>216</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
 			<x>1356</x>
 			<y>1032</y>
+=======
+			<height>548</height>
+			<width>275</width>
+				<font_name>맑은 고딕</font_name>
+				<font_size>9</font_size>
+			<x>715</x>
+			<y>64</y>
+>>>>>>> JunGu
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -15096,8 +15671,35 @@
 			</color>
 			<connections>
 				<relation>
+<<<<<<< HEAD
 					<id>25</id>
 					<source>27</source>
+=======
+					<id>24</id>
+					<source>17</source>
+					<target>26</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+				<relation>
+					<id>25</id>
+					<source>16</source>
+>>>>>>> JunGu
 					<target>26</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -15119,7 +15721,55 @@
 				</relation>
 				<relation>
 					<id>26</id>
+<<<<<<< HEAD
 					<source>29</source>
+=======
+					<source>25</source>
+					<target>26</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+				<relation>
+					<id>27</id>
+					<source>18</source>
+					<target>26</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+				<relation>
+					<id>28</id>
+					<source>20</source>
+>>>>>>> JunGu
 					<target>26</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -15140,7 +15790,11 @@
 					<referenced_complex_unique_key>null</referenced_complex_unique_key>
 				</relation>
 			</connections>
+<<<<<<< HEAD
 			<physical_name>T_PlanDetail</physical_name>
+=======
+			<physical_name>T_ContentCommon</physical_name>
+>>>>>>> JunGu
 			<logical_name>새 테이블</logical_name>
 			<description></description>
 			<constraint></constraint>
@@ -15148,13 +15802,17 @@
 			<option></option>
 			<columns>
 				<normal_column>
+<<<<<<< HEAD
 					<word_id>148</word_id>
+=======
+					<word_id>55</word_id>
+>>>>>>> JunGu
 					<id>271</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-					<type></type>
+					<type>varchar(n)</type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
@@ -15181,19 +15839,23 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+					<word_id>5</word_id>
 					<id>272</id>
+<<<<<<< HEAD
 					<referenced_column>305</referenced_column>
 					<relation>26</relation>
+=======
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-					<type></type>
+					<type>varchar(n)</type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
-					<foreign_key>true</foreign_key>
-					<not_null>true</not_null>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
 					<primary_key>false</primary_key>
 					<unique_key>false</unique_key>
 					<character_set></character_set>
@@ -15215,6 +15877,10 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+<<<<<<< HEAD
+=======
+					<word_id>6</word_id>
+>>>>>>> JunGu
 					<id>273</id>
 					<referenced_column>276</referenced_column>
 					<relation>25</relation>
@@ -15255,7 +15921,7 @@
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-					<type></type>
+					<type>varchar(n)</type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
@@ -15282,13 +15948,18 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+<<<<<<< HEAD
 					<word_id>66</word_id>
 					<id>275</id>
+=======
+					<word_id>26</word_id>
+					<id>274</id>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-					<type></type>
+					<type>varchar(n)</type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
@@ -15314,6 +15985,7 @@
 						<decimal_size>0</decimal_size>
 					</sequence>
 				</normal_column>
+<<<<<<< HEAD
 			</columns>
 			<indexes>
 			</indexes>
@@ -15458,11 +16130,861 @@
 				<normal_column>
 					<word_id>54</word_id>
 					<id>276</id>
+=======
+				<normal_column>
+					<word_id>59</word_id>
+					<id>275</id>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>date</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<word_id>5</word_id>
+					<id>277</id>
+=======
+					<word_id>78</word_id>
+					<id>276</id>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
 					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<word_id>6</word_id>
+					<id>278</id>
+=======
+					<word_id>79</word_id>
+					<id>277</id>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<word_id>25</word_id>
+					<id>279</id>
+=======
+					<word_id>122</word_id>
+					<id>278</id>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<word_id>58</word_id>
+					<id>280</id>
+=======
+					<word_id>123</word_id>
+					<id>279</id>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<word_id>77</word_id>
+					<id>281</id>
+=======
+					<word_id>124</word_id>
+					<id>280</id>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<word_id>78</word_id>
+					<id>282</id>
+=======
+					<word_id>125</word_id>
+					<id>281</id>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>date</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<word_id>121</word_id>
+					<id>283</id>
+=======
+					<word_id>158</word_id>
+					<id>282</id>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<word_id>122</word_id>
+					<id>284</id>
+=======
+					<id>283</id>
+					<referenced_column>266</referenced_column>
+					<relation>26</relation>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>true</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>true</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<word_id>123</word_id>
+					<id>285</id>
+=======
+					<id>284</id>
+					<referenced_column>217</referenced_column>
+					<relation>28</relation>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type></type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>true</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<word_id>124</word_id>
+					<id>286</id>
+=======
+					<id>285</id>
+					<referenced_column>202</referenced_column>
+					<relation>25</relation>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type></type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>true</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>true</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<word_id>157</word_id>
+					<id>287</id>
+=======
+					<id>286</id>
+					<referenced_column>206</referenced_column>
+					<relation>24</relation>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type></type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>true</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>true</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<id>288</id>
+					<referenced_column>300</referenced_column>
+					<relation>31</relation>
+=======
+					<id>287</id>
+					<referenced_column>209</referenced_column>
+					<relation>27</relation>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type></type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>true</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<id>289</id>
+					<referenced_column>202</referenced_column>
+					<relation>28</relation>
+=======
+					<word_id>253</word_id>
+					<id>288</id>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<id>290</id>
+					<referenced_column>187</referenced_column>
+					<relation>30</relation>
+=======
+					<word_id>258</word_id>
+					<id>289</id>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<id>291</id>
+					<referenced_column>191</referenced_column>
+					<relation>27</relation>
+=======
+					<word_id>275</word_id>
+					<id>290</id>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<id>292</id>
+					<referenced_column>194</referenced_column>
+					<relation>29</relation>
+=======
+					<word_id>230</word_id>
+					<id>291</id>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<word_id>252</word_id>
+					<id>293</id>
+=======
+					<word_id>107</word_id>
+					<id>292</id>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<word_id>257</word_id>
+					<id>294</id>
+=======
+					<word_id>255</word_id>
+					<id>293</id>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+<<<<<<< HEAD
+					<word_id>274</word_id>
+					<id>295</id>
+=======
+					<word_id>134</word_id>
+					<id>294</id>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+			</columns>
+			<indexes>
+			</indexes>
+			<complex_unique_key_list>
+			</complex_unique_key_list>
+			<table_properties>
+				<schema></schema>
+			</table_properties>
+		</table>
+		<table>
+			<id>27</id>
+			<height>149</height>
+			<width>216</width>
+				<font_name>맑은 고딕</font_name>
+				<font_size>9</font_size>
+			<x>1200</x>
+			<y>768</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+				<relation>
+					<id>29</id>
+					<source>29</source>
+					<target>27</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+				<relation>
+					<id>30</id>
+					<source>26</source>
+					<target>27</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+			</connections>
+			<physical_name>T_PlanDetail</physical_name>
+			<logical_name>새 테이블</logical_name>
+			<description></description>
+			<constraint></constraint>
+			<primary_key_name></primary_key_name>
+			<option></option>
+			<columns>
+				<normal_column>
+<<<<<<< HEAD
+					<word_id>229</word_id>
+					<id>296</id>
+=======
+					<word_id>149</word_id>
+					<id>295</id>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type></type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
@@ -15489,683 +17011,24 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>5</word_id>
-					<id>277</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>6</word_id>
-					<id>278</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>25</word_id>
-					<id>279</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>58</word_id>
-					<id>280</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>date</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>77</word_id>
-					<id>281</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>78</word_id>
-					<id>282</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>121</word_id>
-					<id>283</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>122</word_id>
-					<id>284</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>123</word_id>
-					<id>285</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>124</word_id>
-					<id>286</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>date</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>157</word_id>
-					<id>287</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<id>288</id>
-					<referenced_column>300</referenced_column>
-					<relation>31</relation>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>true</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>true</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<id>289</id>
-					<referenced_column>202</referenced_column>
-					<relation>28</relation>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type></type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>true</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<id>290</id>
-					<referenced_column>187</referenced_column>
-					<relation>30</relation>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type></type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>true</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>true</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<id>291</id>
-					<referenced_column>191</referenced_column>
-					<relation>27</relation>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type></type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>true</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>true</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<id>292</id>
-					<referenced_column>194</referenced_column>
-					<relation>29</relation>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type></type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>true</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>252</word_id>
-					<id>293</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>257</word_id>
-					<id>294</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>274</word_id>
-					<id>295</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>229</word_id>
-					<id>296</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
+<<<<<<< HEAD
 					<word_id>106</word_id>
 					<id>297</id>
+=======
+					<id>296</id>
+					<referenced_column>305</referenced_column>
+					<relation>29</relation>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-					<type>varchar(n)</type>
+					<type></type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
+					<foreign_key>true</foreign_key>
+					<not_null>true</not_null>
 					<primary_key>false</primary_key>
 					<unique_key>false</unique_key>
 					<character_set></character_set>
@@ -16187,13 +17050,52 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+<<<<<<< HEAD
 					<word_id>254</word_id>
+					<id>298</id>
+=======
+					<id>297</id>
+					<referenced_column>271</referenced_column>
+					<relation>30</relation>
+>>>>>>> JunGu
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>true</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>247</word_id>
 					<id>298</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-					<type>varchar(n)</type>
+					<type></type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
@@ -16220,13 +17122,17 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+<<<<<<< HEAD
 					<word_id>133</word_id>
+=======
+					<word_id>67</word_id>
+>>>>>>> JunGu
 					<id>299</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-					<type>varchar(n)</type>
+					<type></type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
@@ -16263,28 +17169,69 @@
 		</table>
 		<table>
 			<id>28</id>
+<<<<<<< HEAD
 			<height>128</height>
 			<width>229</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
 			<x>349</x>
 			<y>55</y>
+=======
+			<height>149</height>
+			<width>200</width>
+				<font_name>맑은 고딕</font_name>
+				<font_size>9</font_size>
+			<x>1730</x>
+			<y>768</y>
+>>>>>>> JunGu
 			<color>
 				<r>128</r>
 				<g>128</g>
 				<b>192</b>
 			</color>
 			<connections>
+<<<<<<< HEAD
 			</connections>
 			<physical_name>T_Area</physical_name>
 			<logical_name>시도테이블</logical_name>
+=======
+				<relation>
+					<id>31</id>
+					<source>24</source>
+					<target>28</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+			</connections>
+			<physical_name>T_PlanMain</physical_name>
+			<logical_name>새 테이블</logical_name>
+>>>>>>> JunGu
 			<description></description>
 			<constraint></constraint>
 			<primary_key_name></primary_key_name>
 			<option></option>
 			<columns>
 				<normal_column>
+<<<<<<< HEAD
 					<word_id>8</word_id>
+=======
+					<word_id>150</word_id>
+>>>>>>> JunGu
 					<id>300</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -16317,7 +17264,11 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+<<<<<<< HEAD
 					<word_id>12</word_id>
+=======
+					<word_id>261</word_id>
+>>>>>>> JunGu
 					<id>301</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -16328,7 +17279,11 @@
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
+<<<<<<< HEAD
 					<not_null>true</not_null>
+=======
+					<not_null>false</not_null>
+>>>>>>> JunGu
 					<primary_key>false</primary_key>
 					<unique_key>true</unique_key>
 					<character_set></character_set>
@@ -16350,18 +17305,26 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+<<<<<<< HEAD
 					<word_id>10</word_id>
+=======
+					<word_id>246</word_id>
+>>>>>>> JunGu
 					<id>302</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-					<type>varchar(n)</type>
+					<type></type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
+<<<<<<< HEAD
 					<not_null>true</not_null>
+=======
+					<not_null>false</not_null>
+>>>>>>> JunGu
 					<primary_key>false</primary_key>
 					<unique_key>true</unique_key>
 					<character_set></character_set>
@@ -16383,7 +17346,11 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+<<<<<<< HEAD
 					<word_id>11</word_id>
+=======
+					<word_id>52</word_id>
+>>>>>>> JunGu
 					<id>303</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -16416,8 +17383,14 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+<<<<<<< HEAD
 					<word_id>9</word_id>
 					<id>304</id>
+=======
+					<id>304</id>
+					<referenced_column>262</referenced_column>
+					<relation>31</relation>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -16426,10 +17399,10 @@
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
+					<foreign_key>true</foreign_key>
+					<not_null>true</not_null>
 					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
+					<unique_key>true</unique_key>
 					<character_set></character_set>
 					<collation></collation>
 					<sequence>
@@ -16463,8 +17436,13 @@
 			<width>180</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
+<<<<<<< HEAD
 			<x>1374</x>
 			<y>816</y>
+=======
+			<x>1486</x>
+			<y>779</y>
+>>>>>>> JunGu
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -16474,6 +17452,7 @@
 				<relation>
 					<id>32</id>
 					<source>28</source>
+<<<<<<< HEAD
 					<target>29</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -16496,6 +17475,8 @@
 				<relation>
 					<id>33</id>
 					<source>23</source>
+=======
+>>>>>>> JunGu
 					<target>29</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -16524,7 +17505,11 @@
 			<option></option>
 			<columns>
 				<normal_column>
+<<<<<<< HEAD
 					<word_id>150</word_id>
+=======
+					<word_id>151</word_id>
+>>>>>>> JunGu
 					<id>305</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -16558,8 +17543,13 @@
 				</normal_column>
 				<normal_column>
 					<id>306</id>
+<<<<<<< HEAD
 					<referenced_column>247</referenced_column>
 					<relation>33</relation>
+=======
+					<referenced_column>300</referenced_column>
+					<relation>32</relation>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -16591,9 +17581,14 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+<<<<<<< HEAD
 					<id>307</id>
 					<referenced_column>300</referenced_column>
 					<relation>32</relation>
+=======
+					<word_id>8</word_id>
+					<id>307</id>
+>>>>>>> JunGu
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -16625,7 +17620,11 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+<<<<<<< HEAD
 					<word_id>147</word_id>
+=======
+					<word_id>148</word_id>
+>>>>>>> JunGu
 					<id>308</id>
 					<description></description>
 					<unique_key_name></unique_key_name>

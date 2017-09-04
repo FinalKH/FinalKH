@@ -70,6 +70,7 @@ public class UploadFileUtils {
 			File dirPath = new File(uploadPath + path);
 			// 디렉토리가 존재하지 않으면
 			if (!dirPath.exists()) {
+				System.out.println("파일생성 : "+uploadPath);
 				dirPath.mkdir(); //디렉토리 생성
 			}
 		}
