@@ -74,7 +74,7 @@ a {
 				<div id="divv">
 					<%-- <a href="showPopup2()"><img id="picture"src="upload/${album.albumpath }">  </a> --%>
 					<a><img id="picture" src="../images/mypage/${album.albumpath}" onclick="showPopup2();"></a>
-					<a href="albumDelete.do?albumname=${album.albumname}">삭제</a>
+					<a href="albumDelete.do?albumpath=${album.albumpath}&id=${album.id}&travel_name=${album.travel_name}">삭제</a>
 				</div>
 			</c:forEach>
 	

@@ -76,6 +76,17 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
  	    mypageService.insertTravel(id, travel_name);
  	    return "member/mypage_chartinsert";
     }   
+    @RequestMapping("travelDelete.do")
+   	public String travelDelete(HttpServletRequest req, MypageVO mVo,String id, String travel_name,Model model){
+   		id = mVo.getId();
+   		travel_name = mVo.getTravel_name();
+   		
+   		model.addAttribute("id", id);
+   		model.addAttribute("travel_name", travel_name);
+   		
+   		mypageService.deleteTravel(id, travel_name);
+   	     return "redirect:/member/mypageMain.do"; 
+   	}
     @RequestMapping("chartInsert.do")
  	public String chartInsert( MypageVO mVo, Model model,String id, String travel_name, HttpServletRequest request){
  	   String userid = request.getParameter(id);
@@ -98,7 +109,32 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
  		System.out.println(travel_name);
  	    mypageService.insertChart(mVo);
  	    return "redirect:/member/mypageJourney.do?id="+id;
-   }   
+   }
+    @RequestMapping(value="chartUpdate.do", method= RequestMethod.GET)
+   	public String chartUpdate(Model model,String id, String travel_name, HttpServletRequest request){
+       	
+       	model.addAttribute("chart", mypageService.getChart(id, travel_name));
+   		return "member/mypage_updateChart";	
+   	}
+       @RequestMapping(value="chartUpdate.do", method= RequestMethod.POST)
+   	public String chartUpdate(MypageVO mVo, Model model,String id, String travel_name, HttpServletRequest request){
+       	String userid = id;
+   		model.addAttribute("id", userid);
+   		String travelname = travel_name;
+   		model.addAttribute("travel_name", travelname);
+       	int flight = Integer.parseInt(request.getParameter("flight"));
+    		int transfer = Integer.parseInt(request.getParameter("transfer"));
+    		int hotel = Integer.parseInt(request.getParameter("hotel"));
+    		int tour = Integer.parseInt(request.getParameter("tour"));
+    		int meal = Integer.parseInt(request.getParameter("meal"));
+    		mVo.setFlight(flight);
+    		mVo.setTransfer(transfer);
+    		mVo.setHotel(hotel);
+    		mVo.setTour(tour);
+    		mVo.setMeal(meal);
+       	mypageService.updateChart(mVo);
+   		return "redirect:/member/mypageJourney.do";	
+   	}
 	@RequestMapping("mypageJourney.do")
 	public String mypageJourney(String id, String travel_name, Model model){
 		model.addAttribute("chart", mypageService.getChart(id,travel_name));
@@ -178,15 +214,17 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
 	     return "redirect:/member/album.do?id={id}&travel_name={travel_name}"; 
 	}
 	@RequestMapping("albumDelete.do")
-	public String albumDelete(@ModelAttribute MypageVO mVo,String id, String travel_name,Model model,String albumname){
-		mypageService.deleteAlbum(mVo);
-		String userid = id;
-		model.addAttribute("id", userid);
-		String travelname = travel_name;
-		model.addAttribute("travel_name", travelname);
-		String album_name = albumname;
-		model.addAttribute("albumname", album_name);
-	     return "redirect:/member/album.do"; 
+	public String albumDelete(HttpServletRequest req, MypageVO mVo,String id, String travel_name,Model model,String albumpath){
+		id = mVo.getId();
+		travel_name = mVo.getTravel_name();
+		
+		model.addAttribute("id", id);
+		model.addAttribute("travel_name", travel_name);
+		/*String albumpath=req.getParameter(albumpath);*/
+		mVo.setAlbumpath(albumpath);
+		/*String albumpath = mVo.getAlbumpath();*/
+		mypageService.deleteAlbum(albumpath);
+	    return "redirect:/member/album.do?id={id}&travel_name={travel_name}"; 
 	}
 	@RequestMapping("albumSlide.do")
 	public String albumSlide(Model model,String id, String travel_name){

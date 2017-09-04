@@ -29,6 +29,12 @@ public class MypageServiceImpl implements MypageService{
 		// TODO Auto-generated method stub
 		MypageDao.insertTravel(id, travel_name);
 	}
+	
+	@Override
+	public void deleteTravel(String id, String travel_name) {
+		// TODO Auto-generated method stub
+		MypageDao.deleteTravel(id, travel_name);
+	}
 
 	@Override
 	public List<MypageVO> selectAllAlbum(String id, String travel_name) {
@@ -44,9 +50,9 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 	@Override
-	public void deleteAlbum(MypageVO mVo) {
+	public void deleteAlbum(String albumpath) {
 		// TODO Auto-generated method stub
-		MypageDao.deleteAlbum(mVo);
+		MypageDao.deleteAlbum(albumpath);
 	}
 
 	@Override
@@ -59,6 +65,12 @@ public class MypageServiceImpl implements MypageService{
 		// TODO Auto-generated method stub
 		MypageDao.insertChart(mVo);
 	}
+	@Override
+	public void updateChart(MypageVO mVo){
+		// TODO Auto-generated method stub
+				MypageDao.updateChart(mVo);
+	}
+	
 
 	
 	

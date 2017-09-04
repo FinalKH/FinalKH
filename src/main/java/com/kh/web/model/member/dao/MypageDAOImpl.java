@@ -29,6 +29,15 @@ public class MypageDAOImpl implements MypageDAO{
 		sqlSession.insert("mypage.travelinsert",map);
 	}
 	@Override
+	public void deleteTravel(String id, String travel_name) {
+		// TODO Auto-generated method stub
+		Map<String, String> map = new HashMap<String, String>();
+        map.put("id", id);
+        map.put("travel_name", travel_name);
+        sqlSession.delete("mypage.deletetravel",map);
+		
+	}
+	@Override
 	public List<MypageVO> selectAllAlbum(String id, String travel_name) {
 		// TODO Auto-generated method stub
 		Map<String, String> map = new HashMap<String, String>();
@@ -44,9 +53,9 @@ public class MypageDAOImpl implements MypageDAO{
 	}
 
 	@Override
-	public void deleteAlbum(MypageVO mVo) {
+	public void deleteAlbum(String albumpath) {
 		// TODO Auto-generated method stub
-		sqlSession.delete("mypage.deletealbum");
+		sqlSession.delete("mypage.deletealbum", albumpath);
 	}
 
 	@Override
@@ -63,6 +72,12 @@ public class MypageDAOImpl implements MypageDAO{
 		// TODO Auto-generated method stub
 		sqlSession.insert("mypage.chartinsert",mVo);
 	}
+	@Override
+	public void updateChart(MypageVO mVo) {
+		// TODO Auto-generated method stub
+		sqlSession.update("mypage.chartupdate",mVo);
+	}
+	
 	
 
 }

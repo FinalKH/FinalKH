@@ -89,13 +89,13 @@ strong, th {
 }
 
 #wrap {
-	width: 1400px;
+	width: 1500px;
 	margin: 0 auto;
 	margin-bottom:50px;
 }
 
 #article1 {
-	width: 270px;
+	width: 250px;
 	height: 300px;
 	float: left;
 	margin: 60px;
@@ -103,10 +103,11 @@ strong, th {
 }
 
 #article2 {
-	width: 70%;
+	width: 75%;
 	height: auto;
 	border: 1px solid grey;
 	float: left;
+	padding-left:40px;
 	
 	
 }
@@ -118,6 +119,7 @@ strong, th {
 	margin: 50px;
 	padding-top: 10px;
 	padding-bottom: 0px;
+	text-align:center;
 }
 .table1 {
 	width: 200px;
@@ -128,10 +130,10 @@ strong, th {
 	padding-bottom: 50px;
 }
 .table .button{
-	margin-left:45px;
+	margin-left:0px;
 }
 .table1 .button{
-	margin-left:50px;
+	margin-left:70px;
 }
 
 #section{
@@ -178,17 +180,19 @@ function showPopup12() {
 				<!-- <form action="mypageJourney.do"> -->
 					<table class="table">
 						<tr>
-							<td><img src="../images/mypage/map.PNG" alt="지도" width=200px /></td>
+							<td colspan="2"><img src="../images/mypage/map.PNG" alt="지도" width=200px /></td>
 						</tr>
-						<tr>
-							<td><a href="#" name="journey_name" width=200px>${travel.travel_name}</a></td>
+						<tr >
+							<td colspan="2"><label name="journey_name" width=200px>${travel.travel_name}</label></td>
 							
 						</tr>
 						<tr>
-							<%--<td><button class="ui button"  onclick="location.href='mypageJourney.do?id=${travel.id}&travel_name=${travel.travel_name}'"style="width: 200px">여행 보기</button></td>--%>
 							 <td>
 							 	<input class="ui button" type="button" value="플래너 보기" onclick="location.href='mypageJourney.do?id=${travel.id}&travel_name=${travel.travel_name}'" />
-							 	<%-- <button class="ui button" onclick="location.href='mypageJourney.do?id=${travel.id}&travel_name=${travel.travel_name}'" >플래너 보기</button> --%>
+							 </td>
+							 <td>
+							 	<input class="ui button" type="button" value="플래너 삭제" onclick="location.href='travelDelete.do?id=${travel.id}&travel_name=${travel.travel_name}'" />
+							 	
 							 </td> 
 						</tr>
 					</table></c:forEach>

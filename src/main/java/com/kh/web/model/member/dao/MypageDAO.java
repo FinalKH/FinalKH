@@ -7,23 +7,28 @@ import com.kh.web.model.member.dto.MypageVO;
 public interface MypageDAO {
 
 		
-	//¸¶ÀÌÆäÀÌÁö¿¡ ÀúÀåÇØ³õÀº ³»¿©Çà¸®½ºÆ® º¸±â
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½à¸®ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 		public List<MypageVO> selectAllTravel();
 		
-		//¸¶ÀÌÆäÀÌÁö ¿©Çà Ãß°¡
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 		public void insertTravel(String id,String travel_name) ;
 		
-		//¸¶ÀÌÆäÀÌÁö->ÇÃ·¡³Ê¿¡¼­ ÀúÀåÇØ³õÀº »çÁøµé º¸±â
+		public void deleteTravel(String id, String travel_name);
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½->ï¿½Ã·ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		public List<MypageVO> selectAllAlbum(String id, String travel_name);
 
-		// ¸¶ÀÌÆäÀÌÁö¿¡ ¾Ù¹ü¿¡ »çÁø ³Ö±â
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö±ï¿½
 		public void insertAlbum(MypageVO mVo) ;
 		
-		public void deleteAlbum(MypageVO mVo); 
+		public void deleteAlbum(String albumpath); 
 		
-		//chart °¡Á®¿À±â
+		//chart ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		public MypageVO getChart(String id, String travel_name);
 		
-		//Â÷Æ® ÀÔ·Â
+		//ï¿½ï¿½Æ® ï¿½Ô·ï¿½
 		public void insertChart(MypageVO mVo);
+		
+		//ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+		public void updateChart(MypageVO mVo);
+		
 }

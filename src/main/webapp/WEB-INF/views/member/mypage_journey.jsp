@@ -183,7 +183,16 @@ h3 {
 }
 </style>
 <script type="text/javascript"
-	src="https://www.gstatic.com/charts/loader.js"></script>
+	src="https://www.gstatic.com/charts/loader.js">
+</script>
+<script>
+function showPopup_chartUpdate() {
+	  var id = document.form1.id.value;
+	  var travel_name = document.form1.travel_name.value;
+	  var travel ="chartUpdate.do?id="+id+"&travel_name="+travel_name;	  
+	  window.open(travel, "여행 등록", "width=400, height=300, left=100, top=50"); 
+	  } 
+</script>
 </head>
 <body>
 	<div id="wrap">
@@ -210,8 +219,7 @@ h3 {
 				</table>
 			</div>
 			<!-- article1 -->
-			<div id="article2"
-				style="border-left: 1px dotted black; padding-left: 200px;">
+			<div id="article2" style="border-left: 1px dotted black; padding-left: 200px;">
 				<table class="table2">
 					<tr>
 						<th class="bb">
@@ -221,28 +229,34 @@ h3 {
 					</tr>
 					<tr>
 						<td><div id="calendar"></div>
-							<!-- 캘린더 자바스크립트 --> <script type="text/javascript">
-    jQuery(document).ready(function() {
-        jQuery("#calendar").fullCalendar({
-              defaultDate : "2016-05-12"
-               , editable : true
-               , eventLimit : true
-               , events: [
-                {
-                      title : "Click for Google"
-                    , url : "http://google.com/"
-                    , start : "2016-05-28"
-                }
-            ]
-        });
-    });
-</script></td>
+							<!-- 캘린더 자바스크립트 --> 
+							<script type="text/javascript">
+							    jQuery(document).ready(function() {
+							        jQuery("#calendar").fullCalendar({
+							              defaultDate : "2016-05-12"
+							               , editable : true
+							               , eventLimit : true
+							               , events: [
+							                {
+							                      title : "Click for Google"
+							                    , url : "http://google.com/"
+							                    , start : "2016-05-28"
+							                }
+							            ]
+							        });
+							    });
+						  </script></td>
 					</tr>
 				</table>
 			</div>
 			<!-- article2 -->
+			<form name="form1" >
 			<div id="article3">
 				<table class="table3">
+					<tr>
+						  <td><input type="hidden"  value=${chart.id } name="id"></td>
+						  <td><input type="hidden"  value=${chart.travel_name } name="travel_name"></td>
+					</tr>
 					<tr>
 						<th class="bb">
 							<!-- <h3>예약정보</h3> -->
@@ -253,61 +267,46 @@ h3 {
 						<td>
 							<div id="donutchart" style="width: 400px; height: 400px;"></div>
 							<script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-
-    	  var data = google.visualization.arrayToDataTable([
-         	 ['Item', 'cost'],
-              ['항공권:'+${chart.flight}+'만원', ${chart.flight}],
-              ['교통:'+${chart.transfer}+'만원',    ${chart.transfer}],
-              ['숙소:'+${chart.hotel}+'만원',  ${chart.hotel}],
-    	      ['식비:'+${chart.meal}+'만원',${chart.meal}],
-              ['투어/티켓:'+${chart.tour}+'만원', ${chart.tour}]
-            ]);
-        var sum = 0;
-        sum=${chart.flight}+ ${chart.transfer}+ ${chart.hotel}+ ${chart.meal}+ ${chart.tour};
-       
-        var options = {
-   
-          title:' 비용(1인기준) :'+sum+'만원',
-          pieHole: 0.4,
-	colors: ['#00A0B0', '#6A4A3C', '#CC333F', '#EB6841', '#EDC951']
-
-        };
-
-
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        chart.draw(data, options);
-      }
-    </script>
+								      google.charts.load("current", {packages:["corechart"]});
+								      google.charts.setOnLoadCallback(drawChart);
+								      function drawChart() {
+								
+								    	  var data = google.visualization.arrayToDataTable([
+								         	 ['Item', 'cost'],
+								              ['항공권:'+${chart.flight}+'만원', ${chart.flight}],
+								              ['교통:'+${chart.transfer}+'만원',    ${chart.transfer}],
+								              ['숙소:'+${chart.hotel}+'만원',  ${chart.hotel}],
+								    	      ['식비:'+${chart.meal}+'만원',${chart.meal}],
+								              ['투어/티켓:'+${chart.tour}+'만원', ${chart.tour}]
+								            ]);
+								        var sum = 0;
+								        sum=${chart.flight}+ ${chart.transfer}+ ${chart.hotel}+ ${chart.meal}+ ${chart.tour};
+								       
+								        var options = {
+								   
+								          title:' 비용(1인기준) :'+sum+'만원',
+								          pieHole: 0.4,
+									colors: ['#00A0B0', '#6A4A3C', '#CC333F', '#EB6841', '#EDC951']
+								
+								        };
+								
+								
+								        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+								        chart.draw(data, options);
+								      }
+    						</script>
 
 						</td>
 					</tr>
+					<tr>
+					  <td>
+					   <button class="ui button" onclick="showPopup_chartUpdate()">수정하기</button>
+					  </td>
+					</tr>
 				</table>
-				<!-- <table>
-					<tr>
-						<td>항공권(기차,버스)</td>
-						<td><input type="button" value="입력"></td>
-						<td>300,000원</td>
-					</tr>
-					<tr>
-						<td>숙소</td>
-						<td><input type="button" value="입력"></td>
-						<td>150,000원</td>
-					</tr>
-					<tr>
-						<td>티켓,투어</td>
-						<td><input type="button" value="입력"></td>
-						<td>30,000원</td>
-					</tr>
-					<tr>
-						<td>총 예약비</td>
-						<td><input type="button" value="입력"></td>
-						<td>480,000원</td>
-					</tr>
-				</table> -->
+				
 			</div>
+			</form>
 			<!-- article3 -->
 
 
