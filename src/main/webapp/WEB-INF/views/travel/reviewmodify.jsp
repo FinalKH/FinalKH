@@ -42,22 +42,29 @@
 			
 			<div class="twelve wide red column">
 				<div class="ui segment">
-					<form name="form" id="form" method="post" action="${path}/reviewInsert.do">
+					<form name="form" id="form" method="post" action="${path}/reviewUpdate.do">
 						<div class="twelve wide orange column">												
-							<input type="text" class="ui dividing header" name="writer" id="writer" value="${sessionScope.userid }" readonly/>													
+							<input type="text" class="ui dividing header" name="writer" id="writer" value="${dto.userid }" readonly/>													
 						</div>
 						<div class="four wide red column">
-							<input type="hidden" name="email" id="email" value="${sessionScope.email }">
+							<input type="hidden" name="email" id="email" >${dto.email }
 						</div>						
 						<div class="ui fluid input">
-							<input type="text" name="subject" id="subject" placeholder="제목을 입력하세요." />
+							<input type="text" name="subject" id="subject" value="${dto.subject }"/>
 						</div>
 						<div class="field">
-						<textarea name="content" id="contents" style="width: 700px; height: 400px;"></textarea>				
+						<textarea name="content" id="contents" style="width: 700px; height: 400px;">${dto.content }</textarea>				
 						</div>
 					<div  align="center">
 						<input type="submit" id="ibt" class="ui button" value="확인"/>
-						<a class="ui button" href="${path}/reviewList.do" >취소</a>
+						<a class="ui button" href="${path}/review.do" >취소</a>
+						<!-- 게시물번호를 hidden으로 처리 -->
+						<input type="hidden" name="bno" value="${dto.bno}">
+						<c:if test="${sessionScope.email == dto.email}">
+						<a class="ui small button" href="${path}/reviewDelete.do" >삭제</a>
+						</c:if>			
+						<!-- 상세보기 화면에서 게시글 목록화면으로 이동 -->
+						<a class="ui small button" href="${path}/reviewList.do" >목록</a>
 					</div>
 					</form>
 					<script type="text/javascript">

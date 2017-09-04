@@ -15,5 +15,9 @@ public interface ReviewService {
 	public List< ReviewVO> listAll(int start, int end, String searchOption, String keyword) throws Exception;
 	// 조회증가
 	public void increaseViewcnt(int bno, HttpSession session) throws Exception;
-	
+	// 후기 수정
+	public void update(ReviewVO vo) throws Exception;
+	// 후기 삭제
+	public void delete(int bno) throws Exception;
+	// 추천
 }

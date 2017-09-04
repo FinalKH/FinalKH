@@ -22,17 +22,11 @@ public class ReviewServiceImpl implements ReviewService{
 	public void create(ReviewVO vo) throws Exception {
     	
     	String subject = vo.getSubject();
+    	String writer = vo.getWriter();
 		String content = vo.getContent();
-		/*// *태그문자 처리 (< ==> &lt; > ==> &gt;)
-		// replace(A, B) A를 B로 변경
-		subject = subject.replace("<", "&lt;");
-		subject = subject.replace("<", "&gt;");
-		// *공백문자 처리  
-		subject = subject.replace("  ",	"&nbsp;&nbsp;");
-		// *줄바꿈 문자처리
-		content = content.replace("\n", "<br>");
-		System.out.print("여기"+content);*/
+
 		vo.setSubject(subject);
+		vo.setWriter(writer);
 		vo.setContent(content);
 		
 		reviewDao.create(vo);
@@ -71,5 +65,20 @@ public class ReviewServiceImpl implements ReviewService{
             session.setAttribute("update_time_"+bno, current_time);
             
         }
-    }  
+    }
+
+ 	// 후기 수정
+ 	@Transactional
+	@Override
+	public void update(ReviewVO vo) throws Exception {
+ 		reviewDao.update(vo);
+ 				
+	}
+
+	// 후기 삭제
+	@Override
+	public void delete(int bno) throws Exception {
+		reviewDao.delete(bno);
+		
+	}  
 }

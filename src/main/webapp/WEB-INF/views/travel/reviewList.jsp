@@ -30,15 +30,17 @@
 	}
 </script>
 <style>
+#reviewlist{padding:60px;}
+
 #tno {
 	width: 15px;
 }
 
-#tw, #tlast {
+#tw, #tr  {
 	width: 60px;
 }
 
-#tr {
+#tlast {
 	width: 25px;
 }
 
@@ -58,11 +60,11 @@ table th {
 	</header>
 	<section>
 	<div class="ui fluid container">
-		<div class="ui grid sixteen red wide column">
+		<div class="ui grid" id="reviewlist">
+		<!--div class="sixteen red wide column">
 			<form name="form1" method="post" action="${path}/reviewList.do">
-			<div class="ui segment">
 				<select name="searchOption">
-					<!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
+					<-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 >
 					<option value="all"
 						<c:out value="${map.searchOption == 'all'?'selected':''}"/>>전체</option>
 					<option value="user_name"
@@ -73,12 +75,9 @@ table th {
 						<c:out value="${map.searchOption == 'subject'?'selected':''}"/>>제목</option>
 				</select> <input name="keyword" value="${map.keyword}"> <input
 					type="submit" value="조회">
-				<!-- 로그인한 사용자만 글쓰기 버튼을 활성화 
-				<c:if test="${sessionScope.userId != null}">
-					<button type="button" id="btnWrite">글쓰기</button>
-				</c:if>-->
-			</div>
+			
 			</form>
+		</div-->
 			<table class="ui celled table">
 			<colgroup>
 			<col style="width:30px">
@@ -88,7 +87,7 @@ table th {
 						<th id="tno">No</th>
 						<th>제목</th>
 						<th id="tw">글쓴이</th>
-						<th id="tr">추천</th>
+						<th id="tr">작성일</th>
 						<th id="tlast">조회수</th>
 					</tr>
 				</thead>
@@ -108,15 +107,16 @@ table th {
 						</span>
 					</c:if>
 				</a>
-			</td>			
+			</td>
+			<td>
+				#
+			</td>	
 			<td>
 				<!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 -->
 				<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 			</td>
 			<td>0</td>
-			<td>
-				${row.viewcnt}
-			</td>
+			
 		</tr>
 			</c:when>
 			<c:otherwise>
@@ -144,8 +144,10 @@ table th {
 				<tbody>
 					<tr>
 						<th id="writebt" colspan="1">
+						<c:if test="${sessionScope.email != null}">
 						<a class="ui button" href="${path}/reviewWrite.do" >글쓰기</a>
-						</th>						
+						</c:if>
+						</th>
 						<th colspan="4">
 							<div class="ui right floated pagination menu">
 							<!-- 처음페이지로 이동 : 현재 페이지가 1보다 크면  [처음]하이퍼링크를 화면에 출력-->
