@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="mypage">
+
+   <select id="travellist" resultType="com.kh.web.model.member.dto.MypageVO">
+		SELECT 
+		    ID,
+		    TRAVEL_NAME
+			FROM MY_TRAVEL
+			WHERE ID= '1'
+	</select>
+	<insert id="travelinsert"> 
+	    INSERT INTO MY_TRAVEL (ID, TRAVEL_NAME) VALUES (#{id} ,#{travel_name})
+	 </insert>
+	<!-- com.kh.web.model.member.dto.MypageVO -->
+	<select id="albumlist" parameterType="hashMap" resultType="com.kh.web.model.member.dto.MypageVO" >
+		SELECT 
+		    ALBUMPATH,
+		    ALBUMNAME,
+		    ID,
+		    TRAVEL_NAME
+		FROM ALBUM
+		WHERE TRAVEL_NAME=#{travel_name} AND ID= #{id}
+	</select>
+	<insert id="albuminsert">
+	   INSERT INTO ALBUM (ID, TRAVEL_NAME, ALBUMPATH, ALBUMNAME) VALUES ( #{id}, #{travel_name},#{albumpath},#{albumname})
+	</insert>
+	
+	<delete id="deletealbum">
+	   DELETE FROM ALBUM WHERE ALBUMNAME= #{ALBUMNAME}
+	</delete>
+	
+	<select id="chartView" resultType="com.kh.web.model.member.dto.MypageVO" > 
+	   SELECT 
+	     FLIGHT, 
+	     TRANSFER,  
+	     HOTEL, 
+	     MEAL, 
+	     TOUR,
+	     ID,
+	     TRAVEL_NAME 
+	   FROM CHART 
+	   WHERE ID=#{id} AND TRAVEL_NAME=#{travel_name} 
+	</select>
+	<insert id="chartinsert"> 
+	     INSERT INTO chart (ID, TRAVEL_NAME, FLIGHT, TRANSFER,HOTEL,TOUR,MEAL) 
+	     VALUES ( #{id}, #{travel_name},#{flight},#{transfer},#{hotel},#{tour},#{meal}) 
+	</insert>
+	<sql id="pagingHeader">
+		SELECT * FROM (
+			SELECT ROWNUM AS rn, A.* FROM (
+	</sql>
+	<sql id="pagingFooter">
+			) A
+		) WHERE rn BETWEEN #{start} AND #{end}
+	</sql>
+</mapper>

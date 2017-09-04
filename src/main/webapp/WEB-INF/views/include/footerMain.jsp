@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="reset.css"/>
 <style>
-#footer{width:100%; height:110px;margin-top:100px;float:left;border-top:2px solid gray;font-size:15px;}
+#footer{width:100%; height:110px;margin-top:230px;float:left;border-top:1px solid gray;font-size:15px;}
 .info{position:absolute;padding-left:250px;padding-top:10px;position:relative;right:50px;}
 .info li{float:left;padding-right: 50px;}
 .addres strong{font-size: 20px;font-weight: bold;}

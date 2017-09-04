@@ -18,6 +18,11 @@
 				<c:if test="${sessionScope.userid == 'ckswnd353'}">
 				<a class="item" href="${path}/member/list.do"><i class="book icon"></i>회원관리</a>
 				</c:if>
+				<a class="item" href="member/mypageMain.do?id=1"><i class="id card icon"></i>마이페이지</a>
+				
+				<!-- <input type="button" value="마이페이지" onclick="location.href='member/mypageMain.do?id=1'" style="width: 270px" />
+				다은 테스트 지울게요 --><!-- 1을 아이디 받아오면됨 -->
+				
 			<div class="right menu">
 				<a class="item" href="${path}/sample/sample.do"><i class="cube orange icon"></i>예제</a>
 				
