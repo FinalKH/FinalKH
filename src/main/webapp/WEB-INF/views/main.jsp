@@ -5,13 +5,9 @@
 <%@ include file="../views/include/header.jsp" %>
 
 </head>
-<<<<<<< HEAD
-<body>
-=======
+
 <body bgcolor="white">
 
-
->>>>>>> fuckingsitt
 <%@ include file="mainMain.jsp" %>
 
 

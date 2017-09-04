@@ -1037,6 +1037,33 @@
 		-- 플랜댓글 기본데이터 설정
 		-- 나중에
 	
+	
+	create table my_travel( 
+  id varchar2(20) not null, 
+  travel_name varchar2(100) not null,
+  primary key(id, travel_name)); 
+  ALTER TABLE my_travel ADD CONSTRAINT Fk_MyTravelIdEmail FOREIGN KEY(id) REFERENCES T_UserInfo(Email);
+
+	create table album( 
+	  id varchar2(20) not null, 
+	  travel_name varchar2(100) not null, 
+	  albumname varchar2(100), 
+	  albumpath varchar2(100),
+	  constraint fk_travel_album foreign key(id,travel_name) references my_travel(id,travel_name)  on delete cascade
+	); 
+
+	create table chart( 
+	  id varchar2(20) not null, 
+	  travel_name varchar2(100) not null, 
+	  flight number(5), 
+	  transfer number(5), 
+	  hotel number(5), 
+	  tour number(5), 
+	  meal number(5),
+	  constraint fk_travel_chart foreign key(id,travel_name) references my_travel(id,travel_name)  on delete cascade
+	);
+	
+	
 
 
 	-- 테스트 모음 --	

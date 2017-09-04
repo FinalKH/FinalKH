@@ -197,7 +197,7 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
 	                // output.write(fileData);
 	                 
 	                // 2. File 사용
-	                File file = new File("C:/Users/찬중/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/FinalKH/WEB-INF/views/images/mypage/" + fileName);
+	                File file = new File("f:/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/FinalKH/WEB-INF/views/images/mypage/" + fileName);
 	                String filepath ="src/main/webapp/upload/" + fileName;
 	                uploadfile.transferTo(file);
 	                mVo.setAlbumpath(fileName);

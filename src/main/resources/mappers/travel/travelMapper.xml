@@ -5,13 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 <mapper namespace="travel">
-	<!-- -->
-	<select id="selectImage" resultType="com.kh.web.model.travel.dto.ImageVO">
-		SELECT
-		*
-		FROM T_Spot
-		<!-- WHERE Spot_Num = #{spotNum} -->
-	</select>
+
+	
 	<select id="selectAllArea" resultType="com.kh.web.model.travel.dto.AreaVO">
 		SELECT * FROM T_Area
 	</select>
@@ -31,7 +26,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{eastBP}) AND (mapY between #{southBP} AND
 		#{northBP})
 
-<<<<<<< HEAD
 		<if test="titleOption != null and (titleOption != ''.toString())">
 			AND title like '%' || #{titleOption, jdbcType=VARCHAR} ||
 			'%'
@@ -98,14 +92,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{contentId}, #{startTime},
 		#{endTime, jdbcType=VARCHAR})
 	</insert>
-=======
-    <!--  -->
+
+     
     <select id="selectImage" resultType="com.kh.web.model.travel.dto.ImageVO">
         SELECT
   		AREAIMAGE
         FROM T_AREA
-        <!-- WHERE Spot_Num = #{spotNum} -->
+        
     </select>
     
->>>>>>> fuckingsitt
 </mapper>
