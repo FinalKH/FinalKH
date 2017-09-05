@@ -386,6 +386,37 @@
 									end : endDate
 
 								},
+								eventAfterAllRender: function( view ) { 
+									console.log("이벤트 변화");
+									
+									var planDetailObjectArrayJson = JSON
+									.stringify($("#calendar")
+											.fullCalendar("clientEvents")
+											.map(
+													function(e) {
+														return {
+															planMainNum : list.planRough[0].planMainNum,
+															contentId : e.id,
+															startTime : e.start,
+															endTime : e.end,
+															mapX : e.mapX,
+															mapY : e.mapY,
+
+														};
+													}));
+
+									var parsePlanDetailObjectArray = parseJSON(planDetailObjectArrayJson);
+									if(planDetailObjectArrayJson==="[]"){
+										alert("null");
+									}else{
+										for(var i=0;i<parsePlanDetailObjectArray.length;i++){
+											alert(parsePlanDetailObjectArray[i].mapX);
+										};
+										
+									}
+
+
+								},
 								/* 								visibleRange : {
 								 start : list.planMain.startDay,
 								 end : endDate
@@ -465,7 +496,7 @@ if (($("input:radio[name=loc]:checked").val()) == "") {
 			'.active.item').attr('areaCode'));
 }
 ;
-alert(areaCodeOption);
+console.log(areaCodeOption);
 console.log(areaCodeOption);
 var titleOption = $('input[name=searchField]').val();
 console.log(titleOption);
@@ -1045,6 +1076,8 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 					console.log(1);
 
 				}));
+		
+		
 		$('input:radio').on(
 				'click',
 				(function() {
@@ -1156,6 +1189,8 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 																	+ '</span></div>'
 														});
 
+												
+												
 												markers.push(marker);
 												infoWindows.push(infoWindow);
 												var $div = $('	<div class="item" id="pickItem" style="width:300px;"'
@@ -1165,6 +1200,10 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 														+ value.title
 														+ '"contentId="'
 														+ value.contentId
+														+ '"mapX="'
+														+ value.mapX
+														+ '"mapY="'
+														+ value.mapY
 														+ '">'
 														+ '<img class="ui image" src="'
 														+ value.firstImage
@@ -1189,6 +1228,12 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 												var $contentId = $(this)
 														.parent().parent()
 														.attr('contentId');
+												var $mapX = $(this)
+														.parent().parent()
+														.attr('mapX');
+												var $mapY = $(this)
+														.parent().parent()
+														.attr('mapY');
 												console.log($contentId);
 												console.log($title);
 												var $div = $('<div class="fluid draggable item" id="userPickItem" contentId='
@@ -1212,10 +1257,10 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 														.data(
 																'event',
 																{
-																	title : $
-																			.trim($title),
-																	id : $
-																			.trim($contentId),
+																	title : $.trim($title),
+																	id : $.trim($contentId),
+																	mapX : $.trim($mapX),
+																	mapY : $.trim($mapY),
 																	stick : true
 																})
 														.draggable(
@@ -1238,10 +1283,21 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 					});
 		};
 		
+		function userMarker(){
+			var position = new naver.maps.LatLng(37,127);
+			var marker = new naver.maps.Marker({
+				map : map,
+				position : position,
+				title : "userPick",
+				icon : "http://www.diacomp.org/omb/images/Google/ltblue.png"
+			});
+		}
 		
+		userMarker();
 
 		
 		var email = "<%=(String) session.getAttribute("email")%>"
+
 
 		$(document)
 				.ready(
@@ -1271,7 +1327,7 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 			/* --------------- 댓글 관련 -------------- */
 			// 1. 댓글 입력
 			$("#btnReply").click(function() {
-				alert("댓글입력 시작!");
+				console.log("댓글입력 시작!");
 
 				//reply(); // 폼데이터 형식으로 입력
 				replyJson(); // json 형식으로 입력
@@ -1285,14 +1341,14 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 			var planMainNum = list.planRough[0].planMainNum;
 			// 비밀댓글 체크여부
 			var secretReply = "0";
-			alert(secretReply);
+			console.log(secretReply);
 			// 태그.is(":속성") 체크여부 true/false
 			if ($("#secretReply").is(":checked")) {
 				secretReply = "1";
 			}
-			alert(content);
-			alert(planMainNum);
-			alert(secretReply);
+			console.log(content);
+			console.log(planMainNum);
+			console.log(secretReply);
 			$.ajax({
 				type : "post",
 				url : "${path}/travel/insertPlanReplyRest.do",
@@ -1314,8 +1370,8 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 
 		// 댓글 목록 - RestController를 이용 json형식으로 리턴
 		function listReplyRest() {
-			alert("댓글 로드시작.");
-			alert(list.planRough[0].planMainNum);
+			console.log("댓글 로드시작.");
+			console.log(list.planRough[0].planMainNum);
 			$
 					.ajax({
 						type : "get",
@@ -1343,12 +1399,12 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 										+ "	<a class='reply'>답글</a>" + "</div>"
 										+ "</div>" + "</div>"
 
-								alert('반복횟수');
+										console.log('반복횟수');
 								$("#listReply").append(output);
 							}
 							
 							
-							alert("댓글이 로드되었습니다.");
+							console.log("댓글이 로드되었습니다.");
 							;
 						}
 					});
