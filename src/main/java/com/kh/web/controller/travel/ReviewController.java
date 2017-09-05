@@ -82,15 +82,15 @@ public class ReviewController {
 	
 	// 보기
 	@RequestMapping(value="/review.do", method = RequestMethod.GET)
-	public ModelAndView review(@RequestParam int bno, @RequestParam int curPage, @RequestParam String searchOption,
+	public ModelAndView review(@RequestParam int boardnum, @RequestParam int curPage, @RequestParam String searchOption,
 			@RequestParam String keyword, HttpSession session) throws Exception{
 		logger.info("보기 시작");
 		
-		reviewService.increaseViewcnt(bno, session); //조회수 증가
+		reviewService.increaseViewcnt(boardnum, session); //조회수 증가
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("travel/review");
-		mav.addObject("dto", reviewService.read(bno));
-		System.out.println("읽기 : "+reviewService.read(bno));
+		mav.addObject("dto", reviewService.read(boardnum));
+		System.out.println("읽기 : "+reviewService.read(boardnum));
 		mav.addObject("curPage", curPage);
 		mav.addObject("searchOption", searchOption);
 		mav.addObject("keyword", keyword);
@@ -108,8 +108,8 @@ public class ReviewController {
 	
 	// 삭제
 	@RequestMapping(value="/reviewDelete.do")
-	public String delete(@RequestParam int bno) throws Exception{
-		reviewService.delete(bno);
+	public String delete(@RequestParam int boardnum) throws Exception{
+		reviewService.delete(boardnum);
 		return "redirect:reviewList.do";
 	}
 						

@@ -5,29 +5,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 <mapper namespace="review">
-<!-- 
-테이블 
-alter table review drop primary key cascade;
-drop sequence seq_review;
-drop table review;
-create table review(
-bno number not null primary key,
-subject varchar2(200),
-content varchar2(4000),
-regdate date default sysdate,
-viewcnt number default 0,
-show char(1) default 'y'
-); 
 
-create sequence seq_review
-increment by 1
-start with 1;
- -->
     <!-- 후기 작성 -->
 	<insert id="insert">
 		<!-- 글 번호를 시퀀스로 생성 -->
 		INSERT INTO t_reviewboard (
-		  bno, subject, writer, content, show, email
+		  boardnum, subject, writer, content, show, email
 		) VALUES (
 		   seq_review.NEXTVAL, #{subject}, #{writer}, #{content} , 'y', #{email}
 		)
@@ -36,32 +19,32 @@ start with 1;
     <!-- 전체목록조회 -->
     <select id="listAll" resultType="com.kh.web.model.travel.dto.ReviewVO" >
     SELECT
-    	 bno, subject, content, regdate, viewcnt, show 
+    	 boardnum, subject, content, regdate, viewcount, show 
 	FROM
 		t_reviewboard
-    order by bno desc, regdate desc
+    order by boardnum desc, regdate desc
     </select>
     
     <!-- 후기 보기 -->
     <select id="view" resultType="com.kh.web.model.travel.dto.ReviewVO">
 		<!-- SELECT * FROM tbl_board  -->
 		SELECT 
-			bno, subject, content, regdate, writer, viewcnt, r.email, show
+			boardnum, subject, content, regdate, writer, viewcount, r.email, show
 		FROM 
 			t_reviewboard r, t_userinfo u
 		WHERE
 			r.email = u.email
 		AND
-			bno = #{bno}
+			boardnum = #{boardnum}
 	</select>
 	<!-- 조회수 -->
 	<update id="viewcnt">
 		UPDATE 
 			t_reviewboard
 		SET 
-			viewcnt = viewcnt + 1 
+			viewcount = viewcount + 1 
 		WHERE 
-			bno = #{bno}
+			boardnum = #{boardnum}
 	</update>
 	
 	<!-- 후기 수정 -->
@@ -72,7 +55,7 @@ start with 1;
 		subject = #{subject},
 		content = #{content}
 	WHERE
-		bno = #{bno}
+		boardnum = #{boardnum}
 	</update>
 	
 	<!-- 후기 삭제 -->
@@ -82,6 +65,6 @@ start with 1;
 	SET
 		show = 'n'
 	WHERE
-		bno = #{bno}
+		boardnum = #{boardnum}
 	</update>
 </mapper>

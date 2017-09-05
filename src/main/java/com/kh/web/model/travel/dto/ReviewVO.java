@@ -3,22 +3,25 @@ package com.kh.web.model.travel.dto;
 import java.util.Date; 
   
 public class ReviewVO { 
-	private int bno;			// 게시글 번호
+	private int boardnum;			// 게시글 번호
 	private String subject;		// 게시글 제목
 	private String writer;		//	작성자
 	private String content;		// 게시글 내용	
 	private Date regdate;		// 게시글 작성일자 util.Date
-	private int viewcnt;		// 게시글 조회수
+	private int viewcount;		// 게시글 조회수
 	private int recnt;			// 게시글 댓글의 수 
 	private String show;		// 게시글 삭제 상태 유무(y, n)
 	private String email;
 	
-	public int getBno() {
-		return bno;
+	
+	public int getBoardnum() {
+		return boardnum;
 	}
-	public void setBno(int bno) {
-		this.bno = bno;
+
+	public void setBoardnum(int boardnum) {
+		this.boardnum = boardnum;
 	}
+
 	public String getSubject() {
 		return subject;
 	}
@@ -44,12 +47,15 @@ public class ReviewVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	public int getViewcnt() {
-		return viewcnt;
+	
+	public int getViewcount() {
+		return viewcount;
 	}
-	public void setViewcnt(int viewcnt) {
-		this.viewcnt = viewcnt;
+
+	public void setViewcount(int viewcount) {
+		this.viewcount = viewcount;
 	}
+
 	public int getRecnt() {
 		return recnt;
 	}

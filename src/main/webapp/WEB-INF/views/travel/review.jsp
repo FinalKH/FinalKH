@@ -52,7 +52,7 @@ $(document).ready(function(){
 			<div class="sixteen wide column" style="width:650px; text-align: center;">
 				<a ><i class="big red heart icon"></i></a>
 				<!-- 게시물번호를 hidden으로 처리 -->
-				<input type="hidden" name="bno" value="${dto.bno}">
+				<input type="hidden" name="boardnum" value="${dto.boardnum}">
 				<c:if test="${sessionScope.email == dto.email}">
 				<a class="ui small button" href="${path}/reviewUpdate.do" >수정</a>
 				<a class="ui small button" href="${path}/reviewDelete.do" >삭제</a>
