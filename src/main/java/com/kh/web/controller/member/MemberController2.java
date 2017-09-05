@@ -12,7 +12,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.web.model.member.dto.MemberVo_Test_JG;
@@ -37,13 +40,33 @@ public class MemberController2 {
     // controller => service => dao 요청
         List<MemberVo_Test_JG> list = memberService2.memberList();
         model.addAttribute("list", list);
-        return "member/member_list";
+        return "member/member_listQQQQQQQQQQ";
     }
  // 02_01 회원 등록 페이지로 이동
     @RequestMapping("member/write.do")
     public String memberWrite(){
         
         return "member/member_write";
+    }
+    
+    // Email 중복 체크 AJAX
+    @ResponseBody
+    @RequestMapping("overlap.do")
+    public String insertMember(@RequestParam String email){
+    	String returnString;
+    	String chkValue =  memberService2.insertCheck(email);
+    	logger.info(email);
+    	logger.info(chkValue);
+    	if(chkValue.equals("1")){
+    		logger.info("1실행");
+    		return returnString="1";
+    	}else{
+    		logger.info("0실행");
+    		return returnString="0";
+    	}
+    	
+    	
+    	
     }
     
     // 02_02 회원 등록 처리 후 ==> 회원목록으로 리다이렉트

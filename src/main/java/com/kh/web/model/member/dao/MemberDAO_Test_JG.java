@@ -22,4 +22,6 @@ public interface MemberDAO_Test_JG {
     public MemberVo_Test_JG viewMember_test(MemberVo_Test_JG vot);
     // 02. 회원 로그아웃
     public void logout_test(HttpSession session);
+    // 회원 가입 이메일 중복 체크
+    public String insertCheck(String email); 
 }

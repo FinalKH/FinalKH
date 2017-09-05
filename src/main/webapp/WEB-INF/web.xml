@@ -7,36 +7,29 @@
    version="3.1">
 	
 	<!-- 에러 페이징 처리 -->
+	
 	<error-page>
-		<exception-type>java.lang.Throwable</exception-type>
-		<location>/paging/throwable.do</location>
-	</error-page>
-	<error-page>
-		<exception-type>java.lang.Exception</exception-type>
-		<location>/paging/exception.do</location>
-	</error-page>
-	<error-page>
-		<exception-type>400</exception-type>
+		<error-code>400</error-code>
 		<location>/paging/400.do</location>
 	</error-page>
 	<error-page>
-		<exception-type>403</exception-type>
+		<error-code>403</error-code>
 		<location>/paging/403.do</location>
 	</error-page>
 	<error-page>
-		<exception-type>404</exception-type>
+		<error-code>404</error-code>
 		<location>/paging/404.do</location>
 	</error-page>
 	<error-page>
-		<exception-type>405</exception-type>
+		<error-code>405</error-code>
 		<location>/paging/405.do</location>
 	</error-page>
 	<error-page>
-		<exception-type>500</exception-type>
+		<error-code>500</error-code>
 		<location>/paging/500.do</location>
 	</error-page>
 	<error-page>
-		<exception-type>503</exception-type>
+		<error-code>503</error-code>
 		<location>/paging/503.do</location>
 	</error-page>
 	
