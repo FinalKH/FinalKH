@@ -116,13 +116,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <!-- 02. 회원 등록 -->
     <insert id="insertMember2">
         INSERT INTO t_userinfo
-
             (email, userid, password, gradename)
-
         VALUES 
             (#{email}, #{userid}, #{password}, '일반')    
     </insert>
     
+    <!-- 회원 등록시 이메일 중복 체크 -->
+    <select id="insertCheck" resultType="String">
+    	SELECT
+    	  count(email)
+    	FROM t_userinfo
+    	WHERE email = #{email}
+    </select>
     
 	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 	

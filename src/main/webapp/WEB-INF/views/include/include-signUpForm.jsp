@@ -71,7 +71,7 @@ body>.grid {
             class="image">
          <div class="content">Sign-up your account</div>
       </h2>
-      <form class="ui large signup form" action="${path}/member/insert.do" method="post">
+      <form class="ui large signup form" id="signUpForm" action="${path}/member/insert.do" method="post">
          <div class="ui stacked segment">
             <div class="field">
                <div class="ui left icon input">
@@ -97,9 +97,50 @@ body>.grid {
                      placeholder="User ID">
                </div>
             </div>
-            <div class="ui fluid large teal submit button">가입</div>
+            <div class="ui fluid large teal submit button" onclick="errorShow()">가입</div>
          </div>
          <div><p>가입을 클릭하시면 <a href ="#">서비스 약관</a>과 <a href="#">개인정보 취급방침</a>을 읽고 동의하신 것으로 간주됩니다.</p></div>
-         <div class="ui error message"></div>
+         <div class="ui error message" id="error"></div>
       </form>
    </div>
+<script>
+$(document).on(
+		"change",
+		"#semail",
+		function(e) {
+			var email =$('#semail').val();
+			$.ajax({
+				type : "get",
+				headers : {
+					'Accept' : 'application/text',
+					'Content-Type' : 'text/plain'
+				},
+				url : "${path}/member/overlap.do?",
+				data : "email="
+						+ email,
+				processData : false,
+				contentType : "application/text;charset=UTF-8",
+				cache : false,
+				async : true,
+				success : function(result) {
+					console.log(result);
+					$('#signUpForm').find('#already').remove();
+					if(result=='1'){
+						$('#signUpForm').append("<div class='ui red message' id='already'><ul class='list'><li>이미 있는 이메일 입니다.</li></ul></div>	");
+					}else{
+						$('#signUpForm').find('#already').remove();
+					}
+					
+					
+				},
+				error : function(xhr, status, error) {
+					console.log(error);
+				}
+			});
+		}
+);
+
+function errorShow(ee){
+	$('#signUpForm').find('#error').show();
+}
+</script>

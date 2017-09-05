@@ -26,9 +26,17 @@ public class MemberServiceImpl2 implements MemberService2{
     public List<MemberVo_Test_JG> memberList() {
         return memberDao_test.memberList();
     }
- 
+    
+    // 회원 가입 이메일 중복 체크
+    @Override
+    public String insertCheck(String email) {
+    	System.out.println(memberDao_test.insertCheck(email).toString());
+    	return memberDao_test.insertCheck(email);
+    }
+    // 회원 가입 
     @Override
     public void insertMember_test(MemberVo_Test_JG vot) {
+    
     	memberDao_test.insertMember_test(vot);
     }
     // 01_01. 회원 로그인체크

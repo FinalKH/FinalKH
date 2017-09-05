@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.web.model.itinerary.dto.PlanMainMemberVO;
 import com.kh.web.model.member.dto.MemberVo_Test_JG;
+import com.sun.media.jfxmedia.logging.Logger;
 
 @Repository
 public class MemberDAOImpl_Test_JG implements MemberDAO_Test_JG{
@@ -62,4 +63,12 @@ public class MemberDAOImpl_Test_JG implements MemberDAO_Test_JG{
         // TODO Auto-generated method stub
  
     }
+    
+    @Override
+    public String insertCheck(String email) {
+        // TODO Auto-generated method stub
+    	System.out.println(sqlSession.selectOne("member.insertCheck", email).toString());
+    	return sqlSession.selectOne("member.insertCheck", email);
+    } 
+    
 }

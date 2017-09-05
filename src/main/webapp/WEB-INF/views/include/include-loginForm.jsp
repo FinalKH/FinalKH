@@ -104,6 +104,7 @@ function signupForm() {
            document.getElementById("pwd").value = "";
            document.getElementById("pwdchk").value = "";
            document.getElementById("userid").value = "";
+           $('#signUpForm').find('#error').hide();
         }
      })
    .modal('show');
