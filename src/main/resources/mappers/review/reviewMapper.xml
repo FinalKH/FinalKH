@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <!-- 전체목록조회 -->
     <select id="listAll" resultType="com.kh.web.model.travel.dto.ReviewVO" >
     SELECT
-    	 boardnum, subject, content, regdate, viewcount, show 
+    	 boardnum, subject, content, regdate, viewcount, show, writer 
 	FROM
 		t_reviewboard
     order by boardnum desc, regdate desc
