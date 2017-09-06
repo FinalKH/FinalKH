@@ -7,9 +7,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="icon" type="image/png"  href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3m7qNn7NY3cjd6A1yoPnuFzZifcwIHduucV-iouvURZADrU4JDhzG9eg"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>국내 여행 플래너</title>
+<title>Insert title here</title>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>

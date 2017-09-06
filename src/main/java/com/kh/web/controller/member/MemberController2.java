@@ -40,7 +40,7 @@ public class MemberController2 {
     // controller => service => dao 요청
         List<MemberVo_Test_JG> list = memberService2.memberList();
         model.addAttribute("list", list);
-        return "member/member_list";
+        return "member/member_listQQQQQQQQQQ";
     }
  // 02_01 회원 등록 페이지로 이동
     @RequestMapping("member/write.do")
@@ -91,14 +91,14 @@ public class MemberController2 {
         // /member/list.do : 루트 디렉토리를 기준
         // member/list.do : 현재 디렉토리를 기준
         // member_list.jsp로 리다이렉트
-        return "redirect:/";
+        return "redirect:/member/list.do";
     }
     
     // 02. 로그인 처리
     @RequestMapping("loginCheck_test.do")
-    public String loginCheck_test(@ModelAttribute MemberVo_Test_JG vot, HttpSession session){
+    public ModelAndView loginCheck_test(@ModelAttribute MemberVo_Test_JG vot, HttpSession session){
         boolean result = memberService2.loginCheck_test(vot, session);
-        /*       ModelAndView mav = new ModelAndView();
+        ModelAndView mav = new ModelAndView();
         if (result == true) { // 로그인 성공
             // main.jsp로 이동
             mav.setViewName("main");
@@ -107,17 +107,17 @@ public class MemberController2 {
             // main.jsp로 이동
             mav.setViewName("main");
             mav.addObject("msg", "failure");
-        }*/
-        return "redirect:/";
+        }
+        return mav;
     }
     
     // 03. 로그아웃 처리
     @RequestMapping("logout_test.do")
-    public String logout_test(HttpSession session){
+    public ModelAndView logout_test(HttpSession session){
         memberService2.logout_test(session);
-/*        ModelAndView mav = new ModelAndView();
+        ModelAndView mav = new ModelAndView();
         mav.setViewName("main");
-        mav.addObject("msg", "logout");*/
-        return "redirect:/";
+        mav.addObject("msg", "logout");
+        return mav;
     }
 }
