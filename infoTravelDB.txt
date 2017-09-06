@@ -989,33 +989,9 @@
 		-- 리뷰댓글 기본데이터 설정
 		-- 나중에
 				
-
-
-	-- 17. 후기 관련 DB 정보
-		-- 후기 테이블 생성
-		alter table review drop primary key cascade;
-		drop sequence seq_review;
-		drop table review;
-		create table review(
-		bno number not null primary key,
-		subject varchar2(200),
-		content varchar2(4000),
-		regdate date default sysdate,
-		viewcnt number default 0,
-		show char(1) default 'y'
-		); 
-
-		-- 리뷰댓글 시퀀스 생성
-		create sequence seq_review start with 1;
+	
 		
-		-- 리뷰댓글 외래키 설정
-		-- 외래키 설정 필요 없음
-		
-		-- 리뷰댓글 기본데이터 설정
-		-- 나중에
-		
-		
-		-- 18. 플랜댓글 관련 DB 정보
+		-- 17. 플랜댓글 관련 DB 정보
 		-- 플랜댓글 테이블 생성
 		create table T_PlanReply(
 		planReplyNum varchar2(10),	 			-- 
