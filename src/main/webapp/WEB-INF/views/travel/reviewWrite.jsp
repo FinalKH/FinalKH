@@ -34,19 +34,19 @@
 	<section>
 	<div class="ui fluid container">
 		<div class="ui grid" id="rwrite">
+			<!-- 
 			<div class="sixteen wide purple column"></div>
 			<div class="four wide blue column">
 				<div class="ui left inverted segment">일정 만들기</div>
-			</div><!-- 일정 -->
+			</div> 일정 -->			
 			
-			
-			<div class="twelve wide red column">
+			<div class="twelve wide column">
 				<div class="ui segment">
 					<form name="form" id="form" method="post" action="${path}/reviewInsert.do">
-						<div class="twelve wide orange column">												
-							<input type="text" class="ui dividing header" name="writer" id="writer" value="${sessionScope.userid }" readonly/>													
+						<div class="twelve wide column">												
+							<input type="text" class="ui block header" name="writer" id="writer" value="${sessionScope.userid }" readonly/>													
 						</div>
-						<div class="four wide red column">
+						<div class="four wide column">
 							<input type="hidden" name="email" id="email" value="${sessionScope.email }">
 						</div>						
 						<div class="ui fluid input">

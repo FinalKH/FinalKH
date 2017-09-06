@@ -26,7 +26,7 @@ $(document).ready(function(){
 <body>
 <header>
 	<div class="ui fluid container">
-		<div class="ui purple segment">
+		<div class="ui segment">
 			<p><%@ include file="../include/headerTravel.jsp"%>
 	<%@ include file="../include/menuTravel.jsp"%></p>
 		</div>
@@ -39,15 +39,15 @@ $(document).ready(function(){
 		<c:when test="${dto.show == 'y'}">
 		<!-- show가 y면 -->	
 			<!-- 게시물 상세보기 영역 -->		
-          <div class="left floated center aligned blue ten wide column">
-            <h2 class="ui header">${dto.subject}</h2>
+          <div class="left floated center aligned ten wide column">
+            <h2 class="ui dividing header">${dto.subject}</h2>
           </div>
-          <div class="right floated left aligend red six wide column">
-          	<h5 class="ui left floated sub header" >${dto.writer}</h5>
-            <h5 class="ui right floated header"><fmt:formatDate value="${dto.regdate}" pattern="yyyy-MM-dd a HH:mm:ss"/> </h5>
+          <div class="right floated left aligend six wide column">
+          	<h5 class="ui left floated dividing header" >${dto.writer}</h5>
+            <h5 class="ui left floated dividing header"><fmt:formatDate value="${dto.regdate}" pattern="yyyy-MM-dd a HH:mm:ss"/> </h5>
           </div>
           
-          <div class="center aligned yellow sixteen wide column" >${dto.content}</div>
+          <div class="sixteen wide column" >${dto.content}</div>
                  
 			<div class="sixteen wide column" style="width:650px; text-align: center;">
 				<a ><i class="big red heart icon"></i></a>

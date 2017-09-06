@@ -109,7 +109,7 @@ table th {
 				</a>
 			</td>
 			<td>
-				#
+				${row.writer }
 			</td>	
 			<td>
 				<!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 -->
