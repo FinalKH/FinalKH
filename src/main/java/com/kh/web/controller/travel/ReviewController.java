@@ -109,6 +109,7 @@ public class ReviewController {
 	// 삭제
 	@RequestMapping(value="/reviewDelete.do")
 	public String delete(@RequestParam int boardnum) throws Exception{
+		System.out.println("글번호 : "+boardnum);
 		reviewService.delete(boardnum);
 		return "redirect:reviewList.do";
 	}
