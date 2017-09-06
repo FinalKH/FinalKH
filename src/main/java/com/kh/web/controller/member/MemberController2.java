@@ -40,7 +40,7 @@ public class MemberController2 {
     // controller => service => dao 요청
         List<MemberVo_Test_JG> list = memberService2.memberList();
         model.addAttribute("list", list);
-        return "member/member_listQQQQQQQQQQ";
+        return "member/member_list";
     }
  // 02_01 회원 등록 페이지로 이동
     @RequestMapping("member/write.do")
