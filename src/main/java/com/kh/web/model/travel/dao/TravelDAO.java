@@ -7,6 +7,7 @@ import com.kh.web.model.travel.dto.AreaVO;
 import com.kh.web.model.travel.dto.BringPlaceOnMapVO;
 import com.kh.web.model.travel.dto.ContentCommonVO;
 import com.kh.web.model.travel.dto.MapBoundVO;
+import com.kh.web.model.travel.dto.PlanDetailContentCommonJoinVO;
 import com.kh.web.model.travel.dto.PlanDetailVO;
 import com.kh.web.model.travel.dto.PlanMainVO;
 import com.kh.web.model.travel.dto.PlanRoughAreaJoinVO;
@@ -25,7 +26,10 @@ public interface TravelDAO {
 
 	public PlanMainVO selectPlanMain(String planMainNum);
 
+
 	public List<PlanRoughAreaJoinVO> selectPlanRoughAreaJoin(String planMainNum);
+	
+	public List<PlanDetailContentCommonJoinVO> selectPlanDetailContentCommonJoin(String planMainNum);
 
 	public boolean deleteAllPlanDetail(PlanDetailVO planDetailVO);
 

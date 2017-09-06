@@ -24,6 +24,7 @@ public interface TravelService {
 	public String insertPlanMainRough(PlanMainVO planMainVO, Map<String, Object> map);
 
 	public Map<String, Object> selectPlanMainRough(String planMainNum);
+	public Map<String, Object> selectPlanDetailContentCommonJoin(String planMainNum);
 
 	public String insertPlanRoughDetail(Map<String, Object> map)
 			throws JsonParseException, JsonMappingException, IOException;

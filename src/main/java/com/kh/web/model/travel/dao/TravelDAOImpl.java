@@ -15,6 +15,7 @@ import com.kh.web.model.travel.dto.AreaVO;
 import com.kh.web.model.travel.dto.BringPlaceOnMapVO;
 import com.kh.web.model.travel.dto.ContentCommonVO;
 import com.kh.web.model.travel.dto.MapBoundVO;
+import com.kh.web.model.travel.dto.PlanDetailContentCommonJoinVO;
 import com.kh.web.model.travel.dto.PlanDetailVO;
 import com.kh.web.model.travel.dto.PlanMainVO;
 import com.kh.web.model.travel.dto.PlanRoughAreaJoinVO;
@@ -56,6 +57,11 @@ public class TravelDAOImpl implements TravelDAO {
 		return sqlSession.selectList("travel.selectPlanRoughAreaJoin", planMainNum);
 	}
 
+	
+	public List<PlanDetailContentCommonJoinVO> selectPlanDetailContentCommonJoin(String planMainNum){
+		return sqlSession.selectList("travel.selectPlanDetailContentCommonJoin", planMainNum);
+	}
+	
 	public String insertPlanMainRough(PlanMainVO planMainVO, Map<String, Object> map) {
 
 		sqlSession.insert("travel.insertPlanMain", planMainVO);

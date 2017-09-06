@@ -9,7 +9,7 @@
 <a href="${path}/member/memberList.do">회원목록</a> |
 <a href="${path}/shop/cart/list.do">장바구니</a> |
 <a href="${path}/sample/sample.do">컨트롤러 연습 페이지</a> |
-<a href="${path}/main.do">파이널 프로젝트 메인 페이지</a> |
+<a href="${path}/">파이널 프로젝트 메인 페이지</a> |
 <!-- 관리자 권한일 경우 -->
 <c:if test="${sessionScope.adminId != null }">
 <a href="${path}/shop/product/write.do">상품등록</a> |

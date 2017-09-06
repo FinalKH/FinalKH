@@ -73,6 +73,18 @@ public class TravelServiceImpl implements TravelService {
 		return map;
 
 	}
+	public Map<String, Object> selectPlanDetailContentCommonJoin(String planMainNum) {
+		
+		logger.info("selectPlanMainDetail");
+		logger.info(travelDao.selectPlanMain(planMainNum).toString());
+		logger.info(travelDao.selectPlanRoughAreaJoin(planMainNum).toString());
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("planMain", travelDao.selectPlanMain(planMainNum));
+		map.put("planDetail", travelDao.selectPlanDetailContentCommonJoin(planMainNum));
+		
+		return map;
+		
+	}
 
 	public String insertPlanRoughDetail(Map<String, Object> map)
 			throws JsonParseException, JsonMappingException, IOException {

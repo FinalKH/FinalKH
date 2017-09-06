@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			userid
 		FROM t_planmain
 		NATURAL JOIN t_userinfo
-		ORDER BY planmainnum
+		ORDER BY to_number(planmainnum)
 	</select>
 	
 	<!-- 여행 장소 뽑아내기 -->
@@ -31,6 +31,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM t_planmain
 		NATURAL JOIN t_planrough
 		NATURAL JOIN t_area
-		ORDER BY planmainnum
+		ORDER BY to_number(planmainnum)
 	</select>
 </mapper>

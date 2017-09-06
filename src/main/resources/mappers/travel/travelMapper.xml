@@ -65,7 +65,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectPlanRoughAreaJoin" resultType="com.kh.web.model.travel.dto.PlanRoughAreaJoinVO">
 		select * FROM
 		t_planrough inner JOIN t_area ON (t_planrough.areaCode =
-		t_area.areaCode) where t_planrough.planMainNum=#{planMainNum}
+		t_area.areaCode) where t_planrough.planMainNum=#{planMainNum} ORDER BY to_number(t_planrough.PlanDay)
+	</select>
+	<select id="selectPlanDetailContentCommonJoin" resultType="com.kh.web.model.travel.dto.PlanDetailContentCommonJoinVO">
+		select * FROM
+		T_PlanDetail inner JOIN t_ContentCommon ON (t_plandetail.contentId =
+		t_ContentCommon.contentId) where t_planDetail.planMainNum=#{planMainNum}
 	</select>
 
 	<insert id="insertPlanRough">

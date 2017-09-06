@@ -69,6 +69,18 @@ public class TravelController {
 		return mav;
 	}
 
+	@RequestMapping("travelTip.do")
+	public String travelTip(HttpServletRequest request) {
+		logger.info("travelTip.do");
+		// model.addAttribute("list", travelService.listContentCommon());
+		return "travel/travelTip";
+	}
+	@RequestMapping("howToUse.do")
+	public String howToUse(HttpServletRequest request) {
+		logger.info("howToUse.do");
+		// model.addAttribute("list", travelService.listContentCommon());
+		return "travel/howToUse";
+	}
 	@RequestMapping("sight.do")
 	public String sight(HttpServletRequest request) {
 		logger.info("sight.do");
@@ -188,5 +200,7 @@ public class TravelController {
 		// list를 리턴
 		return list;
 	}
+	
+	
 
 }

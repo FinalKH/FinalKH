@@ -240,7 +240,14 @@
 				<div class="ui fluid container">
 					<div class="ui fulid grid">
 						<div class="eight wide column">
-							<div class="ui fluid segment"></div>
+							<div class="ui fluid segment">
+															<div class="ui fluid comments" style="max-width: 100%">
+									<h3 class="ui dividing header">블로그</h3>
+									<!-- 블로그 목록 영역 -->
+									<div class="ui segment" id="listBlog"></div>
+									
+								</div>
+							</div>
 						</div>
 						<div class="eight wide column">
 							<div class="ui fluid segment">
@@ -275,7 +282,7 @@
 
 
 	<!-- 풋터 공간 -->
-	<div class="ui fluid container">
+	<div class="ui fluid container" style='margin-top:20px;'>
 		<div class="ui inverted segment">
 			<div class="ui inverted vertical footer segment">
 				<div class="ui center aligned container">
@@ -321,6 +328,46 @@
 		</div>
 	</div>
 
+<div class="ui container">
+		<div class="ui basic overViewForm modal"
+			style="width: 450px; text-align: center; margin-left: -250px;">
+			
+
+			<div class="login column">
+
+				<h2 class="ui orange header">
+					<div class="content" id="placeTitle">관광지</div>
+				</h2>
+			
+							<div class="ui orange tertiary inverted segment" style="padding:5px">
+			<div class="ui warning message">
+		    <ul class="red list" id="placeOverView">
+		      <li>Please enter your first name</li>
+		      <li>Please enter your last name</li>
+		    </ul>
+		  </div>
+		  	</div>
+				
+<!-- 				<div class="ui large blue title form">
+					<div class="ui stacked inverted blue segment">
+						<div class="field">
+							<div class="ui content">
+								<div class="ui basic large label" id="placeTitle"></div>
+							</div>
+						</div>
+						<div class="field">
+							<div class="ui content">
+								<textarea id="placeOverView" readonly></textarea>
+							</div>
+						</div>
+					</div>
+					
+				</div> -->
+			</div>
+		</div>
+	</div>
+
+
 	<!-- 스크립트 태그 -->
 
 	<script>
@@ -328,6 +375,87 @@
 		list = parseJSON(listJson);
 		var completion = list.planMain.completion;
 		console.log(completion);
+		
+
+		
+			 var events = [];
+		
+			var listDetailJson = '${listDetail}'
+				console.log(listDetailJson);
+			
+			if(listDetailJson!=''){
+			listDetail = parseJSON(listDetailJson);
+			for(var i=0;i<listDetail.planDetail.length;i++){
+				console.log(listDetail.planDetail[i].contentId);
+				
+				console.log(listDetail.planDetail[i].mapX);
+				var $mapX = listDetail.planDetail[i].mapX;
+				var $mapY = listDetail.planDetail[i].mapY;
+				var $contentId = listDetail.planDetail[i].contentId;
+				var $title = listDetail.planDetail[i].title;
+				var $startTime = listDetail.planDetail[i].startTime;
+				var $endTime = listDetail.planDetail[i].endTime;
+				
+				events.push({
+					start: $.trim($startTime),
+					end: $.trim($endTime),
+					title : $.trim($title),
+					id : $.trim($contentId),
+					contentId : $.trim($contentId),
+					mapX : $.trim($mapX),
+					mapY : $.trim($mapY),
+					stick : true
+               });
+
+			};
+			console.log(events);
+			}else{
+				
+			}
+
+		
+		
+		var userMarkers=[];
+		var userInfoWindows=[];
+		var userPolyline = new naver.maps.Polyline({
+			map : map,
+			path : [],
+			strokeColor : '#127EDF',
+			strokeWeight : 2
+		});
+		
+		var sortBy = (function () {
+
+			  //cached privated objects
+			  var _toString = Object.prototype.toString,
+			      //the default parser function
+			      _parser = function (x) { return x; },
+			      //gets the item to be sorted
+			      _getItem = function (x) {
+			        return this.parser((x !== null && typeof x === "object" && x[this.prop]) || x);
+			      };
+
+			  // Creates a method for sorting the Array
+			  // @array: the Array of elements
+			  // @o.prop: property name (if it is an Array of objects)
+			  // @o.desc: determines whether the sort is descending
+			  // @o.parser: function to parse the items to expected type
+			  return function (array, o) {
+			    if (!(array instanceof Array) || !array.length)
+			      return [];
+			    if (_toString.call(o) !== "[object Object]")
+			      o = {};
+			    if (typeof o.parser !== "function")
+			      o.parser = _parser;
+			    o.desc = !!o.desc ? -1 : 1;
+			    return array.sort(function (a, b) {
+			      a = _getItem.call(o, a);
+			      b = _getItem.call(o, b);
+			      return o.desc * (a < b ? -1 : +(a > b));
+			    });
+			  };
+
+			}());
 		$(document)
 				.ready(
 						function() {
@@ -386,9 +514,20 @@
 									end : endDate
 
 								},
+								//events : loadEvent(),
+								events: events,
+								    
+								    
+						
+								//event : loadEvent(),
+								/* events : [{
+									title:'test',
+									start:'2017-09-22'
+									
+								}], */
 								eventAfterAllRender: function( view ) { 
 									console.log("이벤트 변화");
-									
+									userPolyline.setMap(null);
 									var planDetailObjectArrayJson = JSON
 									.stringify($("#calendar")
 											.fullCalendar("clientEvents")
@@ -406,14 +545,65 @@
 													}));
 
 									var parsePlanDetailObjectArray = parseJSON(planDetailObjectArrayJson);
+					
+									console.log(planDetailObjectArrayJson);
+									console.log(JSON.stringify(parsePlanDetailObjectArray));
+									sortBy(parsePlanDetailObjectArray, { 
+										prop: "startTime",
+										parser: function (item) {
+									        return new Date(item);
+									    }
+									});
+
+									console.log(JSON.stringify(parsePlanDetailObjectArray));
+									for (var i = 0;i<userMarkers.length; i++) {
+										console.log(userMarkers[i]);
+										userMarkers[i].setMap(null);
+										
+
+									};
+									userMarkers=[];
+									userInfoWindows=[];
+	
 									if(planDetailObjectArrayJson==="[]"){
-										alert("null");
+										console.log("null");
 									}else{
+										var path = [];
+
+										userPolyline.setPath(path);
 										for(var i=0;i<parsePlanDetailObjectArray.length;i++){
-											alert(parsePlanDetailObjectArray[i].mapX);
+											console.log(parsePlanDetailObjectArray[i].mapX);
+											var position = new naver.maps.LatLng(
+													parsePlanDetailObjectArray[i].mapY, parsePlanDetailObjectArray[i].mapX);
+											var userMarker = new naver.maps.Marker(
+													{
+														map : map,
+														position : position,
+														title : parsePlanDetailObjectArray[i].contentId,
+														icon : "http://www.diacomp.org/omb/images/Google/ltblue.png",
+														zIndex : 1000
+													});
+											userMarker.setAnimation(naver.maps.Animation.BOUNCE);
+											var userInfoWindow = new naver.maps.InfoWindow(
+													{
+														content : '<div style="text-align:center;padding:10px;"><span style="color:black">'
+																+ parsePlanDetailObjectArray[i].title
+																+ '</span></div>'
+													});
+											userMarkers.push(userMarker);
+											userInfoWindows.push(userInfoWindow);
+											
+											path.push(position);
+											console.log(userMarkers);
+											console.log(JSON.stringify(path));
+											console.log(position);
 										};
+										userPolyline.setPath(path);
+
+										userPolyline.setMap(map);
 										
 									}
+									
 
 
 								},
@@ -432,10 +622,9 @@
 									$(this).remove();
 								}
 							});
-							
-							
+						
 						});
-
+		$('#calendar').fullCalendar('renderEvents');
 		$('.ui.bound.top.sticky#user').sticky({
 			context : '#context1',
 			offset : 80,
@@ -518,133 +707,16 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 				.append(
 						"<div class='item'><img class='ui image'><div class='content'>가마목</div><div class='right floated content'><div class='ui icon button' id='userPickDeleteButton'><i class='delete icon'></i></div></div></div>");
 
-		/* function bringAllInMap() {
-			var data = {}, bounds = map.getBounds();
-			data["eastBP"] = bounds.getNE().lng();
-			data["westBP"] = bounds.getSW().lng();
-			data["southBP"] = bounds.getSW().lat();
-			data["northBP"] = bounds.getNE().lat();
-
-			$
-					.ajax({
-						type : "post",
-						url : "${path}/travel/bringAllInMap.do",
-						dataType : "json",
-						data : JSON.stringify(data),
-						processData : false,
-						contentType : "application/json;charset=UTF-8",
-						async : false,
-						success : function(result) {
-							console.log(result);
-							for (var i = 0, ii = markers.length; i < ii; i++) {
-								markers.pop().setMap(null)
-
-							}
-							;
-							markers = [];
-							infoWindows = [];
-							$('#contentInMap').empty();
-							$
-									.each(
-											result,
-											function(key, value) {
-												var position = new naver.maps.LatLng(
-														value.mapY, value.mapX);
-
-												var marker = new naver.maps.Marker(
-														{
-															map : map,
-															position : position,
-															title : value.contentId,
-															icon : "http://www.owenscorning.com/images/orange-dot.png",
-														});
-
-												var infoWindow = new naver.maps.InfoWindow(
-														{
-															content : '<div style="text-align:center;padding:10px;"><span style="color:black">'
-																	+ value.title
-																	+ '</span></div>'
-														});
-
-												markers.push(marker);
-												infoWindows.push(infoWindow);
-												var $div = $('	<div class="item" id="pickItem" style="width:300px;"'
-										+ 'firstImage=' + value.firstImage + '" title="' + value.title + '"contentId="' + value.contentId + '">'
-														+ '<img class="ui image" src="' + value.firstImage + '" style="height: 100px; width:150px"><div class="content">'
-														+ value.title
-														+ '</div><div class="right floated content"><div class="ui pick icon button" id="pickButton"><i class="plus icon"></i></div></div></div>');
-												$('#contentInMap').append($div);
-											});
-							for (var i = 0, ii = markers.length; i < ii; i++) {
-								naver.maps.Event.addListener(markers[i],
-										'click', getClickHandler(i));
-							}
-							$('.pick.button')
-									.on(
-											'click',
-											function() {
-												var $title = $(this).parent()
-														.parent().attr('title');
-												var $firstImage = $(this)
-														.parent().parent()
-														.attr('firstImage');
-												var $contentId = $(this)
-														.parent().parent()
-														.attr('contentId');
-												console.log($contentId);
-												console.log($title);
-												var $div = $('<div class="fluid draggable item" id="userPickItem" contentId='+$contentId+'>'
-														+ '<img class="ui image" src="' + $firstImage + '" style="height: 50px; width:50px">'
-														+ '<div class="content">'
-														+ $title
-														+ '</div>'
-														+ '<div class="right floated content">'
-														+ '<div class="ui icon button" id="userPickDeleteButton">'
-														+ '<i class="delete icon"></i>'
-														+ '</div>'
-														+ '</div>'
-														+ '</div>');
-												$('#userPick').append($div);
-												$(
-														'#userPick .draggable:last-child')
-														.data(
-																'event',
-																{
-																	title : $
-																			.trim($title),
-																	id : $
-																			.trim($contentId),
-																	stick : true
-																})
-														.draggable(
-																{
-																	zIndex : 999,
-																	revert : true,
-																	revertDuration : 0,
-																	appendTo : 'body',
-																	containment : 'window',
-																	scroll : false,
-																	helper : 'clone',
-																	cursor : 'move'
-																});
-											});
-
-						},
-						error : function(xhr, status, error) {
-							console.log('error');
-						}
-					});
-		}; */
 
 		function getClickHandler(seq) {
 			return function(e) {
 
 				var marker = markers[seq], infoWindow = infoWindows[seq];
 				if (marker.getIcon() === ('http://www.owenscorning.com/images/orange-dot.png')) {
-					marker
+					/* marker
 							.setIcon({
 								url : 'http://www.diacomp.org/omb/images/Google/ltblue.png'
-							});
+							}); */
 				} else {
 					marker.setIcon({
 
@@ -667,7 +739,6 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 
 				var path = polyline.getPath();
 				path.push(point);
-				path.setPath(null);
 			}
 		}
 
@@ -688,12 +759,12 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 			});
 		}
 		
-		var polyline = new naver.maps.Polyline({
+/* 		var polyline = new naver.maps.Polyline({
 			map : map,
 			path : [],
 			strokeColor : '#5347AA',
 			strokeWeight : 2
-		});
+		}); */
 
 		$(document).on("click", "#userPickDeleteButton", function() {
 			$(this).parent().parent().remove();
@@ -733,8 +804,25 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 											cache : false,
 											async : true,
 											success : function(result) {
-												alert(JSON
-																.stringify(result.response.body.items.item.overview));
+												var overViewRaw = JSON.stringify(result.response.body.items.item.overview);
+												var titleRaw = JSON.stringify(result.response.body.items.item.title);
+												overViewRaw = overViewRaw.replace(/\n/g, "<br />");
+												titleRaw = titleRaw.replace(/\n/g, "<br />");
+												console.log(overViewRaw);
+												console.log(titleRaw);
+												
+												$('#placeOverView').empty();
+												$('#placeTitle').empty();
+												$('#placeOverView').append("<h3>"+overViewRaw+"</h3>");
+												$('#placeOverView').text().replace("\n", "<br />", "g");
+												$('#placeTitle').append("<h1>"+titleRaw+"</h1>");
+												$('#placeTitle').text().replace("\n", "<br />", "g");
+												$('.ui.overViewForm.modal').modal({
+													onHide : function() {
+
+													}
+												}).modal('show');
+
 											},
 											error : function(xhr, status, error) {
 												console.log(error);
@@ -897,7 +985,7 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 										success : function(respBody) {
 											console.log("성공");
 											console.log(respBody);
-											location.href = "${path}/travel/mainMain.do";
+											location.href = "${path}/itinerary/list.do";
 											console.log("성공");
 										},
 										error : function(xhr, ajaxoptions,
@@ -962,7 +1050,7 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 										success : function(respBody) {
 											console.log("성공");
 											console.log(respBody);
-											location.href = "${path}/travel/mainMain.do";
+											location.href = "${path}/itinerary/list.do";
 											console.log("성공");
 										},
 										error : function(xhr, ajaxoptions,
@@ -1283,19 +1371,7 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 					});
 		};
 		
-		function userMarker(){
-			var position = new naver.maps.LatLng(37,127);
-			var marker = new naver.maps.Marker({
-				map : map,
-				position : position,
-				title : "userPick",
-				icon : "http://www.diacomp.org/omb/images/Google/ltblue.png"
-			});
-		}
-		
-		userMarker();
 
-		
 		var email = "<%=(String) session.getAttribute("email")%>"
 
 
@@ -1386,7 +1462,7 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 							for ( var i in result) {
 								output = "<div class='comment'>"
 										+ "<a class='avatar'> <img"
-								+ "	src='http://file2.instiz.net/data/file2/2016/07/19/f/b/6/fb6997b187692ccc866d880e9f0b892d.gif'>"
+								+ "	src='http://image.auction.co.kr/itemimage/8b/e0/90/8be090466.jpg'>"
 										+ "</a>" + "<div class='content'>"
 										+ "	<a class='author'>"
 										+ result[i].email + "</a>"
@@ -1422,6 +1498,38 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 				}
 			})
 		}
+		
+	/* 	function loadEvent(){
+			var listDetailJson = '${listDetail}'
+				console.log(listDetailJson);
+			listDetail = parseJSON(listDetailJson);
+			for(var i=0;i<listDetail.planDetail.length;i++){
+				console.log(listDetail.planDetail[i].contentId);
+				
+				console.log(listDetail.planDetail[i].mapX);
+				var $mapX = listDetail.planDetail[i].mapX;
+				var $mapY = listDetail.planDetail[i].mapY;
+				var $contentId = listDetail.planDetail[i].contentId;
+				var $title = listDetail.planDetail[i].title;
+				var $startTime = listDetail.planDetail[i].startTime;
+				var $endTime = listDetail.planDetail[i].endTime;
+				alert(1);
+				return {
+						start: $.trim($startTime),
+						end: $.trim($endTime),
+						title : $.trim($title),
+						id : $.trim($contentId),
+						contentId : $.trim($contentId),
+						mapX : $.trim($mapX),
+						mapY : $.trim($mapY),
+						stick : true
+				}
+				alert(JSON.stringify(loadEvent));
+				alert(loadEvent);
+			};
+			console.log(listDetail);
+		}
+ */
 	</script>
 
 </body>

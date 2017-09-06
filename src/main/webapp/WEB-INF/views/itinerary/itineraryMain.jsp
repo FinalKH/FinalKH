@@ -65,7 +65,7 @@
 		  	</span>
 		  	
 		  	
-			<a class="image" href="#">
+			<a class="image">
 			  <c:forEach var="ini" items="${list2 }">
 				<c:set var="main" value="${iti.planMainNum }" />
 				<c:set var="area" value="${ini.planMainNum }" />
@@ -95,6 +95,8 @@
 			  </div>
 				<div class="description">
 				
+				
+				
 			  </div>
 			</div>
 			<div class="extra content">
@@ -114,7 +116,12 @@
   </div>
 </div>
 <script>
-alert($('#mainColumn').find('#componentColumn').attr('planMainNum'));
+console.log($('#mainColumn').find('#componentColumn').attr('planMainNum'));
+$(document).on('click', '#componentColumn', function(){
+	var planMainNum = $(this).attr('planMainNum');
+	console.log($(this).attr('planMainNum'));
+	location.href="${path}/itinerary/showPlan.do?"+"planMainNum="+planMainNum;
+});
 </script>
 </body>
 </html>

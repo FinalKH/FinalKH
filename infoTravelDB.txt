@@ -958,7 +958,7 @@
 		
 		-- 리뷰게시판 외래키 설정
 		ALTER TABLE T_ReviewBoard ADD CONSTRAINT Fk_ReviewBoardEmail FOREIGN KEY(Email) REFERENCES T_UserInfo(Email);
-		ALTER TABLE T_ReviewBoard ADD CONSTRAINT Fk_ReviewBoardPlanNum FOREIGN KEY(PlanNum) REFERENCES T_PlanMain(PlanMainNum);
+		--ALTER TABLE T_ReviewBoard ADD CONSTRAINT Fk_ReviewBoardPlanNum FOREIGN KEY(PlanNum) REFERENCES T_PlanMain(PlanMainNum);
 		
 		-- 리뷰게시판 기본데이터 설정
 		-- 나중에
