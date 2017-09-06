@@ -72,7 +72,6 @@
 		<interceptor>
 			<mapping path="/travel/createPlan.do" />
 			<mapping path="/travel/makePlan.do" />
-			<mapping path="/itinerary/showPlan.do" />
 			<beans:ref bean="memberInterceptor" />
 		</interceptor>
 		<!-- 관리자 세션체크 매핑 -->

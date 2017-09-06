@@ -13,23 +13,14 @@
 				<a class="item" href="${path}/travel/howToUse.do"><i class="help circle icon"></i>이용방법</a>
 				<a class="item" href="${path}/travel/sight.do"><i class="camera retro icon"></i> 관광지</a>
 				<a class="item" href="${path}/travel/travelTip.do"><i class="book icon"></i> 여행팁</a>
-				<a class="item" 
-	            <c:choose>
-	               <c:when test="${sessionScope.userid == null }">
-	                  href="javascript:loginForm()"
-	               </c:when>
-	               <c:when test="${sessionScope.userid != null }">
-	                  href="${path}/travel/createPlan.do"
-	               </c:when>
-	            </c:choose>
-	            ><i class="map icon"></i>여행플랜</a>
+				<a class="item" href="${path}/travel/createPlan.do"><i class="map icon"></i>여행플랜</a>
 				<a class="item" href="${path}/itinerary/list.do"><i class="map signs icon"></i> 여행일정</a>
 				<a class="item" href="${path}/reviewList.do"><i class="book icon"></i> 여행후기</a>
 				<%-- <c:if test="${sessionScope.userid == 'ckswnd353'}"> --%>
 				<a class="item" href="${path}/member/list.do"><i class="book icon"></i>회원관리</a>
 				<%-- </c:if> --%>
 				<!-- <a class="item" href="member/mypageMain.do?id=1"><i class="id card icon"></i>마이페이지</a> -->
-				<a class="item" href="#"><i class="id card icon"></i>마이페이지</a>
+				<a class="item" href="${path}/member/mypageMain.do?id=1"><i class="id card icon"></i>마이페이지</a>
 				
 				<!-- <input type="button" value="마이페이지" onclick="location.href='member/mypageMain.do?id=1'" style="width: 270px" />
 				다은 테스트 지울게요 --><!-- 1을 아이디 받아오면됨 -->
@@ -42,11 +33,11 @@
                    <a class="item" href="javascript:loginForm()"><i class="sign in red icon"></i> 로그인</a>
                 </c:when>
                 <c:when test="${sessionScope.userid != null and sessionScope.gradename == '관리자' }">
-                   <a class="item" href="${path}/member/mypageMain.do?id=1"><i class="spy black icon"></i>관리자님!</a>
+                   <a class="item" href="#"><i class="spy black icon"></i>관리자님!</a>
                    <a class="item" href="${path}/member/logout_test.do"><i class="sign out red icon"></i> 로그아웃</a>
                 </c:when>
                 <c:when test="${sessionScope.userid != null and sessionScope.gradename == '일반' }">
-                   <a class="item" href="${path}/member/mypageMain.do?id=1"><i class="user circle blue icon"></i>${sessionScope.userid }님!</a>
+                   <a class="item" href="#"><i class="user circle blue icon"></i>${sessionScope.userid }님!</a>
                    <a class="item" href="${path}/member/logout_test.do"><i class="sign out red icon"></i> 로그아웃</a>
                 </c:when>
              </c:choose>
