@@ -13,6 +13,7 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <script type="text/javascript" src="./include/ckeditor/ckeditor.js" ></script>
 <script type='text/javascript'> 
     window.parent.CKEDITOR.tools.callFunction('${CKEditorFuncNum}','${file_path}','업로드 완료');
@@ -33,20 +34,21 @@
 	<section>
 	<div class="ui fluid container">
 		<div class="ui grid" id="rwrite">
-			<!--<div class="sixteen wide purple column"></div>
+			<div class="sixteen wide purple column"></div>
 			<div class="four wide blue column">
 				<div class="ui left inverted segment">일정 만들기</div>
-			</div> 일정 -->			
+			</div><!-- 일정 -->
 			
-			<div class="twelve wide column">
+			
+			<div class="twelve wide red column">
 				<div class="ui segment">
-					<form name="form" id="form" method="post" action="${path}/reinUpdate.do" >
-						<div class="twelve wide column">												
-							<input type="text" class="ui dividing header" name="writer" id="writer" value="${dto.writer }" readonly/>													
+					<form name="form" id="form" method="post" action="${path}/reviewUpdate.do">
+						<div class="twelve wide orange column">												
+							<input type="text" class="ui dividing header" name="writer" id="writer" value="${dto.userid }" readonly/>													
 						</div>
-						<div class="four wide column">
-							<input type="hidden" name="email" id="email" value="${dto.email }">
-						</div>					
+						<div class="four wide red column">
+							<input type="hidden" name="email" id="email" >${dto.email }
+						</div>						
 						<div class="ui fluid input">
 							<input type="text" name="subject" id="subject" value="${dto.subject }"/>
 						</div>
@@ -55,9 +57,12 @@
 						</div>
 					<div  align="center">
 						<input type="submit" id="ibt" class="ui button" value="확인"/>
-						<button type="button" class="ui small button" onclick="location.href='${path}/review.do?boardnum=${dto.boardnum}'" >취소</button>
+						<a class="ui button" href="${path}/review.do" >취소</a>
 						<!-- 게시물번호를 hidden으로 처리 -->
-						<input type="hidden" name="boardnum" value="${dto.boardnum}">		
+						<input type="hidden" name="bno" value="${dto.bno}">
+						<c:if test="${sessionScope.email == dto.email}">
+						<a class="ui small button" href="${path}/reviewDelete.do" >삭제</a>
+						</c:if>			
 						<!-- 상세보기 화면에서 게시글 목록화면으로 이동 -->
 						<a class="ui small button" href="${path}/reviewList.do" >목록</a>
 					</div>

@@ -100,26 +100,15 @@ public class ReviewController {
 	
 	// 수정
 	@RequestMapping(value="/reviewUpdate.do", method = RequestMethod.GET)
-	public ModelAndView Update(@RequestParam(value="boardnum") int boardnum, HttpSession session) throws Exception{
-		logger.info("수정 시작");
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("travel/reviewmodify");
-		mav.addObject("dto", reviewService.read(boardnum));
-		System.out.println("읽기 : "+reviewService.read(boardnum));
-		return mav;
-	}
-	@RequestMapping(value="/reinUpdate.do", method = RequestMethod.POST)
-	public String reinUpdate(@ModelAttribute ReviewVO vo) throws Exception{
+	public String update(@ModelAttribute ReviewVO vo) throws Exception{
 		reviewService.update(vo);
 		logger.info("수정 완료 : "+vo);
-		return "redirect:reviewList.do";
+		return "redirect:review.do";
 	}
 	
-	
 	// 삭제
-	@RequestMapping(value="/reviewDelete.do", method = RequestMethod.GET)
-	public String delete(@RequestParam(value="boardnum") int boardnum) throws Exception{
-		logger.info("번호 왔나? : "+boardnum);
+	@RequestMapping(value="/reviewDelete.do")
+	public String delete(@RequestParam int boardnum) throws Exception{
 		System.out.println("글번호 : "+boardnum);
 		reviewService.delete(boardnum);
 		return "redirect:reviewList.do";

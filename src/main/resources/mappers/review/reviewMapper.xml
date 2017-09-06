@@ -50,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 후기 수정 -->
 	<update id="update">
 	UPDATE
-		t_reviewboard
+		t_reviewboardW
 	SET
 		subject = #{subject},
 		content = #{content}
