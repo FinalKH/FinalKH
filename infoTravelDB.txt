@@ -947,9 +947,10 @@
 		Subject varchar2(300),				--
 		Content varchar2(2000),				--
 		RegDate varchar2(30),				--
-		ViewCount varchar2(10),				--
+		ViewCount date default sysdate,				--
 		Show varchar2(5),					--
 		Email varchar2(50),					--
+		Writer varchar2(30),
 		primary key(BoardNum)				-- 
 		);
 	

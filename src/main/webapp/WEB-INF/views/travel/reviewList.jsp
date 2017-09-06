@@ -97,10 +97,10 @@ table th {
 			<c:when test="${row.show == 'y'}">
 		<!-- show 컬럼이 y일때(삭제X 글) -->
 		<tr>		
-			<td>${row.bno}</td>
+			<td>${row.boardnum}</td>
 			<!-- 게시글 상세보기 페이지로 이동시 게시글 목록페이지에 있는 검색조건, 키워드, 현재페이지 값을 유지하기 위해 -->
 			<td>
-				<a href="${path}/review.do?bno=${row.bno}&curPage=${map.reviewPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">${row.subject} 
+				<a href="${path}/review.do?boardnum=${row.boardnum}&curPage=${map.reviewPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">${row.subject} 
 					<!-- ** 댓글이 있으면 게시글 이름 옆에 출력하기 -->
 					<c:if test="${row.recnt > 0}">
 						<span style="color: red;">(${row.recnt})
@@ -115,7 +115,7 @@ table th {
 				<!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 -->
 				<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 			</td>
-			<td>0</td>
+			<td>${row.viewcount }</td>
 			
 		</tr>
 			</c:when>
@@ -124,7 +124,7 @@ table th {
 		<tr>
 			<td colspan="5" align="left">
 				<c:if test="${row.recnt > 0}">
-					<a href="${path}/review.do?bno=${row.bno}&curPage=${map.reviewPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">삭제된 게시물입니다.
+					<a href="${path}/review.do?boardnum=${row.boardnum}&curPage=${map.reviewPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">삭제된 게시물입니다.
 					<!-- ** 댓글이 있으면 게시글 이름 옆에 출력하기 -->
 						<span style="color: red;">(${row.recnt})
 						</span>
