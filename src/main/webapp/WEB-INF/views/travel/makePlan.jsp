@@ -1462,7 +1462,7 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 			                      revert: true, 
 			                      revertDuration: 0 
 			                    });
-			                	$div.data('event', { title: event.title, id :event.id, contentId : event.contentId, firstImage : event.firstImage, stick: true });
+			                	$div.data('event', { title: event.title, id :event.id, contentId : event.contentId, firstImage : event.firstImage, mapX : event.mapX, mapY : event.mapY, stick: true });
 			                }
 			            },
 					
