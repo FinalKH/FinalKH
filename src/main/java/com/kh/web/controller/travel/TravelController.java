@@ -87,6 +87,12 @@ public class TravelController {
 		// model.addAttribute("list", travelService.listContentCommon());
 		return "travel/sight";
 	}
+	@RequestMapping("gallery.do")
+	public String gallery(HttpServletRequest request) {
+		logger.info("gallery.do");
+		// model.addAttribute("list", travelService.listContentCommon());
+		return "travel/gallery";
+	}
 
 	@ResponseBody
 	@RequestMapping(value = "bringAllInMap.do", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")

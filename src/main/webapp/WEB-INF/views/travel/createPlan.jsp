@@ -220,7 +220,11 @@
 			dimPage : false,
 			closable : false
 		}).sidebar('attach events', '#toggleButton');
-
+		$('.ui.sidebar').sidebar({context : $('#map'),
+				dimPage : false,
+				closable : false})
+		  .sidebar('attach events', '.ui.area.icon.button', 'show')
+		;
 		function detailForm() {
 			$('.ui.detailForm.modal').modal({
 				onHide : function() {
@@ -237,8 +241,11 @@
 									+ $id
 									+ '</button></div><div class="ui icon tiny right floated buttons"><button class="ui button" id="minusButton"><i class="minus icon"></i></button><button class="ui black disabled button"><span id="dateDay">2</span>일</button><button class="ui button" id="plusButton"><i class="plus icon"></i></button></div></div>');
 							$('#sidebar').append($div);
+							$('.ui.sidebar').show;
 
 						});
+		
+		
 		$(document).on("click", "#userDelete", function() {
 			$(this).parent().parent().remove();
 		});

@@ -12,6 +12,7 @@
 				<a class="item" href="${path}/"><img src="${path}/images/logo.jpg" alt="logo"/><!-- <i class="skyatlas big icon"></i>메인 --></a>
 				<a class="item" href="${path}/travel/howToUse.do"><i class="help circle icon"></i>이용방법</a>
 				<a class="item" href="${path}/travel/sight.do"><i class="camera retro icon"></i> 관광지</a>
+				<a class="item" href="${path}/travel/gallery.do"><i class="image icon"></i> 갤러리</a>
 				<a class="item" href="${path}/travel/travelTip.do"><i class="book icon"></i> 여행팁</a>
 				<a class="item" 
 	            <c:choose>

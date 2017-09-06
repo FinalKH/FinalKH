@@ -54,6 +54,7 @@
 <div class="ui itinerary container">
   <h1 align="center">인기 여행일정</h1>
   <h2 class="ui dividing header" align="center">다른 여행자들의 일정을 참고해 나만의 여행을 계획해보세요!</h2>
+  
   <div class="ui four column very relaxed grid" id='mainColumn'>
 	<c:forEach var="iti" items="${list}">
 	  <c:set var="src" value="" />

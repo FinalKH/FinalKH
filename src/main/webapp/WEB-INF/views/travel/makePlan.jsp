@@ -21,10 +21,10 @@
 	<div class="ui fluid container" id="context1"
 		style="margin: 10px; border: 0px;">
 		<div class="ui grid">
-			<div class="two wide fluid column">
+			<div class="two wide fluid column" >
 				<div class="ui bound top sticky" id="day"
 					style="margin: 0px; padding: 0px;">
-					<div class="ui fluid tertiary inverted blue segment"
+					<div class="ui fluid tertiary inverted blue segment" 
 						style="height: 610px;">
 						<div class="ui fluid container"
 							style="margin: 0px; padding: 0px; border: 0px;">
@@ -51,7 +51,7 @@
 				</div>
 			</div>
 
-			<div class="three wide column" style="padding: 0px;">
+			<div class="three wide column" style="padding: 0px;" id='dropSpace'>
 				<div class="ui bound top sticky" id="user" style="height: 400px;">
 					<div class="ui tertiary inverted blue segment"
 						style="height: 610px;">
@@ -1566,7 +1566,7 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 				});
 		        var isEventOverDiv = function(x, y) {
 
-		            var external_events = $( '#userPick' );
+		            var external_events = $( '#dropSpace' );
 		            var offset = external_events.offset();
 		            offset.right = external_events.width() + offset.left;
 		            offset.bottom = external_events.height() + offset.top;
