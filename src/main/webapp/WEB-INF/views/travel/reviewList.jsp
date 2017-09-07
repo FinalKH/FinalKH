@@ -12,15 +12,6 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.js"></script>
-<!-- Full Calendar -->
-<link rel='stylesheet' type='text/css'
-	href='http://arshaw.com/js/fullcalendar-1.6.3/fullcalendar/fullcalendar.css' />
-<script type='text/javascript'
-	src='http://arshaw.com/js/fullcalendar-1.6.3/jquery/jquery-1.10.2.min.js'></script>
-<script type='text/javascript'
-	src='http://arshaw.com/js/fullcalendar-1.6.3/jquery/jquery-ui-1.10.3.custom.min.js'></script>
-<script type='text/javascript'
-	src='http://arshaw.com/js/fullcalendar-1.6.3/fullcalendar/fullcalendar.min.js'></script>
 <script>
 	$(document).ready(function(){
 	});
@@ -30,7 +21,7 @@
 	}
 </script>
 <style>
-#reviewlist{padding:60px;}
+#reviewlist{padding:40px;}
 
 #tno {
 	width: 15px;
@@ -52,7 +43,7 @@ table th {
 <body>
 	<header>
 	<div class="ui fluid container">
-		<div class="ui purple segment">
+		<div class="ui segment">
 			<p><%@ include file="../include/headerTravel.jsp"%>
 	<%@ include file="../include/menuTravel.jsp"%></p>
 		</div>
@@ -120,20 +111,20 @@ table th {
 		</tr>
 			</c:when>
 			<c:otherwise>
-		<!-- show 컬럼이 n일때(삭제된 글) -->
+		<!-- show 컬럼이 n일때(삭제된 글)
 		<tr>
 			<td colspan="5" align="left">
 				<c:if test="${row.recnt > 0}">
-					<a href="${path}/review.do?boardnum=${row.boardnum}&curPage=${map.reviewPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">삭제된 게시물입니다.
+					<a href="${path}/review.do?boardnum=${row.boardnum}&curPage=${map.reviewPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">삭제된 게시물입니다. -->
 					<!-- ** 댓글이 있으면 게시글 이름 옆에 출력하기 -->
-						<span style="color: red;">(${row.recnt})
+					<!--  	<span style="color: red;">(${row.recnt})
 						</span>
 					</a>
 				</c:if>
 				<c:if test="${row.recnt == 0 }">
 					삭제된 게시물입니다.
 				</c:if>	
-			</td>
+			</td>-->
 		</tr>
 			</c:otherwise>
 				</c:choose>
@@ -192,8 +183,8 @@ table th {
 	</section>
 	<footer>
 	<div class="ui fluid container">
-		<div class="ui purple segment">
-			<p><%@ include file="../include/footerMain.jsp"%></p>
+		<div class="ui grid">			
+			<%@ include file="../include/footerMain.jsp"%>
 		</div>
 	</div>
 	</footer>

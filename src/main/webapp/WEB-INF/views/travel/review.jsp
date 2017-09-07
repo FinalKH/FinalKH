@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>후기</title>
 <!-- Semantic Ui  -->
 <link rel="stylesheet" type="text/css"
 	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.css">
@@ -13,7 +13,6 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.js"></script>
-<title>후기</title>
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -54,8 +53,8 @@ $(document).ready(function(){
 				<!-- 게시물번호를 hidden으로 처리 -->
 				<input type="hidden" name="boardnum" value="${dto.boardnum}">
 				<c:if test="${sessionScope.email == dto.email}">
-				<a class="ui small button" href="${path}/reviewUpdate.do" >수정</a>
-				<a class="ui small button" href="${path}/reviewDelete.do" >삭제</a>
+				<button type="button" class="ui small button" onclick="location.href='${path}/reviewUpdate.do?boardnum=${dto.boardnum}'" >수정</button>
+				<button type="button" class="ui small button" onclick="location.href='${path}/reviewDelete.do?boardnum=${dto.boardnum}'" >삭제</button>
 				</c:if>			
 				<!-- 상세보기 화면에서 게시글 목록화면으로 이동 -->
 				<a class="ui small button" href="${path}/reviewList.do" >목록</a>
@@ -69,7 +68,7 @@ $(document).ready(function(){
 </section>
 <footer>
 	<div class="ui fluid container">
-		<div class="ui purple grid">
+		<div class="ui grid">
 			<p><%@ include file="../include/footerMain.jsp"%></p>
 		</div>
 	</div>
