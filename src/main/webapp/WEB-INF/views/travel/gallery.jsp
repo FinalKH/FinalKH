@@ -14,7 +14,7 @@
 				<div class='ui segment'></div>
 			</div>
 			<div class='sixteen wide column'>
-				<div class='ui inverted blue segment'>
+				<div class='ui inverted blue segment' style='margin:10px;'>
 					<font size="5">관광지 사진</font>
 				</div>
 			</div>

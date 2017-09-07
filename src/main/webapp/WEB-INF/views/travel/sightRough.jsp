@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>관광지 정보</title>
+<title>관광지 리스트</title>
 <%@ include file="../include/headerTravel.jsp"%>
 </head>
 <body>
@@ -15,7 +15,7 @@
 			</div>
 			<div class='sixteen wide column'>
 				<div class='ui inverted orange segment'>
-					<font size="5">관광지 정보</font>
+					<font size="5">관광지 리스트</font>
 				</div>
 			</div>
 			<div class='sixteen wide column'>
@@ -25,7 +25,7 @@
 					<div class="ui divided items" id='items'>
 						<!-- 아이템 들어가는 공간-->
 						<!-- 아이템 -->
-<!-- 						<div class="item">
+<!-- 						<div class="item" >
 							<div class="image">
 								<img id='firstImage'
 									src="http://tong.visitkorea.or.kr/cms/resource/42/1846542_image3_1.jpg" />
@@ -93,15 +93,21 @@
 					var cat3 = result.response.body.items.item[index].cat3;
 					var readcount = result.response.body.items.item[index].readcount;
 					var firstimage = result.response.body.items.item[index].firstimage;
+					var contentid = result.response.body.items.item[index].contentid;
 					if(overview==null){
-						overview='설명이 없습니다';
+						overview='';
 					}
 					if(firstimage==null){
 						firstimage = 'http://www.giclove.com/core/images/etc/noimg_main.gif';
-				
+					}
+					if(addr1==null){
+						addr1 = '';
+					}
+					if(addr2==null){
+						addr2 = '';
 					}
 					$('#items').append(
-						"<div class='item'>"
+						"<div class='item' id='contentItem' contentId='"+ contentid +"' title='"+ title +"'>"
 							+"<div class='image'>"
 							+"<img id='firstImage'"
 									+"src='"+firstimage+"' />"
@@ -110,11 +116,11 @@
 							+"<a class='header' id='title'>"+title+"</a>"
 								+"<div class='description' id='overview'>"+overview+"</div>"
 								+"<div class='extra'>"
-								+"<div class='ui label' id='cat3'>"+cat3+"</div>"
-									+"<div class='ui label'>"
+								+"<div class='ui basic label' id='cat3'>"+cat3+"</div>"
+									+"<div class='ui basic label'>"
 									+"<i class='globe icon'></i> <span id='addr1'>"+addr1+"</span> <span"
 										+"id='addr2'>"+addr2+"</span>"
-											+"</div>"
+											+"</div><br>"
 									+"<i class='green check icon'></i> <span id='readCount'>"+readcount+"</span>View"
 									+"</div>"
 								+"</div>"
@@ -131,7 +137,7 @@
 			}
 		});
 	};
-	
+		
 	getSightInfoAjax();
 	
 	$(document).ready(function () {
@@ -146,6 +152,11 @@
 			
 			})
 		});
+	$(document).on('click', '#contentItem', function(){
+		var contentId = $(this).attr('contentId');
+		var title = $(this).attr('title');
+		location.href = '${path}/travel/sightDetail.do?contentId='+contentId+'&title='+encodeURI(title, "UTF-8")		
+	});
 
 	</script>
 </body>

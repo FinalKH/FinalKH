@@ -81,11 +81,18 @@ public class TravelController {
 		// model.addAttribute("list", travelService.listContentCommon());
 		return "travel/howToUse";
 	}
-	@RequestMapping("sight.do")
-	public String sight(HttpServletRequest request) {
-		logger.info("sight.do");
+	@RequestMapping("sightRough.do")
+	public String sightRough(HttpServletRequest request) {
+		logger.info("sightRough.do");
 		// model.addAttribute("list", travelService.listContentCommon());
-		return "travel/sight";
+		return "travel/sightRough";
+	}
+	@RequestMapping("sightDetail.do")
+	public String sightDetail(HttpServletRequest request) {
+		logger.info("sightDetail.do");
+
+		// model.addAttribute("list", travelService.listContentCommon());
+		return "travel/sightDetail";
 	}
 	@RequestMapping("gallery.do")
 	public String gallery(HttpServletRequest request) {

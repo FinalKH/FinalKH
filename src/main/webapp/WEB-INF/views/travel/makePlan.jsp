@@ -127,9 +127,7 @@
 			</div>
 			<div class="eleven wide column">
 
-				<div class="ui segment">
-					<div id="calendar"></div>
-				</div>
+
 				<div class="ui tertiary inverted blue segment">
 					<div class="ui segment">
 						<div class="ui fluid container">
@@ -236,6 +234,9 @@
 				</div>
 				<div class="ui segment">
 					<div id="map" style="width: 100%; height: 900px;"></div>
+				</div>
+								<div class="ui segment">
+					<div id="calendar"></div>
 				</div>
 				<div class="ui fluid container">
 					<div class="ui fulid grid">
