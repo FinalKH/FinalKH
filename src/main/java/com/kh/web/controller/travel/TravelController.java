@@ -168,8 +168,6 @@ public class TravelController {
 	@ResponseBody
 	@RequestMapping(value = "insertPlanRoughDetail.do", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
 	public void insertPlanRoughDetail(HttpSession session, HttpServletRequest request, @RequestBody Map<String, Object> map) throws JsonParseException, JsonMappingException, IOException {
-		System.out.println(map);
-		
 		session.getAttribute("email");
 		travelService.insertPlanRoughDetail(map);
 

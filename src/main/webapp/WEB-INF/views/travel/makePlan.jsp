@@ -396,14 +396,12 @@
 				var $title = listDetail.planDetail[i].title;
 				var $startTime = listDetail.planDetail[i].startTime;
 				var $endTime = listDetail.planDetail[i].endTime;
-				var $firstImage = listDetail.planDetail[i].firstImage;
 				
 				events.push({
 					start: $.trim($startTime),
 					end: $.trim($endTime),
 					title : $.trim($title),
-					id : 'event' + (Math.random().toString(36)+'00000000000000000').slice(2, 10),
-					firstImage : $.trim($firstImage),
+					id : $.trim($contentId),
 					contentId : $.trim($contentId),
 					mapX : $.trim($mapX),
 					mapY : $.trim($mapY),
@@ -459,7 +457,174 @@
 			  };
 
 			}());
-		
+		$(document)
+				.ready(
+						function() {
+
+							$
+									.each(
+											list.planRough,
+											function(index, value) {
+												$('.ui.itinerary.list')
+														.append(
+																"<div class='item' id='itineraryItem' planRoughNum="+list.planRough[index].planRoughNum+" planMainNum="+list.planRough[index].planMainNum+" areaCode="+list.planRough[index].areaCode+" planDay="+list.planRough[index].planDay+">"
+																		+ "<img class='ui avatar image' src="+list.planRough[index].areaImage+">"
+																		+ "<div class='content'>"
+																		+ "DAY"
+																		+ list.planRough[index].planDay
+																		+ "</div>"
+																		+ "<div class='right floated content'>"
+																		+ list.planRough[index].areaName
+																		+ "</div>"
+																		+ "</div>");
+												a = list.planRough[index].planDay
+
+											});
+							($('.ui.itinerary.list').find('.item').first())
+									.addClass("active");
+
+							var startDate = new Date(list.planMain.startDay);
+							var endDate = new Date(startDate);
+							endDate.setDate(endDate.getDate() + (a * 1 - 1));
+							$('.ui.pick.date.text').empty();
+							$('.ui.pick.date.text').append(
+									$.datepicker.formatDate('y년 MM d일',
+											startDate));
+							$('.current.pick.day').empty();
+							$('.current.pick.day').append(
+									list.planRough[0].planDay);
+							$('.edit.date.text').empty();
+							$('.edit.date.text').append(
+									$.datepicker.formatDate('MM d일 ~ ',
+											startDate));
+							$('.edit.date.text').append(
+									$.datepicker.formatDate('MM d일', endDate));
+
+							endDate.setDate(endDate.getDate() + 1);
+							startDate.setDate(startDate.getDate() + 1);
+							$('#calendar').fullCalendar({
+								header : {
+									left : 'prev,next today',
+									center : 'title',
+									right : 'month,agendaWeek,agendaDay'
+								},
+								defaultView : 'agendaDay',
+								defaultDate : list.planMain.startDay,
+								validRange : {
+									start : list.planMain.startDay,
+									end : endDate
+
+								},
+								//events : loadEvent(),
+								events: events,
+								    
+								    
+						
+								//event : loadEvent(),
+								/* events : [{
+									title:'test',
+									start:'2017-09-22'
+									
+								}], */
+								eventAfterAllRender: function( view ) { 
+									console.log("이벤트 변화");
+									userPolyline.setMap(null);
+									var planDetailObjectArrayJson = JSON
+									.stringify($("#calendar")
+											.fullCalendar("clientEvents")
+											.map(
+													function(e) {
+														return {
+															planMainNum : list.planRough[0].planMainNum,
+															contentId : e.id,
+															startTime : e.start,
+															endTime : e.end,
+															mapX : e.mapX,
+															mapY : e.mapY,
+
+														};
+													}));
+
+									var parsePlanDetailObjectArray = parseJSON(planDetailObjectArrayJson);
+					
+									console.log(planDetailObjectArrayJson);
+									console.log(JSON.stringify(parsePlanDetailObjectArray));
+									sortBy(parsePlanDetailObjectArray, { 
+										prop: "startTime",
+										parser: function (item) {
+									        return new Date(item);
+									    }
+									});
+
+									console.log(JSON.stringify(parsePlanDetailObjectArray));
+									for (var i = 0;i<userMarkers.length; i++) {
+										console.log(userMarkers[i]);
+										userMarkers[i].setMap(null);
+										
+
+									};
+									userMarkers=[];
+									userInfoWindows=[];
+	
+									if(planDetailObjectArrayJson==="[]"){
+										console.log("null");
+									}else{
+										var path = [];
+
+										userPolyline.setPath(path);
+										for(var i=0;i<parsePlanDetailObjectArray.length;i++){
+											console.log(parsePlanDetailObjectArray[i].mapX);
+											var position = new naver.maps.LatLng(
+													parsePlanDetailObjectArray[i].mapY, parsePlanDetailObjectArray[i].mapX);
+											var userMarker = new naver.maps.Marker(
+													{
+														map : map,
+														position : position,
+														title : parsePlanDetailObjectArray[i].contentId,
+														icon : "http://www.diacomp.org/omb/images/Google/ltblue.png",
+														zIndex : 1000
+													});
+											userMarker.setAnimation(naver.maps.Animation.BOUNCE);
+											var userInfoWindow = new naver.maps.InfoWindow(
+													{
+														content : '<div style="text-align:center;padding:10px;"><span style="color:black">'
+																+ parsePlanDetailObjectArray[i].title
+																+ '</span></div>'
+													});
+											userMarkers.push(userMarker);
+											userInfoWindows.push(userInfoWindow);
+											
+											path.push(position);
+											console.log(userMarkers);
+											console.log(JSON.stringify(path));
+											console.log(position);
+										};
+										userPolyline.setPath(path);
+
+										userPolyline.setMap(map);
+										
+									}
+									
+
+
+								},
+								/* 								visibleRange : {
+								 start : list.planMain.startDay,
+								 end : endDate
+								 }, */
+								editable : true,
+								droppable : true, // this allows things to be dropped onto the calendar
+								drop : function() {
+									// is the "remove after drop" checkbox checked?
+									/* if ($('#drop-remove').is(':checked')) {
+										// if so, remove the element from the "Draggable Events" list
+										$(this).remove();
+									} */
+									$(this).remove();
+								}
+							});
+						
+						});
 		$('#calendar').fullCalendar('renderEvents');
 		$('.ui.bound.top.sticky#user').sticky({
 			context : '#context1',
@@ -726,8 +891,6 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 										.attr('areaCode');
 								planRoughObject.planDay = $(this).attr(
 										'planDay');
-								planRoughObject.firstImage = $(this).attr(
-										'firstImage');
 								planRoughObjectArray
 										.push(planRoughObject);
 							});
@@ -799,8 +962,7 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 													function(e) {
 														return {
 															planMainNum : list.planRough[0].planMainNum,
-															contentId : e.contentId,
-															firstImage : e.firstImage,
+															contentId : e.id,
 															startTime : e.start,
 															endTime : e.end
 
@@ -865,8 +1027,7 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 													function(e) {
 														return {
 															planMainNum : list.planRough[0].planMainNum,
-															contentId : e.contentId,
-															firstImage : e.firstImage,
+															contentId : e.id,
 															startTime : e.start,
 															endTime : e.end
 
@@ -1180,19 +1341,17 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 														+ '</div>'
 														+ '</div>');
 												$('#userPick').append($div);
-												$('#userPick .draggable:last-child')
+												$(
+														'#userPick .draggable:last-child')
 														.data(
 																'event',
 																{
 																	title : $.trim($title),
-																	id : 'event' + (Math.random().toString(36)+'00000000000000000').slice(2, 10),
-																	firstImage : $.trim($firstImage),
-																	contentId : $.trim($contentId),
+																	id : $.trim($contentId),
 																	mapX : $.trim($mapX),
 																	mapY : $.trim($mapY),
 																	stick : true
 																})
-																
 														.draggable(
 																{
 																	zIndex : 999,
@@ -1204,7 +1363,6 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 																	helper : 'clone',
 																	cursor : 'move'
 																});
-												
 											});
 
 						},
@@ -1373,6 +1531,7 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 			console.log(listDetail);
 		}
  */
+<<<<<<< HEAD
  
  $(document)
 	.ready(
@@ -1581,6 +1740,8 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 
 		        }
 			});
+=======
+>>>>>>> JJong
 	</script>
 
 </body>
