@@ -1,42 +1,27 @@
 package com.kh.web.controller.member;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
-import java.util.UUID;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.web.model.member.dto.MemberVO;
 import com.kh.web.model.member.dto.MypageVO;
+import com.kh.web.model.travel.dto.PlanMainVO;
 import com.kh.web.service.member.MypageService;
-import com.kh.web.util.MediaUtils;
-import com.kh.web.util.UploadFileUtils;
 
 @Controller // �쁽�옱 �겢�옒�뒪瑜� �뒪�봽留곸뿉�꽌 愿�由ы븯�뒗 而⑦듃濡ㅻ윭 bean�쑝濡� �깮�꽦
 @RequestMapping("/member/*") // 紐⑤뱺留듯븨�� /member/瑜� �긽�냽
@@ -51,7 +36,7 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
    @RequestMapping("mypageMain.do")
 	public String mypageMain(Model model, String id){
 		MypageVO mVo = new MypageVO();
-		List<MypageVO> Travellist = mypageService.selectAllTravel();
+		List<MypageVO> Travellist = mypageService.selectAllTravel(id);
 		model.addAttribute("Travellist", Travellist);
 		mVo.setId("id");
 		mVo.setTravel_name("travel_name");
@@ -64,7 +49,8 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
 
  		String userid = id;
  		model.addAttribute("id", userid);
- 		
+ 		List<PlanMainVO> travelnamelist = mypageService.selectAllTravelname(id);
+ 		model.addAttribute("travelnamelist", travelnamelist);
  		return "member/travelWrite";
  	}
     @RequestMapping("travelInsert.do")
@@ -138,6 +124,7 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
 	@RequestMapping("mypageJourney.do")
 	public String mypageJourney(String id, String travel_name, Model model){
 		model.addAttribute("chart", mypageService.getChart(id,travel_name));
+		model.addAttribute("cal", mypageService.selectAllCal(id, travel_name));
 		String userid = id;
 		model.addAttribute("id", userid);
 		String travelname = travel_name;
@@ -197,7 +184,7 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
 	                // output.write(fileData);
 	                 
 	                // 2. File 사용
-	                File file = new File("f:/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/FinalKH/WEB-INF/views/images/mypage/" + fileName);
+	                File file = new File("C:/Users/mirro/Documents/Workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/FinalKH/WEB-INF/views/images/mypage/" + fileName);
 	                String filepath ="src/main/webapp/upload/" + fileName;
 	                uploadfile.transferTo(file);
 	                mVo.setAlbumpath(fileName);
@@ -232,6 +219,28 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
 		model.addAttribute("Albumlist", Albumlist);
 		return "member/mypage_albumslide";
 	}
+	@RequestMapping(value="mypageUpdatemember.do", method=RequestMethod.GET)
+	public String mypageUpdatemember(MypageVO mVo,String id, Model model){
+		mVo.setId(id);
+		model.addAttribute("member" , mypageService.getMember(id));
+		return "member/mypage_updatemember";	
+	}
+	 @RequestMapping(value="mypageUpdatemember.do", method= RequestMethod.POST)
+		public String mypageUpdatemember(MemberVO mmVo, Model model,String userEmail, HttpServletRequest request){
+	       	String useremail= userEmail;
+	   		model.addAttribute("userEmail", useremail);
+	       	String userPw= request.getParameter("pwd");
+	       	String userId =request.getParameter("userid");
+	        String userEmail1 = request.getParameter("email");
+	       	mmVo.setUserId(userId);
+	       	mmVo.setUserPw(userPw);
+	       	mmVo.setUserEmail(userEmail1);
+
+	       	mypageService.updateMember(mmVo);
+	   		return "redirect:/member/mypageMain.do?id="+userEmail1;
+	 }
+
+
 	
 
 }

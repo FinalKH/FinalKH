@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/menuTravel.jsp" %>
 <%@ include file="../include/header.jsp" %>
+	<%@ include file="../include/menuTravel.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<%@ include file="../include/headerTravel.jsp" %>
-<%@ include file="../include/header.jsp" %>
 <style>
 html,body{width:100%;height:100%;}
 body,div,dl,dt,dd,ul,li,ol,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,table{margin:0;padding:0;}
@@ -27,70 +25,62 @@ hr{display:none;}
 
 
 
-#section{padding-top:100px;padding-left:800px;}
-table{align:center;width:500px;height:500px;margin-left:50px;}
+#section{padding-top:250px;padding-left:800px;}
+table{align:center;width:400px;height:500px;}
 td{font-size:20px; }
 tr{margin-top:10px;}
 h2{font-size:50px;}
-table td{
-	padding-right:50px;
-}
-table th{
-	padding-left:150px;
-}
-.btn{
-	padding-right:125px;
-}
 </style>
+<script type="text/javascript">
+    function tocheckpw1() {
+        var pw = document.getElementById("pw").value;
+        var pwck = document.getElementById("pw_check").value;
+ 
+        if (pw != pwck) {
+            alert('비밀번호가 틀렸습니다. 다시 입력해 주세요');
+            return false;
+        }
+    }
+</script>
+
 </head>
 <body>
 	<div id="wrap">
 		<jsp:include page="../include/header.jsp" />
 		<div id="section">
-			
-			<form action="#" method="post" name="frm">
+			<h2>정보 수정</h2>
+			<form action="mypageUpdatemember.do?id=${member.userEmail }" method="post" name="frm">
 				<table>
-					<tr>
-						<th colspan="2">
-							<h2>정보 수정</h2>
-							<!-- <label class="ui tag label"><h3>정보 수정</h3></label> -->
-						</th>
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td><input type="text" name="name" size="20"></td>
-					</tr>
+				
+					
 					<tr>
 						<td>아이디</td>
-						<td><input type="text" name="userid" size="20" id="userid">
+						<td><input type="text" name="userid" size="20" value=${member.userId }>
 					</tr>
 					<tr>
 						<td>암 호</td>
-						<td><input type="password" name="pwd" size="20"></td>
+						<td><input type="password" name="pwd" size="20" value=${member.userPw }></td>
 					</tr>
 					<tr>
 						<td width="80">암호 확인</td>
-						<td><input type="password" name="pwd_check" size="20"></td>
+						<td><input type="password" name="pwd_check" size="20" value=${member.userPw }></td>
 					</tr>
 					<tr>
 						<td>이메일</td>
-						<td><input type="text" name="email" size="20"></td>
+						<td><input type="text" name="email" size="20" value=${member.userEmail }></td>
 					</tr>
+				
 					<tr>
-						<td>전화번호</td>
-						<td><input type="text" name="phone" size="20"></td>
-					</tr>
-					<tr>
-						<td colspan="2" align="right" class="btn">
-							<input type="submit" class="ui button" value="확인" onclick="return joinCheck()"> &nbsp;&nbsp; 
-							<input type="reset" class="ui button" value="취소">
+						<td colspan="2" align="center">
+						<input type="submit" value="확인" onclick="tocheckpw1()">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" value="취소">
 						</td>
 					</tr>
 				</table></form>
 			
 		</div>
 		<!-- section -->
-		<%@ include file="../include/footerMain.jsp" %>
+		<%-- <jsp:include page="../include/footerMain.jsp" /> --%>
 	</div>
 	<!-- wrap -->
 </body>

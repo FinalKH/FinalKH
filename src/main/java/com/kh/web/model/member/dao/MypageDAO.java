@@ -1,15 +1,21 @@
 package com.kh.web.model.member.dao;
 import java.util.List;
 
+import com.kh.web.model.member.dto.MemberVO;
+import com.kh.web.model.member.dto.MypageCalVO;
 import com.kh.web.model.member.dto.MypageVO;
+import com.kh.web.model.travel.dto.PlanMainVO;
 
 
 public interface MypageDAO {
 
 		
 	//������������ �����س��� �����ฮ��Ʈ ����
-		public List<MypageVO> selectAllTravel();
+		public List<MypageVO> selectAllTravel(String id);
 		
+		public List<PlanMainVO>selectAllTravelname(String id);
+		
+		public List<MypageCalVO>selectAllCal(String id,String travel_name);
 		//���������� ���� �߰�
 		public void insertTravel(String id,String travel_name) ;
 		
@@ -30,5 +36,10 @@ public interface MypageDAO {
 		
 		//��Ʈ ������Ʈ
 		public void updateChart(MypageVO mVo);
+		
+
+        public MemberVO getMember(String id);
+		
+		public void updateMember(MemberVO mmVo);
 		
 }

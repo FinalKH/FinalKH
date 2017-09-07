@@ -12,11 +12,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.web.model.member.dto.MemberVo_Test_JG;
 import com.kh.web.service.member.MemberService2;
@@ -98,6 +96,7 @@ public class MemberController2 {
     @RequestMapping("loginCheck_test.do")
     public String loginCheck_test(@ModelAttribute MemberVo_Test_JG vot, HttpSession session){
         boolean result = memberService2.loginCheck_test(vot, session);
+<<<<<<< HEAD
         /*       ModelAndView mav = new ModelAndView();
         if (result == true) { // 로그인 성공
             // main.jsp로 이동
@@ -108,6 +107,9 @@ public class MemberController2 {
             mav.setViewName("main");
             mav.addObject("msg", "failure");
         }*/
+=======
+
+>>>>>>> 8a536830ee645950d21667e66d100493b2f44470
         return "redirect:/";
     }
     
@@ -115,9 +117,13 @@ public class MemberController2 {
     @RequestMapping("logout_test.do")
     public String logout_test(HttpSession session){
         memberService2.logout_test(session);
+<<<<<<< HEAD
 /*        ModelAndView mav = new ModelAndView();
         mav.setViewName("main");
         mav.addObject("msg", "logout");*/
+=======
+
+>>>>>>> 8a536830ee645950d21667e66d100493b2f44470
         return "redirect:/";
     }
 }
