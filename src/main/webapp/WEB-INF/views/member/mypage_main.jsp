@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ include file="../include/menuTravel.jsp" %>
+
 <%@ include file="../include/header.jsp" %>
+	<%@ include file="../include/menuTravel.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -166,12 +167,13 @@ function showPopup12() {
     
   </div>
   <div class="extra content">
-    <button class="ui button" onclick="location.href='mypageUpdatemember.do'">정보수정</button>
+    <button class="ui button" onclick="location.href='mypageUpdatemember.do?id=${id }'">정보수정</button>
   </div>
 </div>
 
 			</div>
 			<!-- article1 -->
+
 			
 			 
 			 <form name=frm123>

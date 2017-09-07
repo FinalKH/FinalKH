@@ -12,11 +12,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.web.model.member.dto.MemberVo_Test_JG;
 import com.kh.web.service.member.MemberService2;
@@ -96,28 +94,17 @@ public class MemberController2 {
     
     // 02. 로그인 처리
     @RequestMapping("loginCheck_test.do")
-    public ModelAndView loginCheck_test(@ModelAttribute MemberVo_Test_JG vot, HttpSession session){
+    public String loginCheck_test(@ModelAttribute MemberVo_Test_JG vot, HttpSession session){
         boolean result = memberService2.loginCheck_test(vot, session);
-        ModelAndView mav = new ModelAndView();
-        if (result == true) { // 로그인 성공
-            // main.jsp로 이동
-            mav.setViewName("main");
-            mav.addObject("msg", "success");
-        } else {    // 로그인 실패
-            // main.jsp로 이동
-            mav.setViewName("main");
-            mav.addObject("msg", "failure");
-        }
-        return mav;
+
+        return "redirect:/";
     }
     
     // 03. 로그아웃 처리
     @RequestMapping("logout_test.do")
-    public ModelAndView logout_test(HttpSession session){
+    public String logout_test(HttpSession session){
         memberService2.logout_test(session);
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("main");
-        mav.addObject("msg", "logout");
-        return mav;
+
+        return "redirect:/";
     }
 }

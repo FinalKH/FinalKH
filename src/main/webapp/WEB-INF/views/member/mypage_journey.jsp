@@ -2,9 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../include/menuTravel.jsp"%>
-<%@ include file="../include/header.jsp"%>
 
+<%@ include file="../include/header.jsp" %>
+	<%@ include file="../include/menuTravel.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -228,24 +228,36 @@ function showPopup_chartUpdate() {
 						</th>
 					</tr>
 					<tr>
+				
 						<td><div id="calendar"></div>
 							<!-- 캘린더 자바스크립트 --> 
-							<script type="text/javascript">
-							    jQuery(document).ready(function() {
-							        jQuery("#calendar").fullCalendar({
-							              defaultDate : "2016-05-12"
-							               , editable : true
-							               , eventLimit : true
-							               , events: [
-							                {
-							                      title : "Click for Google"
-							                    , url : "http://google.com/"
-							                    , start : "2016-05-28"
-							                }
-							            ]
-							        });
-							    });
-						  </script></td>
+							<script>
+							/* <c:forEach var="cal" items="${cal }">
+							  <input type="text" value=${cal.title }>
+							</c:forEach> */
+	$(document).ready(function() {
+		
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,basicWeek,basicDay'
+			},
+			defaultDate: '2017-09-12',
+			navLinks: true, // can click day/week names to navigate views
+			editable: true,
+			eventLimit: true, // allow "more" link when too many events
+			events: [
+				<c:forEach var="cal" items="${cal }">
+				{
+					title:' ${cal.title }',
+					start:  '${cal.startTime }'
+				},</c:forEach>
+			]
+		});
+		
+	});
+</script></td>
 					</tr>
 				</table>
 			</div>
@@ -337,22 +349,8 @@ function showPopup_chartUpdate() {
 				</c:forEach>
 			</div>
 			<!-- article4 -->
-			<div id="article5">
-				<table class="table5">
-					<tr>
-						<th class="bb">
-							<!-- <h3>스케쥴</h3> -->
-							<label class="ui tag label"><h3>스케쥴</h3></label>	
-						</th>
-					</tr>
-					<tr>
-						<td><img class="schedule" src="../images/mypage/shedule.PNG"
-							alt="스케쥴" /></td>
-					</tr>
-				</table>
-			</div>
-			<!-- article5 -->
 		</div>
+		
 		<!-- section -->
 		<%@ include file="../include/footerMain.jsp"%>
 	</div>

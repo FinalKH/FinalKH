@@ -9,7 +9,10 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.web.model.member.dto.MemberVO;
+import com.kh.web.model.member.dto.MypageCalVO;
 import com.kh.web.model.member.dto.MypageVO;
+import com.kh.web.model.travel.dto.PlanMainVO;
 @Repository
 public class MypageDAOImpl implements MypageDAO{
 	@Inject
@@ -17,9 +20,14 @@ public class MypageDAOImpl implements MypageDAO{
 	
 	
 	@Override
-	public List<MypageVO> selectAllTravel() {
+	public List<MypageVO> selectAllTravel(String id) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("mypage.travellist");
+		return sqlSession.selectList("mypage.travellist",id);
+	}
+	@Override
+	public List<PlanMainVO> selectAllTravelname(String id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("mypage.travelnamelist",id);
 	}
 	@Override
 	public void insertTravel(String id, String travel_name){
@@ -77,7 +85,26 @@ public class MypageDAOImpl implements MypageDAO{
 		// TODO Auto-generated method stub
 		sqlSession.update("mypage.chartupdate",mVo);
 	}
-	
+	@Override
+	public List<MypageCalVO> selectAllCal(String id, String travel_name) {
+		// TODO Auto-generated method stub
+		Map<String, String> map = new HashMap<String, String>();
+        map.put("id", id);
+        map.put("travel_name", travel_name);
+		return sqlSession.selectList("mypage.viewcal", map);
+	}
+
+	@Override
+	public MemberVO getMember(String id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mypage.getmem" ,id);
+	}
+	@Override
+	public void updateMember(MemberVO mmVo) {
+		// TODO Auto-generated method stub
+		sqlSession.update("mypage.memberupdate",mmVo);
+		
+	}
 	
 
 }

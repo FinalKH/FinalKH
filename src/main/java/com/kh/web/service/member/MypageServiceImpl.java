@@ -7,10 +7,12 @@ import javax.inject.Inject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 
 import com.kh.web.model.member.dao.MypageDAO;
+import com.kh.web.model.member.dto.MemberVO;
+import com.kh.web.model.member.dto.MypageCalVO;
 import com.kh.web.model.member.dto.MypageVO;
+import com.kh.web.model.travel.dto.PlanMainVO;
 @Service
 public class MypageServiceImpl implements MypageService{
     @Autowired
@@ -20,9 +22,20 @@ public class MypageServiceImpl implements MypageService{
    
 
     @Override
-	public List<MypageVO> selectAllTravel() {
+	public List<MypageVO> selectAllTravel(String id) {
 		// TODO Auto-generated method stub
-		return MypageDao.selectAllTravel();
+		return MypageDao.selectAllTravel(id);
+	}
+	@Override
+	public List<PlanMainVO> selectAllTravelname(String id) {
+		// TODO Auto-generated method stub
+		return MypageDao.selectAllTravelname(id);
+	}
+	@Override
+	public List<MypageCalVO> selectAllCal(String id, String travel_name) {
+		// TODO Auto-generated method stub
+		return MypageDao.selectAllCal(id, travel_name);
+		
 	}
 	@Override
 	public void insertTravel(String id, String travel_name){
@@ -72,6 +85,17 @@ public class MypageServiceImpl implements MypageService{
 	}
 	
 
+
+@Override
+	public MemberVO getMember(String id) {
+		// TODO Auto-generated method stub
+		return MypageDao.getMember(id);
+	}
+	@Override
+	public void updateMember(MemberVO mmVo) {
+		// TODO Auto-generated method stub
+		MypageDao.updateMember(mmVo);
+	}
 	
 	
 }
