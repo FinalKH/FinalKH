@@ -38,7 +38,7 @@ public class MemberController2 {
     // controller => service => dao 요청
         List<MemberVo_Test_JG> list = memberService2.memberList();
         model.addAttribute("list", list);
-        return "member/member_listQQQQQQQQQQ";
+        return "member/member_list";
     }
  // 02_01 회원 등록 페이지로 이동
     @RequestMapping("member/write.do")
@@ -89,7 +89,7 @@ public class MemberController2 {
         // /member/list.do : 루트 디렉토리를 기준
         // member/list.do : 현재 디렉토리를 기준
         // member_list.jsp로 리다이렉트
-        return "redirect:/member/list.do";
+        return "redirect:/";
     }
     
     // 02. 로그인 처리

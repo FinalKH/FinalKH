@@ -8,8 +8,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-
+<title>여행 플래너</title>
+<link rel="shortcut icon" type="image/x-icon" href="http://cfile7.uf.tistory.com/image/22127B4153F2F8DF333327" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
 <script src="http://malsup.github.io/jquery.cycle2.js"></script>
