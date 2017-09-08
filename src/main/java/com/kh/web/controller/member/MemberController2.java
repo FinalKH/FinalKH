@@ -96,7 +96,20 @@ public class MemberController2 {
     @RequestMapping("loginCheck_test.do")
     public String loginCheck_test(@ModelAttribute MemberVo_Test_JG vot, HttpSession session){
         boolean result = memberService2.loginCheck_test(vot, session);
+<<<<<<< HEAD
+        /*       ModelAndView mav = new ModelAndView();
+        if (result == true) { // 로그인 성공
+            // main.jsp로 이동
+            mav.setViewName("main");
+            mav.addObject("msg", "success");
+        } else {    // 로그인 실패
+            // main.jsp로 이동
+            mav.setViewName("main");
+            mav.addObject("msg", "failure");
+        }*/
+=======
 
+>>>>>>> 8a536830ee645950d21667e66d100493b2f44470
         return "redirect:/";
     }
     
@@ -104,7 +117,13 @@ public class MemberController2 {
     @RequestMapping("logout_test.do")
     public String logout_test(HttpSession session){
         memberService2.logout_test(session);
+<<<<<<< HEAD
+/*        ModelAndView mav = new ModelAndView();
+        mav.setViewName("main");
+        mav.addObject("msg", "logout");*/
+=======
 
+>>>>>>> 8a536830ee645950d21667e66d100493b2f44470
         return "redirect:/";
     }
 }

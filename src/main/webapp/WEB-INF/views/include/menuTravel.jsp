@@ -10,7 +10,12 @@
 	<div class="ui violet inverted segment">
 		<div class="ui labeled icon fixed menu">
 				<a class="item" href="${path}/"><img src="${path}/images/logo.jpg" alt="logo"/><!-- <i class="skyatlas big icon"></i>메인 --></a>
+<<<<<<< HEAD
+				<a class="item" href="${path}/travel/howToUse.do"><i class="help circle icon"></i>이용방법</a>
+<<<<<<< HEAD
+=======
 				<%-- <a class="item" href="${path}/travel/howToUse.do"><i class="help circle icon"></i>이용방법</a> --%>
+>>>>>>> 8a536830ee645950d21667e66d100493b2f44470
 				<a class="item" href="${path}/travel/sightRough.do"><i class="camera retro icon"></i>관광지</a>
 				<a class="item" href="${path}/travel/gallery.do"><i class="image icon"></i>갤러리</a>
 				<%-- <a class="item" href="${path}/travel/travelTip.do"><i class="book icon"></i>여행팁</a> --%>
@@ -26,7 +31,17 @@
 	            ><i class="map icon"></i>여행플랜</a>
 				<a class="item" href="${path}/itinerary/list.do"><i class="map signs icon"></i>여행일정</a>
 				<a class="item" href="${path}/reviewList.do"><i class="book icon"></i>여행후기</a>
+<<<<<<< HEAD
+=======
+				<a class="item" href="${path}/travel/sight.do"><i class="camera retro icon"></i> 관광지</a>
+				<a class="item" href="${path}/travel/travelTip.do"><i class="book icon"></i> 여행팁</a>
+				<a class="item" href="${path}/travel/createPlan.do"><i class="map icon"></i>여행플랜</a>
+				<a class="item" href="${path}/itinerary/list.do"><i class="map signs icon"></i> 여행일정</a>
+				<a class="item" href="${path}/reviewList.do"><i class="book icon"></i> 여행후기</a>
+>>>>>>> JJong
+=======
 
+>>>>>>> 8a536830ee645950d21667e66d100493b2f44470
 				<%-- <c:if test="${sessionScope.userid == 'ckswnd353'}"> --%>
 				<%-- <a class="item" href="${path}/member/list.do"><i class="book icon"></i>회원관리</a> --%>
 				<%-- </c:if> --%>
@@ -44,9 +59,19 @@
                    <a class="item" href="javascript:loginForm()"><i class="sign in red icon"></i>로그인</a>
                 </c:when>
                 <c:when test="${sessionScope.userid != null and sessionScope.gradename == '관리자' }">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                   <a class="item" href="${path}/member/mypageMain.do?id=1"><i class="spy black icon"></i>관리자님!</a>
+                   <a class="item" href="${path}/member/logout_test.do"><i class="sign out red icon"></i>로그아웃</a>
+=======
+                   <a class="item" href="#"><i class="spy black icon"></i>관리자님!</a>
+                   <a class="item" href="${path}/member/logout_test.do"><i class="sign out red icon"></i> 로그아웃</a>
+>>>>>>> JJong
+=======
                    <a class="item" href="${path}/member/mypageMain.do?id=${sessionScope.email }"><i class="spy black icon"></i>관리자님!</a>
                    <a class="item" href="${path}/member/logout_test.do"><i class="sign out red icon"></i>로그아웃</a>
 
+>>>>>>> 8a536830ee645950d21667e66d100493b2f44470
                 </c:when>
                 <c:when test="${sessionScope.userid != null and sessionScope.gradename == '일반' }">
                    <a class="item" href="${path}/member/mypageMain.do?id=${sessionScope.email }"><i class="user circle blue icon"></i>${sessionScope.userid }님!</a>

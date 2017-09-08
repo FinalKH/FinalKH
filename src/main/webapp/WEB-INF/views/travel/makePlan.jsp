@@ -1373,6 +1373,10 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 			console.log(listDetail);
 		}
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8a536830ee645950d21667e66d100493b2f44470
  
  $(document)
 	.ready(
@@ -1581,6 +1585,11 @@ bringPlaceOnMap(contentTypeIdOption, areaCodeOption,
 
 		        }
 			});
+<<<<<<< HEAD
+=======
+>>>>>>> JJong
+=======
+>>>>>>> 8a536830ee645950d21667e66d100493b2f44470
 	</script>
 
 </body>
